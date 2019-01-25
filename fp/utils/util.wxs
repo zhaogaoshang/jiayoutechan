@@ -1,0 +1,39 @@
+// 时间格式化
+function timestamp2string(ts, format = 'time') {
+  var date = getDate()
+  date.setTime(ts * 1000)
+  var y = date.getFullYear()
+  var m = date.getMonth() + 1
+  m = m < 10 ? ('0' + m) : m
+  var d = date.getDate()
+  d = d < 10 ? ('0' + d) : d
+  var h = date.getHours()
+  h = h < 10 ? ('0' + h) : h
+  var minute = date.getMinutes()
+  var second = date.getSeconds()
+  minute = minute < 10 ? ('0' + minute) : minute
+  second = second < 10 ? ('0' + second) : second
+
+  if (format == 'second') {
+    return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second
+  }
+  if (format == 'time') {
+    return y + '-' + m + '-' + d + ' ' + h + ':' + minute
+  }
+  if (format == 'date') {
+    return y + '.' + m + '.' + d
+  }
+  if (format == 'cn') {
+    return y + '年' + m + '月' + d + '日'
+  }
+}
+
+// 倒计时时钟
+function timeInterval(option) {
+
+}
+
+module.exports = {
+  timestamp2string: timestamp2string, // 时间处理
+  timeInterval: timeInterval // 时间倒计时
+}

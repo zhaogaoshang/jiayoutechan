@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/user/user",
+    "pages/index/index",
+    "pages/cart/cart"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "家有特产",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "color": "#333333",
+    "selectedColor": "#FE8D18",
+    "borderStyle": "#dadada",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "集市",
+        "iconPath": "./images/nihao.jpg",
+        "selectedIconPath": "./images/shangpin@2x.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "images/gouwuche-3@2x.png",
+        "selectedIconPath": "images/active.jpg"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "个人中心",
+        "iconPath": "images/nihao.jpg",
+        "selectedIconPath": "images/wode@2x.png"
+      }
+    ]
+  }
+}
