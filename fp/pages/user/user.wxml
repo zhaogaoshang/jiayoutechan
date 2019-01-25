@@ -47,10 +47,12 @@
   </view>
 
   <!-- 列表项目 -->
-  <view>
-    <text></text>
-    <image src="../../images/active.jpg"></image>
+  <view class="other-list" wx:for="{{pickList}}" wx:key="{{index}}">
+    <text>{{item.name}}</text>
+    <image class="jian-tou" src="../../images/active.jpg"></image>
   </view>
 
+  <!-- 垫片 -->
+  <view class="shim"></view>
 
 </view>
