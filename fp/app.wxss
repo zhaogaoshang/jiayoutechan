@@ -1,4 +1,5 @@
 /**app.wxss**/
+
 .container {
   min-height: 100vh;
   display: flex;
@@ -6,4 +7,34 @@
   background-color: #f8f8f8;
 }
 
+/* 条形的布局 左 中 右s */
 
+.tiao-box {
+  display: flex;
+  flex-direction: row;
+  padding: 0 30rpx;
+  background-color: white;
+  align-items: center;
+}
+
+.tiao-box .tiao-box__left {
+  margin-right: 10rpx;
+  padding: 30rpx 0rpx;
+}
+
+.tiao-box .tiao-box__middle {
+  flex: 1;
+  padding: 30rpx 0rpx;
+}
+
+.tiao-box .tiao-box__right {
+  padding: 30rpx 0rpx;
+}
+
+/* <view class="tiao-box">
+<view class="tiao-box__left"></view>
+<view class="tiao-box__middle"></view>
+<view class="tiao-box__right"></view>
+</view> */
+
+/* 条形的布局 左 中 右e */

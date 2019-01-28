@@ -111,7 +111,7 @@
 
   <!-- 特色好店 -->
   <view class="category-item {{categoryActive==1?'category--active':''}}">
-    <view class="characteristic-store__item" wx:for="{{[1,2,3]}}">
+    <view class="characteristic-store__item" wx:for="{{[1,2,3]}}" wx:key="{{index}}">
       <!-- 头部 -->
       <view class="top">
         <image class="store__avatar" src="../../images/active.jpg"></image>
@@ -125,7 +125,7 @@
       </view>
       <!-- 底部 -->
       <view class="bottom">
-        <view class="store-product__item" wx:for="{{[1,2,3]}}">
+        <view class="store-product__item" wx:for="{{[1,2,3]}}" wx:key="{{index}}" catchtap="handleGoProduct">
           <image class="store-product__photo" src="../../images/active.jpg"></image>
           <view class="product-price">￥168</view>
         </view>
@@ -135,7 +135,7 @@
 
   <!-- 去赶集 -->
   <view class="category-item {{categoryActive==2?'category--active':''}}">
-    <view class="characteristic-store__item" wx:for="{{[1,2,3]}}">
+    <view class="characteristic-store__item" wx:for="{{[1,2,3]}}" wx:key="{{index}}">
       <!-- 头部 -->
       <view class="top">
         <image class="store__avatar" src="../../images/active.jpg"></image>
@@ -148,10 +148,10 @@
       </view>
       <!-- 底部 -->
       <view class="bottom">
-        <view class="store-product__item" wx:for="{{[1,2,3]}}">
+        <view class="store-product__item" wx:for="{{[1,2,3]}}" wx:key="{{index}}" catchtap="handleGoProduct">
           <image class="store-product__photo" src="../../images/active.jpg"></image>
           <view class="go-shop__box">
-            <image class="free-freight__icon"  src="../../images/active.jpg" ></image>
+            <image class="free-freight__icon" src="../../images/active.jpg"></image>
             <text class="product-cureent__price">¥68.00</text>
             <text class="product-origin__price">¥100.00</text>
           </view>

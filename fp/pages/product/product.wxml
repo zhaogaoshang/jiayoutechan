@@ -1,0 +1,124 @@
+<!--pages/product/product.wxml-->
+<view class="container product-page">
+  <!-- 分类 -->
+  <view class="product-page__category">
+    <view class="category-item {{item.id==categoryActive?'active':''}}" wx:for="{{category}}" wx:key="{{index}}" catchtap="handleSwitchModule" data-id="{{item.id}}">
+      <view>{{item.name}}</view>
+      <view class="category-item__line {{item.id==categoryActive?'active':''}}"></view>
+    </view>
+  </view>
+
+  <!-- 头部轮播图 -->
+  <view class="hand-swoper___photo">
+    <swiper class="swoper-photo__box" autoplay interval="3000">
+      <block wx:for="{{[1,2,3]}}" wx:key="{{index}}">
+        <swiper-item>
+          <image class="hand-swoper___photo--item" src="../../images/active.jpg" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <image class="like-share__icon" src="../../images/active.jpg"></image>
+    <image class="like-share__icon share-icon" src="../../images/active.jpg"></image>
+  </view>
+  <!-- 简述 -->
+  <view class="product-discription__box">
+    <!-- 价格 -->
+    <view class="cureent-price">￥168</view>
+    <!-- 描述 -->
+    <view class="product-discription__text">
+      <view class="lite-discription__text">一周内发货！果园直发，果粒饱满新鲜营一周内发货！果园直发，果粒饱满新鲜营一周内发货！果园直发，果粒饱满新鲜营 养还是原来的味道。百年前的经..
+      </view>
+      <image class="dai-yan__icon" src="../../images/active.jpg"></image>
+    </view>
+    <!-- 物流 其他-->
+    <view class="logistics-box">
+      <view> 快递：0元 销量：32笔</view>
+      <view>云南昆明</view>
+    </view>
+  </view>
+
+  <!-- 规格 -->
+  <view class="tiao-box specifications-box">
+    <view class="tiao-box__left">选择</view>
+    <view class="tiao-box__middle middle">规格</view>
+    <view class="tiao-box__right">
+      <image class="jaintou" src="../../images/active.jpg"></image>
+    </view>
+  </view>
+
+  <!-- 评价 -->
+  <view class="comment-box">
+    <view class="tiao-box comment-box__top">
+      <view class="tiao-box__left">评价</view>
+      <view class="tiao-box__middle"> （23）</view>
+      <view class="tiao-box__right" catchtap="handleGoAllComment">
+        <text>查看全部 </text>
+        <image class="jaintou" src="../../images/active.jpg"></image>
+      </view>
+    </view>
+    <view>
+      <view class="comment-item" wx:for="{{[1,2,3,4]}}" wx:key="{{index}}">
+        <view class="comment-item__top">
+          <image class="comment-avatar" src="../../images/active.jpg"></image>
+          <text class="comment-name">老王</text>
+        </view>
+        <text class="comment-item__bottom">非常好吃！还会再来的</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 店铺 -->
+  <view class="store">
+    <view class="store-top">
+      <image class="store-avatar" src="../../images/active.jpg"></image>
+      <view class="store-name">
+        <text>浪流连水果旗舰店</text>
+        <view class="aply-store">进店逛逛</view>
+      </view>
+    </view>
+    <view class="store-bottom">
+      <view>
+        <text>商品描述：</text>
+        <text class="store-bottom__count">5</text>
+      </view>
+      <view>
+        <text>卖家服务：</text>
+        <text class="store-bottom__count">5</text>
+      </view>
+      <view>
+        <text>物流服务：</text>
+        <text class="store-bottom__count">5</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 详情 -->
+  <view>
+    <view class="tiao-box product-detail__top">
+      <view class="tiao-box__left">详情</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right"></view>
+    </view>
+  </view>
+
+  <!-- 底部购买按钮 -->
+  <view class="shop-box">
+    <view class="left">
+      <view class="function-icon">
+        <image class="function-icon__fu" src="../../images/active.jpg"></image>
+        <text>客服</text>
+      </view>
+      <view class="function-icon">
+        <image class="function-icon__cart" src="../../images/active.jpg"></image>
+        <text>购物车</text>
+      </view>
+    </view>
+    <view class="shop-cart__box">
+      <view class="shop-cart__box--item join-cart">加入购物车</view>
+      <view class="shop-cart__box--item current-shop">立即购买</view>
+    </view>
+  </view>
+
+  <!-- 垫片 -->
+  <view class="shim"></view>
+</view>

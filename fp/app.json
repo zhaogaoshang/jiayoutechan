@@ -1,8 +1,10 @@
 {
   "pages": [
-    "pages/user/user",
+    "pages/commentAll/commentAll",
+    "pages/product/product",
     "pages/index/index",
-    "pages/cart/cart"
+    "pages/cart/cart",
+    "pages/user/user"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -15,7 +17,7 @@
     "backgroundColor": "#ffffff",
     "color": "#333333",
     "selectedColor": "#FE8D18",
-    "borderStyle": "#dadada",
+    "borderStyle": "#f8f8f8",
     "list": [
       {
         "pagePath": "pages/index/index",

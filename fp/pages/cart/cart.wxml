@@ -1,2 +1,66 @@
 <!--pages/cart/cart.wxml-->
-<text>pages/cart/cart.wxml</text>
+<view class="container cart">
+  <!-- 每一个店铺 -->
+  <view class="product-item">
+    <!-- 头部 -->
+    <view class="store-top active-box">
+      <view class="left">
+        <!-- 选中 -->
+        <image class="active" src="../../images/active.jpg"></image>
+        <!-- 未选中 -->
+        <view class="active" wx:if=""></view>
+      </view>
+      <view class="right">
+        <text class="store-name">赵高尚旗舰店</text>
+        <image class="jian-tou" src="../../images/active.jpg"></image>
+      </view>
+    </view>
+    <!-- 底部 每个商品-->
+    <view class="product-bottom__item" style="height:{{190*2}}rpx">
+      <view class="product-bottom__item--box {{item.status==2?'normal':''}} {{item.status==1?'abnormal':''}}" style="top:{{182*index}}rpx" wx:for="{{productList}}" wx:key="{{index}}" bindtouchstart="handleTouchstart" bindtouchend="handleTouchend" data-sun-index="{{index}}">
+        <!-- 产品展示区域 -->
+        <view class="store-top store-bottom">
+          <!-- 左边 -->
+          <view class="left">
+            <!-- 选中 -->
+            <image class="active" src="../../images/active.jpg"></image>
+            <!-- 未选中 -->
+            <view class="active" wx:if=""></view>
+          </view>
+          <!-- 右边 -->
+          <view class="product-box">
+            <image class="product-photo" src="../../images/active.jpg"></image>
+            <view class="discription">
+              <text> 还想再吃的野生有机水果</text>
+              <view class="product-price">¥75.00</view>
+            </view>
+          </view>
+        </view>
+        <!-- 滑动区域 -->
+        <view class="handle-box">删除</view>
+        <!-- 删除增加 -->
+        <view class="add-delete__function">
+          <view class="need-count__icon">-</view>
+          <view class="need-count">123</view>
+          <view class="need-count__icon">+</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部 -->
+  <view class="handle-order__box">
+    <view class="handle-order__box--left">
+      <image class="active" src="../../images/active.jpg"></image>
+      <text class="all-pick">全选</text>
+    </view>
+    <view class="handle-order__box--right">
+      <view class="order-price">合计：￥123.00</view>
+      <view class="checkout"> 结算</view>
+    </view>
+  </view>
+
+  <!-- 垫片 -->
+  <view class="shim"></view>
+
+</view>

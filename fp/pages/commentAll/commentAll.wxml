@@ -1,0 +1,23 @@
+<!--pages/commentAll/commentAll.wxml-->
+<view class="container comment-page">
+  <!-- 评价的头部 -->
+  <view class="tiao-box comment-title">
+    <view class="tiao-box__left">评价</view>
+    <view class="tiao-box__middle">(120)</view>
+    <view class="tiao-box__right"></view>
+  </view>
+
+  <!-- 每一个评论 -->
+  <view class="comment-item" wx:for="{{[1,2,3,4]}}" wx:key="{{index}}">
+    <image class="comment-user__avatar" src="../../images/active.jpg"></image>
+    <view class="right">
+      <view class="user-info">
+        <text class="user-name">京城吴彦祖 </text>
+        <text class="comment-time">2018-03-30</text>
+      </view>
+      <view class="comment-detail">草莓真的好棒喔！下次还来你家买，这么便宜的价格买 到如此满意的产品，给老板点赞加鸡腿儿～
+      </view>
+    </view>
+
+  </view>
+</view>

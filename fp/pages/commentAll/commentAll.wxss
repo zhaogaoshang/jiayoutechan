@@ -1,0 +1,56 @@
+/* pages/commentAll/commentAll.wxss */
+
+.comment-page .comment-title {
+  background-color: #f8f8f8;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 28rpx;
+}
+
+.comment-page .comment-item {
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx;
+  background-color: white;
+  border-top: 1rpx solid #f8f8f8;
+}
+
+.comment-item .comment-user__avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.comment-item .right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-item .right .user-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.comment-item .right .user-info .comment-time {
+  font-size: 22rpx;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 22rpx;
+}
+
+.comment-item .right .user-info .user-name {
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  margin-bottom: 25rpx;
+}
+
+.comment-item .right .comment-detail {
+  font-size: 26rpx;
+  color: rgba(51, 51, 51, 1);
+}
