@@ -1,10 +1,13 @@
 {
   "pages": [
-    "pages/commentAll/commentAll",
-    "pages/product/product",
     "pages/index/index",
+    "pages/order/order",
+    "pages/product/product",
+    "pages/store/store",
     "pages/cart/cart",
-    "pages/user/user"
+    "pages/commentAll/commentAll",
+    "pages/user/user",
+    "pages/searchResult/searchResult"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -22,19 +25,19 @@
       {
         "pagePath": "pages/index/index",
         "text": "集市",
-        "iconPath": "./images/nihao.jpg",
-        "selectedIconPath": "./images/shangpin@2x.png"
+        "iconPath": "./images/shangpin@2x.png",
+        "selectedIconPath": "./images/sjs@2x.png"
       },
       {
         "pagePath": "pages/cart/cart",
         "text": "购物车",
         "iconPath": "images/gouwuche-3@2x.png",
-        "selectedIconPath": "images/active.jpg"
+        "selectedIconPath": "./images/cart-active@2.png"
       },
       {
         "pagePath": "pages/user/user",
         "text": "个人中心",
-        "iconPath": "images/nihao.jpg",
+        "iconPath": "images/user@2.png",
         "selectedIconPath": "images/wode@2x.png"
       }
     ]

@@ -18,22 +18,25 @@ Page({
     }]
   },
 
+  // 数量加减
+  handleExportsCount(e) {
+    console.log(e.detail)
+  },
+
   // 手指点击
   handleTouchstart(e) {
-    console.log(e)
-    console.log(e.changedTouches[0].clientX, '手指触碰')
+    // console.log(e)
+    // console.log(e.changedTouches[0].clientX, '手指触碰')
     this.setData({
       touchStartLocatione: e.changedTouches.length > 0 ? e.changedTouches[0].clientX : ''
     })
-
   },
 
   // 手指离开
   handleTouchend(e) {
-    console.log(e, '手指离开')
+    // console.log(e, '手指离开')
     let locationEnd = e.changedTouches[0].clientX // 结束的位置
     let changeIndex = e.currentTarget.dataset.sunIndex // 需要改变的索引
-
     let isChange = this._handleCalculatingDistance(this.data.touchStartLocatione, locationEnd) // 是否需要发生动画
 
     if (isChange == 1) {

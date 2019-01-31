@@ -100,6 +100,13 @@
 .product-bottom__item .handle-box {
   display: inline-block;
   line-height: 180rpx;
+  width: 120rpx;
+  background-color: #fe3b30;
+  font-size: 24rpx;
+  font-family: Adobe Heiti Std R;
+  font-weight: normal;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
 }
 
 .active-box {
@@ -120,7 +127,7 @@
 
 @keyframes normal {
   0% {
-    left: -100rpx;
+    left: -120rpx;
   }
 
   100% {
@@ -138,7 +145,7 @@
   }
 
   100% {
-    left: -100rpx;
+    left: -120rpx;
   }
 }
 
@@ -192,24 +199,4 @@
   position: absolute;
   top: 107rpx;
   left: 490rpx;
-  display: flex;
-  flex-direction: row;
-}
-
-.add-delete__function .need-count {
-  width: 76rpx;
-  height: 44rpx;
-  background: rgba(246, 246, 246, 1);
-  font-size: 24rpx;
-  font-family: Adobe Heiti Std R;
-  font-weight: normal;
-  color: rgba(51, 51, 51, 1);
-  text-align: center;
-  line-height: 44rpx;
-}
-
-.add-delete__function .need-count__icon {
-  padding: 0 15rpx;
-  font-size: 30rpx;
-  color: rgba(51, 51, 51, 1);
 }

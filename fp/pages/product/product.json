@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "商品详情",
-  "usingComponents": {}
+  "usingComponents": {
+    "add-delete": "/componment/deleteAdd/deleteAdd"
+  }
 }

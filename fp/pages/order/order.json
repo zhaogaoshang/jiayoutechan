@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "product": "/componment/oblongProduct/oblongProduct"
+  }
+}

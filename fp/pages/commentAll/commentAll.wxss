@@ -30,6 +30,12 @@
   flex-direction: column;
 }
 
+.comment-item .right .product-photo__item {
+  width: 159rpx;
+  height: 159rpx;
+  margin-left: 10rpx;
+}
+
 .comment-item .right .user-info {
   display: flex;
   flex-direction: row;
@@ -53,4 +59,9 @@
 .comment-item .right .comment-detail {
   font-size: 26rpx;
   color: rgba(51, 51, 51, 1);
+  margin-bottom: 24rpx;
+}
+
+.comment-page .shim {
+  height: 100rpx;
 }

@@ -40,9 +40,7 @@
         <view class="handle-box">删除</view>
         <!-- 删除增加 -->
         <view class="add-delete__function">
-          <view class="need-count__icon">-</view>
-          <view class="need-count">123</view>
-          <view class="need-count__icon">+</view>
+          <add-delete bind:handleExportsCount="handleExportsCount"></add-delete>
         </view>
       </view>
     </view>

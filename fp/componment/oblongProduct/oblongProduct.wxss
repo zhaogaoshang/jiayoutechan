@@ -1,0 +1,30 @@
+/* componment/oblongProduct/oblongProduct.wxss */
+
+.box {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.product-discreption {
+  margin-left: 30rpx;
+  flex: 1;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.free-freight__icon {
+  width: 50rpx;
+  height: 28rpx;
+}
+
+.product-discreption__text {
+}

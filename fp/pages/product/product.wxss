@@ -58,7 +58,7 @@
 .hand-swoper___photo .like-share__icon {
   position: absolute;
   top: 30rpx;
-  right: 100rpx;
+  right: 30rpx;
   height: 60rpx;
   width: 60rpx;
 }
@@ -107,8 +107,18 @@
 }
 
 .dai-yan__icon {
+  position: relative;
   width: 130rpx;
   height: 50rpx;
+}
+
+.dai-yan__icon--text {
+  position: absolute;
+  font-size: 26rpx;
+  color: white;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 58rpx;
 }
 
 .product-discription__box .logistics-box {
@@ -256,6 +266,15 @@
 
 /* 店铺e */
 
+.product-page .discription-text__box {
+  background-color: white;
+  font-size: 30rpx;
+}
+
+.product-page .discription-text__box p {
+  padding: 0 30rpx;
+}
+
 /* 商品详情s */
 
 .product-detail__top {
@@ -295,7 +314,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0 60rpx;
 }
 
 .shop-box .function-icon {
@@ -331,6 +349,135 @@
 
 /* 购买按钮E */
 
+/* 选择规格的弹框S */
+
+.pick-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.pick-box .product-info {
+  position: absolute;
+  bottom: 0;
+  width: 690rpx;
+  padding: 30rpx;
+  background-color: white;
+}
+
+.pick-box .product-info .success-pick {
+  background: linear-gradient(90deg, rgba(255, 182, 33, 1) 0%, rgba(254, 137, 23, 1) 100%);
+  font-size: 30rpx;
+  color: white;
+  border-radius: 40rpx;
+  width: 600rpx;
+}
+
+.pick-box .product-info .off-pick__icon {
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  height: 30rpx;
+  width: 30rpx;
+}
+
+.pick-box .product-info .top {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.pick-box .product-info .top .product-info__quantity {
+  font-size: 24rpx;
+  color: rgba(153, 153, 153, 1);
+  line-height: 24rpx;
+}
+
+.pick-box .product-info .top .product-info__price {
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(255, 166, 81, 1);
+  line-height: 22rpx;
+  margin-bottom: 16rpx;
+}
+
+.pick-box .product-info .product-photo {
+  width: 220rpx;
+  height: 166rpx;
+  margin-right: 30rpx;
+}
+
+.pick-box .product-info .guige-pick .title {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  margin-top: 30rpx;
+}
+
+.pick-box .product-info .guige-pick .pick-item {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  margin-top: 26rpx;
+  padding: 24rpx 20rpx;
+  background: rgba(245, 245, 245, 1);
+  border-radius: 8rpx;
+  line-height: 26rpx;
+  margin-left: 40rpx;
+}
+
+.pick-box .product-info .guige-pick .pick-item__box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* margin-top: 26rpx; */
+}
+
+.pick-box .tiao-box {
+  padding: 30rpx 0 100rpx;
+}
+
+.pick-box .shop-count {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+}
+
+/* 选择规格的弹框E */
+
 .shim {
   height: 120rpx;
+}
+
+.product-page .sell-null {
+  width: 750rpx;
+  height: 100rpx;
+  background-color: #666;
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.product-page .sell-null__out {
+  background-color: #fe8d18;
+  opacity: 0.65;
+  color: white;
+}
+
+.product-page .sell-null__out .tiao-box__left {
+  font-size: 30rpx;
+}
+
+.product-page .sell-null__out .tiao-box__right {
+  font-size: 26rpx;
+  padding: 17rpx 13rpx 19rpx;
+  border: 1rpx solid white;
 }

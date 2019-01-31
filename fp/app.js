@@ -12,6 +12,7 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -42,7 +43,7 @@ App({
   getSystemInfo() {
     wx.getSystemInfo({
       success: (res) => {
-        console.log(res, '设备信息')
+        // console.log(res, '设备信息')
         this.globalData.systemInfo = res
       },
     })
@@ -52,7 +53,12 @@ App({
     // 设备信息
     systemInfo: {},
     //用户信息
-    userInfo: null
+    userInfo: null,
+    // 目前站点
+    locationPick: {
+      locationName: '全国',
+      locationId: 1
+    },
   }
 
 })

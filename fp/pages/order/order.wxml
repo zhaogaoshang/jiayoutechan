@@ -1,0 +1,99 @@
+<!--pages/order/order.wxml-->
+<view class="container order">
+  <view>
+    <image class="locktion-null__photo" src="../../images/dizhi-null@2.png"></image>
+  </view>
+
+  <!-- 店铺 -->
+  <view class="store-item">
+    <view class="store-name">鲜公旗舰店</view>
+    <view class="product-item" wx:for="{{[1,2,3]}}" wx:key="{{index}}">
+      <product></product>
+      <text class="my-pick">4箱草莓+3箱苹果+1箱栗子</text>
+      <text class="product-price">￥75.00</text>
+      <text class="product-count">x1</text>
+    </view>
+    <!-- 配送费用 -->
+    <view class="tiao-box logisticts-box">
+      <view class="tiao-box__left"> 配送</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right"> 快递 ￥123.00</view>
+    </view>
+    <!-- 给卖家留言 -->
+    <view class="user-message">
+      <text>给卖家留言</text>
+      <textarea class="user-message__input" placeholder-class="placeholder-message__input" auto-height placeholder="选填"></textarea>
+    </view>
+    <!-- 商品的金额 -->
+    <view class="tiao-box total-price">
+      <view class="tiao-box__left"></view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">
+        <text>商品金额：</text>
+        <text class="total-price__text">￥123</text>
+      </view>
+    </view>
+  </view>
+
+  <!--平台 其他 -->
+  <view>
+    <!-- 优惠券 -->
+    <view class="tiao-box logisticts-box">
+      <view class="tiao-box__left"> 优惠券</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">
+        <text>选择可用优惠券</text>
+      </view>
+    </view>
+    <!-- 爱心贡献值 -->
+    <view class="tiao-box logisticts-box">
+      <view class="tiao-box__left"> 爱心贡献值</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right"> 快递 ￥123.00</view>
+    </view>
+  </view>
+
+  <!-- 合计 -->
+  <view class="order-total__price">
+    <view class="left"></view>
+    <view class="right">
+      <text>合计：¥80.00</text>
+      <form>
+        <button class="submit-order">提交订单</button>
+      </form>
+    </view>
+  </view>
+  <view class="shim"></view>
+
+  <!-- 爱心贡献值 -->
+  <view class="ai-xin__zhi" wx:if="{{isShoLove}}">
+    <image class="top" src="../../images/axi@2x.png"></image>
+    <view class="bottom">
+      <view class="an-xin__count">
+        <text>爱心贡献值：</text>
+        <text>234</text>
+      </view>
+      <view class="tiao-box pick-ai__xin--zhi">
+        <view class="tiao-box__left title-text">使用</view>
+        <view class="tiao-box__middle"></view>
+        <view class="tiao-box__right">
+          <image class="pick-icon" src="../../images/xzi@2x.png"></image>
+          <image class="pick-icon" src="../../images/wxi@2x.png"></image>
+        </view>
+      </view>
+      <view class="tiao-box pick-ai__xin--zhi">
+        <view class="tiao-box__left title-text">不使用</view>
+        <view class="tiao-box__middle"></view>
+        <view class="tiao-box__right">
+          <image class="pick-icon" src="../../images/xzi@2x.png"></image>
+          <image class="pick-icon" src="../../images/wxi@2x.png"></image>
+        </view>
+      </view>
+      <view class="success-form">
+        <form>
+          <button>确定</button>
+        </form>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,4 +1,5 @@
-<!--pages/product/product.wxml-->
+<!--pages/product/product.wxml  off@2.png-->
+<wxs src="../../utils/util.wxs" module="wxs" />
 <view class="container product-page">
   <!-- 分类 -->
   <view class="product-page__category">
@@ -10,25 +11,27 @@
 
   <!-- 头部轮播图 -->
   <view class="hand-swoper___photo">
-    <swiper class="swoper-photo__box" autoplay interval="3000">
-      <block wx:for="{{[1,2,3]}}" wx:key="{{index}}">
+    <swiper class="swoper-photo__box" autoplay interval="3000" circular>
+      <block wx:for="{{productDetail.goods_gallery}}" wx:key="{{index}}">
         <swiper-item>
-          <image class="hand-swoper___photo--item" src="../../images/active.jpg" />
+          <image class="hand-swoper___photo--item" src="{{wxs.imageUrl(item.img_url)}}" />
         </swiper-item>
       </block>
     </swiper>
-    <image class="like-share__icon" src="../../images/active.jpg"></image>
-    <image class="like-share__icon share-icon" src="../../images/active.jpg"></image>
+    <image class="like-share__icon" src="../../images/shoucang@2x.png"></image>
   </view>
   <!-- 简述 -->
   <view class="product-discription__box">
     <!-- 价格 -->
-    <view class="cureent-price">￥168</view>
+    <view class="cureent-price">￥{{productDetail.shop_price}}</view>
     <!-- 描述 -->
     <view class="product-discription__text">
-      <view class="lite-discription__text">一周内发货！果园直发，果粒饱满新鲜营一周内发货！果园直发，果粒饱满新鲜营一周内发货！果园直发，果粒饱满新鲜营 养还是原来的味道。百年前的经..
+      <view class="lite-discription__text">{{productDetail.goods_name}}
       </view>
-      <image class="dai-yan__icon" src="../../images/active.jpg"></image>
+      <view class="dai-yan__icon">
+        <image class="dai-yan__icon" src="../../images/dy@2x.png"></image>
+        <text class="dai-yan__icon--text">代言</text>
+      </view>
     </view>
     <!-- 物流 其他-->
     <view class="logistics-box">
@@ -68,7 +71,7 @@
   </view>
 
   <!-- 店铺 -->
-  <view class="store">
+  <view class="store" catchtap="handleGoStore">
     <view class="store-top">
       <image class="store-avatar" src="../../images/active.jpg"></image>
       <view class="store-name">
@@ -99,24 +102,74 @@
       <view class="tiao-box__middle"></view>
       <view class="tiao-box__right"></view>
     </view>
+    <view class="discription-text__box">
+      <!-- <rich-text type="node" attrs="{{true}}" nodes="{{productDetail.goods_desc}}"></rich-text> -->
+    </view>
   </view>
 
   <!-- 底部购买按钮 -->
   <view class="shop-box">
     <view class="left">
       <view class="function-icon">
-        <image class="function-icon__fu" src="../../images/active.jpg"></image>
+        <image class="function-icon__fu" src="../../images/kf@2x.png"></image>
         <text>客服</text>
       </view>
       <view class="function-icon">
-        <image class="function-icon__cart" src="../../images/active.jpg"></image>
+        <image class="function-icon__cart" src="../../images/gwc@2x.png"></image>
         <text>购物车</text>
+      </view>
+      <view class="function-icon">
+        <image class="function-icon__cart" src="../../images/share@2.png"></image>
+        <text>分享</text>
       </view>
     </view>
     <view class="shop-cart__box">
-      <view class="shop-cart__box--item join-cart">加入购物车</view>
-      <view class="shop-cart__box--item current-shop">立即购买</view>
+      <view class="shop-cart__box--item join-cart" catchtap="handleIsShowPick">加入购物车</view>
+      <view class="shop-cart__box--item current-shop" catchtap="handleGoOrder">立即购买</view>
     </view>
+  </view>
+
+  <!-- 选择弹框 -->
+  <view class="pick-box" wx:if="{{isShowPick}}" catchtap="handleIsShowPick">
+    <view class="product-info" catchtap="handlePrevent">
+      <image class="off-pick__icon" src="../../images/off@2.png" catchtap="handleIsShowPick"></image>
+      <view class="top">
+        <image class="product-photo" src="../../images/gwc@2x.png"></image>
+        <view>
+          <view class="product-info__price">￥68.00</view>
+          <view class="product-info__quantity">库存1243</view>
+        </view>
+      </view>
+      <!-- 选择规格 -->
+      <view class="guige-pick">
+        <view class="title">规格</view>
+        <view class="pick-item__box">
+          <view class="pick-item" wx:for="{{[1,2,3]}}" wx:key="{{index}}">4箱草莓+3箱苹果</view>
+        </view>
+      </view>
+      <!-- 购买规格 -->
+      <view class="tiao-box">
+        <view class="tiao-box__left shop-count">购买数量</view>
+        <view class="tiao-box__middle"></view>
+        <view class="tiao-box__right">
+          <add-delete bind:handleExportsCount="handleExportsCount"></add-delete>
+        </view>
+      </view>
+      <!-- 确定按钮 -->
+      <form>
+        <button class="success-pick">确定</button>
+      </form>
+    </view>
+  </view>
+
+  <!-- 已经下架 -->
+  <view class="sell-null">已下架</view>
+
+  <!-- 售空 -->
+  <view class="tiao-box sell-null__out">
+    <view class="tiao-box__left">通州区已售空</view>
+    <view class="tiao-box__middle"></view>
+    <view class="tiao-box__right">更改地址</view>
   </view>
 
   <!-- 垫片 -->

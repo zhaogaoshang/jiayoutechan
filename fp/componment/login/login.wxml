@@ -1,0 +1,7 @@
+<!--componment/login/login.wxml-->
+<view class="box {{isShow?'show':'hid'}}">
+  <view class="lonin-box" >
+    <image class="login-photo" src="/images/active.jpg"></image>
+    <button class="zhu-ce" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo" hover-class="none">确认授权</button>
+  </view> 
+</view>

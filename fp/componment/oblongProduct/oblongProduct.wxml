@@ -1,0 +1,8 @@
+<!--componment/oblongProduct/oblongProduct.wxml-->
+<view class="box">
+  <image class="product-img" style="height:{{imgH}}rpx;width:{{imgW}}rpx"></image>
+  <view class="product-discreption">
+    <image class="free-freight__icon" src="../../images/baoyou@2.png"></image>
+    <text class="product-discreption__text"></text>
+  </view>
+</view>

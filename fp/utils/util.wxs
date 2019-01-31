@@ -1,3 +1,4 @@
+var locationUrl = 'http://shandai.zcsoft.net/'
 // 时间格式化
 function timestamp2string(ts, format = 'time') {
   var date = getDate()
@@ -28,12 +29,12 @@ function timestamp2string(ts, format = 'time') {
   }
 }
 
-// 倒计时时钟
-function timeInterval(option) {
-
+// 图片地址
+function imageUrl(url) {
+  return locationUrl + url
 }
 
 module.exports = {
   timestamp2string: timestamp2string, // 时间处理
-  timeInterval: timeInterval // 时间倒计时
+  imageUrl: imageUrl // 时间倒计时
 }

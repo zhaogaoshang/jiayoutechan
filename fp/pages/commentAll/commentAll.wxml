@@ -17,7 +17,15 @@
       </view>
       <view class="comment-detail">草莓真的好棒喔！下次还来你家买，这么便宜的价格买 到如此满意的产品，给老板点赞加鸡腿儿～
       </view>
+      <view class="product-photo">
+        <image class="product-photo__item" src="../../images/active.jpg" wx:for="{{[1,2,3]}}" wx:key="{{index}}"></image>
+      </view>
     </view>
+  </view>
+  <view>
 
   </view>
+
+  <!-- 垫片 -->
+  <view class="shim"></view>
 </view>
