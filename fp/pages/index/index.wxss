@@ -269,6 +269,7 @@
 .new-product .right {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .bottom .store-product__item .free-freight__icon,

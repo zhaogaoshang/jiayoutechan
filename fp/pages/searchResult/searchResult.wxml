@@ -1,2 +1,4 @@
 <!--pages/searchResult/searchResult.wxml-->
-<text>pages/searchResult/searchResult.wxml</text>
+<view class="container">
+  正在施工
+</view>

@@ -11,7 +11,7 @@
       <image class="hand-search__jing" src="../../images/ss@2x.png"></image>
       <input placeholder-class="hand-search__input" class="hand-search__input--text" placeholder="请输入您想要查找的商品" bindinput="handleSearchText" bindconfirm="handleGoSearchResult"></input>
     </view>
-    <image class="hand-search__other" src="../../images/lb@2x.png"></image>
+    <image class="hand-search__other" src="../../images/lb@2x.png" catchtap="handleGoProductCategory"></image>
   </view>
 
   <!-- 轮播图 -->

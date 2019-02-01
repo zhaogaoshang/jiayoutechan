@@ -121,6 +121,13 @@ Page({
     })
   },
 
+  // 去一级分类
+  handleGoProductCategory() {
+    wx.navigateTo({
+      url: '../productCategory/productCategory',
+    })
+  },
+
   // 选择地址
   handlePickLocation() {
     this.setData({
@@ -132,7 +139,6 @@ Page({
     } else {
       wx.showTabBar()
     }
-
   },
 
   // 去商品详情

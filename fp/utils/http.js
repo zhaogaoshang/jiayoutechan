@@ -52,7 +52,6 @@ function fxHeader(content_type) {
 
 // Get请求
 function fxGet(url, data = {}, cb) {
-  console.log(data)
   wx.request({
     url: config.fxUrl(url),
     data: {

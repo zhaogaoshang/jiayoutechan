@@ -11,6 +11,8 @@ Page({
   data: {
     id: '', // 产品的id
     productDetail: {}, // 产品详情
+    storeInfo: {}, // 店铺详情
+    activeSpecifications: {}, // 选中的规格
     isShowPick: false, // 选择的弹框是否显示
 
     categoryActive: 0, // 选择的分类
@@ -24,6 +26,33 @@ Page({
       name: '详情',
       id: 2
     }],
+  },
+
+  // 规格选择
+  handlePickSpecifications(e) {
+    let id = e.currentTarget.dataset.id
+    let agent = this.data.productDetail.spes
+
+    agent.forEach((item, index) => {
+      if (item.id == id) {
+        item.active = true
+      } else {
+        item.active = false
+      }
+    })
+    this.setData({
+      'productDetail.spes': agent
+    })
+
+    this.getSpecifications()
+  },
+
+  // 选择数量
+  handleExportsCount(e) {
+    console.log(e.detail.count)
+    this.setData({
+      'activeSpecifications.qty': e.detail.count
+    })
   },
 
   // 去下单
@@ -58,7 +87,7 @@ Page({
   // 去店铺
   handleGoStore() {
     wx.navigateTo({
-      url: '../store/store',
+      url: '../store/store?id=' + this.data.storeInfo.supplier_id
     })
   },
 
@@ -74,8 +103,46 @@ Page({
     }, res => {
       console.log(res.data, '商品详情')
       if (res.code == 2000) {
+        res.data.goods.spes.forEach((item, index) => {
+          if (index == 0) {
+            item.active = true
+          } else {
+            item.active = false
+          }
+        })
         this.setData({
-          productDetail: res.data.goods
+          productDetail: res.data.goods,
+          storeInfo: res.data.shop_info
+        })
+
+        // 获取规格相关
+        this.getSpecifications()
+      } else {
+        utils.showToast(res.msg)
+      }
+    })
+  },
+
+  // 获取规格相关
+  getSpecifications() {
+    let agent = this.data.productDetail.spes
+    let activeId = ''
+    agent.forEach((item, index) => {
+      if (item.active) {
+        activeId = item.id
+      }
+    })
+
+    http.fxGet(api.mobile_apis_goods, {
+      id: this.data.id, // 商品的id
+      act: 'price',
+      attr: activeId, // 规格id
+      number: 1
+    }, res => {
+      console.log(res, '规格参数')
+      if (res.code == 2000) {
+        this.setData({
+          activeSpecifications: res.data
         })
       } else {
         utils.showToast(res.msg)

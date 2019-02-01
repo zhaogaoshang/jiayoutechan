@@ -12,7 +12,7 @@ Component({
     // 库存 
     inventoryQuantity: {
       type: Number,
-      value: 2
+      value: 0
     }
   },
 

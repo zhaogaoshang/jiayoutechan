@@ -37,13 +37,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
 					"name": "商品详情",
 					"pathName": "pages/product/product",
-					"query": "id=45"
+					"query": "id=53"
+				},
+				{
+					"id": -1,
+					"name": "搜索结果",
+					"pathName": "pages/searchResult/searchResult",
+					"query": "id=2"
 				}
 			]
 		}

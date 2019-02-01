@@ -42,8 +42,11 @@
   display: inline-block;
   width: 34rpx;
   height: 34rpx;
-  border: 1px solid rgba(204, 204, 204, 1);
   border-radius: 50%;
+}
+
+.active-null {
+  border: 1px solid rgba(204, 204, 204, 1);
 }
 
 .jian-tou {

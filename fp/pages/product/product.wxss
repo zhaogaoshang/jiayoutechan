@@ -146,7 +146,7 @@
 }
 
 .specifications-box .tiao-box__middle {
-  color: rgba(51, 51, 51, 1);
+  color: rgba(254, 142, 24, 1);
 }
 
 .comment-box .tiao-box__right .jaintou,
@@ -269,6 +269,10 @@
 .product-page .discription-text__box {
   background-color: white;
   font-size: 30rpx;
+}
+
+.product-page .discription-text__box image {
+  max-width: 750rpx;
 }
 
 .product-page .discription-text__box p {
@@ -419,16 +423,21 @@
   margin-top: 30rpx;
 }
 
-.pick-box .product-info .guige-pick .pick-item {
+.product-info .guige-pick .pick-item {
   font-size: 26rpx;
   font-weight: 500;
   color: rgba(51, 51, 51, 1);
   margin-top: 26rpx;
   padding: 24rpx 20rpx;
-  background: rgba(245, 245, 245, 1);
+  background-color: rgba(245, 245, 245, 1);
   border-radius: 8rpx;
   line-height: 26rpx;
   margin-left: 40rpx;
+}
+
+.pick-box .product-info .guige-pick .bgc-active.pick-item {
+  background-color: rgba(255, 182, 33, 1);
+  color: white;
 }
 
 .pick-box .product-info .guige-pick .pick-item__box {

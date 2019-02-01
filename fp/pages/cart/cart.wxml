@@ -6,13 +6,13 @@
     <view class="store-top active-box">
       <view class="left">
         <!-- 选中 -->
-        <image class="active" src="../../images/active.jpg"></image>
+        <image class="active" src="../../images/xzi@2x.png"></image>
         <!-- 未选中 -->
-        <view class="active" wx:if=""></view>
+        <view class="active active-null" wx:if=""></view>
       </view>
       <view class="right">
-        <text class="store-name">赵高尚旗舰店</text>
-        <image class="jian-tou" src="../../images/active.jpg"></image>
+        <text class="store-name">旗舰店</text>
+        <image class="jian-tou" src="../../images/gd@2x.png"></image>
       </view>
     </view>
     <!-- 底部 每个商品-->
@@ -23,9 +23,9 @@
           <!-- 左边 -->
           <view class="left">
             <!-- 选中 -->
-            <image class="active" src="../../images/active.jpg"></image>
+            <image class="active" src="../../images/xzi@2x.png"></image>
             <!-- 未选中 -->
-            <view class="active" wx:if=""></view>
+            <view class="active active-null" wx:if=""></view>
           </view>
           <!-- 右边 -->
           <view class="product-box">
@@ -40,7 +40,7 @@
         <view class="handle-box">删除</view>
         <!-- 删除增加 -->
         <view class="add-delete__function">
-          <add-delete bind:handleExportsCount="handleExportsCount"></add-delete>
+          <add-delete bind:handleExportsCount="handleExportsCount" inventoryQuantity="2"></add-delete>
         </view>
       </view>
     </view>
@@ -49,7 +49,7 @@
   <!-- 底部 -->
   <view class="handle-order__box">
     <view class="handle-order__box--left">
-      <image class="active" src="../../images/active.jpg"></image>
+      <image class="active" src="../../images/xzi@2x.png"></image>
       <text class="all-pick">全选</text>
     </view>
     <view class="handle-order__box--right">

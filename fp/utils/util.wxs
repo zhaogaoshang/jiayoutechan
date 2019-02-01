@@ -36,5 +36,5 @@ function imageUrl(url) {
 
 module.exports = {
   timestamp2string: timestamp2string, // 时间处理
-  imageUrl: imageUrl // 时间倒计时
+  imageUrl: imageUrl, // 时间倒计时
 }
