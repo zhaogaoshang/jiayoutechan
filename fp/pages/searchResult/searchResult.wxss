@@ -3,6 +3,8 @@
 .search-result {
 }
 
+/* 搜索框 */
+
 .search-box {
   padding: 10rpx 30rpx;
   background-color: white;
@@ -13,18 +15,73 @@
   align-items: center;
 }
 
+.search-box .delete-input__text {
+  font-size: 30rpx;
+  color: rgba(254, 139, 23, 1);
+  padding-left: 16rpx;
+}
+
 .search-box .search-input {
+  flex: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
   background: rgba(249, 249, 249, 1);
   border-radius: 30rpx;
+  padding-left: 160rpx;
+}
+
+.search-box .search-input .input-hoder {
+  font-size: 24rpx;
+  color: rgba(153, 153, 153, 1);
+}
+
+.search-box .search-input .input-text {
+  font-size: 24rpx;
+  color: #333;
+  flex: 1;
 }
 
 .search-box .left-icon {
   width: 31rpx;
   height: 30rpx;
+  margin-right: 16rpx;
 }
+
+/* 搜索框e */
+
+/* 选择s */
+
+.search-result .pick-box {
+  display: flex;
+  flex-direction: row;
+  font-size: 30rpx;
+  color: rgba(51, 51, 51, 1);
+  background-color: white;
+  line-height: 30rpx;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+
+.search-result .pick-box .pick-box__item {
+  position: relative;
+  flex: 1;
+  padding: 30rpx 0;
+  text-align: center;
+}
+
+.search-result .pick-box .pick-box__item .line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 10rpx;
+  background: linear-gradient(270deg, rgba(254, 145, 25, 1) 0%, rgba(255, 175, 31, 1) 100%);
+  border-radius: 5rpx;
+
+}
+
+/* 选择e */
 
 .product-item {
   padding: 30rpx;

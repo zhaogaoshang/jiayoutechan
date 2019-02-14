@@ -1,12 +1,24 @@
 <!--pages/searchResult/searchResult.wxml-->
 <view class="container search-result">
+  <!-- 搜索框 -->
   <view class="search-box">
     <view class="search-input">
-      <image class="left-icon" src="../../images/ss@2x.png"></image>
-      <input></input>
+      <image class="left-icon" src="../../images/ss@2x.png" catchtap="handleStartSearch"></image>
+      <input placeholder-class="input-hoder" placeholder="{{params.keywords}}" class="input-text" bindinput="handleInputText"></input>
     </view>
+    <text class="delete-input__text" catchtap="handleDeleteText">取消</text>
+  </view>
 
-    <text>取消</text>
+  <!-- 选择框 -->
+  <view class="pick-box">
+    <view class="pick-box__item" data-act="0" catchtap="handleSwitchSort">
+      <view>综合</view>
+      <view class="line" wx:if="{{params.act==0}}"></view>
+    </view>
+    <view class="pick-box__item" data-act="1" catchtap="handleSwitchSort">
+      <view>销量</view>
+      <view class="line" wx:if="{{params.act==1}}"></view>
+    </view>
   </view>
 
 

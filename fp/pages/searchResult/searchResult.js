@@ -19,15 +19,47 @@ Page({
       province: '', //可选	int	0	省地区号
       city: '', //可选	int	0	市地区号
       district: '', //可选	int	0	区/县地区号
-      act: '', //可选	int	0	0: 综合排序，1：按销量排序
+      act: 0, //可选	int	0	0: 综合排序，1：按销量排序
       cat_id: '', //可选	int		分类ID
     }
   },
 
+  // 排序
+  handleSwitchSort(e) {
+    this.setData({
+      'params.act': e.currentTarget.dataset.act,
+      'params.page': 1
+    })
+    this.getProduct()
+  },
+
+  // 输入文字 
+  handleInputText(e) {
+    this.setData({
+      'params.keywords:': e.detail.value
+    })
+  },
+
+  // 开始搜索bindconfirm 
+  handleStartSearch() {
+    this.setData({
+      'params.page': 1
+    })
+    this.getProduct()
+  },
+
+  // 去商品页面
   handleGoProduct(e) {
     console.log(e)
     wx.navigateTo({
       url: '../product/product?id=' + e.detail.id
+    })
+  },
+
+  // 取消文字
+  handleDeleteText() {
+    this.setData({
+      'params.keywords': ''
     })
   },
 
@@ -60,7 +92,7 @@ Page({
   onLoad: function(options) {
     console.log(options)
     this.setData({
-      keywords: options.text
+      'params.keywords': options.text
     })
 
     this.getProduct()
