@@ -5,9 +5,9 @@ Component({
    */
   properties: {
     // 商品
-    item:{
-      type:Object,
-      value:{}
+    item: {
+      type: Object,
+      value: {}
     }
   },
 
@@ -22,6 +22,15 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    handleGoProduct(e) {
+      let id = e.currentTarget.dataset.id
+      this.triggerEvent('handleGoProduct', {
+        id
+      })
+    },
 
+    handlePrevent() {
+      return
+    }
   }
 })

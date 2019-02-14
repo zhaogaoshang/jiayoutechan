@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isShowLogin: false, // 注册是否显示
+    isShowLogin: true, // 注册是否显示
     searchText: '', // 搜索框内容
     specialStore: {}, // 特色好店
 
@@ -442,6 +442,22 @@ Page({
 
     this.getSpecialStore() // 获取特色店铺
     this.getAllProvince() // 全部的省份
+
+    // 已经登录 解析
+    if (app.globalData.isLogin) {
+      this.setData({
+        isShowLogin: false
+      })
+    } else {
+      // 没有解析
+      console.log('解析数据')
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          isShowLogin: false
+        })
+        app.handleUserInfo(res)
+      }
+    }
   },
 
   /**

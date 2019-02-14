@@ -1,4 +1,5 @@
 // componment/login/login.js
+const app = getApp() //获取应用实例
 Component({
   /**
    * 组件的属性列表
@@ -24,7 +25,14 @@ Component({
   methods: {
     // 获取用户信息
     handleGetUserInfo(e) {
-      console.log(e, '用户信息')
+      if (e.detail.errMsg == 'getUserInfo:fail auth deny') {
+        console.log('拒绝授权')
+        return
+      }
+      app.handleUserLogin()
+      this.triggerEvent('handleLogin', {
+        userInfo: e.detail
+      })
     }
   }
 })

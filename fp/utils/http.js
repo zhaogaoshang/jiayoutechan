@@ -83,7 +83,6 @@ function fxPost(url, data = {}, cb) {
     header: fxHeader('application/json'),
     method: 'POST',
     success(res) {
-      console.log(res.data)
       return typeof cb == 'function' && cb(res.data)
     },
     fail() {

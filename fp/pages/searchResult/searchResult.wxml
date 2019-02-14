@@ -1,4 +1,16 @@
 <!--pages/searchResult/searchResult.wxml-->
-<view class="container">
-  正在施工
+<view class="container search-result">
+  <view class="search-box">
+    <view class="search-input">
+      <image class="left-icon" src="../../images/ss@2x.png"></image>
+      <input></input>
+    </view>
+
+    <text>取消</text>
+  </view>
+
+
+  <view class="product-item" wx:for="{{list}}" wx:key="{{index}}">
+    <chang-fang-product item="{{item}}" bind:handleGoProduct="handleGoProduct"> </chang-fang-product>
+  </view>
 </view>

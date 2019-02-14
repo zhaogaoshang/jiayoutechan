@@ -5,7 +5,8 @@ module.exports = {
   mobile_apis_mttindex: 'mobile/apis/mttindex.php', // 首页的今日爆款
   mobile_apis_mttindex: 'mobile/apis/mttindex.php', // 新品热销
   mobile_apis_goods: 'mobile/apis/goods.php', // 规格查询
-  mobile_apis_category:'mobile/apis/category.php', // 产品的一级分类
+  mobile_apis_category: 'mobile/apis/category.php', // 产品的一级分类
+  mobile_apis_search: '/mobile/apis/search.php', // 搜索结果
   // 地址相关
   mobile_apis_searchindex: 'mobile/apis/searchindex.php', //get 全部的
 
@@ -14,4 +15,7 @@ module.exports = {
 
   // 店铺相关
   mobile_apis_supplierinfo: 'mobile/apis/supplierinfo.php', // 店铺详情
+
+  // 登录解析
+  mobile_apis_login: 'mobile/apis/login.php'
 }

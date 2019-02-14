@@ -1,6 +1,6 @@
 <!--componment/changFangProduct/changFangProduct.wxml-->
-<wxs src="../../utils/util.wxs" module="wxs"/>
-<view class="new-product" wx:for="{{newProductHot.list}}" wx:key="{{index}}" data-id="{{item.goods_id}}" catchtap="handleGoProduct">
+<wxs src="../../utils/util.wxs" module="wxs" />
+<view class="new-product" data-id="{{item.goods_id}}" catchtap="handleGoProduct">
   <image class="new-product__photo" src="{{wxs.imageUrl(item.goods_thumb)}}"></image>
   <view class="right">
     <view class="product-discription">
@@ -13,9 +13,11 @@
     </view>
   </view>
 
-  <view class="like-share">
+  <view class="like-share" catchtap="handlePrevent">
     <image class="like-share__icon" src="../../images/sc.png"></image>
     <!-- <image class="like-share__icon" src="../../images/ssc.png"></image> -->
-    <image class="like-share__icon right" src="../../images/fx.png"></image>
+    <image class="like-share__icon right" src="../../images/fx.png">
+      <button class="share" open-type="share"></button>
+    </image>
   </view>
 </view>

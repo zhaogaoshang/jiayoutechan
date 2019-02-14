@@ -6,8 +6,8 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  border-bottom: 1rpx solid #f8f8f8;
   background-color: white;
+  flex: 1;
 }
 
 .new-product .new-product__photo {
@@ -17,10 +17,10 @@
 }
 
 .new-product .right {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex: 1;
 }
 
 .bottom .store-product__item .free-freight__icon,
@@ -58,8 +58,8 @@
   display: flex;
   flex-direction: row;
   position: absolute;
-  bottom: 30rpx;
-  right: 30rpx;
+  bottom: 0rpx;
+  right: 0rpx;
 }
 
 .new-product .like-share__icon.right {
@@ -70,6 +70,23 @@
   width: 750rpx;
   height: 113rpx;
   margin-bottom: 10rpx;
+}
+
+.new-product .like-share__icon {
+  width: 50rpx;
+  height: 50rpx;
+  position: relative;
+}
+
+.new-product .like-share__icon .share {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50rpx;
+  height: 50rpx;
+  background-color: red;
+  z-index: 1;
+  opacity: 0;
 }
 
 /* 新品热销e */
