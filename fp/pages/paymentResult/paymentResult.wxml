@@ -1,0 +1,40 @@
+<!--pages/paymentResult/paymentResult.wxml-->
+<view class="container payment-result">
+  <!-- 支付成功 -->
+  <view class="payment-result__box">
+    <image class="success-icon" src="../../images/car@2x.png"></image>
+    <view class="payment-title">支付成功</view>
+    <view class="handle-btn__box">
+      <form>
+        <button>回到首页</button>
+      </form>
+      <form>
+        <button class="handle-btn back-index__btn">查看订单</button>
+      </form>
+    </view>
+  </view>
+
+  <!-- 支付失败 -->
+  <view class="payment-result__box error-box">
+    <image class="error-icon" src="../../images/payment-error@2x.png"></image>
+    <view class="payment-title">支付失败</view>
+    <view class="handle-btn__box">
+      <form>
+        <button>回到首页</button>
+      </form>
+      <form>
+        <button class="handle-btn">重新支付</button>
+      </form>
+    </view>
+  </view>
+
+  <!-- 为你推荐 -->
+  <view>
+    <view class="recommend-text">为你推荐</view>
+    <view class="recommend-box">
+      <view class="recommend-box__item" wx:for="{{[1,2,3]}}" wx:key="{{index}}">
+        <product-big bind:handleGoProduct="handleGoProduct"></product-big>
+      </view>
+    </view>
+  </view>
+</view>

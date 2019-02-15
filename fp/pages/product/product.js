@@ -58,7 +58,7 @@ Page({
   // 去下单
   handleGoOrder() {
     wx.navigateTo({
-      url: '../order/order',
+      url: '../checkout/checkout',
     })
   },
 

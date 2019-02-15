@@ -1,37 +1,18 @@
-// pages/user/user.js
+// pages/address/address.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pickList: [{
-      name: '我的邀请',
-      id: 0
-    }, {
-      name: '我为家乡代言',
-      id: 1
-    }, {
-      name: '我的收藏',
-      id: 2
-    }, {
-      name: '我的优惠券',
-      id: 3
-    }, {
-      name: '我的地址',
-      id: 4
-    }, {
-      name: '我要开店',
-      id: 5
-    }, ]
+
   },
 
-  // 去订单页面
-  handleGoOrder(e) {
-    console.log(e.currentTarget.dataset.type)
-    'tuiKuan daiPingJia daiShowhuo daiFaHuo daiZhifu all'
+  // 去地址编辑
+  handleGoAddressChang(e) {
+    let type = e.currentTarget.dataset.type
     wx.navigateTo({
-      url: '../order/order?type=' + e.currentTarget.dataset.type
+      url: '../addressChang/addressChang?type=' + type,
     })
   },
 

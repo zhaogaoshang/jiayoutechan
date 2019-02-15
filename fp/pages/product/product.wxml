@@ -28,10 +28,10 @@
     <view class="product-discription__text">
       <view class="lite-discription__text">{{productDetail.goods_name}}
       </view>
-      <view class="dai-yan__icon">
+      <!-- <view class="dai-yan__icon">
         <image class="dai-yan__icon" src="../../images/dy@2x.png"></image>
         <text class="dai-yan__icon--text">代言</text>
-      </view>
+      </view> -->
     </view>
     <!-- 物流 其他-->
     <view class="logistics-box">

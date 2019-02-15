@@ -2,7 +2,9 @@
 <view class="box">
   <image class="product-img" style="height:{{imgH}}rpx;width:{{imgW}}rpx"></image>
   <view class="product-discreption">
-    <image class="free-freight__icon" src="../../images/baoyou@2.png"></image>
-    <text class="product-discreption__text"></text>
+    <view class="product-discreption__box">
+      <image class="free-freight__icon" src="../../images/baoyou@2.png"></image>
+      <text class="product-discreption__text">{{item.goods_name}}</text>
+    </view>
   </view>
 </view>

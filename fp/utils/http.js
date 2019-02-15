@@ -37,15 +37,14 @@ function buildSign(timestamp, nonce_str) {
 // 请求头部信息
 function fxHeader(content_type) {
   let header = {}
-  let jwt = wx.getStorageSync('jwt')
+  let jwt = wx.getStorageSync('userInfo')
   // 请求内部类型
   if (content_type) {
     header['content_type'] = content_type
   }
   // 验证是否存在token
-  if (jwt && jwt.token) {
-    let auth = make_base_auth(jwt.token, jwt.token)
-    header['Authorization'] = auth
+  if (jwt && jwt.session3rd) {
+    header['Authorization'] = jwt.session3rd
   }
   return header
 }

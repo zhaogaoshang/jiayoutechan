@@ -449,8 +449,8 @@
 
 /* 本页面公用的e */
 
-/* 地址魔板 s*/
-
+/* 地址磨板 s*/
+/* 
 .index .location-modle__box {
   position: fixed;
   top: 0;
@@ -537,6 +537,6 @@
   height: 10rpx;
   background: linear-gradient(90deg, rgba(255, 182, 33, 1) 0%, rgba(254, 137, 23, 1) 100%);
   display: none;
-}
+} */
 
 /* 地址魔板 e*/

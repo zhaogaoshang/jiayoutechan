@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
@@ -46,15 +46,33 @@
 					"query": "id=53"
 				},
 				{
-					"id": -1,
-					"name": "搜索结果",
-					"pathName": "pages/searchResult/searchResult",
+					"id": 1,
+					"name": "地址选择",
+					"pathName": "pages/address/address",
 					"query": "id=2"
 				},
 				{
 					"id": -1,
 					"name": "搜索结果",
-					"pathName": "pages/searchResult/searchResult"
+					"pathName": "pages/searchResult/searchResult",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "地址编辑",
+					"pathName": "pages/addressChang/addressChang",
+					"query": "id=2"
+				},
+				{
+					"id": -1,
+					"name": "支付结果",
+					"pathName": "pages/paymentResult/paymentResult",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "订单",
+					"pathName": "pages/order/order"
 				}
 			]
 		}

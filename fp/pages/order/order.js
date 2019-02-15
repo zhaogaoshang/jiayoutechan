@@ -5,13 +5,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isShoLove: false, // 爱心贡献 
+    product: [{
+      goods_id: 51,
+      goods_thumb: '../../images/201901/thumb_img/51_thumb_G_1548285343731.jpg',
+      goods_name:'商品商品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品商品商品商品商品商品商品商品商品商品商品',
+      shop_price:'100.00',
+      is_shipping:0,
+      sales:26
+    }],
+    category: [{
+      name: '全部',
+      // all
+    }, {
+      name: '待支付',
+      // all
+    }, {
+      name: '代发货',
+      // all
+    }, {
+      name: '待收货',
+      // all
+    }, {
+      name: '待评价',
+      // all
+    }, {
+      name: '退款/退货',
+      // all
+    }, ]
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 生命周期函数--监听页面加载 'tuiKuan daiPingJia daiShowhuo daiFaHuo daiZhifu all'
    */
   onLoad: function(options) {
+    console.log(options)
 
   },
 

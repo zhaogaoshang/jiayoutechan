@@ -9,11 +9,12 @@
 .product-discreption {
   margin-left: 30rpx;
   flex: 1;
+}
+
+.product-discreption .product-discreption__box {
   font-size: 28rpx;
-  font-family: PingFangSC-Regular;
-  font-weight: 400;
   color: rgba(51, 51, 51, 1);
-  line-height: 36px;
+  line-height: 36rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -24,7 +25,10 @@
 .free-freight__icon {
   width: 50rpx;
   height: 28rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
 }
 
 .product-discreption__text {
+  vertical-align: middle;
 }

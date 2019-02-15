@@ -1,14 +1,18 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/order/order",
     "pages/product/product",
     "pages/store/store",
     "pages/cart/cart",
     "pages/commentAll/commentAll",
     "pages/user/user",
     "pages/searchResult/searchResult",
-    "pages/productCategory/productCategory"
+    "pages/productCategory/productCategory",
+    "pages/address/address",
+    "pages/addressChang/addressChang",
+    "pages/paymentResult/paymentResult",
+    "pages/checkout/checkout",
+    "pages/order/order"
   ],
   "window": {
     "backgroundTextStyle": "dark",

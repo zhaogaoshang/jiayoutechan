@@ -1,0 +1,10 @@
+<!--componment/zhengFangBig/zhengFangBig.wxml-->
+<wxs src="../../utils/util.wxs" module="wxs" />
+<view class="store-product__item" data-id="{{item.goods_id}}" catchtap="handleGoProduct">
+  <image class="product-photo" src="{{wxs.imageUrl(item.goods_thumb)}}"></image>
+  <view class="product-discription one-line__text">{{item.goods_name}}</view>
+  <view class="product-price">
+    <text class="left">￥123.00</text>
+    <text class="right">123人付款</text>
+  </view>
+</view>

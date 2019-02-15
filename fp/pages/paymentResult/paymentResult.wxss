@@ -1,0 +1,74 @@
+/* pages/paymentResult/paymentResult.wxss */
+
+.payment-result .payment-result__box.error-box {
+  background: #dd2828;
+}
+
+.payment-result .payment-result__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 750rpx;
+  height: 379rpx;
+  background: linear-gradient(0deg, rgba(254, 142, 23, 1), rgba(253, 179, 32, 1));
+}
+
+.payment-result .payment-result__box .payment-title {
+  font-size: 36rpx;
+  font-weight: 500;
+  line-height: 36rpx;
+  margin: 26rpx 0 47rpx;
+  color: white;
+}
+
+.payment-result .payment-result__box .success-icon {
+  width: 195rpx;
+  height: 94rpx;
+}
+
+.payment-result .payment-result__box .error-icon {
+  width: 147rpx;
+  height: 129rpx;
+}
+
+.payment-result .payment-result__box .handle-btn__box {
+  display: flex;
+  flex-direction: row;
+}
+
+.payment-result .payment-result__box .handle-btn__box .handle-btn {
+  background-color: white;
+  color: rgba(221, 40, 40, 1);
+  margin-left: 70rpx;
+}
+
+.payment-result .payment-result__box .handle-btn__box button {
+  border: 1rpx solid rgba(255, 255, 255, 1);
+  border-radius: 40rpx;
+  font-size: 26rpx;
+  background-color: rgba(253, 179, 32, 0);
+  color: white;
+}
+
+.payment-result .payment-result__box .handle-btn__box .back-index__btn {
+  color: rgba(254, 143, 23, 1);
+}
+
+.payment-result .recommend-box {
+  padding: 40rpx 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.payment-result .recommend-box .recommend-box__item {
+  margin-bottom: 12rpx;
+}
+
+.payment-result .recommend-text {
+  padding: 40rpx 0 0 40rpx;
+  font-size: 30rpx;
+  color: rgba(51, 51, 51, 1);
+}

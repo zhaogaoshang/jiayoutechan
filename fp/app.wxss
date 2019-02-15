@@ -70,3 +70,103 @@
 }
 
 /* 行数控制e */
+
+/* 初始化button S*/
+
+button::after {
+  border: none;
+}
+
+/* 初始化button E */
+
+/* 地址模板s */
+
+.address-pick__about .location-modle__box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.address-pick__about .location-modle__box .location-modle {
+  position: absolute;
+  bottom: 0rpx;
+  width: 100%;
+  background-color: white;
+}
+
+.address-pick__about .location-modle__box .location-modle .location-pick__scroll {
+  height: 600rpx;
+}
+
+.address-pick__about .location-modle__box .location-modle .location-pick {
+  font-size: 28rpx;
+  color: rgba(102, 102, 102, 1);
+  line-height: 28rpx;
+  border-top: 1rpx solid #f8f8f8;
+}
+
+.address-pick__about .location-modle__box .location-modle .location-pick .tiao-box__right {
+  color: #fe8d18;
+}
+
+.address-pick__about .location-modle__box .location-modle__title .tiao-box__middle {
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+  line-height: 30rpx;
+  text-align: center;
+}
+
+.address-pick__about .location-modle__box .location-modle__title .off-icon {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.address-pick__about .location-modle__box .location-show {
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx 30rpx 0rpx;
+  font-size: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  line-height: 28rpx;
+}
+
+.address-pick__about .location-modle__box .location-show .location-show__item {
+  position: relative;
+  flex: 1;
+}
+
+.address-pick__about .location-modle__box .location-show .location-show__item.active-location {
+  color: #fe8d18;
+}
+
+.address-pick__about .location-modle__box .location-show .location-show__item .location-show__pri {
+  margin-left: 14rpx;
+}
+
+.address-pick__about .location-modle__box .location-show .location-show__item:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.address-pick__about .location-modle__box .location-show .location-show__item:nth-child(3) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.address-pick__about .location-modle__box .location-show .location-show__item .line {
+  margin-top: 20rpx;
+  width: 82rpx;
+  height: 10rpx;
+  background: linear-gradient(90deg, rgba(255, 182, 33, 1) 0%, rgba(254, 137, 23, 1) 100%);
+  display: none;
+}
+
+/* 地址模板e */

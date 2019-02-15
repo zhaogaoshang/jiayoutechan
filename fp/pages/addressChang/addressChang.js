@@ -1,44 +1,36 @@
-// pages/user/user.js
+// pages/addressChang/addressChang.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pickList: [{
-      name: '我的邀请',
-      id: 0
-    }, {
-      name: '我为家乡代言',
-      id: 1
-    }, {
-      name: '我的收藏',
-      id: 2
-    }, {
-      name: '我的优惠券',
-      id: 3
-    }, {
-      name: '我的地址',
-      id: 4
-    }, {
-      name: '我要开店',
-      id: 5
-    }, ]
+    type: '', // edit 为地址修改  add 为地址添加
+    isShowLocationTemplate: true, // 地址选择
   },
 
-  // 去订单页面
-  handleGoOrder(e) {
-    console.log(e.currentTarget.dataset.type)
-    'tuiKuan daiPingJia daiShowhuo daiFaHuo daiZhifu all'
-    wx.navigateTo({
-      url: '../order/order?type=' + e.currentTarget.dataset.type
-    })
+  // 是否为默认地址
+  handleSwitchChange(e) {
+    console.log(e.detail.value)
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let title = ''
+    if (options.type == 'edit') {
+      title = '修改地址'
+    }
+    if (options.type == 'add') {
+      title = '添加地址'
+    }
+    wx.setNavigationBarTitle({
+      title
+    })
+    this.setData({
+      type: options.type
+    })
 
   },
 

@@ -4,17 +4,20 @@ const api = require('./utils/api.js')
 const utils = require('./utils/util.js')
 App({
   onLaunch: function() {
+
     // 用户是否登录
     let isLogin = wx.getStorageSync('isLogin') || false
     if (isLogin) {
       this.handleUpGlobalData()
     } else {
-      this.handleUserLogin()
+      this.getCode().then(code => {
+        this.globalData.code = code
+        this.handleUserLogin()
+      })
     }
 
     //获取设备信息
     this.getSystemInfo()
-
   },
 
   // 登录
@@ -48,28 +51,18 @@ App({
   // 解析获取用户信息
   handleUserInfo(res) {
     console.log(res, '解析uid')
-    wx.checkSession({
-      success: res => {
-        console.log(res)
-      }
-    })
-    this.getCode().then(code => {
+    let parms = {
+      code: this.globalData.code,
+      ...res
+    }
 
-      let parms = {
-        code: code,
-        // signature:,
-        // encryptedData:,
-        // iv:
-        ...res
-
-      }
-      http.fxPost(api.mobile_apis_login, parms, buf => {
-        console.log(buf, '用户信息')
-      })
-
+    http.fxPost(api.mobile_apis_login, parms, buf => {
+      console.log(buf, '用户信息')
+      wx.setStorageSync('userInfo', buf.data)
+      wx.setStorageSync('isLogin', true)
+      this.handleUpGlobalData()
     })
   },
-
 
   // 获取code
   getCode() {
@@ -82,12 +75,13 @@ App({
     })
   },
 
-
   // 更新用global户名信息
   handleUpGlobalData() {
-    this.globalData.isLogin = true
     let userInfo = wx.getStorageSync('userInfo') || []
+    let isLogin = wx.getStorageSync('isLogin') || false
+    this.globalData.isLogin = isLogin
     this.globalData.userInfo = userInfo
+    console.log(this.globalData)
   },
 
   //获取设备信息
@@ -102,6 +96,7 @@ App({
 
   // 全局变量
   globalData: {
+    code: '', // code
     // 设备信息
     systemInfo: {},
     // 用户是否登录
@@ -114,5 +109,4 @@ App({
       locationId: 1
     },
   }
-
 })
