@@ -1,10 +1,13 @@
 // pages/user/user.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo: '', // 用户信息
+
     pickList: [{
       name: '我的邀请',
       id: 0
@@ -35,11 +38,19 @@ Page({
     })
   },
 
+  // 获取用户信息
+  getUserInfo() {
+    this.setData({
+      userInfo: app.globalData.userInfo
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    app.getNetworkStatus() // 检测网络
+    this.getUserInfo() // 获取用户的信息
   },
 
   /**

@@ -1,0 +1,111 @@
+<!--pages/orderInfo/orderInfo.wxml-->
+<wxs src="../../utils/util.wxs" module="wxs" />
+<view class="container order-info order">
+  <!-- 待收货 -->
+  <view class="top-box">
+    <image class="top-photo" src="{{wxs.changelessImageUrl('daishou@2x.png')}}"></image>
+    <view class="title-text">
+      <view class="big-text">订单待收货</view>
+      <view class="min-text">剩余5天12小时自动确认</view>
+    </view>
+  </view>
+
+  <!-- 未支付 -->
+  <view class="top-box">
+    <image class="top-photo" src="{{wxs.changelessImageUrl('weizhifu@2x.png')}}"></image>
+    <view class="title-text">
+      <view class="big-text">订单未支付</view>
+      <view class="min-text">剩余1小时25分自动关闭</view>
+    </view>
+  </view>
+
+  <!-- 代发货 -->
+  <view class="top-box">
+    <image class="top-photo" src="{{wxs.changelessImageUrl('daifahuo@2x.png')}}"></image>
+    <view class="title-text">
+      <view class="big-text">等待卖家发货</view>
+    </view>
+  </view>
+
+  <!-- 订单取消 -->
+  <view class="top-box">
+    <image class="top-photo" src="{{wxs.changelessImageUrl('off_order@2x.png')}}"></image>
+    <view class="title-text">
+      <view class="big-text">订单已取消</view>
+    </view>
+  </view>
+
+  <!-- 货物状态 -->
+  <view class="tiao-box product-location">
+    <view class="tiao-box__left">
+      <image class="icon" src="../../images/status-cart-icon@2x.png"></image>
+    </view>
+    <view class="tiao-box__middle">
+      <view class="current-location">快件已从 北京 发出,下一站将到达 呼伦贝尔</view>
+      <view class="current-location__time">2019-02-15 13:32:12</view>
+    </view>
+    <view class="tiao-box__right">
+      <image class="jian-tou" src="../../images/gd@2x.png"></image>
+    </view>
+  </view>
+
+  <view class="loaction-photo-box">
+    <image class="loaction-photo" src="../../images/dizhi-bg@2.png"></image>
+    <view class="receive-loaction">
+      <view class="top">
+        <text>京城陈冠希</text>
+        <text class="right">13613457776</text>
+      </view>
+      <view class="bottom">北京市朝阳区首开国风上观2002</view>
+    </view>
+  </view>
+
+  <!-- 订单 -->
+  <view class="order-item" catchtap="handleOrderInfo">
+    <view class="tiao-box">
+      <view class="tiao-box__left">鲜公旗舰店</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">待支付</view>
+    </view>
+    <view>
+      <view class="product-item" wx:for="{{product}}" wx:key="{{index}}">
+        <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+        <view class="product-count">4箱草莓+3箱苹果+1箱栗子</view>
+        <view class="product-price">75.00</view>
+        <view class="product-container__text">x1</view>
+      </view>
+      <view class="expenses-discription">
+        <view class="price-discreption">
+          <text class="left">商品金额：</text>
+          <text class="right">¥235.00</text>
+        </view>
+        <view class="price-discreption">
+          <text class="left">运费：</text>
+          <text class="right">¥0.00</text>
+        </view>
+        <view class="price-discreption">
+          <text></text>
+          <text class="sum-price">总金额：¥235.00</text>
+        </view>
+      </view>
+      <view class="handle-btn">
+        <button>取消订单</button>
+        <button class="handle-btn__red">立即支付</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 订单信息 -->
+  <view class="order-bottom__info">
+    <view class="top">订单信息</view>
+    <view class="bottom">
+      <view class="item">订单状态：待发货</view>
+      <view class="item">订单编号：153487531547876</view>
+      <view class="item">下单时间：2019-02-14 08:16:24</view>
+      <view class="item">配送方式：快递</view>
+    </view>
+  </view>
+
+
+
+</view>

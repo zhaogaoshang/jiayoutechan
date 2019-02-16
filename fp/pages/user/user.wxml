@@ -2,10 +2,10 @@
 <view class="container user">
   <!-- 头部信息 -->
   <view class="user-info__box">
-    <image class="user-avatar" src="../../images/active.jpg"></image>
+    <image class="user-avatar" src="{{userInfo.head_url}}"></image>
     <view>
       <view class="user-name__box">
-        <text class="user-name">不问归期不负遇见</text>
+        <text class="user-name">{{userInfo.nickname}}</text>
         <!-- <view class="vip-icon">Lv.1</view> -->
       </view>
       <view class="bottom">

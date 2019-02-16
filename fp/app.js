@@ -94,6 +94,19 @@ App({
     })
   },
 
+  // 检测网络
+  getNetworkStatus() {
+    wx.getNetworkType({
+      success(res) {
+        if (res.networkType == 'none') {
+          wx.navigateTo({
+            url: '../networkError/networkError'
+          })
+        }
+      }
+    })
+  },
+
   // 全局变量
   globalData: {
     code: '', // code

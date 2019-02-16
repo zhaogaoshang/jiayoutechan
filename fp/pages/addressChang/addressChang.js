@@ -18,6 +18,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    app.getNetworkStatus() // 检测网络
+    
     let title = ''
     if (options.type == 'edit') {
       title = '修改地址'

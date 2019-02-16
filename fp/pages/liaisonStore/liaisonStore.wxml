@@ -1,0 +1,11 @@
+<!--pages/LiaisonStore/LiaisonStore.wxml-->
+<wxs src="../../utils/util.wxs" module="wxs"/>
+<view class="container liaison-store">
+  <view class="box">
+    <image class="photo" src="{{wxs.changelessImageUrl('liaison-store@2x.png')}}"></image>
+    <view class="mobile-number">商家电话：010-8675444</view>
+    <form>
+      <button class="btn">联系客服</button>
+    </form>
+  </view>
+</view>

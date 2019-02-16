@@ -1,4 +1,5 @@
 // pages/order/order.js
+const app = getApp()
 Page({
 
   /**
@@ -8,10 +9,10 @@ Page({
     product: [{
       goods_id: 51,
       goods_thumb: '../../images/201901/thumb_img/51_thumb_G_1548285343731.jpg',
-      goods_name:'商品商品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品商品商品商品商品商品商品商品商品商品商品',
-      shop_price:'100.00',
-      is_shipping:0,
-      sales:26
+      goods_name: '商品商品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品商品商品商品商品商品商品商品商品商品商品',
+      shop_price: '100.00',
+      is_shipping: 0,
+      sales: 26
     }],
     category: [{
       name: '全部',
@@ -34,12 +35,20 @@ Page({
     }, ]
   },
 
+  // 订单详情
+  handleOrderInfo() {
+    wx.navigateTo({
+      url: '../orderInfo/orderInfo',
+    })
+
+  },
+
   /**
    * 生命周期函数--监听页面加载 'tuiKuan daiPingJia daiShowhuo daiFaHuo daiZhifu all'
    */
   onLoad: function(options) {
     console.log(options)
-
+    app.getNetworkStatus() // 检测网络
   },
 
   /**

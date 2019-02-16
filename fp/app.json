@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/networkError/networkError",
     "pages/product/product",
     "pages/store/store",
     "pages/cart/cart",
@@ -12,7 +13,9 @@
     "pages/addressChang/addressChang",
     "pages/paymentResult/paymentResult",
     "pages/checkout/checkout",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/orderInfo/orderInfo",
+    "pages/liaisonStore/liaisonStore"
   ],
   "window": {
     "backgroundTextStyle": "dark",

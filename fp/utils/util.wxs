@@ -1,4 +1,5 @@
 var locationUrl = 'http://shandai.zcsoft.net/'
+var changelessImage = 'http://shandai.zcsoft.net/mobile/images/apis/'
 // 时间格式化
 function timestamp2string(ts, format = 'time') {
   var date = getDate()
@@ -29,12 +30,18 @@ function timestamp2string(ts, format = 'time') {
   }
 }
 
-// 图片地址
+// 商品图片地址
 function imageUrl(url) {
   return locationUrl + url
+}
+
+// 固定图片地址
+function changelessImageUrl(url) {
+  return changelessImage + url
 }
 
 module.exports = {
   timestamp2string: timestamp2string, // 时间处理
   imageUrl: imageUrl, // 时间倒计时
+  changelessImageUrl: changelessImageUrl
 }

@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -72,7 +72,13 @@
 				{
 					"id": -1,
 					"name": "订单",
-					"pathName": "pages/order/order"
+					"pathName": "pages/order/order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "联络",
+					"pathName": "pages/liaisonStore/liaisonStore"
 				}
 			]
 		}

@@ -46,6 +46,7 @@
   font-weight: 500;
   color: rgba(248, 248, 248, 1);
   margin-right: 20rpx;
+  margin-bottom: 25rpx;
 }
 
 .user-info__box .bottom {

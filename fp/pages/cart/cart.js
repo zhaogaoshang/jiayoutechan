@@ -70,6 +70,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    app.getNetworkStatus() // 检测网络
     console.log(app.globalData.systemInfo.screenWidth, '设备的宽度')
   },
 

@@ -1,6 +1,9 @@
 <!--index.wxml-->
 <wxs src="../../utils/util.wxs" module="wxs" />
 <view class="container index">
+  <!-- 加载页面 -->
+  <load-page></load-page>
+
   <!-- 搜索框 -->
   <view class="hand-search">
     <view class="left" catchtap="handlePickLocation">

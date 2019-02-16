@@ -7,7 +7,28 @@
     </view>
   </view>
 
-  <!-- 每一单 -->
+  <!-- 全部订单 -->
+  <view class="order-item" catchtap="handleOrderInfo">
+    <view class="tiao-box">
+      <view class="tiao-box__left">鲜公旗舰店</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">待支付</view>
+    </view>
+    <view>
+      <view class="product-item" wx:for="{{product}}" wx:key="{{index}}">
+        <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+        <view class="product-count">4箱草莓+3箱苹果+1箱栗子</view>
+        <view class="product-price">75.00</view>
+        <view class="product-container__text">x1</view>
+      </view>
+      <view class="handle-btn">
+        <button>取消订单</button>
+        <button class="handle-btn__red">立即支付</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 待支付 -->
   <view class="order-item">
     <view class="tiao-box">
       <view class="tiao-box__left">鲜公旗舰店</view>
@@ -17,11 +38,99 @@
     <view>
       <view class="product-item" wx:for="{{product}}" wx:key="{{index}}">
         <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+        <view class="product-count">4箱草莓+3箱苹果+1箱栗子</view>
+        <view class="product-price">75.00</view>
+        <view class="product-container__text">x1</view>
+      </view>
+      <view class="handle-btn">
+        <button>取消订单</button>
+        <button class="handle-btn__red">立即支付</button>
       </view>
     </view>
-
-
   </view>
 
+  <!-- 待发货 -->
+  <view class="order-item">
+    <view class="tiao-box">
+      <view class="tiao-box__left">鲜公旗舰店</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">待支付</view>
+    </view>
+    <view>
+      <view class="product-item" wx:for="{{product}}" wx:key="{{index}}">
+        <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+        <view class="product-count">4箱草莓+3箱苹果+1箱栗子</view>
+        <view class="product-price">75.00</view>
+        <view class="product-container__text">x1</view>
+      </view>
+      <view class="handle-btn">
+        <button>取消订单</button>
+        <button class="handle-btn__red">立即支付</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 待收货 -->
+  <view class="order-item">
+    <view class="tiao-box">
+      <view class="tiao-box__left">鲜公旗舰店</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">待支付</view>
+    </view>
+    <view>
+      <view class="product-item" wx:for="{{product}}" wx:key="{{index}}">
+        <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+        <view class="product-count">4箱草莓+3箱苹果+1箱栗子</view>
+        <view class="product-price">75.00</view>
+        <view class="product-container__text">x1</view>
+      </view>
+      <view class="handle-btn">
+        <button>取消订单</button>
+        <button class="handle-btn__red">立即支付</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 待评价 -->
+  <view class="order-item">
+    <view class="tiao-box">
+      <view class="tiao-box__left">鲜公旗舰店</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">待支付</view>
+    </view>
+    <view>
+      <view class="product-item" wx:for="{{product}}" wx:key="{{index}}">
+        <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+        <view class="product-count">4箱草莓+3箱苹果+1箱栗子</view>
+        <view class="product-price">75.00</view>
+        <view class="product-container__text">x1</view>
+      </view>
+      <view class="handle-btn">
+        <button>取消订单</button>
+        <button class="handle-btn__red">立即支付</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退款退货 -->
+  <view class="order-item">
+    <view class="tiao-box">
+      <view class="tiao-box__left">鲜公旗舰店</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">待支付</view>
+    </view>
+    <view>
+      <view class="product-item" wx:for="{{product}}" wx:key="{{index}}">
+        <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+        <view class="product-count">4箱草莓+3箱苹果+1箱栗子</view>
+        <view class="product-price">75.00</view>
+        <view class="product-container__text">x1</view>
+      </view>
+      <view class="handle-btn">
+        <button>取消订单</button>
+        <button class="handle-btn__red">立即支付</button>
+      </view>
+    </view>
+  </view>
 
 </view>

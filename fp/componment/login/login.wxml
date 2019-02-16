@@ -1,7 +1,8 @@
 <!--componment/login/login.wxml-->
+<wxs src="../../utils/util.wxs" module="wxs" />
 <view class="box {{isShow?'show':'hid'}}">
-  <view class="lonin-box" >
-    <image class="login-photo" src="/images/active.jpg"></image>
+  <view class="lonin-box">
+    <image class="login-photo" src="{{wxs.changelessImageUrl('jiayoutc@2x.png')}}"></image>
     <button class="zhu-ce" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo" hover-class="none">确认授权</button>
-  </view> 
+  </view>
 </view>

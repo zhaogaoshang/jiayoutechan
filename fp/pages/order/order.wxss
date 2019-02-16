@@ -30,16 +30,3 @@
   background: linear-gradient(270deg, rgba(254, 145, 25, 1) 0%, rgba(255, 175, 31, 1) 100%);
   border-radius: 5rpx;
 }
-
-.order .order-item {
-  background-color: white;
-}
-
-.order .order-item .tiao-box {
-  border-bottom: 1rpx solid #f8f8f8;
-}
-
-.order-item .product-item {
-  padding: 30rpx;
-  border-bottom: 1rpx solid #f8f8f8;
-}
