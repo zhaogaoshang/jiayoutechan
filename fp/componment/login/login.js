@@ -29,7 +29,16 @@ Component({
         console.log('拒绝授权')
         return
       }
-      app.handleUserLogin()
+
+      app.getCode().then(code => {
+        app.globalData.code = code
+        app.handleUserLogin()
+      })
+
+      console.log(e)
+      this.setData({
+        isShow: false
+      })
       this.triggerEvent('handleLogin', {
         userInfo: e.detail
       })
