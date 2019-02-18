@@ -12,7 +12,8 @@
   align-items: center;
   z-index: 99;
 }
-.box.hid{
+
+.box.hid {
   display: none;
 }
 
@@ -35,4 +36,13 @@
   border-radius: 0;
   font-size: 30rpx;
   background-color: #49c253;
+}
+
+.zhe-zhao__ceng {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
 }

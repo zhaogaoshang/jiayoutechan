@@ -17,5 +17,10 @@ module.exports = {
   mobile_apis_supplierinfo: 'mobile/apis/supplierinfo.php', // 店铺详情
 
   // 登录解析
-  mobile_apis_login: 'mobile/apis/login.php'
+  mobile_apis_login: 'mobile/apis/login.php',
+
+  // 订单
+  mobile_apis_flowCart:'mobile/apis/flowCart.php' // 购物车
+  
+
 }

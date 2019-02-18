@@ -9,6 +9,12 @@ Component({
     isShow: {
       type: Boolean,
       value: false
+    },
+
+    //防止点击穿透
+    isShowPrevent: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -35,13 +41,26 @@ Component({
         app.handleUserLogin()
       })
 
-      console.log(e)
       this.setData({
-        isShow: false
+        isShow: false,
+        isShowPrevent: false
       })
       this.triggerEvent('handleLogin', {
         userInfo: e.detail
       })
+    },
+
+    // 遮罩层
+    handleShowNotClick() {
+      this.setData({
+        isShowPrevent: true
+      })
+    },
+
+    // 防止点击穿透
+    handlePrevent() {
+      console.log('以阻止再次点击')
+      return false
     }
   }
 })

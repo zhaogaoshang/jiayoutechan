@@ -3,6 +3,8 @@
 <view class="box {{isShow?'show':'hid'}}">
   <view class="lonin-box">
     <image class="login-photo" src="{{wxs.changelessImageUrl('jiayoutc@2x.png')}}"></image>
-    <button class="zhu-ce" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo" hover-class="none">确认授权</button>
+    <button class="zhu-ce" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo" hover-class="none" catchtap="handleShowNotClick">确认授权</button>
   </view>
+  <!-- 遮罩层 -->
+  <view class="zhe-zhao__ceng" catchtap="handlePrevent" wx:if="{{isShowPrevent}}"></view>
 </view>

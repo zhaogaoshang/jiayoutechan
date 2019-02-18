@@ -1,5 +1,8 @@
 // pages/cart/cart.js
-const app = getApp()
+const app = getApp() //获取应用实例
+const http = require('../../utils/http.js')
+const api = require('../../utils/api.js')
+const utils = require('../../utils/util.js')
 Page({
 
   /**
@@ -66,12 +69,23 @@ Page({
     }
   },
 
+  // 添加购物车
+  getCart() {
+    http.fxPost(api.mobile_apis_flowCart, {
+      id: 'hehe'
+    }, res => {
+      console.log(res, '添加购物车')
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
     console.log(app.globalData.systemInfo.screenWidth, '设备的宽度')
+
+    this.getCart()
   },
 
   /**
