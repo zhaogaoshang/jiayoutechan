@@ -36,7 +36,7 @@
   </view>
 
   <!-- 货物状态 -->
-  <view class="tiao-box product-location">
+  <view class="tiao-box product-location" catchtap="handleGoLogistics">
     <view class="tiao-box__left">
       <image class="icon" src="../../images/status-cart-icon@2x.png"></image>
     </view>

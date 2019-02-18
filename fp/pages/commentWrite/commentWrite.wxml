@@ -1,0 +1,41 @@
+<!--pages/commentWrite/commentWrite.wxml-->
+<view class="container comment-page">
+  <!-- 商品 -->
+  <view class="tiao-box product-box">
+    <view class="tiao-box__left">
+      <image class="product-photo" src="../../images/active.jpg"></image>
+    </view>
+    <view class="tiao-box__middle">一周内发货！果内发货！果内发货！果内发货！果园直摘，香甜的大草莓买了还想买...</view>
+    <view class="tiao-box__right"></view>
+  </view>
+
+  <!-- 评论 -->
+  <view class="comment-text">
+    <textarea class="comment-text__info" auto-height placeholder="宝贝满足你的期待吗？说说他的优点和美中不足的地方吧"></textarea>
+    <view class="comment-photo">
+      <image class="photo" src="../../images/tjzp@2x.png"></image>
+      <view class="item">
+        <image class="photo" src="../../images/active.jpg"></image>
+        <image class="delete-btn" src="../../images/close@2x.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- 匿名提交 -->
+  <view class="tiao-box submit-btn__box">
+    <view class="tiao-box__left">
+      <image class="submit-icon" src="../../images/xzi@2x.png"></image>
+      <image class="submit-icon" src="../../images/wxi@2x.png"></image>
+      <text>匿名</text>
+    </view>
+    <view class="tiao-box__middle"></view>
+    <view class="tiao-box__right">你的评价能帮助其他小伙伴哟</view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <form>
+    <button class="handle-submit__btn">保存</button>
+  </form>
+
+  <view class="shim"></view>
+</view>

@@ -1,0 +1,85 @@
+/* pages/commentWrite/commentWrite.wxss */
+
+.comment-page {
+  padding-top: 30rpx;
+}
+
+.comment-page .product-box {
+}
+
+.comment-page .product-box .product-photo {
+  height: 100rpx;
+  width: 100rpx;
+}
+
+.comment-page .product-box .tiao-box__middle {
+  margin-right: 30rpx;
+  font-size: 24rpx;
+  color: rgba(51, 51, 51, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.comment-page .comment-text {
+  padding: 30rpx;
+  background-color: white;
+  border-top: 1rpx solid #f8f8f8;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+
+.comment-page .comment-text .comment-text__info {
+  font-size: 26rpx;
+  width: 100%;
+  min-height: 280rpx;
+}
+
+.comment-page .comment-photo {
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-page .comment-photo .photo {
+  width: 158rpx;
+  height: 158rpx;
+}
+
+.comment-page .comment-photo .item {
+  position: relative;
+  margin-left: 20rpx;
+}
+
+.comment-page .comment-photo .delete-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 0 20rpx 20rpx;
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.comment-page .submit-btn__box .submit-icon {
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+
+.comment-page .submit-btn__box {
+  font-size: 24rpx;
+  color: rgba(102, 102, 102, 1);
+}
+
+.comment-page .handle-submit__btn {
+  width: 600rpx;
+  height: 88rpx;
+  background: linear-gradient(89deg, rgba(253, 179, 32, 1) 0%, rgba(254, 141, 22, 1) 100%);
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  color: rgba(254, 254, 254, 1);
+  margin-top: 60rpx;
+}
+
+.comment-page .shim {
+  height: 100rpx;
+}

@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/commentWrite/commentWrite",
     "pages/networkError/networkError",
     "pages/product/product",
     "pages/store/store",
@@ -15,7 +16,8 @@
     "pages/checkout/checkout",
     "pages/order/order",
     "pages/orderInfo/orderInfo",
-    "pages/liaisonStore/liaisonStore"
+    "pages/liaisonStore/liaisonStore",
+    "pages/logistics/logistics"
   ],
   "window": {
     "backgroundTextStyle": "dark",
