@@ -18,9 +18,10 @@ module.exports = {
 
   // 登录解析
   mobile_apis_login: 'mobile/apis/login.php',
+  mobile_apis_getTokenInfo: 'mobile/apis/getTokenInfo.php', // 验证是否过期
 
   // 订单
-  mobile_apis_flowCart:'mobile/apis/flowCart.php' // 购物车
-  
+  mobile_apis_flowCart: 'mobile/apis/flowCart.php' // 购物车
+
 
 }

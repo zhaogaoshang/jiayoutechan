@@ -33,6 +33,9 @@ Component({
     handleGetUserInfo(e) {
       if (e.detail.errMsg == 'getUserInfo:fail auth deny') {
         console.log('拒绝授权')
+        this.setData({
+          isShowPrevent: false
+        })
         return
       }
 
