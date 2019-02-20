@@ -14,7 +14,7 @@ Page({
     count: 0,
     params: {
       page: 1, //可选	int	1	当前页码
-      per_page: 10, //可选	int	10	每页数量
+      per_page: 12, //可选	int	10	每页数量
       keywords: '请输入您想要查找的商品', //必须	String		搜索关键字
       province: '', //可选	int	0	省地区号
       city: '', //可选	int	0	市地区号

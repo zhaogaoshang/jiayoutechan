@@ -23,6 +23,16 @@ Component({
     freeFreight: {
       type: Boolean,
       value: false
+    },
+    // 包邮是否显示
+    isShowFreeFreight: {
+      type: Boolean,
+      value: true
+    },
+    // 是否显示分享
+    isShowShare: {
+      type: Boolean,
+      value: false
     }
   },
 

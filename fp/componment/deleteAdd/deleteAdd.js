@@ -5,6 +5,11 @@ Component({
    */
   properties: {
     // 现在显示的数量
+    sku: {
+      type: String,
+      value: ''
+    },
+    // 现在显示的数量
     count: {
       type: Number,
       value: 1
@@ -62,11 +67,16 @@ Component({
 
     // 输出的值
     _handleExports(e) {
-      console.log('调用')
       this.triggerEvent('handleExportsCount', {
-        count: this.properties.count
+        count: this.properties.count,
+        sku: this.properties.sku
       })
     }
   },
+
+  // 返回
+  handleNull() {
+    return
+  }
 
 })

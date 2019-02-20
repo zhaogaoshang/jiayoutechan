@@ -3,6 +3,7 @@ const app = getApp() //获取应用实例
 const http = require('../../utils/http.js')
 const api = require('../../utils/api.js')
 const utils = require('../../utils/util.js')
+let wxparse = require("../../wxParse/wxParse.js")
 Page({
 
   /**
@@ -11,8 +12,12 @@ Page({
   data: {
     id: '', // 产品的id
     productDetail: {}, // 产品详情
+    htmlPhotoText: {},
+    isCollect: false, // 是否收藏
     storeInfo: {}, // 店铺详情
-    activeSpecifications: {}, // 选中的规格
+    activeSpecifications: {
+      qty: '',
+    }, // 选中的规格
     isShowPick: false, // 选择的弹框是否显示
 
     categoryActive: 0, // 选择的分类
@@ -47,6 +52,40 @@ Page({
     this.getSpecifications()
   },
 
+  // 添加购物车
+  handlePickAddCart() {
+    app.handleTokenCheck()
+    this.handleIsShowPick()
+
+    let currentActive = this.data.activeSpecifications
+    console.log(this.data.activeSpecifications)
+
+    let agent = this.data.productDetail.spes
+    let activeId = ''
+    agent.forEach((item, index) => {
+      if (item.active) {
+        activeId = item.id
+      }
+    })
+
+    app.handleTokenCheck().then(() => {
+      http.fxPost(api.mobile_apis_flowCart, {
+        quick: 0, //是 string 0 0
+        spec: [activeId], //是 string 规格[“4”]
+        goods_id: this.data.id, //是 string 商品ID 45
+        number: currentActive.qty, //是 string 商品购买数量 1
+        parent: 0, //是 string 0 0
+      }, res => {
+        console.log(res, '加入购物车')
+        if (res.code == 2000) {
+          utils.showToast('添加成功')
+        } else {
+          utils.showToast(res.msg)
+        }
+      })
+    })
+  },
+
   // 选择数量
   handleExportsCount(e) {
     console.log(e.detail.count)
@@ -62,6 +101,13 @@ Page({
     })
   },
 
+  // 去购物车
+  handleGoCart() {
+    wx.switchTab({
+      url: '../cart/cart',
+    })
+  },
+
   // 选择的是否显示
   handleIsShowPick() {
     this.setData({
@@ -74,6 +120,38 @@ Page({
     console.log(e)
     this.setData({
       categoryActive: e.currentTarget.dataset.id
+    })
+  },
+
+  // 收藏
+  handleCollect() {
+    let agent = this.data.isCollect
+    if (agent) {
+      this.handleDleteCollect()
+    } else {
+      this.handleAddCollect()
+    }
+
+    this.setData({
+      isCollect: !this.data.isCollect
+    })
+  },
+
+  // 添加收藏
+  handleAddCollect() {
+    http.fxGet(api.mobile_apis_addcollectgoods, {
+      gid: this.data.id
+    }, res => {
+      console.log(res, '添加收藏')
+    })
+  },
+
+  // 删除收藏
+  handleDleteCollect() {
+    http.fxGet(api.mobile_apis_delcollectgoods, {
+      id: this.data.id
+    }, res => {
+      console.log(res, '删除收藏')
     })
   },
 
@@ -112,15 +190,24 @@ Page({
         })
         this.setData({
           productDetail: res.data.goods,
-          storeInfo: res.data.shop_info
+          // storeInfo: res.data.shop_info
+          isCollect: res.data.is_collect
         })
 
-        // 获取规格相关
-        this.getSpecifications()
+        wxparse.wxParse('htmlPhotoText', 'html', res.data.goods.goods_desc, this, 5);
+
+        this.handleHtmlPhotoShow() // 处理图片显示
+        this.getSpecifications() // 获取规格相关
       } else {
         utils.showToast(res.msg)
       }
     })
+  },
+
+  // 处理图片显示
+  handleHtmlPhotoShow() {
+    let html = this.data.htmlPhotoText
+    console.log(html)
   },
 
   // 获取规格相关

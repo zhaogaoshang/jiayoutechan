@@ -1,0 +1,49 @@
+<!--pages/loveQuantity/loveQuantity.wxml-->
+<view class="container love-quantity__page">
+  <!-- 头部 -->
+  <view class="hand">
+    <view class="xin-icon__box">
+      <image class="xin-icon" src="../../images/axi@2x.png"></image>
+      <text>爱心贡献值</text>
+    </view>
+    <view class="price-count">¥160</view>
+    <form>
+      <button class="draw-btn" catchtap="handleGoDraw">立即提现</button>
+    </form>
+    <view class="draw-history">消费记录</view>
+  </view>
+
+  <!-- 分类 -->
+  <view class="category-box">
+    <view class="category-box__item">
+      <text>分享赚</text>
+      <view class="line"></view>
+    </view>
+    <view class="category-box__item">
+      <text>红人赚</text>
+      <view class="line"></view>
+    </view>
+  </view>
+
+  <!-- 每一笔订单 -->
+  <view class="item-love__product">
+    <view class="tiao-box">
+      <view class="tiao-box__left">
+        <image src="../../images/active.jpg"></image>
+      </view>
+      <view class="tiao-box__middle">社会我配奇</view>
+      <view class="tiao-box__right">今天21:18</view>
+    </view>
+    <view class="product-box" wx:for="{{product}}" wx:key="{{index}}">
+      <product-item isShowFreeFreight="{{false}}" isShowShare imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+      <view class="price">¥75.00</view>
+      <view class="status">
+        <text>已完成</text>
+        <text>+¥12</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 垫片 -->
+  <view class="shim"></view>
+</view>

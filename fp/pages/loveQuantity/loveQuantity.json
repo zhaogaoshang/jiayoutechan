@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "盈利管理",
+  "usingComponents": {
+    "product-item": "/componment/oblongProduct/oblongProduct"
+  }
+}

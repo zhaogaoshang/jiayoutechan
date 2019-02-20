@@ -7,9 +7,12 @@ module.exports = {
   mobile_apis_goods: 'mobile/apis/goods.php', // 规格查询
   mobile_apis_category: 'mobile/apis/category.php', // 产品的一级分类
   mobile_apis_search: '/mobile/apis/search.php', // 搜索结果
+  mobile_apis_addcollectgoods:"mobile/apis/addcollectgoods.php", //get 添加收藏
+  mobile_apis_delcollectgoods:"mobile/apis/delcollectgoods.php", //get 删除收藏 
   // 地址相关
   mobile_apis_searchindex: 'mobile/apis/searchindex.php', //get 全部的
-
+  mobile_apis_getarea:'mobile/apis/getarea.php', // 获取地址
+  mobile_apis_myaddress:'mobile/apis/myaddress.php', // 获取地址列表
   // 广告相关
   mobile_apis_mttindex: 'mobile/apis/mttindex.php',
 
@@ -21,7 +24,10 @@ module.exports = {
   mobile_apis_getTokenInfo: 'mobile/apis/getTokenInfo.php', // 验证是否过期
 
   // 订单
-  mobile_apis_flowCart: 'mobile/apis/flowCart.php' // 购物车
+  mobile_apis_flowCart: 'mobile/apis/flowCart.php', // 加入购物车
+  mobile_apis_cartList:'mobile/apis/cartList.php', // 购物车列表
 
+  // 人相关
+  mobile_apis_opmyaddress:'mobile/apis/opmyaddress.php' // 添加，编辑地址
 
 }

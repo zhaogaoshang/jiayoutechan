@@ -12,9 +12,9 @@
 
 .address-chang .tiao-box {
   font-size: 26rpx;
-  color: rgba(153, 153, 153, 1);
   line-height: 26rpx;
   border-top: 1rpx solid #f8f8f8;
+  color: rgba(153, 153, 153, 1);
 }
 
 .address-chang .tiao-box__left {
@@ -40,6 +40,7 @@
 
 .address-chang .text-input {
   min-height: 60rpx;
+  width: 550rpx;
 }
 
 .address-info__box .tiao-box__middle {
@@ -51,4 +52,12 @@
 
 .address-info__box .tiao-box__middle textarea {
   flex: 1;
+}
+
+.placeholder-class__active {
+  color: #333;
+}
+
+.placeholder-class {
+  color: rgba(153, 153, 153, 1);
 }

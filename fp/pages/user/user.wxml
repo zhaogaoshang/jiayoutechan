@@ -8,7 +8,7 @@
         <text class="user-name">{{userInfo.nickname}}</text>
         <!-- <view class="vip-icon">Lv.1</view> -->
       </view>
-      <view class="bottom">
+      <view class="bottom" catchtap="handleGoLoveQuantity">
         <image class="xin-icon" src="../../images/ax@2x.png"></image>
         <text class="xin-icon__count">爱心贡献值1366 ></text>
       </view>
@@ -47,7 +47,7 @@
   </view>
 
   <!-- 列表项目 -->
-  <view class="other-list" wx:for="{{pickList}}" wx:key="{{index}}" wx:if="{{item.id!=1 && item.id!=3}}">
+  <view class="other-list" wx:for="{{pickList}}" wx:key="{{index}}" wx:if="{{item.id!=1 && item.id!=3}}" catchtap="handleGoOther" data-type="{{item.id}}">
     <text>{{item.name}}</text>
     <image class="jian-tou" src="../../images/gd@2x.png"></image>
   </view>

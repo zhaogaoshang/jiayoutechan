@@ -37,13 +37,14 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 9,
 			"list": [
 				{
 					"id": 0,
 					"name": "商品详情",
 					"pathName": "pages/product/product",
-					"query": "id=53"
+					"query": "id=45",
+					"scene": null
 				},
 				{
 					"id": 1,
@@ -86,6 +87,20 @@
 					"name": "物流",
 					"pathName": "pages/logistics/logistics",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "盈利管理",
+					"pathName": "pages/loveQuantity/loveQuantity",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新增地址",
+					"pathName": "pages/addressChang/addressChang",
+					"query": "id=45",
 					"scene": null
 				}
 			]

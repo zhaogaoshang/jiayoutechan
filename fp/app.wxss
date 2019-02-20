@@ -1,4 +1,5 @@
 /**app.wxss**/
+@import "wxParse/wxParse.wxss";
 
 .container {
   min-height: 100vh;
@@ -78,6 +79,14 @@ button::after {
 }
 
 /* 初始化button E */
+
+/* 垫片 S */
+
+.shim {
+  height: 100rpx;
+}
+
+/* 垫片 E */
 
 /* 地址模板s */
 

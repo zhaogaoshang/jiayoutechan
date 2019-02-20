@@ -29,6 +29,41 @@ Page({
     }, ]
   },
 
+  // 点击列表项
+  handleGoOther(e) {
+    console.log(e.currentTarget.dataset.type)
+    let type = e.currentTarget.dataset.type
+    switch (type) {
+      case 0:
+
+        break;
+      case 1:
+
+        break;
+      case 2:
+
+        break;
+      case 3:
+
+        break;
+      case 4:
+        wx.navigateTo({
+          url: '../address/address?fromPage=user',
+        })
+        break;
+      case 5:
+
+        break;
+    }
+  },
+
+  // 去爱心贡献值页面
+  handleGoLoveQuantity() {
+    wx.navigateTo({
+      url: '../loveQuantity/loveQuantity'
+    })
+  },
+
   // 去订单页面
   handleGoOrder(e) {
     console.log(e.currentTarget.dataset.type)

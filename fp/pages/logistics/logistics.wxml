@@ -22,7 +22,7 @@
     <bolck>
       <!-- 最新的 -->
       <view class="new-infomation__box">
-        <image class="new-infomation__icon" src="../../images/active.jpg"></image>
+        <image class="new-infomation__icon" src="../../images/wz@2x.png"></image>
         <view class="right">
           <view class="time">2017-09-14 12:50:21</view>
           <view class="loaction">到达： 由 大山的子孙 签收</view>

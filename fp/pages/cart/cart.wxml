@@ -1,46 +1,48 @@
 <!--pages/cart/cart.wxml-->
+<wxs src="../../utils/util.wxs" module="wxs" />
 <view class="container cart">
   <!-- 每一个店铺 -->
-  <view class="product-item">
+  <view class="product-item" wx:for="{{productList}}" wx:key="{{index}}" wx:for-index="list">
     <!-- 头部 -->
-    <view class="store-top active-box">
+    <!-- <view class="store-top active-box">
       <view class="left">
-        <!-- 选中 -->
+        
         <image class="active" src="../../images/xzi@2x.png"></image>
-        <!-- 未选中 -->
+        
         <view class="active active-null" wx:if=""></view>
       </view>
       <view class="right">
         <text class="store-name">旗舰店</text>
         <image class="jian-tou" src="../../images/gd@2x.png"></image>
       </view>
-    </view>
+    </view> -->
     <!-- 底部 每个商品-->
-    <view class="product-bottom__item" style="height:{{190*2}}rpx">
-      <view class="product-bottom__item--box {{item.status==2?'normal':''}} {{item.status==1?'abnormal':''}}" style="top:{{182*index}}rpx" wx:for="{{productList}}" wx:key="{{index}}" bindtouchstart="handleTouchstart" bindtouchend="handleTouchend" data-sun-index="{{index}}">
+    <view class="product-bottom__item" style="height:{{190*item.goods_list.length}}rpx">
+      <view class="product-bottom__item--box {{item.status==2?'normal':''}} {{item.status==1?'abnormal':''}}" style="top:{{182*index}}rpx" wx:for="{{item.goods_list}}" wx:key="{{index}}" bindtouchstart="handleTouchstart" bindtouchend="handleTouchend" data-parent-index="{{list}}"
+        data-sun-index="{{index}}" catchtap="handleCheckoutProduct">
         <!-- 产品展示区域 -->
         <view class="store-top store-bottom">
           <!-- 左边 -->
           <view class="left">
             <!-- 选中 -->
-            <image class="active" src="../../images/xzi@2x.png"></image>
+            <image class="active" src="../../images/xzi@2x.png" catchtap="handleActiveProduct" wx:if="{{item.isCheckout}}"></image>
             <!-- 未选中 -->
-            <view class="active active-null" wx:if=""></view>
+            <view class="active active-null" wx:if="{{!item.isCheckout}}" catchtap="handleActiveProduct"></view>
           </view>
           <!-- 右边 -->
           <view class="product-box">
-            <image class="product-photo" src="../../images/active.jpg"></image>
+            <image class="product-photo" src="{{wxs.imageUrl(item.goods_thumb)}}"></image>
             <view class="discription">
-              <text> 还想再吃的野生有机水果</text>
-              <view class="product-price">¥75.00</view>
+              <text> {{item.goods_name}}</text>
+              <view class="product-price">¥{{item.goods_price}}</view>
             </view>
           </view>
         </view>
         <!-- 滑动区域 -->
-        <view class="handle-box">删除</view>
+        <view class="handle-box" data-parent-index="{{list}}" data-sun-index="{{index}}" catchtap="handleDeleteProduct">删除</view>
         <!-- 删除增加 -->
         <view class="add-delete__function">
-          <add-delete bind:handleExportsCount="handleExportsCount" inventoryQuantity="2"></add-delete>
+          <add-delete bind:handleExportsCount="handleExportsCount" sku="{{item.product_id}}" count="{{item.goods_number}}" inventoryQuantity="{{999}}"></add-delete>
         </view>
       </view>
     </view>
@@ -48,12 +50,13 @@
 
   <!-- 底部 -->
   <view class="handle-order__box">
-    <view class="handle-order__box--left">
-      <image class="active" src="../../images/xzi@2x.png"></image>
+    <view class="handle-order__box--left" catchtap="handleAllPick">
+      <image class="active" src="../../images/xzi@2x.png" wx:if="{{isAllPick}}"></image>
+      <image class="active" src="../../images/wxi@2x.png" wx:if="{{!isAllPick}}"></image>
       <text class="all-pick">全选</text>
     </view>
     <view class="handle-order__box--right">
-      <view class="order-price">合计：￥123.00</view>
+      <view class="order-price">合计：￥{{countPrice}}</view>
       <view class="checkout"> 结算</view>
     </view>
   </view>

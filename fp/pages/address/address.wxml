@@ -1,24 +1,17 @@
 <!--pages/address/address.wxml-->
 <view class="container address">
-  <!-- 新增地址 -->
-  <view class="add-address__box">
-    <form>
-      <button class="btn" catchtap="handleGoAddressChang" data-type="add">新增地址</button>
-    </form>
-  </view>
-
   <!-- 每一个地址 -->
-  <view class="tiao-box address-item">
+  <view class="tiao-box address-item" wx:for="{{addressList.list}}" wx:key="{{index}}" data-index="{{index}}" data-id="{{item.address_id}}" catchtap="handleActive">
     <view class="tiao-box__left">
-      <image class="pick-address__icon" src="../../images/xzi@2x.png"></image>
-      <!-- <image class="pick-address__icon" src="../../images/wxi@2x.png"></image> -->
+      <image class="pick-address__icon" src="../../images/xzi@2x.png" wx:if="{{item.isdefault==1}}"></image>
+      <image class="pick-address__icon" src="../../images/wxi@2x.png" wx:else></image>
     </view>
     <view class="tiao-box__middle">
       <view class="top">
-        <view>佩奇同学</view>
-        <view class="active-mark">设为默认</view>
+        <view>{{item.consignee}}</view>
+        <view class="active-mark" wx:if="{{item.isdefault==1}}">设为默认</view>
       </view>
-      <view class="bottom">北京市朝阳区建外SOHO东区2号楼</view>
+      <view class="bottom">{{item.address}}</view>
     </view>
     <view class="tiao-box__right">
       <form>
@@ -27,4 +20,13 @@
     </view>
   </view>
 
+  <!-- 新增地址 -->
+  <view class="add-address__box">
+    <form>
+      <button class="btn" catchtap="handleGoAddressChang" data-type="add">新增地址</button>
+    </form>
+  </view>
+
+  <view class="shim"></view>
+  <view class="shim"></view>
 </view>

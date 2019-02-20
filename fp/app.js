@@ -9,6 +9,7 @@ App({
     let isLogin = wx.getStorageSync('isLogin') || false
     if (isLogin) {
       this.handleUpGlobalData()
+      this.getCartList() // 购物车列表
     } else {
       this.getCode().then(code => {
         this.globalData.code = code
@@ -56,11 +57,15 @@ App({
       ...res
     }
 
-    http.fxPost(api.mobile_apis_login, parms, buf => {
-      console.log(buf, '用户信息')
-      wx.setStorageSync('userInfo', buf.data)
-      wx.setStorageSync('isLogin', true)
-      this.handleUpGlobalData()
+    return new Promise((success, error) => {
+      http.fxPost(api.mobile_apis_login, parms, buf => {
+        console.log(buf, '用户信息')
+        wx.setStorageSync('userInfo', buf.data)
+        wx.setStorageSync('isLogin', true)
+        this.handleUpGlobalData() // 更新globalData数据
+        this.getCartList() // 购物车列表
+        return success()
+      })
     })
   },
 
@@ -107,6 +112,52 @@ App({
     })
   },
 
+  // 获取购物车数量
+  getCartList() {
+    return new Promise((resolve, reject) => {
+      return http.fxGet(api.mobile_apis_cartList, {}, res => {
+        console.log(res, '购物车')
+        if (res.code == 2000) {
+          return resolve(res.data)
+        } else {
+          utils.showToast(res.msg)
+        }
+      })
+    })
+
+  },
+
+  // 检测是否过期
+  handleTokenCheck() {
+    return new Promise((resolve, error) => {
+      http.fxPost(api.mobile_apis_getTokenInfo, {}, res => {
+        if (res.code == 2000) {
+          return resolve()
+        } else {
+          this.getCode().then(code => {
+            this.globalData.code = code
+            // 获取用户信息
+            wx.getSetting({
+              success: res => {
+                // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+                if (res.authSetting['scope.userInfo']) {
+                  wx.getUserInfo({
+                    success: res => {
+                      this.handleUserInfo(res).then(() => {
+                        return resolve()
+                      })
+                    }
+                  })
+                }
+              }
+            })
+
+          })
+        }
+      })
+    })
+  },
+
   // 全局变量
   globalData: {
     code: '', // code
@@ -121,5 +172,7 @@ App({
       locationName: '全国',
       locationId: 1
     },
+    // 购物车
+    shopCart: {}
   }
 })

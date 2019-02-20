@@ -64,7 +64,7 @@
 .new-infomation__box .left .line {
   height: 123rpx;
   border-left: 1rpx dashed rgba(221, 221, 221, 1);
-  margin-bottom: 16rpx;
+  /* margin-bottom: 16rpx; */
 }
 
 .logistics-page  .new-infomation__box .right {
@@ -93,6 +93,7 @@
 .logistics-page  .new-infomation__box .old-infomation__icon {
   width: 20rpx;
   height: 20rpx;
+  padding: 12rpx;
 }
 
 .shim {

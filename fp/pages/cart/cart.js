@@ -12,24 +12,139 @@ Page({
     touchStartLocatione: 0,
     touchEndLocatione: 0,
 
-    productList: [{
-      id: 0,
-      status: 0 // 滑动状态：0为没有变动过 2滑动初始值 1为已经滑动
-    }, {
-      id: 1,
-      status: 0 // 滑动状态：0为没有变动过 2滑动初始值 2为已经滑动
-    }]
+    isAllPick: false, // 是否是全选
+    countPrice: 0, // 总金额
+
+    productList: [
+      //   {
+      //   status: 0 // 滑动状态：0为没有变动过 2滑动初始值 1为已经滑动
+      // }
+    ]
   },
 
   // 数量加减
   handleExportsCount(e) {
     console.log(e.detail)
+    let agent = e.detail
+    let list = this.data.productList
+    let count = 0
+    list.forEach(item => {
+      item.goods_list.forEach(only => {
+        if (only.product_id == agent.sku) {
+          only.goods_number = agent.count
+        }
+      })
+    })
+
+    this.setData({
+      productList: list
+    })
+
+    this.countPrice()
+  },
+
+  // 选择产品
+  handleCheckoutProduct(e) {
+    console.log(e.currentTarget.dataset.parentIndex)
+    console.log(e.currentTarget.dataset.sunIndex)
+    let parentIndex = e.currentTarget.dataset.parentIndex
+    let sunIndex = e.currentTarget.dataset.sunIndex
+
+    this.setData({
+      ['productList[' + parentIndex + '].goods_list[' + sunIndex + '].isCheckout']: !this.data.productList[parentIndex].goods_list[sunIndex].isCheckout
+    })
+
+    this.countPrice() // 计算总价
+    this.isAllPick().then((res) => { // 是否全选
+      console.log(res)
+      this.setData({
+        isAllPick: res
+      })
+    })
+  },
+
+  // 是否全选
+  isAllPick() {
+    let list = this.data.productList
+    let notActive = 0
+    return new Promise((resolve, reject) => {
+      list.forEach(item => {
+        item.goods_list.forEach((only, index) => {
+          if (!only.isCheckout) {
+            notActive += 1
+          }
+          if (item.goods_list.length - 1 == index) {
+            if (notActive > 0) {
+              return resolve(false)
+            } else {
+              return resolve(true)
+            }
+          }
+        })
+      })
+    })
+  },
+
+  // 全选
+  handleAllPick() {
+    let list = this.data.productList
+
+    this.isAllPick().then((res) => { // 是否全选
+      console.log(res)
+      list.forEach(item => {
+        item.goods_list.forEach((only, index) => {
+          only.isCheckout = !res
+        })
+      })
+
+      this.countPrice()
+      this.setData({
+        isAllPick: !res,
+        productList: list
+      })
+    })
+  },
+
+  // 计算金额
+  countPrice() {
+    let list = this.data.productList
+    let count = 0
+    list.forEach(item => {
+      item.goods_list.forEach(only => {
+        if (only.isCheckout) {
+          console.log(only.goods_price)
+          count = (only.goods_price * only.goods_number) * 1000 + count
+        }
+      })
+    })
+
+    this.setData({
+      countPrice: count / 1000
+    })
+  },
+
+  // 删除购物车
+  handleDeleteProduct(e) {
+    let prentIndex = e.currentTarget.dataset.parentIndex
+    let idx = e.currentTarget.dataset.sunIndex
+    let list = this.data.productList[prentIndex].goods_list
+    let sku = this.data.productList[prentIndex].goods_list[idx].product_id
+    list.splice(idx)
+    this.setData({
+      ['productList[' + prentIndex + '].goods_list']: list
+    })
+
+    this.countPrice() // 计算总价
+    this.isAllPick().then((res) => { // 是否全选
+      console.log(res)
+      this.setData({
+        isAllPick: res
+      })
+    })
   },
 
   // 手指点击
   handleTouchstart(e) {
-    // console.log(e)
-    // console.log(e.changedTouches[0].clientX, '手指触碰')
     this.setData({
       touchStartLocatione: e.changedTouches.length > 0 ? e.changedTouches[0].clientX : ''
     })
@@ -44,15 +159,14 @@ Page({
 
     if (isChange == 1) {
       this.setData({
-        ['productList[' + changeIndex + '].status']: 2
+        ['productList[0].goods_list[' + changeIndex + '].status']: 2
       })
     }
     if (isChange == 2) {
       this.setData({
-        ['productList[' + changeIndex + '].status']: 1
+        ['productList[0].goods_list[' + changeIndex + '].status']: 1
       })
     }
-
   },
 
   // 计算滑动距离是否应该做动画
@@ -71,10 +185,20 @@ Page({
 
   // 添加购物车
   getCart() {
-    http.fxPost(api.mobile_apis_flowCart, {
-      id: 'hehe'
-    }, res => {
-      console.log(res, '添加购物车')
+    app.getCartList().then(res => {
+      console.log(res)
+      res.goods_list.forEach(item => {
+        console.log(item)
+        item.goods_list.forEach(only => {
+          only.status = 0
+          only.isCheckout = false
+        })
+      })
+
+      this.setData({
+        cartList: res,
+        productList: res.goods_list,
+      })
     })
   },
 
@@ -84,8 +208,6 @@ Page({
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
     console.log(app.globalData.systemInfo.screenWidth, '设备的宽度')
-
-    this.getCart()
   },
 
   /**
@@ -99,7 +221,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    app.handleTokenCheck().then(() => {
+      this.getCart()
+    })
   },
 
   /**
