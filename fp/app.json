@@ -20,7 +20,8 @@
     "pages/logistics/logistics",
     "pages/loveQuantity/loveQuantity",
     "pages/loveQuantityDraw/loveQuantityDraw",
-    "pages/invitation/invitation"
+    "pages/invitation/invitation",
+    "pages/collcot/collcot"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -9,7 +9,9 @@ App({
     let isLogin = wx.getStorageSync('isLogin') || false
     if (isLogin) {
       this.handleUpGlobalData()
-      this.getCartList() // 购物车列表
+      this.handleTokenCheck().then(() => {
+        this.getCartList() // 购物车列表
+      })
     } else {
       this.getCode().then(code => {
         this.globalData.code = code
@@ -115,7 +117,7 @@ App({
   // 获取购物车数量
   getCartList() {
     return new Promise((resolve, reject) => {
-      return http.fxGet(api.mobile_apis_cartList, {}, res => {
+      http.fxGet(api.mobile_apis_cartList, {}, res => {
         console.log(res, '购物车')
         if (res.code == 2000) {
           return resolve(res.data)
@@ -155,6 +157,30 @@ App({
           })
         }
       })
+    })
+  },
+
+  // 添加收藏
+  handleAddCollect(gid) {
+    http.fxGet(api.mobile_apis_addcollectgoods, {
+      gid
+    }, res => {
+      console.log(res, '收藏')
+      if (res.code != 2000) {
+        utils.showToast(res.msg)
+      }
+    })
+  },
+
+  // 取消收藏
+  handleDeleteCollect(gid) {
+    http.fxGet(api.mobile_apis_delcollectgoods, {
+      gid
+    }, res => {
+      console.log(res, '取消收藏')
+      if (res.code != 2000) {
+        utils.showToast(res.msg)
+      }
     })
   },
 

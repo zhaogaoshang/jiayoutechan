@@ -70,17 +70,17 @@
   </form>
 
   <!-- 选择地址 -->
-  <view class="address-pick__about" catchtap="handlePickLocation">
-    <view class="location-modle__box" wx:if="{{isShowLocationTemplate}}">
-      <view class="location-modle" catchtap="handlePrevent">
+  <cover-view class="address-pick__about" catchtap="handlePickLocation">
+    <cover-view class="location-modle__box" wx:if="{{isShowLocationTemplate}}" catchtap="handlePickLocation">
+      <cover-view class="location-modle" catchtap="handlePrevent">
         <!-- 头部 -->
-        <view class="tiao-box location-modle__title">
-          <view class="tiao-box__left"></view>
-          <view class="tiao-box__middle">所在地区 </view>
-          <view class="tiao-box__right" catchtap="handlePickLocation">
-            <image class="off-icon" src="../../images/off@2.png"></image>
-          </view>
-        </view>
+        <cover-view class="tiao-box location-modle__title">
+          <cover-view class="tiao-box__left"></cover-view>
+          <cover-view class="tiao-box__middle">所在地区 </cover-view>
+          <cover-view class="tiao-box__right" catchtap="handlePickLocation">
+            <cover-image class="off-icon" src="../../images/off@2.png"></cover-image>
+          </cover-view>
+        </cover-view>
         <!-- 中间区域选择 -->
         <view class="location-show">
           <view class="location-show__item {{locationIndex==0?'active-location':''}}" data-index="0" catchtap="handleSwitchPickLocation">
@@ -132,8 +132,8 @@
             </view>
           </scroll-view>
         </view>
-      </view>
-    </view>
-  </view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
 
 </view>

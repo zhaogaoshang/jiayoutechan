@@ -38,7 +38,6 @@ Page({
       pagesize: 10
     },
 
-
     category: [ // 分类
       {
         name: '臻品馆',
@@ -111,6 +110,40 @@ Page({
     console.log(e.detail.value)
     this.setData({
       searchText: e.detail.value
+    })
+  },
+
+  //新品热销收藏
+  handleCollect(e) {
+    let idx = e.currentTarget.dataset.index
+    let gid = this.data.newProductHot.list[idx].goods_id
+    let isCollect = this.data.newProductHot.list[idx].is_collect
+    console.log(idx)
+    if (isCollect) {
+      app.handleDeleteCollect(gid)
+    } else {
+      app.handleAddCollect(gid)
+    }
+
+    this.setData({
+      ['newProductHot.list[' + idx + '].is_collect']: !isCollect
+    })
+  },
+
+  // 新品首发收藏
+  handleNewProductCollect(e){
+    let idx = e.currentTarget.dataset.index
+    let gid = this.data.newProductSell.list[idx].goods_id
+    let isCollect = this.data.newProductSell.list[idx].is_collect
+    console.log(idx)
+    if (isCollect) {
+      app.handleDeleteCollect(gid)
+    } else {
+      app.handleAddCollect(gid)
+    }
+
+    this.setData({
+      ['newProductSell.list[' + idx + '].is_collect']: !isCollect
     })
   },
 

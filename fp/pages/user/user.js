@@ -43,7 +43,9 @@ Page({
 
         break;
       case 2:
-
+        wx.navigateTo({
+          url: '../collcot/collcot',
+        })
         break;
       case 3:
 

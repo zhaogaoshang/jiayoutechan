@@ -28,6 +28,7 @@
   border-radius: 44rpx;
   font-size: 30rpx;
   color: white;
+  margin-top: 30rpx;
 }
 
 .address-chang .delete-btn {
@@ -35,7 +36,7 @@
   background: white;
   border: 1rpx solid rgba(254, 142, 22, 1);
   margin-top: 60rpx;
-  margin-bottom: 30rpx;
+  /* margin-bottom: 30rpx; */
 }
 
 .address-chang .text-input {

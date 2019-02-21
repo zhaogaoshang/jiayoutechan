@@ -1,0 +1,22 @@
+/* pages/collcot/collcot.wxss */
+
+.collect-page {
+  padding-top: 30rpx;
+}
+
+.new-product__photo {
+  position: relative;
+}
+
+.new-product__photo .out-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 144rpx;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 144rpx;
+  width: 144rpx;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 1);
+}

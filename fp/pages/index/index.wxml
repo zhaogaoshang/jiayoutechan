@@ -84,8 +84,8 @@
         </view>
 
         <view class="like-share">
-          <image class="like-share__icon" src="../../images/sc.png"></image>
-          <!-- <image class="like-share__icon" src="../../images/ssc.png"></image> -->
+          <image class="like-share__icon" src="../../images/sc.png" data-index="{{index}}" catchtap="handleCollect" wx:if="{{!item.is_collect}}"></image>
+          <image class="like-share__icon" src="../../images/ssc.png" data-index="{{index}}" catchtap="handleCollect" wx:if="{{item.is_collect}}"></image>
           <image class="like-share__icon right" src="../../images/fx.png"></image>
         </view>
       </view>
@@ -108,8 +108,8 @@
         </view>
 
         <view class="like-share">
-          <image class="like-share__icon" src="../../images/sc.png"></image>
-          <!-- <image class="like-share__icon" src="../../images/ssc.png"></image> -->
+          <image class="like-share__icon" src="../../images/sc.png" data-index="{{index}}" catchtap="handleNewProductCollect" wx:if="{{!item.is_collect}}"></image>
+          <image class="like-share__icon" src="../../images/ssc.png" data-index="{{index}}" catchtap="handleNewProductCollect" wx:if="{{item.is_collect}}"></image>
           <image class="like-share__icon right" src="../../images/fx.png"></image>
         </view>
       </view>

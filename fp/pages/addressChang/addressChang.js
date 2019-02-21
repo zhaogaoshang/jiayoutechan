@@ -72,6 +72,7 @@ Page({
   // 存贮
   handleStorage() {
     http.fxPost(api.mobile_apis_opmyaddress, this.data.form, res => {
+      console.log(res, '储存或者修改')
       if (res.code != 2000) {
         utils.showToast(res.msg)
       } else {
@@ -171,6 +172,10 @@ Page({
           item.active = false
         }
       })
+
+      this.setData({
+        'form.city': '',
+      })
     }
 
     this.setData({
@@ -189,7 +194,7 @@ Page({
         this.setData({
           'form.province': item.province_id,
           'form.provinceName': item.province_name,
-          'form.city': '',
+          // 'form.city': '',
         })
 
         this.getcity()
@@ -240,6 +245,9 @@ Page({
           item.active = false
         }
       })
+      this.setData({
+        'form.district': '',
+      })
     }
 
     this.setData({
@@ -259,7 +267,7 @@ Page({
         this.setData({
           'form.city': item.province_id,
           'form.cityName': item.province_name,
-          'form.district': '',
+          // 'form.district': '',
         })
 
         this.getDistrict() // 获取区
@@ -357,6 +365,21 @@ Page({
       aid: this.data.form.aid
     }, res => {
       console.log(res, '地址详情')
+      if (res.code == 2000) {
+        this.setData({
+          'form.name': res.data.consignee, //是	int	联系人
+          'form.mobile': res.data.mobile, // 手机
+          'form.province': res.data.province, //是	int	省ID
+          'form.city': res.data.city, //是	int	城市ID
+          'form.district': res.data.district, //是	int	区县ID
+          'form.address': res.data.address, //是	int	详细地址
+          'form.zipcode': res.data.zipcode, //是	int	邮政编码
+          'form.isdefault': res.data.isdefault, //是	int	是否要设为默认地址（1：是，0：否）
+        })
+        this.getProvince()
+      } else {
+        utils.showToast(res.msg)
+      }
     })
   },
 

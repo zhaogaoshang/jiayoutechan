@@ -11,7 +11,11 @@ Page({
   data: {
     fromPage: 'user',
 
-    addressList: {}, // 地址列表
+    addressList: { // 地址列表
+      count: 1,
+      next: true,
+      list: []
+    },
     params: {
       page: 1,
       pagesize: 10,
@@ -34,6 +38,21 @@ Page({
       'addressList.list': list
     })
 
+    this.handleSetLocationActive(id)
+    if (this.data.fromPage != 'user') {
+      wx.navigateBack({
+        delta: 1
+      })
+    }
+  },
+
+  // 设置默认地址
+  handleSetLocationActive(aid) {
+    http.fxGet(api.mobile_apis_defaultaddress, {
+      aid
+    }, res => {
+      console.log('设置默认地址')
+    })
   },
 
   // 去地址编辑
@@ -51,12 +70,17 @@ Page({
     http.fxGet(api.mobile_apis_myaddress, this.data.params, res => {
       console.log(res, '地址列表')
       if (res.code == 2000) {
+        if (this.data.params.page > 1) {
+          res.data.list = this.data.addressList.list.concat(res.data.list)
+        }
+
         this.setData({
           addressList: res.data
         })
       } else {
         utils.showToast(res.msg)
       }
+      wx.stopPullDownRefresh()
     })
   },
 
@@ -84,6 +108,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    this.setData({
+      'params.page': 1
+    })
     this.getAddress()
   },
 
@@ -105,14 +132,23 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.setData({
+      'params.page': 1
+    })
+    this.getAddress()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    if (!this.data.addressList.next) {
+      return
+    }
+    this.setData({
+      'params.page': ++this.data.params.page
+    })
+    this.getAddress()
   },
 
   /**

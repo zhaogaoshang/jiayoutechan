@@ -9,12 +9,14 @@ module.exports = {
   mobile_apis_search: '/mobile/apis/search.php', // 搜索结果
   mobile_apis_addcollectgoods:"mobile/apis/addcollectgoods.php", //get 添加收藏
   mobile_apis_delcollectgoods:"mobile/apis/delcollectgoods.php", //get 删除收藏 
+  mobile_apis_collectgoods:'mobile/apis/collectgoods.php', // 收藏列表
   // 地址相关
   mobile_apis_searchindex: 'mobile/apis/searchindex.php', //get 全部的
   mobile_apis_getarea:'mobile/apis/getarea.php', // 获取地址
   mobile_apis_myaddress:'mobile/apis/myaddress.php', // 获取地址列表
   mobile_apis_editmyaddress:'mobile/apis/editmyaddress.php', // 获取地址详情
   mobile_apis_delmyaddress:'mobile/apis/delmyaddress.php', // 删除地址
+  mobile_apis_defaultaddress:'mobile/apis/defaultaddress.php', // 设置默认地址
   // 广告相关
   mobile_apis_mttindex: 'mobile/apis/mttindex.php',
 

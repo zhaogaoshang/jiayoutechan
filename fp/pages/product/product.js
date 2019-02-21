@@ -127,31 +127,13 @@ Page({
   handleCollect() {
     let agent = this.data.isCollect
     if (agent) {
-      this.handleDleteCollect()
+      app.handleDeleteCollect(this.data.id)
     } else {
-      this.handleAddCollect()
+      app.handleAddCollect(this.data.id)
     }
 
     this.setData({
-      isCollect: !this.data.isCollect
-    })
-  },
-
-  // 添加收藏
-  handleAddCollect() {
-    http.fxGet(api.mobile_apis_addcollectgoods, {
-      gid: this.data.id
-    }, res => {
-      console.log(res, '添加收藏')
-    })
-  },
-
-  // 删除收藏
-  handleDleteCollect() {
-    http.fxGet(api.mobile_apis_delcollectgoods, {
-      id: this.data.id
-    }, res => {
-      console.log(res, '删除收藏')
+      isCollect: !agent
     })
   },
 
