@@ -13,6 +13,8 @@ module.exports = {
   mobile_apis_searchindex: 'mobile/apis/searchindex.php', //get 全部的
   mobile_apis_getarea:'mobile/apis/getarea.php', // 获取地址
   mobile_apis_myaddress:'mobile/apis/myaddress.php', // 获取地址列表
+  mobile_apis_editmyaddress:'mobile/apis/editmyaddress.php', // 获取地址详情
+  mobile_apis_delmyaddress:'mobile/apis/delmyaddress.php', // 删除地址
   // 广告相关
   mobile_apis_mttindex: 'mobile/apis/mttindex.php',
 
@@ -26,7 +28,7 @@ module.exports = {
   // 订单
   mobile_apis_flowCart: 'mobile/apis/flowCart.php', // 加入购物车
   mobile_apis_cartList:'mobile/apis/cartList.php', // 购物车列表
-
+  mobile_apis_dropCart:'mobile/apis/dropCart.php', // 删除订单
   // 人相关
   mobile_apis_opmyaddress:'mobile/apis/opmyaddress.php' // 添加，编辑地址
 

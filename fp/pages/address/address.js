@@ -33,13 +33,16 @@ Page({
     this.setData({
       'addressList.list': list
     })
+
   },
 
   // 去地址编辑
   handleGoAddressChang(e) {
     let type = e.currentTarget.dataset.type
+    let id = e.currentTarget.dataset.id || ''
+    console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
-      url: '../addressChang/addressChang?type=' + type,
+      url: '../addressChang/addressChang?type=' + type + '&id=' + id,
     })
   },
 

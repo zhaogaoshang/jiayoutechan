@@ -160,7 +160,6 @@
 
 .today-high__sell .today-high__sell--bottom {
   white-space: nowrap;
-  /* overflow: hidden; */
 }
 
 .today-high__sell .today-high__sell--item {
@@ -171,6 +170,8 @@
   width: 240rpx;
   margin-top: 20rpx;
   margin-bottom: 23rpx;
+  height: 400rpx;
+  vertical-align: top;
 }
 
 .today-high__sell .today-high__sell--item .product-box {
@@ -198,6 +199,8 @@
   color: rgba(51, 51, 51, 1);
   line-height: 30rpx;
   padding: 0 25rpx 31rpx 25rpx;
+  height: 68rpx;
+  width: 172rpx;
 }
 
 .product-box .people-count {
@@ -450,6 +453,7 @@
 /* 本页面公用的e */
 
 /* 地址磨板 s*/
+
 /* 
 .index .location-modle__box {
   position: fixed;

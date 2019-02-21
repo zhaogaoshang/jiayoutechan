@@ -19,7 +19,8 @@
     "pages/liaisonStore/liaisonStore",
     "pages/logistics/logistics",
     "pages/loveQuantity/loveQuantity",
-    "pages/loveQuantityDraw/loveQuantityDraw"
+    "pages/loveQuantityDraw/loveQuantityDraw",
+    "pages/invitation/invitation"
   ],
   "window": {
     "backgroundTextStyle": "dark",

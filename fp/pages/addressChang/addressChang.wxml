@@ -60,8 +60,8 @@
   </view>
 
   <!-- 删除地址 -->
-  <form wx:if="{{type==edit}}">
-    <button class="handle-input__btn delete-btn">删除收货地址</button>
+  <form wx:if="{{type=='edit'}}">
+    <button class="handle-input__btn delete-btn" catchtap="handleDeleteAddress">删除收货地址</button>
   </form>
 
   <!-- 删除地址 -->

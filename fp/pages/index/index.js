@@ -45,11 +45,11 @@ Page({
         title: '精品好货',
         id: 0
       },
-      {
-        name: '特色好店',
-        title: '优质店铺',
-        id: 1
-      },
+      // {
+      //   name: '特色好店',
+      //   title: '优质店铺',
+      //   id: 1
+      // },
       {
         name: '去赶集',
         title: '实惠好货',
@@ -439,10 +439,8 @@ Page({
 
     this.getHandAdv() // 获取头部广告
     this.getTodayHigh() // 今日爆款
-    this.getNewProductHot() // 新品热销
-    this.getNewProductSell() // 新品上市
 
-    this.getSpecialStore() // 获取特色店铺
+    // this.getSpecialStore() // 获取特色店铺
     this.getAllProvince() // 全部的省份
 
     // 已经登录 解析
@@ -450,6 +448,8 @@ Page({
       this.setData({
         isShowLogin: false
       })
+      this.getNewProductHot() // 新品热销
+      this.getNewProductSell() // 新品上市
     } else {
       // 没有解析
       console.log('解析数据')
@@ -457,7 +457,10 @@ Page({
         this.setData({
           isShowLogin: false
         })
-        app.handleUserInfo(res)
+        app.handleUserInfo(res).then(() => {
+          this.getNewProductHot() // 新品热销
+          this.getNewProductSell() // 新品上市
+        })
       }
     }
   },

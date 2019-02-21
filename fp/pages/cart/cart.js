@@ -128,7 +128,7 @@ Page({
     let prentIndex = e.currentTarget.dataset.parentIndex
     let idx = e.currentTarget.dataset.sunIndex
     let list = this.data.productList[prentIndex].goods_list
-    let sku = this.data.productList[prentIndex].goods_list[idx].product_id
+    let sku = this.data.productList[prentIndex].goods_list[idx].rec_id
     list.splice(idx)
     this.setData({
       ['productList[' + prentIndex + '].goods_list']: list
@@ -140,6 +140,17 @@ Page({
       this.setData({
         isAllPick: res
       })
+    })
+
+    http.fxGet(api.mobile_apis_dropCart, {
+      id: sku
+    }, res => {
+      console.log(res, '删除购物车')
+      if (res.code == 2000) {
+        utils.showToast(res.msg)
+      } else {
+        utils.showToast(res.msg)
+      }
     })
   },
 

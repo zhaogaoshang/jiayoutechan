@@ -15,7 +15,7 @@
     </view>
     <view class="tiao-box__right">
       <form>
-        <button class="edit" catchtap="handleGoAddressChang" data-type="edit">编辑</button>
+        <button class="edit" catchtap="handleGoAddressChang" data-id="{{item.address_id}}" data-type="edit">编辑</button>
       </form>
     </view>
   </view>

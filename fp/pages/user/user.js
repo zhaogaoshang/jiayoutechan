@@ -35,7 +35,9 @@ Page({
     let type = e.currentTarget.dataset.type
     switch (type) {
       case 0:
-
+        wx.navigateTo({
+          url: '../invitation/invitation',
+        })
         break;
       case 1:
 

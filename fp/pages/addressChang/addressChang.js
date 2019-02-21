@@ -82,6 +82,22 @@ Page({
     })
   },
 
+  // 删除地址
+  handleDeleteAddress() {
+    http.fxGet(api.mobile_apis_delmyaddress, {
+      aid: this.data.form.aid
+    }, res => {
+      console.log(res, '删除地址')
+      if (res.code != 2000) {
+        utils.showToast(res.msg)
+      } else {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+    })
+  },
+
   // 选择地址魔板是否显示
   handlePickLocation() {
     this.setData({
@@ -335,16 +351,34 @@ Page({
     })
   },
 
+  //从修改地址来的-- 获取地址信息
+  getAddressInfo() {
+    http.fxGet(api.mobile_apis_editmyaddress, {
+      aid: this.data.form.aid
+    }, res => {
+      console.log(res, '地址详情')
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
     console.log(options)
+    // 修改地址
     let title = ''
     if (options.type == 'edit') {
       title = '修改地址'
+      this.setData({
+        'form.aid': options.id
+      })
+      app.handleTokenCheck().then(() => {
+        this.getAddressInfo()
+      })
     }
+
+    // 添加地址
     if (options.type == 'add') {
       title = '添加地址'
       this.getProvince()
@@ -397,7 +431,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    console.log('触底加载')
   },
 
   /**
