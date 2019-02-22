@@ -30,7 +30,21 @@ Page({
       pagesize: 5
     },
 
-    newProductSell: {}, // 新品上市
+    gatherShop: { // 市集
+      count: 1,
+      next: true,
+      list: []
+    },
+    gatherShopParams: {
+      page: 1,
+      per_page: 10
+    },
+
+    newProductSell: { // 新品上市
+      count: 1,
+      next: true,
+      list: []
+    },
     newProductSellParams: {
       act: 'new',
       area: app.globalData.locationPick.locationId,
@@ -131,7 +145,7 @@ Page({
   },
 
   // 新品首发收藏
-  handleNewProductCollect(e){
+  handleNewProductCollect(e) {
     let idx = e.currentTarget.dataset.index
     let gid = this.data.newProductSell.list[idx].goods_id
     let isCollect = this.data.newProductSell.list[idx].is_collect
@@ -464,6 +478,23 @@ Page({
     })
   },
 
+  // 去赶集
+  gatherShop() {
+    http.fxGet(api.mobile_apis_market_list, this.data.gatherShopParams, res => {
+      console.log(res, '市集')
+      if (res.code == 2000) {
+        if (this.data.gatherShopParams.page > 1) {
+          res.data.list = this.data.gatherShop.list.concat(res.data.list)
+        }
+        this.setData({
+          gatherShop: res.data
+        })
+      } else {
+
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -472,6 +503,7 @@ Page({
 
     this.getHandAdv() // 获取头部广告
     this.getTodayHigh() // 今日爆款
+    this.gatherShop() // 去赶集
 
     // this.getSpecialStore() // 获取特色店铺
     this.getAllProvince() // 全部的省份
@@ -481,8 +513,10 @@ Page({
       this.setData({
         isShowLogin: false
       })
-      this.getNewProductHot() // 新品热销
-      this.getNewProductSell() // 新品上市
+      app.handleTokenCheck().then(() => {
+        this.getNewProductHot() // 新品热销
+        this.getNewProductSell() // 新品上市
+      })
     } else {
       // 没有解析
       console.log('解析数据')
@@ -491,8 +525,10 @@ Page({
           isShowLogin: false
         })
         app.handleUserInfo(res).then(() => {
-          this.getNewProductHot() // 新品热销
-          this.getNewProductSell() // 新品上市
+          app.handleTokenCheck().then(() => {
+            this.getNewProductHot() // 新品热销
+            this.getNewProductSell() // 新品上市
+          })
         })
       }
     }
@@ -537,7 +573,24 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    let currentCategory = this.data.categoryActive
 
+    // 臻品馆
+    if (currentCategory == 0) {
+      console.log('触底加载新品首发')
+      if (this.data.newProductSell.next) {
+        return
+      }
+
+      this.setData({
+        'newProductSellParams.page': ++this.data.newProductSellParams.page
+      })
+      thisgetNewProductSell()
+    }
+    // 去赶集
+    if (currentCategory == 2) {
+      console.log('触底加载去赶集')
+    }
   },
 
   /**

@@ -331,6 +331,8 @@
   line-height: 20rpx;
   font-weight: 400;
   color: rgba(51, 51, 51, 1);
+  padding: 0;
+  background: white;
 }
 
 .shop-box .shop-cart__box {

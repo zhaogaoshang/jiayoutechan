@@ -47,7 +47,7 @@
   </view>
 
   <!-- 列表项目 -->
-  <view class="other-list" wx:for="{{pickList}}" wx:key="{{index}}" wx:if="{{item.id!=1 && item.id!=3}}" catchtap="handleGoOther" data-type="{{item.id}}">
+  <view class="other-list" wx:for="{{pickList}}" wx:key="{{index}}" wx:if="{{item.id!=1 && item.id!=3&&item.id!=5}}" catchtap="handleGoOther" data-type="{{item.id}}">
     <text>{{item.name}}</text>
     <image class="jian-tou" src="../../images/gd@2x.png"></image>
   </view>

@@ -48,6 +48,8 @@ Component({
         isShow: false,
         isShowPrevent: false
       })
+
+      app.globalData.isAuthorizationPlatform = false // 是否授权过平台
       this.triggerEvent('handleLogin', {
         userInfo: e.detail
       })

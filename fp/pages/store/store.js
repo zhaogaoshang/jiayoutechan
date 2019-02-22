@@ -12,11 +12,16 @@ Page({
     storeId: '', // 店铺的id
     storeInfo: {}, // 店铺的信息
 
-    productList: {}, // 产品列表
+    productList: {// 产品列表
+      info:{},
+      list:[],
+      next:true,
+      count:1
+    }, 
     productParams: { // 参数
-      supplier_id: '',
+      market_id: '',
       per_page: 10,
-      page: 0
+      page: 1
     }
   },
 
@@ -30,7 +35,7 @@ Page({
 
   // 店铺的信息
   getStoreInfo() {
-    http.fxGet(api.mobile_apis_supplierinfo, {
+    http.fxGet(api.mobile_apis_market_info, {
       suppid: this.data.storeId
     }, res => {
       console.log(res.data, '店铺信息')
@@ -50,8 +55,8 @@ Page({
 
   // 店铺下的商品
   getStoreProduct() {
-    http.fxGet(api.mobile_apis_supplierinfo, this.data.productParams, res => {
-      console.log(res.data, '产品信息')
+    http.fxGet(api.mobile_apis_market_info, this.data.productParams, res => {
+      console.log(res.data, '店铺')
       if (res.code == 2000) {
         this.setData({
           productList: res.data
@@ -70,11 +75,11 @@ Page({
     console.log(options)
     this.setData({
       storeId: options.id,
-      'productParams.supplier_id': options.id,
+      'productParams.market_id': options.id,
     })
 
-    this.getStoreInfo() // 获取店铺信息
-    this.getStoreProduct() // 获取店铺商品
+    // this.getStoreInfo() // 获取店铺信息
+    this.getStoreProduct() // 获取集市列表
   },
 
   /**

@@ -143,25 +143,25 @@
 
   <!-- 去赶集 -->
   <view class="category-item {{categoryActive==2?'category--active':''}}">
-    <view class="characteristic-store__item" wx:for="{{[1,2,3]}}" wx:key="{{index}}">
+    <view class="characteristic-store__item" wx:for="{{gatherShop.list}}" wx:key="{{index}}">
       <!-- 头部 -->
       <view class="top">
         <!-- <image class="store__avatar" src="../../images/active.jpg"></image> -->
         <view class="store__name">
-          <text class="store-name__top">鲜公旗舰店</text>
+          <text class="store-name__top">{{item.name}}</text>
           <!-- <text class="store-name__bottom">生态有机 美味不间断</text> -->
         </view>
-        <view class="join-store">进入市集</view>
+        <view class="join-store" data-id="{{item.id}}" catchtap="handleGoStore">进入市集</view>
         <image class="like-share__icon margin-right--30rpx" src="../../images/fx.png"></image>
       </view>
       <!-- 底部 -->
       <view class="bottom">
-        <view class="store-product__item" wx:for="{{[1,2,3]}}" wx:key="{{index}}" catchtap="handleGoProduct">
-          <image class="store-product__photo" src="../../images/active.jpg"></image>
+        <view class="store-product__item" wx:for="{{item.goods}}" wx:key="{{index}}" catchtap="handleGoProduct" wx:for-item="only" data-id="{{only.goods_id}}">
+          <image class="store-product__photo" src="{{wxs.imageUrl(only.goods_thumb)}}"></image>
           <view class="go-shop__box">
             <image class="free-freight__icon" src="../../images/baoyou@2.png"></image>
-            <text class="product-cureent__price">¥68.00</text>
-            <text class="product-origin__price">¥100.00</text>
+            <text class="product-cureent__price">¥{{only.shop_price}}</text>
+            <!-- <text class="product-origin__price">¥100.00</text> -->
           </view>
         </view>
       </view>

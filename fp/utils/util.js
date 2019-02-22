@@ -26,5 +26,6 @@ function showToast(title, duration = 1500, icon = 'none') {
 module.exports = {
   timestamp,
   randomString,
-  showToast
+  showToast,
+  imageUrl: 'http://shandai.zcsoft.net/'
 }

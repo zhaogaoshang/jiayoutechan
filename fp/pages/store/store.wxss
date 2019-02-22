@@ -12,6 +12,7 @@
 }
 
 .store-page .store-info .tiao-box__right {
+  position: relative;
   display: flex;
   flex-direction: row;
 }
@@ -97,3 +98,12 @@
 }
 
 /* 产品E */
+
+.store-page .store-info .tiao-box__right .like-share__icon.share-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}

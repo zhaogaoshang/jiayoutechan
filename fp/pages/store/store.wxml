@@ -3,16 +3,16 @@
 <view class="container store-page">
   <!-- 店铺 -->
   <view class="tiao-box store-info">
-    <image class="tiao-box__left store-avatar" src="{{wxs.imageUrl(storeInfo.shop_logo)}}"></image>
+    <!-- <image class="tiao-box__left store-avatar" src="{{wxs.imageUrl(storeInfo.shop_logo)}}"></image> -->
     <view class="tiao-box__middle">
-      <view class="store-name">{{storeInfo.shop_name}}</view>
-      <view class="store-function">{{storeInfo.shop_desc}}</view>
-      <view class="store-fans">粉丝数：20</view>
+      <view class="store-name">{{productList.info.name}}</view>
+      <!-- <view class="store-function">{{storeInfo.shop_desc}}</view> -->
+      <!-- <view class="store-fans">粉丝数：20</view> -->
     </view>
     <view class="tiao-box__right">
-      <image class="like-share__icon margin-right--30rpx" src="../../images/sc.png"></image>
+      <image class="like-share__icon margin-right--30rpx" src="../../images/fx.png"></image>
       <!-- <image class="like-share__icon margin-right--30rpx" src="../../images/ssc.png"></image> -->
-      <button class="like-share__icon share-btn"></button>
+      <button class="like-share__icon share-btn" open-type="share"></button>
     </view>
   </view>
 
@@ -22,8 +22,8 @@
       <image class="product-photo" src="{{wxs.imageUrl(item.goods_thumb)}}"></image>
       <view class="product-discription one-line__text">{{item.goods_name}}</view>
       <view class="product-price">
-        <text class="left">￥123.00</text>
-        <text class="right">123人付款</text>
+        <text class="left">￥{{item.shop_price}}</text>
+        <!-- <text class="right">123人付款</text> -->
       </view>
     </view>
   </view>

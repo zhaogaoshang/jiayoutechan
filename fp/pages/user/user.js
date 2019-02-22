@@ -72,6 +72,14 @@ Page({
   handleGoOrder(e) {
     console.log(e.currentTarget.dataset.type)
     'tuiKuan daiPingJia daiShowhuo daiFaHuo daiZhifu all'
+    if (e.currentTarget.dataset.type == 'tuiKuan') {
+      wx.navigateTo({
+        url: '../liaisonStore/liaisonStore',
+      })
+      return
+    }
+
+
     wx.navigateTo({
       url: '../order/order?type=' + e.currentTarget.dataset.type
     })

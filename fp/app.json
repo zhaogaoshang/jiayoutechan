@@ -30,6 +30,9 @@
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
+  "usingComponents": {
+    "login": "/componment/login/login"
+  },
   "tabBar": {
     "backgroundColor": "#ffffff",
     "color": "#333333",

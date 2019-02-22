@@ -9,9 +9,9 @@ App({
     let isLogin = wx.getStorageSync('isLogin') || false
     if (isLogin) {
       this.handleUpGlobalData()
-      this.handleTokenCheck().then(() => {
-        this.getCartList() // 购物车列表
-      })
+      // this.handleTokenCheck().then(() => {
+      //   this.getCartList() // 购物车列表
+      // })
     } else {
       this.getCode().then(code => {
         this.globalData.code = code
@@ -65,7 +65,7 @@ App({
         wx.setStorageSync('userInfo', buf.data)
         wx.setStorageSync('isLogin', true)
         this.handleUpGlobalData() // 更新globalData数据
-        this.getCartList() // 购物车列表
+        // this.getCartList() // 购物车列表
         return success()
       })
     })
@@ -184,9 +184,42 @@ App({
     })
   },
 
+  // 绑定分享人关系
+  handleBindShare(e) {
+    // parent_id	是	int	父用户ID
+    // chlid_uid_id	是	int	子用户ID
+    // type 是	int	分享类型：3：分享商品，4：名片分享（邀请）
+    if (this.globalData.isAuthorizationPlatform) {
+      return
+    }
+    http.fxPost(api.mobile_apis_share, e, res => {
+      console.log(res, '绑定分享人关系')
+      if (res.code != 2000) {
+        utils.showToast(res.msg)
+      }
+    })
+  },
+
+  // 商品的分享配置
+  handleShareProduct(title, imageUrl, id) {
+    return {
+      title,
+      imageUrl,
+      path: '/pages/product/product?id=' + id + '&sharePrent=' + this.globalData.userInfo.uid + '&shareType=3'
+    }
+  },
+
+  // 分享平台的配置
+  handleShareApp() {
+
+  },
+
   // 全局变量
   globalData: {
-    code: '', // code
+    // 是否授权过平台
+    isAuthorizationPlatform: true,
+    // code
+    code: '',
     // 设备信息
     systemInfo: {},
     // 用户是否登录

@@ -47,7 +47,7 @@
 /* 分享按钮s */
 
 .share-btn {
-  background-color: red;
+  /* background-color: red; */
 }
 
 /* <button class="share-btn" open-type="share" ></button> */

@@ -108,25 +108,23 @@
       <!-- <rich-text type="node" attrs="{{true}}" nodes="{{productDetail.goods_desc}}"></rich-text> -->
       <template is="wxParse" data="{{wxParseData:htmlPhotoText.nodes}}" />
     </view>
-
-
   </view>
 
   <!-- 底部购买按钮 -->
   <view class="shop-box">
     <view class="left">
-      <view class="function-icon">
+      <button class="function-icon" open-type="contact" bindcontact="handleContact">
         <image class="function-icon__fu" src="../../images/kf@2x.png"></image>
         <text>客服</text>
-      </view>
+      </button>
       <view class="function-icon" catchtap="handleGoCart">
         <image class="function-icon__cart" src="../../images/gwc@2x.png"></image>
         <text>购物车</text>
       </view>
-      <view class="function-icon">
+      <button class="function-icon" open-type="share">
         <image class="function-icon__cart" src="../../images/share@2.png"></image>
         <text>分享</text>
-      </view>
+      </button>
     </view>
     <view class="shop-cart__box">
       <view class="shop-cart__box--item join-cart" catchtap="handleIsShowPick">加入购物车</view>
@@ -176,6 +174,9 @@
     <view class="tiao-box__middle"></view>
     <view class="tiao-box__right">更改地址</view>
   </view>
+
+  <!-- 登录注册 -->
+  <login isShow="{{isShowLogin}}"></login>
 
   <!-- 垫片 -->
   <view class="shim"></view>

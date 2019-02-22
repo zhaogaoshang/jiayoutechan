@@ -11,6 +11,7 @@ Page({
    */
   data: {
     id: '', // 产品的id
+    isShowLogin: true, // 注册是否显示
     productDetail: {}, // 产品详情
     htmlPhotoText: {},
     isCollect: false, // 是否收藏
@@ -31,6 +32,11 @@ Page({
       name: '详情',
       id: 2
     }],
+  },
+
+  // 处理客服会话
+  handleContact(e) {
+
   },
 
   // 规格选择
@@ -219,17 +225,50 @@ Page({
     })
   },
 
+  // 获取进入相关信息
+  getUserInfo(options) {
+    console.log(options, "分享相关")
+    this.setData({
+      id: options.id
+    })
+    this.getProductDetail() // 商品详情
+
+    // 检测绑定分享人
+    if (options.sharePrent) {
+      let params = {
+        parent_id: options.sharePrent,
+        chlid_uid_id: app.globalData.userInfo.uid,
+        type: options.shareType
+      }
+      app.handleBindShare(params)
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
-    console.log(options)
-    this.setData({
-      id: options.id
-    })
+    console.log(app.globalData.isLogin,'是否登录')
 
-    this.getProductDetail() // 商品详情
+    if (app.globalData.isLogin) {
+      this.setData({
+        isShowLogin: false
+      })
+      app.handleTokenCheck().then(() => {
+        this.getUserInfo(options)
+      })
+    } else {
+      // 没有解析
+      console.log('解析数据')
+      app.userInfoReadyCallback = res => {
+        app.handleUserInfo(res).then(() => {
+          app.handleTokenCheck().then(() => {
+            this.getUserInfo(options)
+          })
+        })
+      }
+    }
   },
 
   /**
@@ -278,6 +317,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    let titlt = this.data.productDetail.goods_name
+    let url = utils.imageUrl + this.data.productDetail.goods_img
+    let id = this.data.id
+    return app.handleShareProduct(titlt, url, id)
   }
 })

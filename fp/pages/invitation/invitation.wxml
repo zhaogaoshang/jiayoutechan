@@ -1,29 +1,30 @@
 <!--pages/invitation/invitation.wxml-->
+<wxs src="../../utils/util.wxs" module="wxs" />
 <view class="container invitation">
   <view class="title">
     <view wx:for="{{['头像','昵称','来源','日期']}}" wx:key="{{index}}">{{item}}</view>
   </view>
-  <view class="title list-box" wx:for="{{12}}">
+  <view class="title list-box" wx:for="{{list.list}}" wx:key="{{index}}">
     <view class="item">
-      <image class="avatar" src="../../images/active.jpg"></image>
+      <image class="avatar" src="{{item.headimg}}"></image>
     </view>
     <view class="item">
-      <text class="name">京城吴彦祖</text>
+      <text class="name">{{item.user_name}}</text>
     </view>
     <view class="item">
-      <text class="from">名片扫码</text>
+      <text class="from" wx:if="{{item.type==3}}">商品分享</text>
+      <text class="from" wx:if="{{item.type==4}}">名片扫码</text>
     </view>
     <view class="item">
-      <text class="time">2019.2.15</text>
+      <text class="time">{{wxs.timestamp2string(item.create_time,"date")}}</text>
     </view>
   </view>
 
   <form class="share-box">
-    <button class="share">邀请好友</button>
+    <button class="share" open-type="share">邀请好友</button>
   </form>
 
   <view class="shim"></view>
   <view class="shim"></view>
   <view class="shim"></view>
-
 </view>

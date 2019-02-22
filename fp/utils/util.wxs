@@ -1,7 +1,8 @@
-var locationUrl = 'http://shandai.zcsoft.net/'
-var changelessImage = 'http://shandai.zcsoft.net/mobile/images/apis/'
+var locationUrl = 'http://shandai.zcsoft.net/' // 商品图片地址
+var changelessImage = 'http://shandai.zcsoft.net/mobile/images/apis/' //固定图片地址
 // 时间格式化
 function timestamp2string(ts, format = 'time') {
+  var ts = ts - 0
   var date = getDate()
   date.setTime(ts * 1000)
   var y = date.getFullYear()

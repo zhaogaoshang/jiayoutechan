@@ -37,13 +37,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "商品详情",
 					"pathName": "pages/product/product",
-					"query": "id=45",
+					"query": "id=45&sharePrent=62&shareType=3",
 					"scene": null
 				},
 				{
