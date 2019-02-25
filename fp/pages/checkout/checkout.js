@@ -1,5 +1,9 @@
 // pages/order/order.js
-const app = getApp()
+const app = getApp() //获取应用实例
+const http = require('../../utils/http.js')
+const api = require('../../utils/api.js')
+const utils = require('../../utils/util.js')
+
 Page({
 
   /**
@@ -7,6 +11,8 @@ Page({
    */
   data: {
     isShoLove: false, // 爱心贡献 
+
+    orderDetail: {}, // 订单详情
   },
 
   // 提交订单
@@ -20,6 +26,22 @@ Page({
   handleGoAddress() {
     wx.navigateTo({
       url: '../address/address',
+    })
+  },
+
+  // 计算
+  getSum() {
+    http.fxGet(api.mobile_apis_submitOrder, {
+      sel_goods: app.globalData.checkoutSku
+    }, res => {
+      console.log(res, '获取订单')
+      if (res.code == 2000) {
+        this.setData({
+          orderDetail: res.data
+        })
+      } else {
+        utils.showToast(res.msg)
+      }
     })
   },
 
@@ -41,7 +63,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.getSum()
+    // this.getExpress()
   },
 
   /**

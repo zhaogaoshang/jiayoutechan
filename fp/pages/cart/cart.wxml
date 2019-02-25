@@ -55,7 +55,7 @@
       <image class="active" src="../../images/wxi@2x.png" wx:if="{{!isAllPick}}"></image>
       <text class="all-pick">全选</text>
     </view>
-    <view class="handle-order__box--right">
+    <view class="handle-order__box--right" catchtap="handleGoCheckout">
       <view class="order-price">合计：￥{{countPrice}}</view>
       <view class="checkout"> 结算</view>
     </view>

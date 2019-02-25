@@ -1,3 +1,4 @@
+const config = require('./config.js')
 // 当前时间戳
 const timestamp = () => {
   return Date.parse(new Date()) / 1000
@@ -27,5 +28,5 @@ module.exports = {
   timestamp,
   randomString,
   showToast,
-  imageUrl: 'http://shandai.zcsoft.net/'
+  imageUrl: config.fxUrl()
 }

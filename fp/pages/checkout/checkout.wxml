@@ -7,11 +7,11 @@
   <!-- 店铺 -->
   <view class="store-item">
     <view class="store-name">鲜公旗舰店</view>
-    <view class="product-item" wx:for="{{[1,2,3]}}" wx:key="{{index}}">
-      <product></product>
-      <text class="my-pick">4箱草莓+3箱苹果+1箱栗子</text>
-      <text class="product-price">￥75.00</text>
-      <text class="product-count">x1</text>
+    <view class="product-item" wx:for="{{orderDetail.cart_goods}}" wx:key="{{index}}">
+      <product item="{{item}}"></product>
+      <text class="my-pick">{{item.goods_attr}}</text>
+      <text class="product-price">￥{{item.goods_price}}</text>
+      <text class="product-count">x{{item.goods_number}}</text>
     </view>
     <!-- 配送费用 -->
     <view class="tiao-box logisticts-box">

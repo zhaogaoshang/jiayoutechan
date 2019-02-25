@@ -22,6 +22,30 @@ Page({
     ]
   },
 
+  // 去结算页面
+  handleGoCheckout() {
+    app.globalData.checkoutSku = ''
+    if (this.data.isAllPick) {
+      app.globalData.checkoutSku = '0'
+    } else {
+      this.data.productList[0].goods_list.forEach((item, index) => {
+        if (item.isCheckout) {
+          app.globalData.checkoutSku += item.product_id + ','
+        }
+      })
+      app.globalData.checkoutSku = app.globalData.checkoutSku.slice(0, -1)
+    }
+
+    if (!app.globalData.checkoutSku) {
+      utils.showToast('请选择商品')
+      return
+    }
+
+    wx.navigateTo({
+      url: '../checkout/checkout',
+    })
+  },
+
   // 数量加减
   handleExportsCount(e) {
     console.log(e.detail)
@@ -45,8 +69,6 @@ Page({
 
   // 选择产品
   handleCheckoutProduct(e) {
-    console.log(e.currentTarget.dataset.parentIndex)
-    console.log(e.currentTarget.dataset.sunIndex)
     let parentIndex = e.currentTarget.dataset.parentIndex
     let sunIndex = e.currentTarget.dataset.sunIndex
 
@@ -56,7 +78,6 @@ Page({
 
     this.countPrice() // 计算总价
     this.isAllPick().then((res) => { // 是否全选
-      console.log(res)
       this.setData({
         isAllPick: res
       })
@@ -112,7 +133,6 @@ Page({
     list.forEach(item => {
       item.goods_list.forEach(only => {
         if (only.isCheckout) {
-          console.log(only.goods_price)
           count = (only.goods_price * only.goods_number) * 1000 + count
         }
       })
@@ -197,7 +217,6 @@ Page({
   // 添加购物车
   getCart() {
     app.getCartList().then(res => {
-      console.log(res)
       res.goods_list.forEach(item => {
         console.log(item)
         item.goods_list.forEach(only => {
@@ -218,7 +237,6 @@ Page({
    */
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
-    console.log(app.globalData.systemInfo.screenWidth, '设备的宽度')
   },
 
   /**

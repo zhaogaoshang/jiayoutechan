@@ -25,7 +25,6 @@ Component({
    * 准备完成
    */
   ready() {
-    console.log(this.properties.count)
   },
 
   /**

@@ -464,17 +464,21 @@ Page({
     })
   },
 
-  // 获取新品上市
+  // 获取新品首发
   getNewProductSell() {
     http.fxGet(api.mobile_apis_mttindex, this.data.newProductSellParams, res => {
       console.log(res.data, '新品上市')
       if (res.code == 2000) {
+        if (this.data.newProductSellParams.page > 1) {
+          res.data.list = this.data.newProductSell.list.concat(res.data.list)
+        }
         this.setData({
           newProductSell: res.data
         })
       } else {
         utils.showToast(res.msg)
       }
+      wx.stopPullDownRefresh()
     })
   },
 
@@ -490,8 +494,10 @@ Page({
           gatherShop: res.data
         })
       } else {
-
+        utils.showToast(res.msg)
       }
+
+      wx.stopPullDownRefresh()
     })
   },
 
@@ -566,7 +572,12 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    wx.stopPullDownRefresh()
+    this.setData({
+      'newProductSellParams.page': 1,
+      'gatherShopParams.page': 1
+    })
+    this.getNewProductSell()
+    this.gatherShop()
   },
 
   /**
@@ -578,18 +589,30 @@ Page({
     // 臻品馆
     if (currentCategory == 0) {
       console.log('触底加载新品首发')
-      if (this.data.newProductSell.next) {
+      if (!this.data.newProductSell.next) {
+        utils.showToast('没有更多了')
         return
       }
 
       this.setData({
         'newProductSellParams.page': ++this.data.newProductSellParams.page
       })
-      thisgetNewProductSell()
+      this.getNewProductSell()
     }
+
     // 去赶集
     if (currentCategory == 2) {
       console.log('触底加载去赶集')
+      if (!this.data.gatherShop.next) {
+        utils.showToast('没有更多了')
+        return
+      }
+
+      this.setData({
+        'gatherShopParams.page': ++this.data.gatherShopParams.page
+      })
+
+      this.gatherShop()
     }
   },
 

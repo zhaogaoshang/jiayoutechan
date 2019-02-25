@@ -1,7 +1,7 @@
 //环境
-function fxUrl(url) {
+function fxUrl(url = '') {
   let location = ''
-  location = 'http://shandai.zcsoft.net/'
+  location = 'https://shandai.zcsoft.net/'
 
   return location + url
 }
