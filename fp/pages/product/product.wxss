@@ -493,3 +493,30 @@
   padding: 17rpx 13rpx 19rpx;
   border: 1rpx solid white;
 }
+
+/* 操作数量 */
+
+.pick-box .add-delete__function {
+  display: flex;
+  flex-direction: row;
+}
+
+.pick-box .add-delete__function .need-count {
+  width: 76rpx;
+  height: 44rpx;
+  background: rgba(246, 246, 246, 1);
+  font-size: 24rpx;
+  font-family: Adobe Heiti Std R;
+  font-weight: normal;
+  color: rgba(51, 51, 51, 1);
+  text-align: center;
+  line-height: 44rpx;
+}
+
+.pick-box .add-delete__function .need-count__icon {
+  padding: 0 15rpx;
+  font-size: 30rpx;
+  color: rgba(51, 51, 51, 1);
+}
+
+/* 操作数量 */

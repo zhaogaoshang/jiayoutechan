@@ -31,7 +31,8 @@
     "enablePullDownRefresh": true
   },
   "usingComponents": {
-    "login": "/componment/login/login"
+    "login": "/componment/login/login",
+    "load-page": "/componment/loadPage/loadPage"
   },
   "tabBar": {
     "backgroundColor": "#ffffff",

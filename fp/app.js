@@ -59,12 +59,8 @@ App({
       ...res
     }
 
-    console.log(this.globalData.code)
-
     return new Promise((success, error) => {
       http.fxPost(api.mobile_apis_login, parms, buf => {
-        console.log(parms)
-        console.log(buf, '用户信息')
         wx.setStorageSync('userInfo', buf.data)
         wx.setStorageSync('isLogin', true)
         this.handleUpGlobalData() // 更新globalData数据

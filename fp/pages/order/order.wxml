@@ -1,16 +1,16 @@
 <!--pages/order/order.wxml-->
 <view class="container order">
   <view class="category-box">
-    <view class="category-item" wx:for="{{category}}" wx:key="{{index}}">
+    <view class="category-item" wx:for="{{category}}" wx:key="{{index}}" catchtap="handleSwichCategory" data-id="{{item.id}}">
       <view>{{item.name}}</view>
-      <view class="line"></view>
+      <view class="line" wx:if="{{item.id==activeCategory}}"></view>
     </view>
   </view>
 
   <!-- 全部订单 -->
-  <view class="order-item" catchtap="handleOrderInfo">
+  <view class="order-item" wx:if="{{activeCategory=='all'}}" catchtap="handleOrderInfo" wx:for="{{allOrder.list}}" wx:key="{{index}}" data-order-id="{{item.order_id}}">
     <view class="tiao-box">
-      <view class="tiao-box__left">鲜公旗舰店</view>
+      <view class="tiao-box__left"></view>
       <view class="tiao-box__middle"></view>
       <view class="tiao-box__right">待支付</view>
     </view>
@@ -29,7 +29,7 @@
   </view>
 
   <!-- 待支付 -->
-  <view class="order-item">
+  <view class="order-item" wx:if="{{activeCategory=='daiZhiFu'}}">
     <view class="tiao-box">
       <view class="tiao-box__left">鲜公旗舰店</view>
       <view class="tiao-box__middle"></view>
@@ -50,7 +50,7 @@
   </view>
 
   <!-- 待发货 -->
-  <view class="order-item">
+  <view class="order-item" wx:if="{{activeCategory=='daiFaHuo'}}">
     <view class="tiao-box">
       <view class="tiao-box__left">鲜公旗舰店</view>
       <view class="tiao-box__middle"></view>
@@ -71,7 +71,7 @@
   </view>
 
   <!-- 待收货 -->
-  <view class="order-item">
+  <view class="order-item" wx:if="{{activeCategory=='daiShouHuo'}}">
     <view class="tiao-box">
       <view class="tiao-box__left">鲜公旗舰店</view>
       <view class="tiao-box__middle"></view>
@@ -92,7 +92,7 @@
   </view>
 
   <!-- 待评价 -->
-  <view class="order-item">
+  <view class="order-item" wx:if="{{activeCategory=='daiPingJia'}}">
     <view class="tiao-box">
       <view class="tiao-box__left">鲜公旗舰店</view>
       <view class="tiao-box__middle"></view>
@@ -113,7 +113,7 @@
   </view>
 
   <!-- 退款退货 -->
-  <view class="order-item">
+  <view class="order-item" wx:if="{{false}}">
     <view class="tiao-box">
       <view class="tiao-box__left">鲜公旗舰店</view>
       <view class="tiao-box__middle"></view>

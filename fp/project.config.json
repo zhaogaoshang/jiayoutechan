@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 10,
 			"list": [
 				{
 					"id": 0,
@@ -101,6 +101,13 @@
 					"name": "新增地址",
 					"pathName": "pages/addressChang/addressChang",
 					"query": "id=45",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/commentWrite/commentWrite",
+					"query": "id=45&sharePrent=62&shareType=3",
 					"scene": null
 				}
 			]

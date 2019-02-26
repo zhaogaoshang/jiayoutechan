@@ -1,6 +1,9 @@
 <!--pages/cart/cart.wxml-->
 <wxs src="../../utils/util.wxs" module="wxs" />
 <view class="container cart">
+  <!-- 加载页面 -->
+  <load-page time="{{5000}}" isShow="{{loadPageIsShow}}"></load-page>
+
   <!-- 每一个店铺 -->
   <view class="product-item" wx:for="{{productList}}" wx:key="{{index}}" wx:for-index="list">
     <!-- 头部 -->
@@ -42,7 +45,7 @@
         <view class="handle-box" data-parent-index="{{list}}" data-sun-index="{{index}}" catchtap="handleDeleteProduct">删除</view>
         <!-- 删除增加 -->
         <view class="add-delete__function">
-          <add-delete bind:handleExportsCount="handleExportsCount" sku="{{item.product_id}}" count="{{item.goods_number}}" inventoryQuantity="{{999}}"></add-delete>
+          <add-delete bind:handleExportsCount="handleExportsCount" sku="{{item.goods_id}}" count="{{item.goods_number}}" rec_id="{{item.rec_id}}"></add-delete>
         </view>
       </view>
     </view>

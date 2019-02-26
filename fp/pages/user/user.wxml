@@ -1,5 +1,8 @@
 <!--pages/user/user.wxml-->
 <view class="container user">
+  <!-- 加载页面 -->
+  <load-page></load-page>
+  
   <!-- 头部信息 -->
   <view class="user-info__box">
     <image class="user-avatar" src="{{userInfo.head_url}}"></image>

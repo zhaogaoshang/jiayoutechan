@@ -53,41 +53,43 @@
     <image class="loaction-photo" src="../../images/dizhi-bg@2.png"></image>
     <view class="receive-loaction">
       <view class="top">
-        <text>京城陈冠希</text>
-        <text class="right">13613457776</text>
+        <text>{{orderDetail.info.consignee}}</text>
+        <text class="right">{{orderDetail.info.mobile}}</text>
       </view>
-      <view class="bottom">北京市朝阳区首开国风上观2002</view>
+      <view class="bottom">{{orderDetail.info.province}}{{orderDetail.info.city}}{{orderDetail.info.district}}</view>
     </view>
   </view>
 
   <!-- 订单 -->
   <view class="order-item" catchtap="handleOrderInfo">
     <view class="tiao-box">
-      <view class="tiao-box__left">鲜公旗舰店</view>
+      <view class="tiao-box__left"></view>
       <view class="tiao-box__middle"></view>
       <view class="tiao-box__right">待支付</view>
     </view>
     <view>
-      <view class="product-item" wx:for="{{product}}" wx:key="{{index}}">
-        <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
-        <view class="product-count">4箱草莓+3箱苹果+1箱栗子</view>
-        <view class="product-price">75.00</view>
-        <view class="product-container__text">x1</view>
-      </view>
-      <view class="expenses-discription">
-        <view class="price-discreption">
-          <text class="left">商品金额：</text>
-          <text class="right">¥235.00</text>
+      <block wx:for="{{orderDetail.list}}" wx:key="{{index}}">
+        <view class="product-item">
+          <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+          <view class="product-count">{{item.goods_attr}}</view>
+          <view class="product-price">{{item.goods_price}}</view>
+          <view class="product-container__text">x{{item.goods_number}}</view>
         </view>
-        <view class="price-discreption">
-          <text class="left">运费：</text>
-          <text class="right">¥0.00</text>
+        <view class="expenses-discription">
+          <view class="price-discreption">
+            <text class="left">商品金额：</text>
+            <text class="right">¥{{item.goods_price}}</text>
+          </view>
+          <view class="price-discreption">
+            <text class="left">运费：</text>
+            <text class="right">¥{{item.n_shiping_fee}}</text>
+          </view>
+          <view class="price-discreption">
+            <text></text>
+            <text class="sum-price">总金额：¥{{item.amount}}</text>
+          </view>
         </view>
-        <view class="price-discreption">
-          <text></text>
-          <text class="sum-price">总金额：¥235.00</text>
-        </view>
-      </view>
+      </block>
       <view class="handle-btn">
         <button>取消订单</button>
         <button class="handle-btn__red">立即支付</button>
@@ -100,9 +102,9 @@
     <view class="top">订单信息</view>
     <view class="bottom">
       <view class="item">订单状态：待发货</view>
-      <view class="item">订单编号：153487531547876</view>
-      <view class="item">下单时间：2019-02-14 08:16:24</view>
-      <view class="item">配送方式：快递</view>
+      <view class="item">订单编号：{{orderDetail.info.order_sn}}</view>
+      <view class="item">下单时间：{{orderDetail.info.add_time}}</view>
+      <view class="item">配送方式：{{orderDetail.info.shipping_name?orderDetail.info.shipping_name:'快递'}}</view>
     </view>
   </view>
 

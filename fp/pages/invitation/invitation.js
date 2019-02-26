@@ -9,11 +9,34 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isShowShareBox: false, // 是否显示分享的图片
     params: {
 
     },
     list: {}
   },
+
+  // 是否显示我的二维码
+  handleIsShowShareBox() {
+    this.setData({
+      isShowShareBox: !this.data.isShowShareBox
+    })
+    if (this.data.isShowShareBox) {
+      this.getCard()
+    }
+  },
+
+  // 获取二维码
+  getCard() {
+    let parmas = {
+      act: 1,
+      url: '/pages/index/index'
+    }
+    http.fxGet(api.mobile_apis_share_erweima, parmas, res => {
+      console.log(res, '生成图片')
+    })
+  },
+
   // 获取分享
   getMyinvitation() {
     http.fxPost(api.mobile_apis_share_list, this.data.params, res => {

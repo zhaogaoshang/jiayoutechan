@@ -22,7 +22,7 @@
   </view>
 
   <!-- 匿名提交 -->
-  <view class="tiao-box submit-btn__box">
+  <view class="tiao-box submit-btn__box" wx:if="">
     <view class="tiao-box__left">
       <image class="submit-icon" src="../../images/xzi@2x.png"></image>
       <image class="submit-icon" src="../../images/wxi@2x.png"></image>

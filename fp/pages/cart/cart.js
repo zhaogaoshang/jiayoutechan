@@ -12,6 +12,8 @@ Page({
     touchStartLocatione: 0,
     touchEndLocatione: 0,
 
+    loadPageIsShow: true, // 加载页面
+
     isAllPick: false, // 是否是全选
     countPrice: 0, // 总金额
 
@@ -19,7 +21,7 @@ Page({
       //   {
       //   status: 0 // 滑动状态：0为没有变动过 2滑动初始值 1为已经滑动
       // }
-    ]
+    ],
   },
 
   // 去结算页面
@@ -30,7 +32,7 @@ Page({
     } else {
       this.data.productList[0].goods_list.forEach((item, index) => {
         if (item.isCheckout) {
-          app.globalData.checkoutSku += item.product_id + ','
+          app.globalData.checkoutSku += item.rec_id + ','
         }
       })
       app.globalData.checkoutSku = app.globalData.checkoutSku.slice(0, -1)
@@ -54,7 +56,8 @@ Page({
     let count = 0
     list.forEach(item => {
       item.goods_list.forEach(only => {
-        if (only.product_id == agent.sku) {
+        console.log(only.rec_id, agent.rec_id)
+        if (only.rec_id == agent.rec_id) {
           only.goods_number = agent.count
         }
       })
@@ -228,6 +231,14 @@ Page({
       this.setData({
         cartList: res,
         productList: res.goods_list,
+        loadPageIsShow: false
+      })
+
+      this.countPrice() // 计算总价
+      this.isAllPick().then((res) => { // 是否全选
+        this.setData({
+          isAllPick: res
+        })
       })
     })
   },

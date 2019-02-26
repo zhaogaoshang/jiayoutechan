@@ -1,4 +1,8 @@
 // pages/paymentResult/paymentResult.js
+const app = getApp() //获取应用实例
+const http = require('../../utils/http.js')
+const api = require('../../utils/api.js')
+const utils = require('../../utils/util.js')
 Page({
 
   /**

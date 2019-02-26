@@ -1,5 +1,7 @@
 <!--pages/product/product.wxml  off@2.png-->
 <wxs src="../../utils/util.wxs" module="wxs" />
+<!-- 加载页面 -->
+<load-page time="{{10000}}" isShow="{{loadPageIsShow}}"></load-page>
 <import src="../../wxParse/wxParse.wxml" />
 <view class="container product-page">
   <!-- 分类 -->
@@ -155,7 +157,12 @@
         <view class="tiao-box__left shop-count">购买数量</view>
         <view class="tiao-box__middle"></view>
         <view class="tiao-box__right">
-          <add-delete bind:handleExportsCount="handleExportsCount" inventoryQuantity="{{activeSpecifications.goods_attr_number}}"></add-delete>
+          <!-- <add-delete bind:handleExportsCount="handleExportsCount" inventoryQuantity="{{activeSpecifications.goods_attr_number}}"></add-delete> -->
+          <view class="add-delete__function" catchtap="handleNull">
+            <view class="need-count__icon" catchtap="handleDelete">-</view>
+            <view class="need-count">{{activeSpecifications.qty}}</view>
+            <view class="need-count__icon" catchtap="handleAdd">+</view>
+          </view>
         </view>
       </view>
       <!-- 确定按钮 -->

@@ -12,6 +12,7 @@ Page({
   data: {
     id: '', // 产品的id
     isShowLogin: true, // 注册是否显示
+    loadPageIsShow: true, // 是否加载页面
     productDetail: {}, // 产品详情
     htmlPhotoText: {},
     isCollect: false, // 是否收藏
@@ -39,6 +40,23 @@ Page({
 
   },
 
+  // 加入购物车的数量减
+  handleDelete() {
+    if (this.data.activeSpecifications.qty > 1) {
+      this.setData({
+        'activeSpecifications.qty': --this.data.activeSpecifications.qty
+      })
+    }
+
+  },
+
+  // 加入购物车的数量加
+  handleAdd() {
+    this.setData({
+      'activeSpecifications.qty': ++this.data.activeSpecifications.qty
+    })
+  },
+
   // 规格选择
   handlePickSpecifications(e) {
     let id = e.currentTarget.dataset.id
@@ -64,7 +82,6 @@ Page({
     this.handleIsShowPick()
 
     let currentActive = this.data.activeSpecifications
-    console.log(this.data.activeSpecifications)
 
     let agent = this.data.productDetail.spes
     let activeId = ''
@@ -102,8 +119,18 @@ Page({
 
   // 去下单
   handleGoOrder() {
+    let currentActive = this.data.activeSpecifications
+
+    let agent = this.data.productDetail.spes
+    let activeId = ''
+    agent.forEach((item, index) => {
+      if (item.active) {
+        activeId = item.id
+      }
+    })
+
     wx.navigateTo({
-      url: '../checkout/checkout',
+      url: '../checkout/checkout?spec=' + [activeId] + '&goods_id=' + this.data.id + '&number=' + currentActive.qty,
     })
   },
 
@@ -179,7 +206,8 @@ Page({
         this.setData({
           productDetail: res.data.goods,
           // storeInfo: res.data.shop_info
-          isCollect: res.data.is_collect
+          isCollect: res.data.is_collect,
+          loadPageIsShow: false
         })
 
         wxparse.wxParse('htmlPhotoText', 'html', res.data.goods.goods_desc, this, 5);
@@ -195,7 +223,6 @@ Page({
   // 处理图片显示
   handleHtmlPhotoShow() {
     let html = this.data.htmlPhotoText
-    console.log(html)
   },
 
   // 获取规格相关
@@ -214,7 +241,7 @@ Page({
       attr: activeId, // 规格id
       number: 1
     }, res => {
-      console.log(res, '规格参数')
+      // console.log(res, '规格参数')
       if (res.code == 2000) {
         this.setData({
           activeSpecifications: res.data
@@ -227,7 +254,7 @@ Page({
 
   // 获取进入相关信息
   getUserInfo(options) {
-    console.log(options, "分享相关")
+    // console.log(options, "分享相关")
     this.setData({
       id: options.id
     })
@@ -249,7 +276,7 @@ Page({
    */
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
-    console.log(app.globalData.isLogin,'是否登录')
+    // console.log(app.globalData.isLogin,'是否登录')
 
     if (app.globalData.isLogin) {
       this.setData({

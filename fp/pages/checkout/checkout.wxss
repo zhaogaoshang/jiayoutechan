@@ -1,9 +1,28 @@
 /* pages/order/order.wxss */
 
 .order .locktion-null__photo {
+  position: relative;
   width: 750rpx;
   height: 120rpx;
   margin-bottom: 10rpx;
+}
+
+.order .locktion-null__photo .location-detail,
+.order .locktion-null__photo .name {
+  position: absolute;
+  left: 100rpx;
+}
+
+.order .locktion-null__photo .name {
+  font-size: 26rpx;
+  color: rgba(51, 51, 51, 1);
+  top: 20rpx;
+}
+
+.order .locktion-null__photo .location-detail {
+  font-size: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  top: 60rpx;
 }
 
 .order .store-item {
@@ -44,7 +63,7 @@
 .order .store-item .product-item .my-pick {
   position: absolute;
   bottom: 70rpx;
-  left: 174rpx;
+  left: 210rpx;
   font-size: 24rpx;
   color: rgba(153, 153, 153, 1);
   line-height: 24rpx;
@@ -53,7 +72,7 @@
 .order .store-item .product-item .product-price {
   position: absolute;
   bottom: 30rpx;
-  left: 174rpx;
+  left: 210rpx;
   font-size: 22rpx;
   color: rgba(254, 145, 25, 1);
   line-height: 22rpx;
