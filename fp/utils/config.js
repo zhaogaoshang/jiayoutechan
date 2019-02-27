@@ -6,7 +6,7 @@ function fxUrl(url = '') {
   return location + url
 }
 
-// opnid
+// appid
 function openId() {
   return 'wx3bb377c18ef0e023'
 }

@@ -92,7 +92,7 @@
   </view>
 
   <!-- 待评价 -->
-  <view class="order-item" wx:if="{{activeCategory=='daiPingJia'}}">
+  <view class="order-item" wx:if="{{activeCategory=='daiPingJia'}}" wx:for="{{allOrder.list}}" wx:key="{{index}}">
     <view class="tiao-box">
       <view class="tiao-box__left">鲜公旗舰店</view>
       <view class="tiao-box__middle"></view>
@@ -106,8 +106,7 @@
         <view class="product-container__text">x1</view>
       </view>
       <view class="handle-btn">
-        <button>取消订单</button>
-        <button class="handle-btn__red">立即支付</button>
+        <button class="handle-btn__red" data-id="{{item.order_id}}" data-order-id="{{item.order_sn}}" data-rec-id="{{item.rec_id}}" catchtap="handleGoComment">评价</button>
       </view>
     </view>
   </view>

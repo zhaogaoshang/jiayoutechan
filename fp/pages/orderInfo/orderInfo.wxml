@@ -85,11 +85,18 @@
             <text class="right">¥{{item.n_shiping_fee}}</text>
           </view>
           <view class="price-discreption">
-            <text></text>
-            <text class="sum-price">总金额：¥{{item.amount}}</text>
+            <text class="left">小计：</text>
+            <text class="right">¥{{item.goods_price}}</text>
           </view>
         </view>
       </block>
+      <!-- 总计 -->
+      <view class="tiao-box price-discreption">
+        <view class="tiao-box__left">实付款(含运费)</view>
+        <view class="tiao-box__middle"></view>
+        <view class="tiao-box__right">总金额：¥{{orderDetail.info.c_amount}}</view>
+      </view>
+      <!-- 操控按钮 -->
       <view class="handle-btn">
         <button>取消订单</button>
         <button class="handle-btn__red">立即支付</button>

@@ -1,17 +1,18 @@
 <!--pages/commentWrite/commentWrite.wxml-->
+<wxs src="../../utils/util.wxs" module="wxs" />
 <view class="container comment-page">
   <!-- 商品 -->
-  <view class="tiao-box product-box">
+  <view class="tiao-box product-box" wx:for="{{orderDetail.list}}" wx:key="{{index}}">
     <view class="tiao-box__left">
-      <image class="product-photo" src="../../images/active.jpg"></image>
+      <image class="product-photo" src="{{wxs.imageUrl(item.goods_thumb)}}"></image>
     </view>
-    <view class="tiao-box__middle">一周内发货！果内发货！果内发货！果内发货！果园直摘，香甜的大草莓买了还想买...</view>
+    <view class="tiao-box__middle">{{item.goods_name}}</view>
     <view class="tiao-box__right"></view>
   </view>
 
   <!-- 评论 -->
   <view class="comment-text">
-    <textarea class="comment-text__info" auto-height placeholder="宝贝满足你的期待吗？说说他的优点和美中不足的地方吧"></textarea>
+    <textarea class="comment-text__info" auto-height placeholder="宝贝满足你的期待吗？说说他的优点和美中不足的地方吧" bindinput="handleInputComment"></textarea>
     <view class="comment-photo">
       <image class="photo" src="../../images/tjzp@2x.png"></image>
       <view class="item">
@@ -34,7 +35,7 @@
 
   <!-- 保存按钮 -->
   <form>
-    <button class="handle-submit__btn">保存</button>
+    <button class="handle-submit__btn" catchtap="handleSubmit">保存</button>
   </form>
 
   <view class="shim"></view>

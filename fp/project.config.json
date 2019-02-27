@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 11,
 			"list": [
 				{
 					"id": 0,
@@ -108,6 +108,12 @@
 					"name": "商品详情",
 					"pathName": "pages/commentWrite/commentWrite",
 					"query": "id=45&sharePrent=62&shareType=3",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "评价",
+					"pathName": "pages/commentWrite/commentWrite",
 					"scene": null
 				}
 			]

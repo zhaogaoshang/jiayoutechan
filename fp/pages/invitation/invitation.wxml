@@ -21,7 +21,7 @@
   </view>
 
   <!-- 分享 -->
-  <view>
+  <view class="share-my__mark" wx:if="{{isShowShareBox}}">
     <image></image>
     <view>
       <button>立即邀请</button>
@@ -29,9 +29,9 @@
     </view>
   </view>
 
-  <form class="share-box">
-    <button class="share" catchtap="handleIsShowShareBox">邀请好友</button>
-  </form>
+  <view class="share-box">
+    <view class="share" catchtap="handleIsShowShareBox">邀请好友</view>
+  </view>
 
   <view class="shim"></view>
   <view class="shim"></view>

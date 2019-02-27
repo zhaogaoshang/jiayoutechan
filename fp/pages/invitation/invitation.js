@@ -3,6 +3,7 @@ const app = getApp() //获取应用实例
 const http = require('../../utils/http.js')
 const api = require('../../utils/api.js')
 const utils = require('../../utils/util.js')
+const config = require('../../utils/config.js')
 Page({
 
   /**
@@ -21,26 +22,31 @@ Page({
     this.setData({
       isShowShareBox: !this.data.isShowShareBox
     })
-    if (this.data.isShowShareBox) {
-      this.getCard()
-    }
   },
 
   // 获取二维码
   getCard() {
     let parmas = {
       act: 1,
-      url: '/pages/index/index'
+      scene: '123',
+      page: 'pages/index/index',
+      appid: config.openId(),
+      secret: config.appSecret(),
+      logo: app.globalData.userInfo.head_url
     }
-    http.fxGet(api.mobile_apis_share_erweima, parmas, res => {
+
+    http.fxPost(api.mobile_apis_share_erweima, parmas, res => {
       console.log(res, '生成图片')
+      // utils.imageUrl(res.data)
+      console.log(res.data)
+      console.log(config.fxUrl(res.data))
     })
   },
 
   // 获取分享
   getMyinvitation() {
     http.fxPost(api.mobile_apis_share_list, this.data.params, res => {
-      console.log(res, '绑定人关系')
+      console.log(res, '绑定人')
       if (res.code == 2000) {
         this.setData({
           list: res.data
@@ -57,6 +63,7 @@ Page({
   onLoad: function(options) {
     app.handleTokenCheck().then(() => {
       this.getMyinvitation() // 获取我的邀请
+      this.getCard() // 获取二维码
     })
 
   },

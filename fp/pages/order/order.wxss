@@ -30,3 +30,7 @@
   background: linear-gradient(270deg, rgba(254, 145, 25, 1) 0%, rgba(255, 175, 31, 1) 100%);
   border-radius: 5rpx;
 }
+
+.order .order-item button {
+  min-width: 143rpx;
+}

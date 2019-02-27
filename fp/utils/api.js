@@ -14,6 +14,7 @@ module.exports = {
   mobile_apis_market_info: 'mobile/apis/market_info.php', // 市集
   mobile_apis_supplierinfo: 'mobile/apis/supplierinfo.php', // 店铺详情
   mobile_apis_mttindex: 'mobile/apis/mttindex.php', // 广告相关
+  mobile_apis_addcomment:'mobile/apis/addcomment.php', // 评论
 
   // 地址相关
   mobile_apis_searchindex: 'mobile/apis/searchindex.php', //get 全部的
