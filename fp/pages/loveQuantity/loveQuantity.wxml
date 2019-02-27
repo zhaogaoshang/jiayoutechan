@@ -1,5 +1,6 @@
 <!--pages/loveQuantity/loveQuantity.wxml-->
 <view class="container love-quantity__page">
+<construction></construction>
   <!-- 头部 -->
   <view class="hand">
     <view class="xin-icon__box">

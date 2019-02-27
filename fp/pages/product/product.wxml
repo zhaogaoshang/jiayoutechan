@@ -173,14 +173,14 @@
   </view>
 
   <!-- 已经下架 -->
-  <view class="sell-null">已售罄</view>
+  <!-- <view class="sell-null">已售罄</view> -->
 
   <!-- 售空 -->
-  <view class="tiao-box sell-null__out">
+  <!-- <view class="tiao-box sell-null__out">
     <view class="tiao-box__left">通州区已售空</view>
     <view class="tiao-box__middle"></view>
     <view class="tiao-box__right">更改地址</view>
-  </view>
+  </view> -->
 
   <!-- 登录注册 -->
   <login isShow="{{isShowLogin}}"></login>

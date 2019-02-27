@@ -11,9 +11,8 @@ Page({
    */
   data: {
     isShowShareBox: false, // 是否显示分享的图片
-    params: {
-
-    },
+    myMarkPhoto: '', // 我的名片
+    params: {},
     list: {}
   },
 
@@ -36,10 +35,48 @@ Page({
     }
 
     http.fxPost(api.mobile_apis_share_erweima, parmas, res => {
-      console.log(res, '生成图片')
-      // utils.imageUrl(res.data)
-      console.log(res.data)
-      console.log(config.fxUrl(res.data))
+      // console.log(config.fxUrl(res.data))
+      this.setData({
+        myMarkPhoto: config.fxUrl(res.data)
+      })
+    })
+  },
+
+  // 下载图片
+  handleServerPhoto() {
+    let that = this
+    // 下载网络文件至本地
+    wx.downloadFile({
+      url: this.data.myMarkPhoto,
+      success: function(res) {
+        if (res.statusCode == 200) {
+          // 保存文件至相册
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success: function(data) {
+              utils.showToast('保存成功')
+            },
+            fail: function(err) {
+              utils.showToast('下载海报失败')
+
+              if (err.errMsg == 'saveImageToPhotosAlbum:fail:auth denied') {
+                wx.openSetting({
+                  success(settingdata) {
+                    utils.showToast(settingdata)
+                    if (settingdata.authSetting['scope.writePhotosAlbum']) {
+                      utils.showToast('保存成功')
+                    } else {
+                      utils.showToast('保存失败')
+                    }
+                  }
+                })
+              } else {
+                utils.showToast('保存失败')
+              }
+            }
+          })
+        }
+      }
     })
   },
 

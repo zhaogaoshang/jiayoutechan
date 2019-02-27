@@ -21,11 +21,11 @@
   </view>
 
   <!-- 分享 -->
-  <view class="share-my__mark" wx:if="{{isShowShareBox}}">
-    <image></image>
-    <view>
-      <button>立即邀请</button>
-      <button>保存二维码</button>
+  <view class="share-my__mark" wx:if="{{isShowShareBox}}" catchtap="handleIsShowShareBox">
+    <image class="my-mark__photo" src="{{myMarkPhoto}}"></image>
+    <view class="handle-btn">
+      <button class="left" open-type="share">立即邀请</button>
+      <button class="right" catchtap="handleServerPhoto">保存二维码</button>
     </view>
   </view>
 

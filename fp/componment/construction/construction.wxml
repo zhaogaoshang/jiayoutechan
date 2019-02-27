@@ -1,0 +1,6 @@
+<!--componment/construction/construction.wxml-->
+<view class="container">
+  <image src="../../images/road_worker.png"></image>
+  <view>正在施工</view>
+  <button catchtap="handleBack" class="button">退出</button>
+</view>
