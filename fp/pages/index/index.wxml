@@ -83,10 +83,12 @@
           </view>
         </view>
 
-        <view class="like-share">
+        <view class="like-share" catchtap="handlePrevent">
           <image class="like-share__icon" src="../../images/sc.png" data-index="{{index}}" catchtap="handleCollect" wx:if="{{!item.is_collect}}"></image>
           <image class="like-share__icon" src="../../images/ssc.png" data-index="{{index}}" catchtap="handleCollect" wx:if="{{item.is_collect}}"></image>
-          <image class="like-share__icon right" src="../../images/fx.png"></image>
+          <image class="like-share__icon right" src="../../images/fx.png">
+            <button class="share-btn" open-type="share" data-id="{{item.goods_id}}" data-iamge="{{item.goods_thumb}}" data-title="{{item.goods_name}}" data-product="1"></button>
+          </image>
         </view>
       </view>
     </view>
@@ -107,10 +109,12 @@
           </view>
         </view>
 
-        <view class="like-share">
+        <view class="like-share" catchtap="handlePrevent">
           <image class="like-share__icon" src="../../images/sc.png" data-index="{{index}}" catchtap="handleNewProductCollect" wx:if="{{!item.is_collect}}"></image>
           <image class="like-share__icon" src="../../images/ssc.png" data-index="{{index}}" catchtap="handleNewProductCollect" wx:if="{{item.is_collect}}"></image>
-          <image class="like-share__icon right" src="../../images/fx.png"></image>
+          <image class="like-share__icon right" src="../../images/fx.png">
+            <button class="share-btn" open-type="share" data-id="{{item.goods_id}}" data-iamge="{{item.goods_thumb}}" data-title="{{item.goods_name}}" data-product="1"></button>
+          </image>
         </view>
       </view>
     </view>
@@ -152,14 +156,16 @@
           <!-- <text class="store-name__bottom">生态有机 美味不间断</text> -->
         </view>
         <view class="join-store" data-id="{{item.id}}" catchtap="handleGoStore">进入市集</view>
-        <image class="like-share__icon margin-right--30rpx" src="../../images/fx.png"></image>
+        <image class="like-share__icon margin-right--30rpx" src="../../images/fx.png">
+          <button class="share-btn" open-type="share" data-id="{{item.id}}" data-image="{{item.goods_thumb}}" data-title="{{item.name}}" data-gather="1"></button>
+        </image>
       </view>
       <!-- 底部 -->
       <view class="bottom">
         <view class="store-product__item" wx:for="{{item.goods}}" wx:key="{{index}}" catchtap="handleGoProduct" wx:for-item="only" data-id="{{only.goods_id}}">
           <image class="store-product__photo" src="{{wxs.imageUrl(only.goods_thumb)}}"></image>
           <view class="go-shop__box">
-            <image class="free-freight__icon" src="../../images/baoyou@2.png"></image>
+            <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{only.is_shipping==0}}"></image>
             <text class="product-cureent__price">¥{{only.shop_price}}</text>
             <!-- <text class="product-origin__price">¥100.00</text> -->
           </view>

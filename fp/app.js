@@ -208,9 +208,18 @@ App({
     }
   },
 
+  // 分享市集
+  handleShareGather(title, imageUrl, id) {
+    return {
+      title,
+      imageUrl,
+      path: '/pages/store/store?id=' + id
+    }
+  },
+
   // 分享平台的配置
   handleShareApp() {
-
+    
   },
 
   // 全局变量

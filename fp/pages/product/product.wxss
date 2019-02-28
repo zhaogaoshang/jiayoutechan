@@ -273,7 +273,7 @@
 }
 
 .product-page .discription-text__box image {
-  max-width: 750rpx;
+  max-width: 690rpx;
 }
 
 .product-page .discription-text__box p {
@@ -288,6 +288,10 @@
   font-weight: 500;
   color: rgba(51, 51, 51, 1);
   line-height: 26rpx;
+}
+
+.product-detail__top image {
+  max-width: 690rpx;
 }
 
 /* 商品详情e */

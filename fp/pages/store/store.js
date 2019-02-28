@@ -12,12 +12,12 @@ Page({
     storeId: '', // 店铺的id
     storeInfo: {}, // 店铺的信息
 
-    productList: {// 产品列表
-      info:{},
-      list:[],
-      next:true,
-      count:1
-    }, 
+    productList: { // 产品列表
+      info: {},
+      list: [],
+      next: true,
+      count: 1
+    },
     productParams: { // 参数
       market_id: '',
       per_page: 10,

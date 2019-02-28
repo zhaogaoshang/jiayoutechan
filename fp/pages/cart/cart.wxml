@@ -52,7 +52,7 @@
   </view>
 
   <!-- 底部 -->
-  <view class="handle-order__box">
+  <view class="handle-order__box" wx:if="{{productList.length!=0}}">
     <view class="handle-order__box--left" catchtap="handleAllPick">
       <image class="active" src="../../images/xzi@2x.png" wx:if="{{isAllPick}}"></image>
       <image class="active" src="../../images/wxi@2x.png" wx:if="{{!isAllPick}}"></image>

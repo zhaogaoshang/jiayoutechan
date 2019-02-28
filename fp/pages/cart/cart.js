@@ -92,29 +92,31 @@ Page({
     let list = this.data.productList
     let notActive = 0
     return new Promise((resolve, reject) => {
-      list.forEach(item => {
-        item.goods_list.forEach((only, index) => {
-          if (!only.isCheckout) {
-            notActive += 1
-          }
-          if (item.goods_list.length - 1 == index) {
-            if (notActive > 0) {
-              return resolve(false)
-            } else {
-              return resolve(true)
+      if (this.data.productList[0] && this.data.productList[0].goods_list.length == 0) {
+        return resolve(false)
+      } else {
+        list.forEach(item => {
+          item.goods_list.forEach((only, index) => {
+            if (!only.isCheckout) {
+              notActive += 1
             }
-          }
+            if (item.goods_list.length - 1 == index) {
+              if (notActive > 0) {
+                return resolve(false)
+              } else {
+                return resolve(true)
+              }
+            }
+          })
         })
-      })
+      }
     })
   },
 
   // 全选
   handleAllPick() {
     let list = this.data.productList
-
     this.isAllPick().then((res) => { // 是否全选
-      console.log(res)
       list.forEach(item => {
         item.goods_list.forEach((only, index) => {
           only.isCheckout = !res
@@ -152,14 +154,13 @@ Page({
     let idx = e.currentTarget.dataset.sunIndex
     let list = this.data.productList[prentIndex].goods_list
     let sku = this.data.productList[prentIndex].goods_list[idx].rec_id
-    list.splice(idx)
+    list.splice(idx, 1)
     this.setData({
       ['productList[' + prentIndex + '].goods_list']: list
     })
 
     this.countPrice() // 计算总价
-    this.isAllPick().then((res) => { // 是否全选
-      console.log(res)
+    this.isAllPick().then(res => { // 是否全选
       this.setData({
         isAllPick: res
       })
@@ -168,7 +169,6 @@ Page({
     http.fxGet(api.mobile_apis_dropCart, {
       id: sku
     }, res => {
-      console.log(res, '删除购物车')
       if (res.code == 2000) {
         utils.showToast(res.msg)
       } else {
