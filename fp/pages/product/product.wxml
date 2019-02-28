@@ -57,7 +57,7 @@
   <view class="comment-box" wx:if="{{comment.count!=0}}">
     <view class="tiao-box comment-box__top">
       <view class="tiao-box__left">评价</view>
-      <view class="tiao-box__middle"> （{{comment.count}}）</view>
+      <view class="tiao-box__middle"> （{{comment.count}} ）</view>
       <view class="tiao-box__right" catchtap="handleGoAllComment" wx:if="{{comment.count>5}}">
         <text>查看全部 </text>
         <image class="jaintou" src="../../images/gd@2x.png"></image>
