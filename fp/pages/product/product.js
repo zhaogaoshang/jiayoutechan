@@ -22,6 +22,16 @@ Page({
     }, // 选中的规格
     isShowPick: false, // 选择的弹框是否显示
 
+    comment: {
+      count: 0,
+      list: [],
+    }, // 评论列表
+    commentParams: { // 评论参数
+      gid: '',
+      page: 1,
+      pagesize: 5,
+    },
+
     categoryActive: 0, // 选择的分类
     category: [{ // 分类
       name: '商品',
@@ -33,6 +43,7 @@ Page({
       name: '详情',
       id: 2
     }],
+
   },
 
   // 处理客服会话
@@ -47,7 +58,6 @@ Page({
         'activeSpecifications.qty': --this.data.activeSpecifications.qty
       })
     }
-
   },
 
   // 加入购物车的数量加
@@ -220,6 +230,20 @@ Page({
     })
   },
 
+  // 获取评论
+  getComment() {
+    http.fxGet(api.mobile_apis_comment, this.data.commentParams, res => {
+      console.log(res, '评论列表')
+      if (res.code == 2000) {
+        this.setData({
+          comment: res.data
+        })
+      } else {
+        utils.showToast(res.msg)
+      }
+    })
+  },
+
   // 处理图片显示
   handleHtmlPhotoShow() {
     let html = this.data.htmlPhotoText
@@ -256,10 +280,11 @@ Page({
   getUserInfo(options) {
     // console.log(options, "分享相关")
     this.setData({
-      id: options.id
+      id: options.id,
+      'commentParams.gid': options.id
     })
     this.getProductDetail() // 商品详情
-
+    this.getComment() // 获取评论
     // 检测绑定分享人
     if (options.sharePrent) {
       let params = {
@@ -275,6 +300,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+
     app.getNetworkStatus() // 检测网络
     // console.log(app.globalData.isLogin,'是否登录')
 

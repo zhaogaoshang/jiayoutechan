@@ -1,5 +1,6 @@
 <!--pages/paymentResult/paymentResult.wxml-->
 <view class="container payment-result">
+  <construction></construction>
   <!-- 支付成功 -->
   <view class="payment-result__box">
     <image class="success-icon" src="../../images/car@2x.png"></image>

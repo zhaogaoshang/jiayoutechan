@@ -21,17 +21,17 @@
   </view>
 
   <!-- 分享 -->
-  <view>
-    <image></image>
-    <view>
-      <button>立即邀请</button>
-      <button>保存二维码</button>
+  <view class="share-my__mark" wx:if="{{isShowShareBox}}" catchtap="handleIsShowShareBox">
+    <image class="my-mark__photo" src="{{myMarkPhoto}}"></image>
+    <view class="handle-btn">
+      <button class="left" open-type="share">立即邀请</button>
+      <button class="right" catchtap="handleServerPhoto">保存二维码</button>
     </view>
   </view>
 
-  <form class="share-box">
-    <button class="share" catchtap="handleIsShowShareBox">邀请好友</button>
-  </form>
+  <view class="share-box">
+    <view class="share" catchtap="handleIsShowShareBox">邀请好友</view>
+  </view>
 
   <view class="shim"></view>
   <view class="shim"></view>

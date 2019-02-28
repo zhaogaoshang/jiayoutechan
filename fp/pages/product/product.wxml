@@ -54,22 +54,22 @@
   </view>
 
   <!-- 评价 -->
-  <view class="comment-box">
+  <view class="comment-box" wx:if="{{comment.count!=0}}">
     <view class="tiao-box comment-box__top">
       <view class="tiao-box__left">评价</view>
-      <view class="tiao-box__middle"> （23）</view>
-      <view class="tiao-box__right" catchtap="handleGoAllComment">
+      <view class="tiao-box__middle"> （{{comment.count}}）</view>
+      <view class="tiao-box__right" catchtap="handleGoAllComment" wx:if="{{comment.count>3}}">
         <text>查看全部 </text>
         <image class="jaintou" src="../../images/gd@2x.png"></image>
       </view>
     </view>
     <view>
-      <view class="comment-item" wx:for="{{[1,2,3,4]}}" wx:key="{{index}}">
+      <view class="comment-item" wx:for="{{comment.list}}" wx:key="{{index}}">
         <view class="comment-item__top">
-          <image class="comment-avatar" src="../../images/active.jpg"></image>
-          <text class="comment-name">老王</text>
+          <image class="comment-avatar" src="{{wxs.imageUrl(item.headimg)}}"></image>
+          <text class="comment-name">{{item.user_name}}</text>
         </view>
-        <text class="comment-item__bottom">非常好吃！还会再来的</text>
+        <text class="comment-item__bottom">{{item.content}}</text>
       </view>
     </view>
   </view>
@@ -173,14 +173,14 @@
   </view>
 
   <!-- 已经下架 -->
-  <view class="sell-null">已售罄</view>
+  <!-- <view class="sell-null">已售罄</view> -->
 
   <!-- 售空 -->
-  <view class="tiao-box sell-null__out">
+  <!-- <view class="tiao-box sell-null__out">
     <view class="tiao-box__left">通州区已售空</view>
     <view class="tiao-box__middle"></view>
     <view class="tiao-box__right">更改地址</view>
-  </view>
+  </view> -->
 
   <!-- 登录注册 -->
   <login isShow="{{isShowLogin}}"></login>

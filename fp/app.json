@@ -33,7 +33,8 @@
   },
   "usingComponents": {
     "login": "/componment/login/login",
-    "load-page": "/componment/loadPage/loadPage"
+    "load-page": "/componment/loadPage/loadPage",
+    "construction": "/componment/construction/construction"
   },
   "tabBar": {
     "backgroundColor": "#ffffff",

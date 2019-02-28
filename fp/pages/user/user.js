@@ -1,5 +1,8 @@
 // pages/user/user.js
 const app = getApp()
+const http = require('../../utils/http.js')
+const api = require('../../utils/api.js')
+const utils = require('../../utils/util.js')
 Page({
 
   /**
@@ -70,7 +73,6 @@ Page({
 
   // 去订单页面
   handleGoOrder(e) {
-    console.log(e.currentTarget.dataset.type)
     'tuiKuan daiPingJia daiShowhuo daiFaHuo daiZhifu all'
     if (e.currentTarget.dataset.type == 'tuiKuan') {
       wx.navigateTo({

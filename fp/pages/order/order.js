@@ -86,6 +86,15 @@ Page({
     })
   },
 
+  // 去订单评价页面
+  handleGoComment(e) {
+    console.log(e.currentTarget.dataset.id)
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '../commentWrite/commentWrite?id=' + id
+    })
+  },
+
   // 切换分类
   handleSwichCategory(e) {
     this.setData({
@@ -173,12 +182,13 @@ Page({
   onLoad: function(options) {
     console.log(options)
     app.getNetworkStatus() // 检测网络
-
-    this.getAllOrder() // 全部的订单
-    this.getDaiZhiFu() // 待支付
-    this.getDaiFaHuo() // 待发货
-    this.getDaiShouHuo() // 待收货
-    this.getDaiPingJia() // 待评价
+    app.handleTokenCheck().then(() => {
+      this.getAllOrder() // 全部的订单
+      this.getDaiZhiFu() // 待支付
+      this.getDaiFaHuo() // 代发货
+      this.getDaiShouHuo() // 待收货
+      this.getDaiPingJia() // 待评价
+    })
   },
 
   /**
