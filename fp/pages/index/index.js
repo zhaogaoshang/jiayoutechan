@@ -380,6 +380,7 @@ Page({
         this.setData({
           cityList: agent
         })
+        console.log(app.globalData.locationPick.locationId)
       } else {
         utils.showToast(res.msg)
       }
@@ -411,7 +412,6 @@ Page({
         this.setData({
           provinceList: agent
         })
-        console.log(res.data, '全部的省')
       } else {
         utils.showToast(res.msg)
       }

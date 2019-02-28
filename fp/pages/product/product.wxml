@@ -26,7 +26,10 @@
   <!-- 简述 -->
   <view class="product-discription__box">
     <!-- 价格 -->
-    <view class="cureent-price">￥{{productDetail.shop_price}}</view>
+    <view class="cureent-price">
+      <text>￥{{productDetail.shop_price}}</text>
+      <text class="old-price__text" wx:if="{{productDetail.morning_market_price!='0.0'}}"> ￥{{productDetail.morning_market_price}} </text>
+    </view>
     <!-- 描述 -->
     <view class="product-discription__text">
       <view class="lite-discription__text">{{productDetail.goods_name}}
@@ -58,7 +61,7 @@
     <view class="tiao-box comment-box__top">
       <view class="tiao-box__left">评价</view>
       <view class="tiao-box__middle"> （{{comment.count}}）</view>
-      <view class="tiao-box__right" catchtap="handleGoAllComment" wx:if="{{comment.count>3}}">
+      <view class="tiao-box__right" data-id="{{id}}" catchtap="handleGoAllComment" wx:if="{{comment.count>3}}">
         <text>查看全部 </text>
         <image class="jaintou" src="../../images/gd@2x.png"></image>
       </view>
@@ -75,7 +78,7 @@
   </view>
 
   <!-- 店铺 -->
-  <view class="store" catchtap="handleGoStore">
+  <view class="store" catchtap="handleGoStore" wx:if="{{}}">
     <view class="store-top">
       <image class="store-avatar" src="{{wxs.imageUrl(storeInfo.shoplogo)}}"></image>
       <view class="store-name">

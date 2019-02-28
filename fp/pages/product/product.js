@@ -183,7 +183,7 @@ Page({
   // 去查看全部评论
   handleGoAllComment(e) {
     wx.navigateTo({
-      url: '../commentAll/commentAll',
+      url: '../commentAll/commentAll?id='+e.currentTarget.dataset.id,
     })
   },
 

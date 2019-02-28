@@ -520,3 +520,13 @@
 }
 
 /* 操作数量 */
+
+.old-price__text {
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  text-decoration: line-through;
+  color: rgba(153, 153, 153, 1);
+  line-height: 24rpx;
+  margin-left: 10rpx;
+}

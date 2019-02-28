@@ -55,7 +55,7 @@
               </view>
             </view>
             <view class="people-count">{{item.sales}}人付款</view>
-            <view class="product-price">￥168</view>
+            <view class="product-price">￥{{item.shop_price}}</view>
           </view>
           <image class="product-rob__icon" src="../../images/q@2x.png"></image>
         </view>
@@ -78,8 +78,8 @@
             <text class="">{{item.goods_name}}</text>
           </view>
           <view>
-            <text class="product-price">￥68.00</text>
-            <text class="people-count">143人付款</text>
+            <text class="product-price">￥{{item.shop_price}}</text>
+            <text class="people-count">{{item.sales}}人付款</text>
           </view>
         </view>
 
@@ -102,8 +102,8 @@
             <text class="">{{item.goods_name}}</text>
           </view>
           <view>
-            <text class="product-price">￥68.00</text>
-            <text class="people-count">143人付款</text>
+            <text class="product-price">￥{{item.shop_price}}</text>
+            <text class="people-count">{{item.sales}}人付款</text>
           </view>
         </view>
 

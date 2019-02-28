@@ -28,7 +28,7 @@ Page({
     let parmas = {
       act: 1,
       scene: '123',
-      page: 'pages/index/index',
+      // page: 'pages/index/index',
       appid: config.openId(),
       secret: config.appSecret(),
       logo: app.globalData.userInfo.head_url

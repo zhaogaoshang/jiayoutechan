@@ -1,24 +1,24 @@
 <!--pages/commentAll/commentAll.wxml-->
+<wxs src="../../utils/util.wxs" module="wxs" />
 <view class="container comment-page">
   <!-- 评价的头部 -->
   <view class="tiao-box comment-title">
     <view class="tiao-box__left">评价</view>
-    <view class="tiao-box__middle">(120)</view>
+    <view class="tiao-box__middle">({{comment.count}})</view>
     <view class="tiao-box__right"></view>
   </view>
 
   <!-- 每一个评论 -->
-  <view class="comment-item" wx:for="{{[1,2,3,4]}}" wx:key="{{index}}">
-    <image class="comment-user__avatar" src="../../images/active.jpg"></image>
+  <view class="comment-item" wx:for="{{comment.list}}" wx:key="{{index}}">
+    <image class="comment-user__avatar" src="{{wxs.imageUrl(item.headimg)}}"></image>
     <view class="right">
       <view class="user-info">
-        <text class="user-name">京城吴彦祖 </text>
-        <text class="comment-time">2018-03-30</text>
+        <text class="user-name">{{item.user_name}} </text>
+        <text class="comment-time">{{item.add_time}}</text>
       </view>
-      <view class="comment-detail">草莓真的好棒喔！下次还来你家买，这么便宜的价格买 到如此满意的产品，给老板点赞加鸡腿儿～
-      </view>
+      <view class="comment-detail">{{item.content}}</view>
       <view class="product-photo">
-        <image class="product-photo__item" src="../../images/active.jpg" wx:for="{{[1,2,3]}}" wx:key="{{index}}"></image>
+        <image class="product-photo__item" src="{{wxs.imageUrl(only)}}" wx:for-item="only" wx:for="{{item.img_list}}" wx:key="{{index}}"></image>
       </view>
     </view>
   </view>
