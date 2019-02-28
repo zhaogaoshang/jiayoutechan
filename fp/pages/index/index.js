@@ -620,10 +620,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function(e) {
-    console.log(e)
 
     if (e.from == "menu") {
-
+      return app.handleShareApp()
     } else {
       let titlt = e.target.dataset.title
       let url = utils.imageUrl + e.target.dataset.iamge

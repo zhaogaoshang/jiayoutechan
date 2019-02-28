@@ -219,7 +219,11 @@ App({
 
   // 分享平台的配置
   handleShareApp() {
-    
+    return {
+      title: '家有特产',
+      imageUrl:'../../images/jytc-mark@2.jpg',
+      path: '/pages/index/index?sharePrent=' + this.globalData.userInfo.uid
+    }
   },
 
   // 全局变量
