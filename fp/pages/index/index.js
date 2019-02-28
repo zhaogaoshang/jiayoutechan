@@ -191,6 +191,7 @@ Page({
   // 去商品详情
   handleGoProduct(e) {
     let id = e.currentTarget.dataset.id
+    // utils.router()
     wx.navigateTo({
       url: '../product/product?id=' + id
     })

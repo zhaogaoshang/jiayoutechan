@@ -26,7 +26,7 @@ Page({
         name: '待支付',
         id: 'daiZhiFu'
       }, {
-        name: '代发货',
+        name: '待发货',
         id: 'daiFaHuo'
       }, {
         name: '待收货',
@@ -55,19 +55,19 @@ Page({
     },
     daiZhiFu: {}, // 待支付
 
-    daiFaHuoParams: { // 代发货
+    daiFaHuoParams: { // 待发货
       status: 2,
       page: 1,
       page_per: 10
     },
-    daiFaHuo: {}, // 代发货
+    daiFaHuo: {}, // 待发货
 
-    daiShouHuoParams: { // 代收货
+    daiShouHuoParams: { // 待收货
       status: 3,
       page: 1,
       page_per: 10
     },
-    daiShouHuo: {}, // 代收货
+    daiShouHuo: {}, // 待收货
 
     daiPingJiaParams: { // 待评价
       status: 3,
@@ -123,7 +123,7 @@ Page({
     })
   },
 
-  // 代发货
+  // 待发货
   getDaiFaHuo() {
     http.fxGet(api.mobile_apis_order_list, this.data.daiFaHuoParams, res => {
       console.log(res, '待支付')
@@ -176,7 +176,7 @@ Page({
 
     this.getAllOrder() // 全部的订单
     this.getDaiZhiFu() // 待支付
-    this.getDaiFaHuo() // 代发货
+    this.getDaiFaHuo() // 待发货
     this.getDaiShouHuo() // 待收货
     this.getDaiPingJia() // 待评价
   },

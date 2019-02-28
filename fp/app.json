@@ -21,6 +21,7 @@
     "pages/loveQuantity/loveQuantity",
     "pages/loveQuantityDraw/loveQuantityDraw",
     "pages/invitation/invitation",
+    "pages/notFound/notFound",
     "pages/collcot/collcot"
   ],
   "window": {

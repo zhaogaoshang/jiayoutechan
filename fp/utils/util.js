@@ -23,10 +23,17 @@ function showToast(title, duration = 1500, icon = 'none') {
     icon
   })
 }
+// 跳转拦截
+function router (url = '/pages/notFound/notFound') {
+  wx.navigateTo({
+    url
+  })
+}
 
 module.exports = {
   timestamp,
   randomString,
   showToast,
-  imageUrl: config.fxUrl()
+  imageUrl: config.fxUrl(),
+  router
 }

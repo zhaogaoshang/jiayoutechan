@@ -96,6 +96,12 @@
   margin: 30rpx 0;
 }
 
+/*新增去掉最后位的边框*/
+
+.module-category .module-category__item:last-child{
+  border-right: none;
+} 
+
 .module-category .module-category__item.border--null {
   border: none;
 }
