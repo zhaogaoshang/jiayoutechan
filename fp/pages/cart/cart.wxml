@@ -36,7 +36,7 @@
           <view class="product-box">
             <image class="product-photo" src="{{wxs.imageUrl(item.goods_thumb)}}"></image>
             <view class="discription">
-              <text> {{item.goods_name}}</text>
+              <text class="two-line__text"> {{item.goods_name}}</text>
               <view class="product-price">¥{{item.goods_price}}</view>
             </view>
           </view>

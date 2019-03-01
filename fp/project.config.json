@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 12,
 			"list": [
 				{
 					"id": 0,
@@ -114,6 +114,13 @@
 					"id": -1,
 					"name": "评价",
 					"pathName": "pages/commentWrite/commentWrite",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "今日爆款",
+					"pathName": "pages/productMoreTodayHigh/productMoreTodayHigh",
 					"scene": null
 				}
 			]

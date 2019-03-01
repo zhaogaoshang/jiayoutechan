@@ -51,7 +51,6 @@ Page({
 
   // 去商品页面
   handleGoProduct(e) {
-    console.log(e)
     wx.navigateTo({
       url: '../product/product?id=' + e.detail.id
     })
