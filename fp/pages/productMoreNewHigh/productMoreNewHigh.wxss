@@ -1,1 +1,7 @@
 /* pages/productMoreNewHigh/productMoreNewHigh.wxss */
+
+.product-item {
+  padding: 30rpx;
+  background-color: white;
+  border-bottom: 1rpx solid #f8f8f8;
+}

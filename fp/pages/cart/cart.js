@@ -217,7 +217,7 @@ Page({
     }
   },
 
-  // 添加购物车
+  // 购物车
   getCart() {
     app.getCartList().then(res => {
       res.goods_list.forEach(item => {

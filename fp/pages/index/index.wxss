@@ -155,7 +155,9 @@
   margin-bottom: 10rpx;
 }
 
-.today-high__sell .today-high__sell--bottom {
+.today-high__sell--item  .look-more__icon {
+  width: 240rpx;
+  height: 412rpx;
 }
 
 .today-high__sell .today-high__sell--bottom {

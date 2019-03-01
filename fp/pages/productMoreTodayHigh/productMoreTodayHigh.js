@@ -3,6 +3,7 @@ const app = getApp() //获取应用实例
 const http = require('../../utils/http.js')
 const api = require('../../utils/api.js')
 const utils = require('../../utils/util.js')
+const config = require('../../utils/config.js')
 Page({
 
   /**
@@ -43,7 +44,6 @@ Page({
       url: '../product/product?id=' + e.detail.id
     })
   },
-
 
   /**
    * 生命周期函数--监听页面加载
@@ -106,7 +106,23 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function(e) {
+    if (e.from == 'menu') {
+      return app.handleShareApp()
+    }
 
+    if (e.from == 'button') {
+      let name
+      let url
+      let id
+      this.data.todayHigh.list.forEach((item, index) => {
+        if (item.goods_id == e.target.dataset.id) {
+          name = item.goods_name
+          url = config.fxUrl(item.goods_thumb)
+          id = item.goods_id
+        }
+      })
+      return app.handleShareProduct(name, url, id)
+    }
   }
 })

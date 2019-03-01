@@ -59,6 +59,9 @@
           </view>
           <image class="product-rob__icon" src="../../images/q@2x.png"></image>
         </view>
+        <view class="today-high__sell--item" wx:if="{{todayHigh.next}}" catchtap="handleGoTadyHigh">
+          <image class="look-more__icon" src="../../images/more-photo@2.png"></image>
+        </view>
       </scroll-view>
     </view>
 
@@ -68,7 +71,7 @@
         <image class="category-item__title--img" src="{{wxs.imageUrl(newProductHot.topad.image)}}"></image>
       </view>
       <!-- 更多 -->
-      <view class="look-more__text" wx:if="{{newProductHot.next}}">查看更多 ></view>
+      <view class="look-more__text" catchtap="handleGoNewHigh" wx:if="{{newProductHot.next}}">查看更多 ></view>
       <!-- 新品热销每一个 -->
       <view class="new-product" wx:for="{{newProductHot.list}}" wx:key="{{index}}" data-id="{{item.goods_id}}" catchtap="handleGoProduct">
         <image class="new-product__photo" src="{{wxs.imageUrl(item.goods_thumb)}}"></image>
