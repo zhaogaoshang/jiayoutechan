@@ -121,7 +121,6 @@ Page({
 
   // 输入框输入文字
   handleSearchText(e) {
-    console.log(e.detail.value)
     this.setData({
       searchText: e.detail.value
     })

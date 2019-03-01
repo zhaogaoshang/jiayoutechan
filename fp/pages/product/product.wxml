@@ -41,8 +41,7 @@
     </view>
     <!-- 物流 其他-->
     <view class="logistics-box">
-      <!-- <view> 快递：0元 销量：32笔</view> -->
-      <view>销量：{{productDetail.order_nums}}笔</view>
+      <view>快递：{{productDetail.freight}}元 销量：{{productDetail.order_nums}}笔</view>
       <view>{{storeInfo.address}}</view>
     </view>
   </view>
