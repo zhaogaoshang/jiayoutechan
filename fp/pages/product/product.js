@@ -4,6 +4,7 @@ const http = require('../../utils/http.js')
 const api = require('../../utils/api.js')
 const utils = require('../../utils/util.js')
 let wxparse = require("../../wxParse/wxParse.js")
+const config = require('../../utils/config.js')
 Page({
 
   /**
@@ -183,7 +184,7 @@ Page({
   // 去查看全部评论
   handleGoAllComment(e) {
     wx.navigateTo({
-      url: '../commentAll/commentAll?id='+e.currentTarget.dataset.id,
+      url: '../commentAll/commentAll?id=' + e.currentTarget.dataset.id,
     })
   },
 
@@ -265,7 +266,7 @@ Page({
       attr: activeId, // 规格id
       number: 1
     }, res => {
-      // console.log(res, '规格参数')
+      console.log(res, '规格参数')
       if (res.code == 2000) {
         this.setData({
           activeSpecifications: res.data
@@ -371,7 +372,7 @@ Page({
    */
   onShareAppMessage: function() {
     let titlt = this.data.productDetail.goods_name
-    let url = utils.imageUrl + this.data.productDetail.goods_img
+    let url = config.fxUrl(this.data.productDetail.goods_thumb)
     let id = this.data.id
     return app.handleShareProduct(titlt, url, id)
   }

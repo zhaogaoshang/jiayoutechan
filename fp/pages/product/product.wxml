@@ -115,7 +115,7 @@
   </view>
 
   <!-- 底部购买按钮 -->
-  <view class="shop-box">
+  <view class="shop-box" wx:if="{{productDetail.goods_number!=0&&productDetail.is_on_sale!=0}}">
     <view class="left">
       <button class="function-icon" open-type="contact" bindcontact="handleContact">
         <image class="function-icon__fu" src="../../images/kf@2x.png"></image>
@@ -175,7 +175,8 @@
   </view>
 
   <!-- 已经下架 -->
-  <!-- <view class="sell-null">已售罄</view> -->
+  <view class="sell-null" wx:if="{{productDetail.goods_number==0}}">已售罄</view>
+  <view class="sell-null" wx:if="{{productDetail.is_on_sale==0}}">已下架</view>
 
   <!-- 售空 -->
   <!-- <view class="tiao-box sell-null__out">

@@ -471,6 +471,8 @@
 }
 
 .product-page .sell-null {
+  position: fixed;
+  bottom: 0;
   width: 750rpx;
   height: 100rpx;
   background-color: #666;
