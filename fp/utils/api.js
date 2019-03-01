@@ -6,7 +6,7 @@ module.exports = {
   mobile_apis_mttindex: 'mobile/apis/mttindex.php', // 新品热销
   mobile_apis_goods: 'mobile/apis/goods.php', // 规格查询
   mobile_apis_category: 'mobile/apis/category.php', // 产品的一级分类
-  mobile_apis_search: '/mobile/apis/search.php', // 搜索结果
+  mobile_apis_search: 'mobile/apis/search.php', // 搜索结果
   mobile_apis_addcollectgoods: "mobile/apis/addcollectgoods.php", //get 添加收藏
   mobile_apis_delcollectgoods: "mobile/apis/delcollectgoods.php", //get 删除收藏 
   mobile_apis_collectgoods: 'mobile/apis/collectgoods.php', // 收藏列表

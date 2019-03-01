@@ -11,7 +11,7 @@
 }
 
 .new-product .new-product__photo {
-  width: 254rpx;
+  width: 146rpx;
   height: 146rpx;
   margin-right: 24rpx;
 }

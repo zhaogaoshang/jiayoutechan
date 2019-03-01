@@ -58,6 +58,10 @@ Page({
     http.fxGet(api.mobile_apis_market_info, this.data.productParams, res => {
       console.log(res.data, '店铺')
       if (res.code == 2000) {
+        if (this.data.productParams.page > 1) {
+          res.data.list = this.data.productList.list.concat(res.data.list)
+        }
+
         this.setData({
           productList: res.data
         })
@@ -121,7 +125,14 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    if (!this.data.productList.next) {
+      return utils.showToast('没有更多了')
+    }
 
+    this.setData({
+      'productParams.page': ++this.data.productParams.page
+    })
+    this.getStoreProduct()
   },
 
   /**
@@ -130,6 +141,6 @@ Page({
   onShareAppMessage: function(e) {
     if (e.from == "menu") {
       return app.handleShareApp()
-    } 
+    }
   }
 })

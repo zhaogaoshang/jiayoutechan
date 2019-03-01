@@ -14,7 +14,7 @@ Page({
     count: 0,
     params: {
       page: 1, //可选	int	1	当前页码
-      per_page: 12, //可选	int	10	每页数量
+      per_page: 10, //可选	int	10	每页数量
       keywords: '请输入您想要查找的商品', //必须	String		搜索关键字
       province: '', //可选	int	0	省地区号
       city: '', //可选	int	0	市地区号
@@ -65,7 +65,7 @@ Page({
 
   // 获取搜索结果
   getProduct() {
-    http.fxPost(api.mobile_apis_search, this.data.params, res => {
+    http.fxGet(api.mobile_apis_search, this.data.params, res => {
       console.log(res, '搜索结果')
       if (res.code == 2000) {
         let agent = this.data.list
@@ -83,6 +83,7 @@ Page({
       } else {
         utils.showToast(res.msg)
       }
+      wx.stopPullDownRefresh()
     })
   },
 
@@ -131,14 +132,24 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.setData({
+      'params.page': 1
+    })
+    this.getProduct()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    if (!this.data.isNext) {
+      return utils.showToast('没有更多了')
+    }
 
+    this.setData({
+      'params.page': ++this.data.params.page
+    })
+    this.getProduct()
   },
 
   /**
@@ -147,6 +158,6 @@ Page({
   onShareAppMessage: function(e) {
     if (e.from == "menu") {
       return app.handleShareApp()
-    } 
+    }
   }
 })

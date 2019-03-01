@@ -34,7 +34,9 @@
 
   <!-- 详细地址 -->
   <view class="tiao-box address-info__box">
-    <view class="tiao-box__left">详细地址</view>
+    <view class="tiao-box__left">
+      <text> 详细地址</text>
+    </view>
     <view class="tiao-box__middle">
       <textarea fixed="{{true}}" class="text-input" auto-height placeholder="请输入详细地址信息，如道路、门牌号、小区、楼栋号、单元室等" value="{{form.address}}" bindinput="handleLocationDetail" placeholder-class="placeholder-class" class="placeholder-class__active"></textarea>
     </view>
@@ -70,17 +72,17 @@
   </form>
 
   <!-- 选择地址 -->
-  <cover-view class="address-pick__about" catchtap="handlePickLocation">
-    <cover-view class="location-modle__box" wx:if="{{isShowLocationTemplate}}" catchtap="handlePickLocation">
-      <cover-view class="location-modle" catchtap="handlePrevent">
+  <view class="address-pick__about" catchtap="handlePickLocation">
+    <view class="location-modle__box" wx:if="{{isShowLocationTemplate}}" catchtap="handlePickLocation">
+      <view class="location-modle" catchtap="handlePrevent">
         <!-- 头部 -->
-        <cover-view class="tiao-box location-modle__title">
-          <cover-view class="tiao-box__left"></cover-view>
-          <cover-view class="tiao-box__middle">所在地区 </cover-view>
-          <cover-view class="tiao-box__right" catchtap="handlePickLocation">
-            <cover-image class="off-icon" src="../../images/off@2.png"></cover-image>
-          </cover-view>
-        </cover-view>
+        <view class="tiao-box location-modle__title">
+          <view class="tiao-box__left"></view>
+          <view class="tiao-box__middle">所在地区 </view>
+          <view class="tiao-box__right" catchtap="handlePickLocation">
+            <image class="off-icon" src="../../images/off@2.png"></image>
+          </view>
+        </view>
         <!-- 中间区域选择 -->
         <view class="location-show">
           <view class="location-show__item {{locationIndex==0?'active-location':''}}" data-index="0" catchtap="handleSwitchPickLocation">
@@ -132,8 +134,8 @@
             </view>
           </scroll-view>
         </view>
-      </cover-view>
-    </cover-view>
-  </cover-view>
+      </view>
+    </view>
+  </view>
 
 </view>
