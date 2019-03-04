@@ -1,0 +1,109 @@
+<!--pages/order/order.wxml-->
+<view class="container order">
+  <view catchtap="handleGoAddress">
+    <image class="locktion-null__photo" src="../../images/dizhi-null@2.png" wx:if="{{!activeLocation.address_id}}">
+    </image>
+
+    <image class="locktion-null__photo" src="../../images/dizhi-bg@2.png" wx:if="{{activeLocation.address_id}}">
+      <view class="name">
+        <text>{{activeLocation.consignee}}  </text>
+        <text>  {{activeLocation.mobile}}</text>
+      </view>
+      <view class="location-detail">{{activeLocation.province_name}}{{activeLocation.city_name}}{{activeLocation.district_name}}{{activeLocation.address}}</view>
+    </image>
+
+  </view>
+
+  <!-- 店铺 -->
+  <view class="store-item">
+    <view class="store-name"></view>
+    <view class="product-item" wx:for="{{orderDetail.cart_goods}}" wx:key="{{index}}">
+      <product item="{{item}}"></product>
+      <text class="my-pick">{{item.goods_attr}}</text>
+      <text class="product-price">￥{{item.goods_price}}</text>
+      <text class="product-count">x{{item.goods_number}}</text>
+    </view>
+    <!-- 配送费用 -->
+    <view class="tiao-box logisticts-box">
+      <view class="tiao-box__left"> 配送</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right"> 快递 ￥{{orderDetail.freight_price}}</view>
+    </view>
+    <!-- 给卖家留言 -->
+    <view class="user-message">
+      <text>给卖家留言</text>
+      <textarea class="user-message__input" placeholder-class="placeholder-message__input" auto-height placeholder="选填" value="{{orderParams.postscript}}" bindinput="handleInputDescription"></textarea>
+    </view>
+    <!-- 商品的金额 -->
+    <view class="tiao-box total-price">
+      <view class="tiao-box__left"></view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">
+        <text>商品金额：</text>
+        <text class="total-price__text">￥{{orderDetail.goods_price}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!--平台 其他 -->
+  <view>
+    <!-- 优惠券 -->
+    <view class="tiao-box logisticts-box" wx:if="">
+      <view class="tiao-box__left"> 优惠券</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">
+        <text>选择可用优惠券</text>
+      </view>
+    </view>
+    <!-- 爱心贡献值 -->
+    <!-- <view class="tiao-box logisticts-box" catchtap="handleIsShowShoLove">
+      <view class="tiao-box__left"> 爱心贡献值</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">￥{{orderParams.n_surplus}}</view>
+    </view> -->
+  </view>
+
+  <!-- 合计 -->
+  <view class="order-total__price">
+    <view class="left"></view>
+    <view class="right">
+      <text>合计：¥{{orderDetail.statements_price}}</text>
+      <form bindsubmit="handleSubmitOrder">
+        <button form-type="submit" class="submit-order">提交订单</button>
+      </form>
+    </view>
+  </view>
+  <view class="shim"></view>
+
+  <!-- 爱心贡献值 -->
+  <view class="ai-xin__zhi" wx:if="{{isShoLove}}" catchtap="handleIsShowShoLove">
+    <image class="top" src="../../images/axi@2x.png"></image>
+    <view class="bottom">
+      <view class="an-xin__count">
+        <text>爱心贡献值：</text>
+        <text>{{orderParams.n_surplus}}</text>
+      </view>
+      <view class="tiao-box pick-ai__xin--zhi" catchtap="handleUpdataOrder">
+        <view class="tiao-box__left title-text">使用</view>
+        <view class="tiao-box__middle"></view>
+        <view class="tiao-box__right">
+          <image class="pick-icon" src="../../images/xzi@2x.png" wx:if="{{orderParams.n_surplus>0}}"></image>
+          <image class="pick-icon" src="../../images/wxi@2x.png" wx:else></image>
+        </view>
+      </view>
+      <view class="tiao-box pick-ai__xin--zhi" catchtap="handleNotUseLove">
+        <view class="tiao-box__left title-text">不使用</view>
+        <view class="tiao-box__middle"></view>
+        <view class="tiao-box__right">
+          <image class="pick-icon" src="../../images/xzi@2x.png" wx:if="{{orderParams.n_surplus==0}}"></image>
+          <image class="pick-icon" src="../../images/wxi@2x.png" wx:else></image>
+        </view>
+      </view>
+      <view class="success-form">
+        <form>
+          <button>确定</button>
+        </form>
+      </view>
+    </view>
+  </view>
+</view>

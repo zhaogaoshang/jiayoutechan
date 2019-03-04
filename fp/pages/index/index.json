@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "login": "/componment/login/login",
+    "load-page":"/componment/loadPage/loadPage"
+  }
+}

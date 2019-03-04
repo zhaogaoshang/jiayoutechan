@@ -1,0 +1,38 @@
+<!--pages/loveQuantityDraw/loveQuantityDraw.wxml-->
+<view class="container draw-price__page">
+  <!-- 头部 -->
+  <view class="input-box">
+    <view class="title">提现金额</view>
+    <view class="price-icon">
+      <text>￥</text>
+      <input type="number" class="input-text"></input>
+    </view>
+    <view class="my-price">爱心贡献值：¥160</view>
+    <form>
+      <button class="handle-draw__btn">提现到微信零钱</button>
+    </form>
+  </view>
+
+  <!-- 底部 -->
+  <view>
+    <view class="bottom-text">提示：</view>
+    <view class="bottom-text">1、提现的审核时间为3个工作日；</view>
+    <view class="bottom-text">2、单笔提现金额最低100元，最高200元；</view>
+    <view class="bottom-text">3、单日提现金额最高为2000元。</view>
+  </view>
+
+  <!-- 手机验证 -->
+  <cover-view class="mobile-number__box">
+    <cover-view class="mobile-number__input">
+      <cover-view class="mobile-number">手机号码：12345678912</cover-view>
+      <cover-view class="input-number">
+        <input class="input-info__box" placeholder="请输入验证码"></input>
+        <cover-view class="get-number__btn">获取验证码</cover-view>
+      </cover-view>
+      <cover-view class="handle-btn__box">
+        <cover-view class="item">取消</cover-view>
+        <cover-view class="item">确定</cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+</view>

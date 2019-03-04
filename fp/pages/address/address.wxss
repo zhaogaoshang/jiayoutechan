@@ -1,0 +1,63 @@
+/* pages/address/address.wxss */
+
+.address .add-address__box {
+  position: fixed;
+  bottom: 0;
+  width: 570rpx;
+  background-color: white;
+  padding: 30rpx 90rpx;
+}
+
+.address .add-address__box .btn {
+  background: linear-gradient(89deg, rgba(253, 179, 32, 1) 0%, rgba(254, 141, 22, 1) 100%);
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  color: rgba(254, 254, 254, 1);
+}
+
+.address .address-item {
+  margin-bottom: 10rpx;
+}
+
+.address .address-item .pick-address__icon {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.address .address-item .tiao-box__middle {
+  margin-left: 50rpx;
+}
+
+.address .address-item .tiao-box__middle .active-mark {
+  width: 90rpx;
+  height: 30rpx;
+  background: rgba(252, 241, 235, 1);
+  font-size: 20rpx;
+  color: rgba(254, 141, 24, 1);
+  line-height: 30rpx;
+  text-align: center;
+  margin-left: 22rpx;
+}
+
+.address .address-item .tiao-box__middle .top {
+  display: flex;
+  flex-direction: row;
+  font-size: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  margin-bottom: 20rpx;
+}
+
+.address .address-item .tiao-box__middle .bottom {
+  font-size: 22rpx;
+  color: rgba(51, 51, 51, 1);
+  line-height: 22rpx;
+}
+
+.address .address-item .tiao-box__right .edit {
+  background: linear-gradient(270deg, rgba(254, 139, 23, 1) 0%, rgba(255, 181, 33, 1) 100%);
+  border-radius: 25rpx;
+  font-size: 26rpx;
+  color: rgba(254, 254, 254, 1);
+  line-height: 26rpx;
+  padding: 12rpx 24rpx;
+}

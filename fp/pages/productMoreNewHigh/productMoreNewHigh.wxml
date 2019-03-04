@@ -1,0 +1,6 @@
+<!--pages/productMoreNewHigh/productMoreNewHigh.wxml-->
+<view class="container">
+  <view class="product-item" wx:for="{{newProductHot.list}}" wx:key="{{index}}">
+    <chang-fang-product item="{{item}}" bind:handleGoProduct="handleGoProduct"> </chang-fang-product>
+  </view>
+</view>

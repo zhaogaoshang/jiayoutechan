@@ -1,0 +1,32 @@
+<!--pages/address/address.wxml-->
+<view class="container address">
+  <!-- 每一个地址 -->
+  <view class="tiao-box address-item" wx:for="{{addressList.list}}" wx:key="{{index}}" data-index="{{index}}" data-id="{{item.address_id}}" catchtap="handleActive">
+    <view class="tiao-box__left">
+      <image class="pick-address__icon" src="../../images/xzi@2x.png" wx:if="{{item.isdefault==1}}"></image>
+      <image class="pick-address__icon" src="../../images/wxi@2x.png" wx:else></image>
+    </view>
+    <view class="tiao-box__middle">
+      <view class="top">
+        <view>{{item.consignee}}</view>
+        <view class="active-mark" wx:if="{{item.isdefault==1}}">设为默认</view>
+      </view>
+      <view class="bottom">{{item.address}}</view>
+    </view>
+    <view class="tiao-box__right">
+      <form>
+        <button class="edit" catchtap="handleGoAddressChang" data-id="{{item.address_id}}" data-type="edit">编辑</button>
+      </form>
+    </view>
+  </view>
+
+  <!-- 新增地址 -->
+  <view class="add-address__box">
+    <form>
+      <button class="btn" catchtap="handleGoAddressChang" data-type="add">新增地址</button>
+    </form>
+  </view>
+
+  <view class="shim"></view>
+  <view class="shim"></view>
+</view>

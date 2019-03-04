@@ -1,0 +1,67 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/commentWrite/commentWrite",
+    "pages/networkError/networkError",
+    "pages/product/product",
+    "pages/store/store",
+    "pages/cart/cart",
+    "pages/commentAll/commentAll",
+    "pages/user/user",
+    "pages/searchResult/searchResult",
+    "pages/productCategory/productCategory",
+    "pages/address/address",
+    "pages/addressChang/addressChang",
+    "pages/paymentResult/paymentResult",
+    "pages/checkout/checkout",
+    "pages/order/order",
+    "pages/orderInfo/orderInfo",
+    "pages/liaisonStore/liaisonStore",
+    "pages/logistics/logistics",
+    "pages/loveQuantity/loveQuantity",
+    "pages/loveQuantityDraw/loveQuantityDraw",
+    "pages/invitation/invitation",
+    "pages/collcot/collcot",
+    "pages/productMoreTodayHigh/productMoreTodayHigh",
+    "pages/productMoreNewHigh/productMoreNewHigh"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "家有特产",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "usingComponents": {
+    "login": "/componment/login/login",
+    "load-page": "/componment/loadPage/loadPage",
+    "construction": "/componment/construction/construction",
+    "chang-fang-product": "/componment/changFangProduct/changFangProduct"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "color": "#333333",
+    "selectedColor": "#FE8D18",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "集市",
+        "iconPath": "./images/shangpin@2x.png",
+        "selectedIconPath": "./images/sjs@2x.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "images/gouwuche-3@2x.png",
+        "selectedIconPath": "./images/cart-active@2.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "个人中心",
+        "iconPath": "images/user@2.png",
+        "selectedIconPath": "images/wode@2x.png"
+      }
+    ]
+  }
+}

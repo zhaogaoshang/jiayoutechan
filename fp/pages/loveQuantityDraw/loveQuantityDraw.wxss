@@ -1,0 +1,122 @@
+/* pages/loveQuantityDraw/loveQuantityDraw.wxss */
+
+.container {
+  padding: 30rpx;
+}
+
+.draw-price__page .input-box {
+  background-color: white;
+  padding: 30rpx;
+}
+
+.draw-price__page .input-box .title {
+  font-size: 28rpx;
+  margin-bottom: 17rpx;
+}
+
+.draw-price__page .input-box {
+  background-color: white;
+  padding: 30rpx;
+}
+
+.draw-price__page .input-box .price-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 58rpx;
+  padding: 30rpx 0;
+  line-height: 58rpx;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+
+.draw-price__page .input-box .my-price {
+  padding: 30rpx 0;
+  font-size: 24rpx;
+  color: rgba(254, 142, 22, 1);
+}
+
+.draw-price__page .input-box .handle-draw__btn {
+  width: 600rpx;
+  height: 88rpx;
+  background: linear-gradient(89deg, rgba(253, 179, 32, 1) 0%, rgba(254, 141, 22, 1) 100%);
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  color: rgba(254, 254, 254, 1);
+}
+
+.draw-price__page .bottom-text {
+  font-size: 28rpx;
+  color: rgba(102, 102, 102, 1);
+  margin: 30rpx 0 0 30rpx;
+}
+
+.draw-price__page .mobile-number__box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.draw-price__page .mobile-number__box .mobile-number__input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 690rpx;
+  height: 275rpx;
+  padding-top: 68rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.draw-price__page .mobile-number__box .mobile-number {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: rgba(153, 153, 153, 1);
+  margin-left: 68rpx;
+}
+
+.draw-price__page .mobile-number__box .mobile-number__input .input-number {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 68rpx;
+}
+
+.draw-price__page .mobile-number__box .mobile-number__input .input-info__box {
+  width: 306rpx;
+  height: 74rpx;
+  padding-left: 30rpx;
+  background: rgba(247, 247, 247, 1);
+  border: 2px solid rgba(246, 246, 246, 1);
+  font-size: 26rpx;
+  overflow: hidden;
+  margin-right: 30rpx;
+}
+
+.draw-price__page .mobile-number__box .mobile-number__input .get-number__btn {
+  font-size: 28rpx;
+  color: rgba(254, 254, 254, 1);
+  padding: 24rpx 26rpx;
+  background: linear-gradient(89deg, rgba(253, 179, 32, 1) 0%, rgba(254, 141, 22, 1) 100%);
+  border-radius: 38rpx;
+}
+
+.draw-price__page .mobile-number__box .handle-btn__box {
+  display: flex;
+  flex-direction: row;
+}
+
+.draw-price__page .mobile-number__box .handle-btn__box .item {
+  flex: 1;
+  text-align: center;
+  font-size: 28rpx;
+  /* color: rgba(254, 254, 254, 1); */
+  padding: 30rpx 0;
+}

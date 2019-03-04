@@ -1,0 +1,134 @@
+/* pages/loveQuantity/loveQuantity.wxss */
+
+.love-quantity__page {
+}
+
+.love-quantity__page .hand {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 750rpx;
+  height: 304rpx;
+  background: linear-gradient(0deg, rgba(254, 143, 23, 1) 0%, rgba(253, 176, 32, 1) 100%);
+}
+
+.love-quantity__page .hand .xin-icon__box {
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(253, 253, 253, 1);
+  line-height: 30rpx;
+  margin: 40rpx 0;
+}
+
+.love-quantity__page .hand .xin-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+  vertical-align: middle;
+}
+
+.love-quantity__page .hand .price-count {
+  font-size: 58rpx;
+  color: rgba(254, 254, 254, 1);
+  line-height: 58rpx;
+  margin-bottom: 40rpx;
+}
+
+.love-quantity__page .hand .draw-btn {
+  width: 166rpx;
+  height: 60rpx;
+  background: rgba(254, 241, 229, 1);
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  color: rgba(254, 144, 23, 1);
+}
+
+.love-quantity__page .hand .draw-history {
+  position: absolute;
+  top: 40rpx;
+  right: 0;
+  border: 1rpx solid white;
+  padding: 18rpx 30rpx;
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 1);
+  line-height: 26rpx;
+  border-top-left-radius: 40rpx;
+  border-bottom-left-radius: 40rpx;
+}
+
+.love-quantity__page .category-box {
+  display: flex;
+  flex-direction: row;
+}
+
+.love-quantity__page .category-box .category-box__item {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  padding: 30rpx 0;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  color: rgba(51, 51, 51, 1);
+  background-color: white;
+  margin-bottom: 15rpx;
+}
+
+.love-quantity__page .category-box .category-box__item .line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 10rpx;
+  background: linear-gradient(270deg, rgba(254, 145, 25, 1) 0%, rgba(255, 175, 31, 1) 100%);
+  border-radius: 5rpx;
+}
+
+.love-quantity__page .item-love__product {
+  margin-bottom: 10rpx;
+}
+
+.love-quantity__page .item-love__product .tiao-box image {
+  height: 58rpx;
+  width: 58rpx;
+  border-radius: 50%;
+}
+
+.love-quantity__page .item-love__product .tiao-box__middle {
+  font-size: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  line-height: 28rpx;
+}
+
+.love-quantity__page .item-love__product .tiao-box__right {
+  font-size: 24rpx;
+  color: rgba(153, 153, 153, 1);
+  line-height: 24rpx;
+}
+
+.love-quantity__page .item-love__product .product-box {
+  position: relative;
+  background-color: white;
+  padding: 30rpx;
+  border-top: 1rpx solid #f8f8f8;
+  color: #fe9119;
+}
+
+.love-quantity__page .item-love__product .price {
+  position: absolute;
+  left: 207rpx;
+  bottom: 30rpx;
+  font-size: 22rpx;
+  line-height: 22rpx;
+}
+
+.love-quantity__page .item-love__product .status {
+  position: absolute;
+  right: 30rpx;
+  bottom: 30rpx;
+  font-size: 28rpx;
+  color: rgba(254, 144, 23, 1);
+  line-height: 28rpx;
+}

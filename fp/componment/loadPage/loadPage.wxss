@@ -1,0 +1,18 @@
+/* componment/loadPage/loadPage.wxss */
+
+.out-box {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  background-color: white;
+}
+
+.out-box image {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400rpx;
+  height: 200rpx;
+}

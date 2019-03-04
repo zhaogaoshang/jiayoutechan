@@ -1,0 +1,29 @@
+/* componment/construction/construction.wxss */
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  z-index: 99999;
+}
+
+image {
+  height: 300rpx;
+  width: 300rpx;
+}
+
+.button {
+  width: 200rpx;
+  color: white;
+  font-size: 28rpx;
+  background: linear-gradient(0deg, rgba(254, 143, 23, 1) 0%, rgba(253, 176, 32, 1) 100%);
+  margin-top: 30rpx;
+  border-radius: 40rpx;
+}

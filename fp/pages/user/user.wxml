@@ -1,0 +1,61 @@
+<!--pages/user/user.wxml-->
+<view class="container user">
+  <!-- 加载页面 -->
+  <load-page></load-page>
+  
+  <!-- 头部信息 -->
+  <view class="user-info__box">
+    <image class="user-avatar" src="{{userInfo.head_url}}"></image>
+    <view>
+      <view class="user-name__box">
+        <text class="user-name">{{userInfo.nickname}}</text>
+        <!-- <view class="vip-icon">Lv.1</view> -->
+      </view>
+      <!-- <view class="bottom" catchtap="handleGoLoveQuantity">
+        <image class="xin-icon" src="../../images/ax@2x.png"></image>
+        <text class="xin-icon__count">爱心贡献值1366 ></text>
+      </view> -->
+    </view>
+    <!-- <image class="user-seting__btn" src="../../images/active.jpg"></image> -->
+  </view>
+
+  <!-- 订单部分 -->
+  <view class="order-box">
+    <view class="top" data-type="all" catchtap="handleGoOrder">
+      <text>我的订单</text>
+      <text>查看全部订单 ></text>
+    </view>
+    <view class="bottom">
+      <view class="order-item" data-type="daiZhifu" catchtap="handleGoOrder">
+        <image class="dai-zhi__fu--icon" src="../../images/dzf@2x.png"></image>
+        <view class="dai-zhi__fu--text">待支付</view>
+      </view>
+      <view class="order-item" data-type="daiFaHuo" catchtap="handleGoOrder">
+        <image class="dai-zhi__fu--icon" src="../../images/dfh@2x.png"></image>
+        <view class="dai-zhi__fu--text">待发货</view>
+      </view>
+      <view class="order-item" data-type="daiShowhuo" catchtap="handleGoOrder">
+        <image class="dai-zhi__fu--icon" src="../../images/dsh@2x.png"></image>
+        <view class="dai-zhi__fu--text">待收货</view>
+      </view>
+      <view class="order-item" data-type="daiPingJia" catchtap="handleGoOrder">
+        <image class="dai-zhi__fu--icon" src="../../images/ywc@2x.png"></image>
+        <view class="dai-zhi__fu--text">待评价</view>
+      </view>
+      <view class="order-item" data-type="tuiKuan" catchtap="handleGoOrder">
+        <image class="dai-zhi__fu--icon" src="../../images/tk@2x.png"></image>
+        <view class="dai-zhi__fu--text">退款/退货</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 列表项目 -->
+  <view class="other-list" wx:for="{{pickList}}" wx:key="{{index}}" wx:if="{{item.id!=1 && item.id!=3&&item.id!=5}}" catchtap="handleGoOther" data-type="{{item.id}}">
+    <text>{{item.name}}</text>
+    <image class="jian-tou" src="../../images/gd@2x.png"></image>
+  </view>
+
+  <!-- 垫片 -->
+  <view class="shim"></view>
+
+</view>

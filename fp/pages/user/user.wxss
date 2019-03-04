@@ -1,0 +1,157 @@
+/* pages/user/user.wxss */
+
+.user {
+  background-color: white;
+}
+
+/* 用户信息s */
+
+.user .user-info__box {
+  position: relative;
+  padding-top: 128rpx;
+  width: 750rpx;
+  height: 185rpx;
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(90deg, rgba(255, 181, 32, 1), rgba(254, 138, 23, 1));
+  border-bottom-left-radius: 375rpx 40rpx;
+  border-bottom-right-radius: 375rpx 40rpx;
+}
+
+.user-info__box .user-avatar {
+  width: 109rpx;
+  height: 109rpx;
+  border-radius: 50%;
+  border: 2rpx solid white;
+  margin: 0 30rpx 43rpx;
+}
+
+.user-info__box .user-name__box {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-info__box .user-name__box .vip-icon {
+  font-size: 24rpx;
+  font-family: Athelas-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  border: 1rpx solid white;
+  border-radius: 30rpx;
+  padding: 10rpx 25rpx;
+}
+
+.user-info__box .user-name {
+  font-size: 38rpx;
+  font-weight: 500;
+  color: rgba(248, 248, 248, 1);
+  margin-right: 20rpx;
+  margin-bottom: 25rpx;
+}
+
+.user-info__box .bottom {
+  display: inline-block;
+  /* height:50rpx; */
+  line-height: 50rpx;
+  padding: 0 15rpx;
+  border-radius: 40rpx;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.user-info__box .bottom .xin-icon {
+  width: 31rpx;
+  height: 23rpx;
+  vertical-align: middle;
+}
+
+.user-info__box .bottom .xin-icon__count {
+  font-size: 22rpx;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 1);
+  vertical-align: middle;
+  margin: 0 8rpx;
+}
+
+.user-info__box .user-seting__btn {
+  position: absolute;
+  top: 62rpx;
+  right: 38rpx;
+  width: 36rpx;
+  height: 38rpx;
+}
+
+/* 用户信息e */
+
+/* 订单部分s */
+
+.user  .order-box {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4px 8px 0px rgba(204, 204, 204, 0.3);
+  border-radius: 10rpx;
+  margin: 30rpx 30rpx 0rpx 30rpx;
+}
+
+.user .order-box .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #f8f8f8;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+}
+
+.user .order-box .bottom {
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx 0;
+}
+
+.user .order-box .bottom .order-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-box .bottom .order-item .dai-zhi__fu--icon {
+  width: 52rpx;
+  height: 46rpx;
+}
+
+.order-box .bottom .order-item .dai-zhi__fu--text {
+  font-size: 26rpx;
+  line-height: 26rpx;
+  margin-top: 20rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+}
+
+/* 订单部分e */
+
+/* 其他列表项s */
+
+.user .other-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 30rpx;
+  padding: 40rpx 30rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  border-bottom: 1rpx solid rgba(238, 238, 238, 1);
+}
+
+.user .other-list .jian-tou {
+  width: 12rpx;
+  height: 22rpx;
+}
+
+/* 其他列表项e */
+
+.shim {
+  height: 50rpx;
+}

@@ -1,0 +1,216 @@
+<!--index.wxml-->
+<wxs src="../../utils/util.wxs" module="wxs" />
+<view class="container index">
+  <!-- 加载页面 -->
+  <load-page></load-page>
+
+  <!-- 搜索框 -->
+  <view class="hand-search">
+    <view class="left" catchtap="handlePickLocation">
+      <text>{{showLocationPick.locationName}}</text>
+      <image class="hand-search__biao" src="../../images/xl@2x.png"></image>
+    </view>
+    <view class="middle">
+      <image class="hand-search__jing" src="../../images/ss@2x.png"></image>
+      <input placeholder-class="hand-search__input" class="hand-search__input--text" placeholder="请输入您想要查找的商品" bindinput="handleSearchText" bindconfirm="handleGoSearchResult"></input>
+    </view>
+    <image class="hand-search__other" src="../../images/lb@2x.png" catchtap="handleGoProductCategory"></image>
+  </view>
+
+  <!-- 轮播图 -->
+  <view class="hand-swiper">
+    <swiper indicator-dots autoplay interval="3000" duration="500">
+      <swiper-item wx:for="{{handAdv.adtop_list}}" wx:key="{{index}}">
+        <image class="hand-swiper__item" src="{{wxs.imageUrl(item.image)}}"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 分类 -->
+  <view class="module-category">
+    <view class="module-category__item {{index==2?'border--null':''}}" wx:for="{{category}}" wx:key="{{index}}" data-id="{{item.id}}" catchtap="handleSwitchModule">
+      <view class="module-category__item--name {{item.id==categoryActive?'module-category__active':''}}">{{item.name}}</view>
+      <view class="module-category__item--title {{item.id==categoryActive?'module-category__active':''}}">{{item.title}}</view>
+    </view>
+  </view>
+
+  <!-- 臻品馆 -->
+  <view class="category-item {{categoryActive==0?'category--active':''}}">
+    <!-- 今日爆款 -->
+    <view class="today-high__sell">
+      <view class="category-item__title--img">
+        <image class="category-item__title--img" src="{{wxs.imageUrl(todayHigh.topad.image)}}"></image>
+      </view>
+      <!-- 今日爆款 -->
+      <scroll-view class="today-high__sell--bottom" scroll-x>
+        <!-- 今日爆款每一项 -->
+        <view class="today-high__sell--item {{index==0?'right--30rpx':''}} " wx:for="{{todayHigh.list}}" wx:key="{{index}}" data-id="{{item.goods_id}}" catchtap="handleGoProduct">
+          <image class="hot-icon" src="../../images/hot@2x.png"></image>
+          <view class="product-box">
+            <image class="product-photo" src="{{wxs.imageUrl(item.goods_thumb)}}"></image>
+            <view class="product-discription">
+              <view class="two-line__text">
+                <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{item.is_shipping==0}}"></image>
+                <text>{{item.goods_name}}</text>
+              </view>
+            </view>
+            <view class="people-count">{{item.selcount}}人付款</view>
+            <view class="product-price">￥{{item.shop_price}}</view>
+          </view>
+          <image class="product-rob__icon" src="../../images/q@2x.png"></image>
+        </view>
+        <view class="today-high__sell--item" wx:if="{{todayHigh.next}}" catchtap="handleGoTadyHigh">
+          <image class="look-more__icon" src="../../images/more-photo@2.png"></image>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 新品热销 -->
+    <view class="today-high__sell">
+      <view class="category-item__title--img">
+        <image class="category-item__title--img" src="{{wxs.imageUrl(newProductHot.topad.image)}}"></image>
+      </view>
+      <!-- 更多 -->
+      <view class="look-more__text" catchtap="handleGoNewHigh" wx:if="{{newProductHot.next}}">查看更多 ></view>
+      <!-- 新品热销每一个 -->
+      <view class="new-product" wx:for="{{newProductHot.list}}" wx:key="{{index}}" data-id="{{item.goods_id}}">
+        <chang-fang-product item="{{item}}" bind:handleGoProduct="handleToProduct"></chang-fang-product>
+      </view>
+    </view>
+
+    <!-- 新品首发 -->
+    <view>
+      <image class="new-product__photo--middle" src="{{wxs.imageUrl(newProductSell.topad.image)}}"></image>
+      <view class="new-product" wx:for="{{newProductSell.list}}" wx:key="{{index}}" data-id="{{item.goods_id}}">
+        <chang-fang-product item="{{item}}" bind:handleGoProduct="handleToProduct"></chang-fang-product>
+      </view>
+    </view>
+  </view>
+
+  <!-- 特色好店 -->
+  <view class="category-item {{categoryActive==1?'category--active':''}}">
+    <view class="characteristic-store__item" wx:for="{{specialStore.list}}" wx:key="{{index}}">
+      <!-- 头部 -->
+      <view class="top">
+        <image class="store__avatar" src="{{item.shop_logo?wxs.imageUrl(item.shop_logo):'../../images/logo.jpg'}}" mode="scaleToFill"></image>
+        <view class="store__name">
+          <text class="store-name__top">{{item.shop_name}}</text>
+          <text class="store-name__bottom">{{item.shop_desc}}</text>
+        </view>
+        <image class="like-share__icon margin-right--30rpx" src="../../images/sc.png"></image>
+        <!-- <image class="like-share__icon margin-right--30rpx" src="../../images/ssc.png"></image> -->
+        <image class="like-share__icon margin-right--30rpx" src="../../images/fx.png"></image>
+        <view class="join-store" data-id="{{item.supplier_id}}" catchtap="handleGoStore">进店</view>
+      </view>
+      <!-- 底部 item.goods-->
+      <view class="bottom">
+        <view class="store-product__item {{idx==2?'margin-right--0':''}}" wx:for="{{item.goods}}" wx:key="{{idx}}" catchtap="handleGoProduct" wx:for-item="lite" wx:for-index="idx">
+          <image class="store-product__photo" src="{{lite.goods_thumb?wxs.imageUrl(lite.goods_thumb):'../../images/logo.jpg'}}"></image>
+          <view class="product-price">￥{{lite.market_price}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 去赶集 -->
+  <view class="category-item {{categoryActive==2?'category--active':''}}">
+    <view class="characteristic-store__item" wx:for="{{gatherShop.list}}" wx:key="{{index}}">
+      <!-- 头部 -->
+      <view class="top">
+        <!-- <image class="store__avatar" src="../../images/active.jpg"></image> -->
+        <view class="store__name">
+          <text class="store-name__top">{{item.name}}</text>
+          <!-- <text class="store-name__bottom">生态有机 美味不间断</text> -->
+        </view>
+        <view class="join-store" data-id="{{item.id}}" catchtap="handleGoStore">进入市集</view>
+        <image class="like-share__icon margin-right--30rpx" src="../../images/fx.png">
+          <button class="share-btn" open-type="share" data-id="{{item.id}}" data-image="{{item.goods_thumb}}" data-title="{{item.name}}" data-gather="1"></button>
+        </image>
+      </view>
+      <!-- 底部 -->
+      <view class="bottom">
+        <view class="store-product__item" wx:for="{{item.goods}}" wx:key="{{index}}" catchtap="handleGoProduct" wx:for-item="only" data-id="{{only.goods_id}}">
+          <image class="store-product__photo" src="{{wxs.imageUrl(only.goods_thumb)}}"></image>
+          <view class="go-shop__box">
+            <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{only.is_shipping==0}}"></image>
+            <text class="product-cureent__price">¥{{only.shop_price}}</text>
+            <!-- <text class="product-origin__price">¥100.00</text> -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 登录注册 -->
+  <login isShow="{{isShowLogin}}"></login>
+
+  <!-- 选择地址 -->
+  <view class="address-pick__about">
+    <view class="location-modle__box" wx:if="{{isShowLocationTemplate}}" catchtap="handlePickLocation">
+      <view class="location-modle" catchtap="handlePrevent">
+        <!-- 头部 -->
+        <view class="tiao-box location-modle__title">
+          <view class="tiao-box__left"></view>
+          <view class="tiao-box__middle">所在地区 </view>
+          <view class="tiao-box__right" catchtap="handlePickLocation">
+            <image class="off-icon" src="../../images/off@2.png"></image>
+          </view>
+        </view>
+        <!-- 中间区域选择 -->
+        <view class="location-show">
+          <view class="location-show__item {{locationIndex==0?'active-location':''}}" data-index="0" catchtap="handleSwitchPickLocation">
+            <text class="location-show__pri">{{showProvince}}</text>
+            <view class="line" style="{{locationIndex==0?'display:block':''}}"></view>
+          </view>
+          <view class="location-show__item {{locationIndex==1?'active-location':''}}" data-index="1" catchtap="handleSwitchPickLocation">
+            <text>{{showCity}}</text>
+            <view class="line" style="{{locationIndex==1?'display:block':''}}"></view>
+          </view>
+          <view class="location-show__item {{locationIndex==2?'active-location':''}}" data-index="2" catchtap="handleSwitchPickLocation">
+            <text>{{showCounty}}</text>
+            <view class="line" style="{{locationIndex==2?'display:block':''}}"></view>
+          </view>
+        </view>
+        <!-- 省的 -->
+        <view wx:if="{{locationIndex==0}}">
+          <scroll-view class="location-pick__scroll" scroll-y>
+            <view class="tiao-box location-pick" wx:for="{{provinceList}}" wx:key="{{index}}" data-location-id="{{item.province_id}}" data-location-name="{{item.province_name}}" catchtap="handlePickprovince" data-index="{{index}}">
+              <view class="tiao-box__left">{{item.province_name}}</view>
+              <view class="tiao-box__middle"></view>
+              <view class="tiao-box__right">
+                <text wx:if="{{item.active}}">√</text>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+        <!-- 市的 -->
+        <view wx:if="{{locationIndex==1}}">
+          <scroll-view class="location-pick__scroll" scroll-y>
+            <view class="tiao-box location-pick" wx:for="{{cityList}}" wx:key="{{index}}" data-location-id="{{item.city_id}}" data-location-name="{{item.city_name}}" catchtap="handlePickCity">
+              <view class="tiao-box__left">{{item.city_name}}</view>
+              <view class="tiao-box__middle"></view>
+              <view class="tiao-box__right">
+                <text wx:if="{{item.active}}">√</text>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+        <!-- 区的 -->
+        <view wx:if="{{locationIndex==2}}">
+          <scroll-view class="location-pick__scroll" scroll-y>
+            <view class="tiao-box location-pick" wx:for="{{countyList}}" wx:key="{{index}}" data-location-id="{{item.d_id}}" data-location-name="{{item.d_name}}" catchtap="handlePickDistrict">
+              <view class="tiao-box__left">{{item.d_name}}</view>
+              <view class="tiao-box__middle"></view>
+              <view class="tiao-box__right">
+                <text wx:if="{{item.active}}">√</text>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 垫片 -->
+  <view class="shim"></view>
+</view>

@@ -1,0 +1,6 @@
+<!--pages/networkError/networkError.wxml-->
+<view class="container network-error">
+  <image class="photo" src="../../images/network-error@2x.png"></image>
+  <view class="top">网络连接异常</view>
+  <view class="bottom" catchtap="handleReload">刷新</view>
+</view>

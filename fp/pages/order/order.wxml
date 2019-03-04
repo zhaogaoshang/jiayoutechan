@@ -1,0 +1,136 @@
+<!--pages/order/order.wxml-->
+<view class="container order">
+<!-- <construction></construction> -->
+  <view class="category-box">
+    <view class="category-item" wx:for="{{category}}" wx:key="{{index}}" catchtap="handleSwichCategory" data-id="{{item.id}}">
+      <view>{{item.name}}</view>
+      <view class="line" wx:if="{{item.id==activeCategory}}"></view>
+    </view>
+  </view>
+
+  <!-- 全部订单 -->
+  <view class="order-item" wx:if="{{activeCategory=='all'}}" catchtap="handleOrderInfo" wx:for="{{allOrder.list}}" wx:key="{{index}}" data-order-id="{{item.order_id}}">
+    <view class="tiao-box">
+      <view class="tiao-box__left"></view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">待支付</view>
+    </view>
+    <view>
+      <view class="product-item" wx:for="{{product}}" wx:key="{{index}}">
+        <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+        <view class="product-count">4箱草莓+3箱苹果+1箱栗子</view>
+        <view class="product-price">75.00</view>
+        <view class="product-container__text">x1</view>
+      </view>
+      <view class="handle-btn">
+        <button>取消订单</button>
+        <button class="handle-btn__red">立即支付</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 待支付 -->
+  <view class="order-item" wx:if="{{activeCategory=='daiZhiFu'}}">
+    <view class="tiao-box">
+      <view class="tiao-box__left">鲜公旗舰店</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">待支付</view>
+    </view>
+    <view>
+      <view class="product-item" wx:for="{{product}}" wx:key="{{index}}">
+        <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+        <view class="product-count">4箱草莓+3箱苹果+1箱栗子</view>
+        <view class="product-price">75.00</view>
+        <view class="product-container__text">x1</view>
+      </view>
+      <view class="handle-btn">
+        <button>取消订单</button>
+        <button class="handle-btn__red">立即支付</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 待发货 -->
+  <view class="order-item" wx:if="{{activeCategory=='daiFaHuo'}}">
+    <view class="tiao-box">
+      <view class="tiao-box__left">鲜公旗舰店</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">待支付</view>
+    </view>
+    <view>
+      <view class="product-item" wx:for="{{product}}" wx:key="{{index}}">
+        <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+        <view class="product-count">4箱草莓+3箱苹果+1箱栗子</view>
+        <view class="product-price">75.00</view>
+        <view class="product-container__text">x1</view>
+      </view>
+      <view class="handle-btn">
+        <button>取消订单</button>
+        <button class="handle-btn__red">立即支付</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 待收货 -->
+  <view class="order-item" wx:if="{{activeCategory=='daiShouHuo'}}">
+    <view class="tiao-box">
+      <view class="tiao-box__left">鲜公旗舰店</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">待支付</view>
+    </view>
+    <view>
+      <view class="product-item" wx:for="{{product}}" wx:key="{{index}}">
+        <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+        <view class="product-count">4箱草莓+3箱苹果+1箱栗子</view>
+        <view class="product-price">75.00</view>
+        <view class="product-container__text">x1</view>
+      </view>
+      <view class="handle-btn">
+        <button>取消订单</button>
+        <button class="handle-btn__red">立即支付</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 待评价 -->
+  <view class="order-item" wx:if="{{activeCategory=='daiPingJia'}}" wx:for="{{allOrder.list}}" wx:key="{{index}}">
+    <view class="tiao-box">
+      <view class="tiao-box__left">鲜公旗舰店</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">待支付</view>
+    </view>
+    <view>
+      <view class="product-item" wx:for="{{product}}" wx:key="{{index}}">
+        <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+        <view class="product-count">4箱草莓+3箱苹果+1箱栗子</view>
+        <view class="product-price">75.00</view>
+        <view class="product-container__text">x1</view>
+      </view>
+      <view class="handle-btn">
+        <button class="handle-btn__red" data-id="{{item.order_id}}" data-order-id="{{item.order_sn}}" data-rec-id="{{item.rec_id}}" catchtap="handleGoComment">评价</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退款退货 -->
+  <view class="order-item" wx:if="{{false}}">
+    <view class="tiao-box">
+      <view class="tiao-box__left">鲜公旗舰店</view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">待支付</view>
+    </view>
+    <view>
+      <view class="product-item" wx:for="{{product}}" wx:key="{{index}}">
+        <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+        <view class="product-count">4箱草莓+3箱苹果+1箱栗子</view>
+        <view class="product-price">75.00</view>
+        <view class="product-container__text">x1</view>
+      </view>
+      <view class="handle-btn">
+        <button>取消订单</button>
+        <button class="handle-btn__red">立即支付</button>
+      </view>
+    </view>
+  </view>
+
+</view>

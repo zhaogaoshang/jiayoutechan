@@ -1,0 +1,207 @@
+/* pages/order/order.wxss */
+
+.order .locktion-null__photo {
+  position: relative;
+  width: 750rpx;
+  height: 120rpx;
+  margin-bottom: 10rpx;
+}
+
+.order .locktion-null__photo .location-detail,
+.order .locktion-null__photo .name {
+  position: absolute;
+  left: 100rpx;
+}
+
+.order .locktion-null__photo .name {
+  font-size: 26rpx;
+  color: rgba(51, 51, 51, 1);
+  top: 20rpx;
+}
+
+.order .locktion-null__photo .location-detail {
+  font-size: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  top: 60rpx;
+}
+
+.order .store-item {
+  background-color: white;
+  margin-bottom: 10rpx;
+}
+
+.order .store-item .total-price {
+  font-size: 26rpx;
+  color: rgba(51, 51, 51, 1);
+  line-height: 26rpx;
+}
+
+.order .store-item .total-price .total-price__text {
+  color: #fe9119;
+}
+
+.order .store-item .user-message {
+  padding: 30rpx;
+  font-size: 26rpx;
+  color: rgba(51, 51, 51, 1);
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+
+.order .store-item .user-message .user-message__input {
+  flex: 1;
+  margin-left: 20rpx;
+  min-height: 26rpx;
+}
+
+.order .store-item .user-message .placeholder-message__input {
+  font-size: 26rpx;
+  color: rgba(153, 153, 153, 1);
+}
+
+.order .store-item .product-item .my-pick {
+  position: absolute;
+  bottom: 70rpx;
+  left: 210rpx;
+  font-size: 24rpx;
+  color: rgba(153, 153, 153, 1);
+  line-height: 24rpx;
+}
+
+.order .store-item .product-item .product-price {
+  position: absolute;
+  bottom: 30rpx;
+  left: 210rpx;
+  font-size: 22rpx;
+  color: rgba(254, 145, 25, 1);
+  line-height: 22rpx;
+}
+
+.order .store-item .product-item .product-count {
+  position: absolute;
+  bottom: 30rpx;
+  right: 30rpx;
+  font-size: 24rpx;
+  color: rgba(51, 51, 51, 1);
+  line-height: 24rpx;
+}
+
+.order .store-item .store-name {
+  font-size: 28rpx;
+  line-height: 28rpx;
+  padding: 30rpx;
+  color: rgba(51, 51, 51, 1);
+}
+
+.order .store-item .product-item {
+  position: relative;
+  padding: 30rpx;
+  border-top: 1rpx solid #f8f8f8;
+}
+
+.order .logisticts-box {
+  font-size: 26rpx;
+  color: rgba(51, 51, 51, 1);
+  border-top: 1rpx solid #f8f8f8;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+
+.order .ai-xin__zhi {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.order .ai-xin__zhi .top {
+  position: absolute;
+  width: 100rpx;
+  height: 100rpx;
+  bottom: 438rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.order .ai-xin__zhi .bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  padding-top: 70rpx;
+}
+
+.order .ai-xin__zhi .bottom .an-xin__count {
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: rgba(51, 51, 51, 1);
+}
+
+.order .ai-xin__zhi .bottom .success-form {
+  padding: 30rpx 75rpx;
+}
+
+.order .ai-xin__zhi .bottom button {
+  width: 600rpx;
+  height: 88rpx;
+  background: linear-gradient(270deg, rgba(254, 141, 24, 1) 0%, rgba(255, 177, 32, 1) 100%);
+  border-radius: 30rpx;
+  color: white;
+  font-size: 40rpx;
+}
+
+.order .ai-xin__zhi .bottom .pick-ai__xin--zhi {
+  border-bottom: 1rpx solid #f8f8f8;
+}
+
+.order .ai-xin__zhi .bottom .pick-ai__xin--zhi .title-text {
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, 1);
+  line-height: 30rpx;
+}
+
+.pick-ai__xin--zhi .tiao-box__right .pick-icon {
+  height: 34rpx;
+  width: 34rpx;
+}
+
+.order .order-total__price {
+  position: fixed;
+  bottom: 0rpx;
+  width: 750rpx;
+  height: 90rpx;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+
+.order .order-total__price .left {
+  flex: 1;
+}
+
+.order .order-total__price .right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 30rpx;
+  line-height: 30rpx;
+}
+
+.order .order-total__price .right .submit-order {
+  width: 242rpx;
+  height: 90rpx;
+  background: linear-gradient(270deg, rgba(254, 141, 24, 1) 0%, rgba(255, 177, 32, 1) 100%);
+  border-radius: 0;
+  margin-left: 10rpx;
+  color: white;
+  font-size: 30rpx;
+  line-height: 90rpx;
+}
+
+.shim {
+  height: 100rpx;
+}

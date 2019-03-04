@@ -1,0 +1,131 @@
+/* pages/orderInfo/orderInfo.wxss */
+
+.order-info .top-box {
+  position: relative;
+  height: 202rpx;
+  width: 750rpx;
+}
+
+.order-info .top-box .title-text {
+  position: absolute;
+  left: 40rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+}
+
+.order-info .top-box .title-text .big-text {
+  font-size: 36rpx;
+  font-weight: 500;
+  line-height: 36rpx;
+}
+
+.order-info .top-box .title-text .min-text {
+  font-size: 26rpx;
+  line-height: 26rpx;
+  margin-top: 20rpx;
+}
+
+.order-info .top-box .top-photo {
+  height: 202rpx;
+  width: 750rpx;
+}
+
+.order-info .product-location {
+  margin-bottom: 30rpx;
+}
+
+.order-info .product-location .jian-tou {
+  width: 16rpx;
+  height: 28rpx;
+}
+
+.order-info .product-location .current-location__time {
+  font-size: 22rpx;
+  color: rgba(153, 153, 153, 1);
+  line-height: 25rpx;
+}
+
+.order-info .product-location .current-location {
+  font-size: 26rpx;
+  color: rgba(85, 85, 85, 1);
+  line-height: 25rpx;
+  margin-bottom: 18rpx;
+}
+
+.order-info .product-location .tiao-box__left .icon {
+  width: 37rpx;
+  height: 30rpx;
+}
+
+.order-item .price-discreption {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 17rpx;
+}
+
+.order-item .expenses-discription {
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f8f8f8;
+  font-size: 22rpx;
+  color: rgba(153, 153, 153, 1);
+  line-height: 22rpx;
+}
+
+.order-item .expenses-discription .sum-price {
+  font-size: 22rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  line-height: 24rpx;
+}
+
+.order-info .order-bottom__info {
+  background-color: white;
+  margin-bottom: 56rpx;
+}
+
+.order-info .order-bottom__info .top {
+  padding: 30rpx;
+  font-size: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  border-bottom: 1rpx solid #f8f8f8;
+}
+
+.order-info .order-bottom__info .bottom {
+  padding: 30rpx 30rpx 0rpx;
+}
+
+.order-info .order-bottom__info .bottom .item {
+  margin-bottom: 30rpx;
+  font-size: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  line-height: 28rpx;
+}
+
+.order-info .loaction-photo-box {
+  margin-bottom: 30rpx;
+  position: relative;
+}
+
+.order-info .loaction-photo-box .receive-loaction {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 100rpx;
+  color: rgba(51, 51, 51, 1);
+  font-size: 28rpx;
+}
+
+.order-info .loaction-photo-box .receive-loaction .top {
+  font-size: 26rpx;
+}
+
+.order-info .loaction-photo-box .receive-loaction .right {
+  margin-left: 40rpx;
+}
+
+.order-info .loaction-photo-box .loaction-photo {
+  width: 750rpx;
+  height: 120rpx;
+}

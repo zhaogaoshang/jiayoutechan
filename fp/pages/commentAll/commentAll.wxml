@@ -1,0 +1,31 @@
+<!--pages/commentAll/commentAll.wxml-->
+<wxs src="../../utils/util.wxs" module="wxs" />
+<view class="container comment-page">
+  <!-- 评价的头部 -->
+  <view class="tiao-box comment-title">
+    <view class="tiao-box__left">评价</view>
+    <view class="tiao-box__middle">({{comment.count}})</view>
+    <view class="tiao-box__right"></view>
+  </view>
+
+  <!-- 每一个评论 -->
+  <view class="comment-item" wx:for="{{comment.list}}" wx:key="{{index}}">
+    <image class="comment-user__avatar" src="{{wxs.imageUrl(item.headimg)}}"></image>
+    <view class="right">
+      <view class="user-info">
+        <text class="user-name">{{item.user_name}} </text>
+        <text class="comment-time">{{item.add_time}}</text>
+      </view>
+      <view class="comment-detail">{{item.content}}</view>
+      <view class="product-photo">
+        <image class="product-photo__item" src="{{wxs.imageUrl(only)}}" wx:for-item="only" wx:for="{{item.img_list}}" wx:key="{{index}}"></image>
+      </view>
+    </view>
+  </view>
+  <view>
+
+  </view>
+
+  <!-- 垫片 -->
+  <view class="shim"></view>
+</view>

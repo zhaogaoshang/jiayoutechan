@@ -1,0 +1,141 @@
+<!--pages/addressChang/addressChang.wxml-->
+<view class="container address-chang">
+  <!-- 联系人 -->
+  <view class="tiao-box">
+    <view class="tiao-box__left">联系人</view>
+    <view class="tiao-box__middle">
+      <input placeholder="请输入姓名" value="{{form.name}}" bindinput="handleEditUserName" placeholder-class="placeholder-class" class="placeholder-class__active"></input>
+    </view>
+    <view class="tiao-box__right"></view>
+  </view>
+
+  <!-- 手机号码 -->
+  <view class="tiao-box">
+    <view class="tiao-box__left">手机号码</view>
+    <view class="tiao-box__middle">
+      <input placeholder="请输入手机号码" value="{{form.mobile}}" bindinput="handleEditMobile" placeholder-class="placeholder-class" class="placeholder-class__active"></input>
+    </view>
+    <view class="tiao-box__right"></view>
+  </view>
+
+  <!-- 选择地区 -->
+  <view class="tiao-box" catchtap="handlePickLocation">
+    <view class="tiao-box__left">选择地区</view>
+    <view class="tiao-box__middle">
+      <text>{{form.provinceName}} </text>
+      <text>{{form.cityName}} </text>
+      <text>{{form.districtName}} </text>
+    </view>
+    <view class="tiao-box__right">
+      <text>请选择</text>
+      <image class="pick-right__jian" src="../../images/gd@2x.png"></image>
+    </view>
+  </view>
+
+  <!-- 详细地址 -->
+  <view class="tiao-box address-info__box">
+    <view class="tiao-box__left">
+      <text> 详细地址</text>
+    </view>
+    <view class="tiao-box__middle">
+      <textarea fixed="{{true}}" class="text-input" auto-height placeholder="请输入详细地址信息，如道路、门牌号、小区、楼栋号、单元室等" value="{{form.address}}" bindinput="handleLocationDetail" placeholder-class="placeholder-class" class="placeholder-class__active"></textarea>
+    </view>
+    <view class="tiao-box__right"></view>
+  </view>
+
+  <!-- 邮政编码 -->
+  <view class="tiao-box">
+    <view class="tiao-box__left">邮政编码</view>
+    <view class="tiao-box__middle">
+      <input placeholder="请输入邮编" value="{{form.zipcode}}" bindinput="handleZipcode" placeholder-class="placeholder-class" class="placeholder-class__active"></input>
+    </view>
+    <view class="tiao-box__right"></view>
+  </view>
+
+  <!-- 设置默认地址 -->
+  <view class="tiao-box">
+    <view class="tiao-box__left"> 设置默认地址</view>
+    <view class="tiao-box__middle"></view>
+    <view class="tiao-box__right">
+      <switch color="rgba(254,141,22,1)" checked="{{form.isdefault}}" bindchange="handleSwitchChange" />
+    </view>
+  </view>
+
+  <!-- 删除地址 -->
+  <form wx:if="{{type=='edit'}}">
+    <button class="handle-input__btn delete-btn" catchtap="handleDeleteAddress">删除收货地址</button>
+  </form>
+
+  <!-- 删除地址 -->
+  <form>
+    <button class="handle-input__btn sever-btn" catchtap="handleStorage">保存</button>
+  </form>
+
+  <!-- 选择地址 -->
+  <view class="address-pick__about" catchtap="handlePickLocation">
+    <view class="location-modle__box" wx:if="{{isShowLocationTemplate}}" catchtap="handlePickLocation">
+      <view class="location-modle" catchtap="handlePrevent">
+        <!-- 头部 -->
+        <view class="tiao-box location-modle__title">
+          <view class="tiao-box__left"></view>
+          <view class="tiao-box__middle">所在地区 </view>
+          <view class="tiao-box__right" catchtap="handlePickLocation">
+            <image class="off-icon" src="../../images/off@2.png"></image>
+          </view>
+        </view>
+        <!-- 中间区域选择 -->
+        <view class="location-show">
+          <view class="location-show__item {{locationIndex==0?'active-location':''}}" data-index="0" catchtap="handleSwitchPickLocation">
+            <text class="location-show__pri">{{form.provinceName}}</text>
+            <view class="line" style="{{locationIndex==0?'display:block':''}}"></view>
+          </view>
+          <view class="location-show__item {{locationIndex==1?'active-location':''}}" data-index="1" catchtap="handleSwitchPickLocation">
+            <text>{{form.cityName}}</text>
+            <view class="line" style="{{locationIndex==1?'display:block':''}}"></view>
+          </view>
+          <view class="location-show__item {{locationIndex==2?'active-location':''}}" data-index="2" catchtap="handleSwitchPickLocation">
+            <text>{{form.districtName}}</text>
+            <view class="line" style="{{locationIndex==2?'display:block':''}}"></view>
+          </view>
+        </view>
+        <!-- 省的 -->
+        <view wx:if="{{locationIndex==0}}">
+          <scroll-view class="location-pick__scroll" scroll-y>
+            <view class="tiao-box location-pick" wx:for="{{allProvince}}" wx:key="{{index}}" data-location-id="{{item.province_id}}" data-location-name="{{item.province_name}}" catchtap="handlePickprovince" data-index="{{index}}">
+              <view class="tiao-box__left">{{item.province_name}}</view>
+              <view class="tiao-box__middle"></view>
+              <view class="tiao-box__right">
+                <text wx:if="{{item.active}}">√</text>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+        <!-- 市的 -->
+        <view wx:if="{{locationIndex==1}}">
+          <scroll-view class="location-pick__scroll" scroll-y>
+            <view class="tiao-box location-pick" wx:for="{{allcity}}" wx:key="{{index}}" data-location-id="{{item.province_id}}" data-location-name="{{item.province_name}}" catchtap="handlePickCity">
+              <view class="tiao-box__left">{{item.province_name}}</view>
+              <view class="tiao-box__middle"></view>
+              <view class="tiao-box__right">
+                <text wx:if="{{item.active}}">√</text>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+        <!-- 区的 -->
+        <view wx:if="{{locationIndex==2}}">
+          <scroll-view class="location-pick__scroll" scroll-y>
+            <view class="tiao-box location-pick" wx:for="{{allDistrict}}" wx:key="{{index}}" data-location-id="{{item.province_id}}" data-location-name="{{item.province_name}}" catchtap="handlePickDistrict">
+              <view class="tiao-box__left">{{item.province_name}}</view>
+              <view class="tiao-box__middle"></view>
+              <view class="tiao-box__right">
+                <text wx:if="{{item.active}}">√</text>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

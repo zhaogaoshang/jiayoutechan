@@ -1,0 +1,66 @@
+/* pages/addressChang/addressChang.wxss */
+
+.content {
+  background-color: white;
+}
+
+.address-chang .pick-right__jian {
+  margin-left: 23rpx;
+  width: 11rpx;
+  height: 18rpx;
+}
+
+.address-chang .tiao-box {
+  font-size: 26rpx;
+  line-height: 26rpx;
+  border-top: 1rpx solid #f8f8f8;
+  color: rgba(153, 153, 153, 1);
+}
+
+.address-chang .tiao-box__left {
+  margin-right: 20rpx;
+}
+
+.address-chang .handle-input__btn {
+  width: 600rpx;
+  height: 88rpx;
+  background: linear-gradient(89deg, rgba(253, 179, 32, 1) 0%, rgba(254, 141, 22, 1) 100%);
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  color: white;
+  margin-top: 30rpx;
+}
+
+.address-chang .delete-btn {
+  color: rgba(254, 142, 22, 1);
+  background: white;
+  border: 1rpx solid rgba(254, 142, 22, 1);
+  margin-top: 60rpx;
+  /* margin-bottom: 30rpx; */
+}
+
+.address-chang .text-input {
+  min-height: 60rpx;
+  width: 550rpx;
+}
+
+.address-info__box .tiao-box__middle {
+  /* overflow: hidden; */
+  white-space: pre-wrap;
+  /* text-overflow: ellipsis; */
+  display: flex;
+}
+
+.address-info__box .tiao-box__middle textarea {
+  flex: 1;
+  width: 450rpx;
+  min-height: 60rpx;
+}
+
+.placeholder-class__active {
+  color: #333;
+}
+
+.placeholder-class {
+  color: rgba(153, 153, 153, 1);
+}

@@ -1,0 +1,6 @@
+<!--componment/deleteAdd/deleteAdd.wxml-->
+<view class="add-delete__function" catchtap="handleNull">
+  <view class="need-count__icon" data-sku="{{sku}}" catchtap="handleDelete">-</view>
+  <view class="need-count">{{count}}</view>
+  <view class="need-count__icon" data-sku="{{sku}}" catchtap="handleAdd">+</view>
+</view>

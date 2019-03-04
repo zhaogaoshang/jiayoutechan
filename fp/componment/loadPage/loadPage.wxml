@@ -1,0 +1,4 @@
+<!--componment/loadPage/loadPage.wxml-->
+<view class="out-box" wx:if="{{isShow}}">
+  <image src="../../images/jiayoutechan.gif"></image>
+</view>

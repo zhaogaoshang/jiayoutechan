@@ -1,0 +1,23 @@
+<!--componment/changFangProduct/changFangProduct.wxml-->
+<wxs src="../../utils/util.wxs" module="wxs" />
+<view class="new-product" data-id="{{item.goods_id}}" catchtap="handleGoProduct">
+  <image class="new-product__photo" src="{{wxs.imageUrl(item.goods_thumb)}}"></image>
+  <view class="right">
+    <view class="product-discription">
+      <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{item.is_shipping==1}}"></image>
+      <text class="">{{item.goods_name}}</text>
+    </view>
+    <view>
+      <text class="product-price">￥{{item.shop_price}}</text>
+      <text class="people-count">{{item.selcount}}人付款</text>
+    </view>
+  </view>
+
+  <view class="like-share" catchtap="handlePrevent">
+    <image class="like-share__icon" src="../../images/sc.png" wx:if="{{item.is_collected==0}}" catchtap="handleCollected"></image>
+    <image class="like-share__icon" src="../../images/ssc.png" wx:if="{{item.is_collected==1}}" catchtap="handleCollected"></image>
+    <image class="like-share__icon right" src="../../images/fx.png">
+      <button class="share" open-type="share" data-id="{{item.goods_id}}"></button>
+    </image>
+  </view>
+</view>

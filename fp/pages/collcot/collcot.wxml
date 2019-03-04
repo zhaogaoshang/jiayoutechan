@@ -1,0 +1,29 @@
+<!--pages/collcot/collcot.wxml-->
+<wxs src="../../utils/util.wxs" module="wxs" />
+<view class="container collect-page">
+  <!-- 我的收藏 -->
+  <view>
+    <view class="new-product" wx:for="{{productList.list}}" wx:key="{{index}}" data-id="{{item.goods_id}}" catchtap="handleGoProduct">
+      <image class="new-product__photo" src="{{wxs.imageUrl(item.goods_thumb)}}">
+        <view class="out-status" wx:if="{{item.is_on_sale==0}}">已下架</view>
+        <view class="out-status" wx:if="{{item.isempty==1}}">已售尽</view>
+      </image>
+      <view class="right">
+        <view class="product-discription">
+          <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{item.is_shipping==0}}"></image>
+          <text class="">{{item.goods_name}}</text>
+        </view>
+        <view>
+          <text class="product-price">￥{{item.shop_price}}</text>
+          <text class="people-count" wx:if="{{item.sales!=0}}">{{item.sales}}人付款</text>
+        </view>
+      </view>
+
+      <view class="like-share">
+        <image class="like-share__icon" src="../../images/sc.png" data-index="{{index}}" catchtap="handleCollect" wx:if="{{!item.is_collect}}"></image>
+        <image class="like-share__icon" src="../../images/ssc.png" data-index="{{index}}" catchtap="handleCollect" wx:if="{{item.is_collect}}"></image>
+        <image class="like-share__icon right" src="../../images/fx.png" wx:if="{{item.is_on_sale==1&&item.isempty==0}}"></image>
+      </view>
+    </view>
+  </view>
+</view>

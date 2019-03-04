@@ -1,0 +1,36 @@
+/* pages/order/order.wxss */
+
+.order {
+}
+
+.order .category-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: white;
+  margin-bottom: 30rpx;
+}
+
+.order .category-box .category-item {
+  font-size: 26rpx;
+  color: rgba(153, 153, 153, 1);
+  line-height: 26rpx;
+  padding: 30rpx 0;
+  text-align: center;
+  position: relative;
+}
+
+.order .category-box .category-item .line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 10rpx;
+  background: linear-gradient(270deg, rgba(254, 145, 25, 1) 0%, rgba(255, 175, 31, 1) 100%);
+  border-radius: 5rpx;
+}
+
+.order .order-item button {
+  min-width: 143rpx;
+}

@@ -1,0 +1,48 @@
+<!--pages/logistics/logistics.wxml-->
+<view class="container logistics-page">
+  <view class="product-info">
+    <image class="product-photo" src="../../images/active.jpg"></image>
+    <view class="one-line__text">一周内发货，肉多饱满的草莓，园内自摘吃发货，肉多饱满的草莓，园内自摘吃了还想吃...</view>
+  </view>
+
+  <!-- 运单号码 -->
+  <view class="logistics-number">
+    <view>
+      <text class="left">物流公司</text>
+      <text>物流单号</text>
+    </view>
+    <view class="bottom">
+      <text class="logistics-name">顺丰快递</text>
+      <text class="number-list">3131316365252</text>
+    </view>
+  </view>
+
+  <!-- 物流信息 -->
+  <view class="logistics-detail">
+    <bolck>
+      <!-- 最新的 -->
+      <view class="new-infomation__box">
+        <image class="new-infomation__icon" src="../../images/wz@2x.png"></image>
+        <view class="right">
+          <view class="time">2017-09-14 12:50:21</view>
+          <view class="loaction">到达： 由 大山的子孙 签收</view>
+        </view>
+      </view>
+      <!-- 过去的物流信息 -->
+      <view class="new-infomation__box">
+        <view class="left">
+          <view class="line"></view>
+          <image class="old-infomation__icon" src="../../images/wxi@2x.png"></image>
+        </view>
+        <view class="right">
+          <view class="time">2017-09-14 12:50:21</view>
+          <view class="loaction">到达： 由 大山的子孙 签收</view>
+        </view>
+      </view>
+      <view>
+      </view>
+    </bolck>
+  </view>
+
+  <view class="shim"></view>
+</view>

@@ -1,0 +1,48 @@
+/* componment/login/login.wxss */
+
+.box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+.box.hid {
+  display: none;
+}
+
+.lonin-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.lonin-box .login-photo {
+  height: 482rpx;
+  width: 588rpx;
+}
+
+.lonin-box .zhu-ce {
+  width: 588rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  color: white;
+  border-radius: 0;
+  font-size: 30rpx;
+  background-color: #49c253;
+}
+
+.zhe-zhao__ceng {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}

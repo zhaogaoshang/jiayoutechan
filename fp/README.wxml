@@ -1,0 +1,8 @@
+<view> 以下规范针对于本小程序的开发</view>
+<view>1:.wxss命名规范：采用国际通用吃的命名规范BEM(https://www.cnblogs.com/webzgs/p/10308014.html)：- 块 __ 元素 --描述</view>
+<view> 2:.wxml,.js事件变量命名全部是驼峰命名法</view>
+<view> 3：.wxml 里面的事件用""（双引号）包裹。点击跳转事件用handleGo开头（例如：catchtap = "handleGo"）, 其他页面点击事件名以 handle 开头，例如（例如：catchtap = "handleGoIdex"）</view>
+<view>4：.wxml 里面有一个根标签</view>
+<view>5:.js 里面获取后端数据用get开头（例如：getUserInfo()=> {}）</view>
+<view> 6:.js 里面handle事件在中上面，get事件在中下面，data对象在最前，on事件在最后面件。</view>
+<view> 7: 正式上线的项目把console.log()关掉</view>

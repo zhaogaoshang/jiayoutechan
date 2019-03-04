@@ -1,0 +1,120 @@
+<!--pages/orderInfo/orderInfo.wxml-->
+<wxs src="../../utils/util.wxs" module="wxs" />
+<view class="container order-info order">
+  <!-- 待收货 -->
+  <view class="top-box">
+    <image class="top-photo" src="{{wxs.changelessImageUrl('daishou@2x.png')}}"></image>
+    <view class="title-text">
+      <view class="big-text">订单待收货</view>
+      <view class="min-text">剩余5天12小时自动确认</view>
+    </view>
+  </view>
+
+  <!-- 未支付 -->
+  <view class="top-box">
+    <image class="top-photo" src="{{wxs.changelessImageUrl('weizhifu@2x.png')}}"></image>
+    <view class="title-text">
+      <view class="big-text">订单未支付</view>
+      <view class="min-text">剩余1小时25分自动关闭</view>
+    </view>
+  </view>
+
+  <!-- 代发货 -->
+  <view class="top-box">
+    <image class="top-photo" src="{{wxs.changelessImageUrl('daifahuo@2x.png')}}"></image>
+    <view class="title-text">
+      <view class="big-text">等待卖家发货</view>
+    </view>
+  </view>
+
+  <!-- 订单取消 -->
+  <view class="top-box">
+    <image class="top-photo" src="{{wxs.changelessImageUrl('off_order@2x.png')}}"></image>
+    <view class="title-text">
+      <view class="big-text">订单已取消</view>
+    </view>
+  </view>
+
+  <!-- 货物状态 -->
+  <view class="tiao-box product-location" catchtap="handleGoLogistics">
+    <view class="tiao-box__left">
+      <image class="icon" src="../../images/status-cart-icon@2x.png"></image>
+    </view>
+    <view class="tiao-box__middle">
+      <view class="current-location">快件已从 北京 发出,下一站将到达 呼伦贝尔</view>
+      <view class="current-location__time">2019-02-15 13:32:12</view>
+    </view>
+    <view class="tiao-box__right">
+      <image class="jian-tou" src="../../images/gd@2x.png"></image>
+    </view>
+  </view>
+
+  <view class="loaction-photo-box">
+    <image class="loaction-photo" src="../../images/dizhi-bg@2.png"></image>
+    <view class="receive-loaction">
+      <view class="top">
+        <text>{{orderDetail.info.consignee}}</text>
+        <text class="right">{{orderDetail.info.mobile}}</text>
+      </view>
+      <view class="bottom">{{orderDetail.info.province}}{{orderDetail.info.city}}{{orderDetail.info.district}}</view>
+    </view>
+  </view>
+
+  <!-- 订单 -->
+  <view class="order-item" catchtap="handleOrderInfo">
+    <view class="tiao-box">
+      <view class="tiao-box__left"></view>
+      <view class="tiao-box__middle"></view>
+      <view class="tiao-box__right">待支付</view>
+    </view>
+    <view>
+      <block wx:for="{{orderDetail.list}}" wx:key="{{index}}">
+        <view class="product-item">
+          <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
+          <view class="product-count">{{item.goods_attr}}</view>
+          <view class="product-price">{{item.goods_price}}</view>
+          <view class="product-container__text">x{{item.goods_number}}</view>
+        </view>
+        <view class="expenses-discription">
+          <view class="price-discreption">
+            <text class="left">商品金额：</text>
+            <text class="right">¥{{item.goods_price}}</text>
+          </view>
+          <view class="price-discreption">
+            <text class="left">运费：</text>
+            <text class="right">¥{{item.n_shiping_fee}}</text>
+          </view>
+          <view class="price-discreption">
+            <text class="left">小计：</text>
+            <text class="right">¥{{item.goods_price}}</text>
+          </view>
+        </view>
+      </block>
+      <!-- 总计 -->
+      <view class="tiao-box price-discreption">
+        <view class="tiao-box__left">实付款(含运费)</view>
+        <view class="tiao-box__middle"></view>
+        <view class="tiao-box__right">总金额：¥{{orderDetail.info.c_amount}}</view>
+      </view>
+      <!-- 操控按钮 -->
+      <view class="handle-btn">
+        <button>取消订单</button>
+        <button class="handle-btn__red">立即支付</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 订单信息 -->
+  <view class="order-bottom__info">
+    <view class="top">订单信息</view>
+    <view class="bottom">
+      <view class="item">订单状态：待发货</view>
+      <view class="item">订单编号：{{orderDetail.info.order_sn}}</view>
+      <view class="item">下单时间：{{orderDetail.info.add_time}}</view>
+      <view class="item">配送方式：{{orderDetail.info.shipping_name?orderDetail.info.shipping_name:'快递'}}</view>
+    </view>
+  </view>
+
+
+
+</view>
