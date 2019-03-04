@@ -12,12 +12,12 @@ Page({
     storeId: '', // 店铺的id
     storeInfo: {}, // 店铺的信息
 
-    productList: {// 产品列表
-      info:{},
-      list:[],
-      next:true,
-      count:1
-    }, 
+    productList: { // 产品列表
+      info: {},
+      list: [],
+      next: true,
+      count: 1
+    },
     productParams: { // 参数
       market_id: '',
       per_page: 10,
@@ -58,6 +58,10 @@ Page({
     http.fxGet(api.mobile_apis_market_info, this.data.productParams, res => {
       console.log(res.data, '店铺')
       if (res.code == 2000) {
+        if (this.data.productParams.page > 1) {
+          res.data.list = this.data.productList.list.concat(res.data.list)
+        }
+
         this.setData({
           productList: res.data
         })
@@ -121,13 +125,22 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    if (!this.data.productList.next) {
+      return utils.showToast('没有更多了')
+    }
 
+    this.setData({
+      'productParams.page': ++this.data.productParams.page
+    })
+    this.getStoreProduct()
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-
+  onShareAppMessage: function(e) {
+    if (e.from == "menu") {
+      return app.handleShareApp()
+    }
   }
 })

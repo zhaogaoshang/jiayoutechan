@@ -101,6 +101,7 @@ Page({
 
   // 选择地址魔板是否显示
   handlePickLocation() {
+    console.log(123132113)
     this.setData({
       isShowLocationTemplate: !this.data.isShowLocationTemplate
     })
@@ -460,7 +461,9 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-
+  onShareAppMessage: function(e) {
+    if (e.from == "menu") {
+      return app.handleShareApp()
+    } 
   }
 })

@@ -19,7 +19,7 @@ Page({
       act: 'burst',
       area: app.globalData.locationPick.locationId,
       page: 1,
-      pagesize: 10
+      pagesize: 3
     },
 
     newProductHot: {}, // 新品热销
@@ -121,7 +121,6 @@ Page({
 
   // 输入框输入文字
   handleSearchText(e) {
-    console.log(e.detail.value)
     this.setData({
       searchText: e.detail.value
     })
@@ -158,6 +157,20 @@ Page({
 
     this.setData({
       ['newProductSell.list[' + idx + '].is_collect']: !isCollect
+    })
+  },
+
+  // 去新品热销
+  handleGoNewHigh() {
+    wx.navigateTo({
+      url: '../productMoreNewHigh/productMoreNewHigh',
+    })
+  },
+
+  // 去今日爆款
+  handleGoTadyHigh(){
+    wx.navigateTo({
+      url: '../productMoreTodayHigh/productMoreTodayHigh',
     })
   },
 
@@ -381,6 +394,7 @@ Page({
         this.setData({
           cityList: agent
         })
+        console.log(app.globalData.locationPick.locationId)
       } else {
         utils.showToast(res.msg)
       }
@@ -412,7 +426,6 @@ Page({
         this.setData({
           provinceList: agent
         })
-        console.log(res.data, '全部的省')
       } else {
         utils.showToast(res.msg)
       }
@@ -509,7 +522,6 @@ Page({
     app.getNetworkStatus() // 检测网络
 
     this.getHandAdv() // 获取头部广告
-    this.getTodayHigh() // 今日爆款
     this.gatherShop() // 去赶集
 
     // this.getSpecialStore() // 获取特色店铺
@@ -523,6 +535,7 @@ Page({
       app.handleTokenCheck().then(() => {
         this.getNewProductHot() // 新品热销
         this.getNewProductSell() // 新品上市
+        this.getTodayHigh() // 今日爆款
       })
     } else {
       // 没有解析
@@ -535,6 +548,7 @@ Page({
           app.handleTokenCheck().then(() => {
             this.getNewProductHot() // 新品热销
             this.getNewProductSell() // 新品上市
+            this.getTodayHigh() // 今日爆款
           })
         })
       }
@@ -620,7 +634,23 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function(e) {
 
+    if (e.from == "menu") {
+      return app.handleShareApp()
+    } else {
+      let titlt = e.target.dataset.title
+      let url = utils.imageUrl + e.target.dataset.iamge
+      let id = e.target.dataset.id
+
+      if (e.target.dataset.product) {
+        return app.handleShareProduct(titlt, url, id)
+      }
+
+      if (e.target.dataset.gather) {
+        return app.handleShareGather(titlt, url, id)
+      }
+
+    }
   }
 })

@@ -161,7 +161,9 @@
   margin-bottom: 10rpx;
 }
 
-.today-high__sell .today-high__sell--bottom {
+.today-high__sell--item  .look-more__icon {
+  width: 240rpx;
+  height: 412rpx;
 }
 
 .today-high__sell .today-high__sell--bottom {
@@ -257,8 +259,6 @@
 }
 
 /* 新品热销E */
-
-
 
 .index .shim {
   height: 34rpx;
@@ -379,6 +379,7 @@
 
 .characteristic-store__item .top .like-share__icon,
 .new-product .like-share__icon {
+  position: relative;
   width: 50rpx;
   height: 50rpx;
 }
@@ -477,3 +478,12 @@
 } */
 
 /* 地址魔板 e*/
+
+.like-share__icon .share-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}

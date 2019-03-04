@@ -3,6 +3,7 @@ const app = getApp() //获取应用实例
 const http = require('../../utils/http.js')
 const api = require('../../utils/api.js')
 const utils = require('../../utils/util.js')
+const config = require('../../utils/config.js')
 Page({
 
   /**
@@ -14,7 +15,7 @@ Page({
     count: 0,
     params: {
       page: 1, //可选	int	1	当前页码
-      per_page: 12, //可选	int	10	每页数量
+      per_page: 10, //可选	int	10	每页数量
       keywords: '请输入您想要查找的商品', //必须	String		搜索关键字
       province: '', //可选	int	0	省地区号
       city: '', //可选	int	0	市地区号
@@ -50,7 +51,6 @@ Page({
 
   // 去商品页面
   handleGoProduct(e) {
-    console.log(e)
     wx.navigateTo({
       url: '../product/product?id=' + e.detail.id
     })
@@ -65,7 +65,7 @@ Page({
 
   // 获取搜索结果
   getProduct() {
-    http.fxPost(api.mobile_apis_search, this.data.params, res => {
+    http.fxGet(api.mobile_apis_search, this.data.params, res => {
       console.log(res, '搜索结果')
       if (res.code == 2000) {
         let agent = this.data.list
@@ -83,6 +83,7 @@ Page({
       } else {
         utils.showToast(res.msg)
       }
+      wx.stopPullDownRefresh()
     })
   },
 
@@ -131,20 +132,46 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.setData({
+      'params.page': 1
+    })
+    this.getProduct()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    if (!this.data.isNext) {
+      return utils.showToast('没有更多了')
+    }
 
+    this.setData({
+      'params.page': ++this.data.params.page
+    })
+    this.getProduct()
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function(e) {
+    if (e.from == 'menu') {
+      return app.handleShareApp()
+    }
 
+    if (e.from == 'button') {
+      let name
+      let url
+      let id
+      this.data.list.forEach((item, index) => {
+        if (item.goods_id == e.target.dataset.id) {
+          name = item.goods_name
+          url = config.fxUrl(item.goods_thumb)
+          id = item.goods_id
+        }
+      })
+      return app.handleShareProduct(name, url, id)
+    }
   }
 })

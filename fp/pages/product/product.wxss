@@ -273,7 +273,7 @@
 }
 
 .product-page .discription-text__box image {
-  max-width: 750rpx;
+  max-width: 690rpx;
 }
 
 .product-page .discription-text__box p {
@@ -288,6 +288,10 @@
   font-weight: 500;
   color: rgba(51, 51, 51, 1);
   line-height: 26rpx;
+}
+
+.product-detail__top image {
+  max-width: 690rpx;
 }
 
 /* 商品详情e */
@@ -467,6 +471,8 @@
 }
 
 .product-page .sell-null {
+  position: fixed;
+  bottom: 0;
   width: 750rpx;
   height: 100rpx;
   background-color: #666;
@@ -520,3 +526,13 @@
 }
 
 /* 操作数量 */
+
+.old-price__text {
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  text-decoration: line-through;
+  color: rgba(153, 153, 153, 1);
+  line-height: 24rpx;
+  margin-left: 10rpx;
+}

@@ -16,7 +16,7 @@
 
   <!-- 店铺 -->
   <view class="store-item">
-    <view class="store-name">鲜公旗舰店</view>
+    <view class="store-name"></view>
     <view class="product-item" wx:for="{{orderDetail.cart_goods}}" wx:key="{{index}}">
       <product item="{{item}}"></product>
       <text class="my-pick">{{item.goods_attr}}</text>

@@ -21,8 +21,9 @@
     "pages/loveQuantity/loveQuantity",
     "pages/loveQuantityDraw/loveQuantityDraw",
     "pages/invitation/invitation",
-    "pages/notFound/notFound",
-    "pages/collcot/collcot"
+    "pages/collcot/collcot",
+    "pages/productMoreTodayHigh/productMoreTodayHigh",
+    "pages/productMoreNewHigh/productMoreNewHigh"
   ],
   "window": {
     "backgroundTextStyle": "dark",

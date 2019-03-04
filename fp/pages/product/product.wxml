@@ -26,7 +26,10 @@
   <!-- 简述 -->
   <view class="product-discription__box">
     <!-- 价格 -->
-    <view class="cureent-price">￥{{productDetail.shop_price}}</view>
+    <view class="cureent-price">
+      <text>￥{{productDetail.shop_price}}</text>
+      <text class="old-price__text" wx:if="{{productDetail.morning_market_price!='0.0'}}"> ￥{{productDetail.morning_market_price}} </text>
+    </view>
     <!-- 描述 -->
     <view class="product-discription__text">
       <view class="lite-discription__text">{{productDetail.goods_name}}
@@ -38,8 +41,7 @@
     </view>
     <!-- 物流 其他-->
     <view class="logistics-box">
-      <!-- <view> 快递：0元 销量：32笔</view> -->
-      <view>销量：{{productDetail.order_nums}}笔</view>
+      <view>快递：{{productDetail.freight}}元 销量：{{productDetail.order_nums}}笔</view>
       <view>{{storeInfo.address}}</view>
     </view>
   </view>
@@ -58,7 +60,7 @@
     <view class="tiao-box comment-box__top">
       <view class="tiao-box__left">评价</view>
       <view class="tiao-box__middle"> （{{comment.count}}）</view>
-      <view class="tiao-box__right" catchtap="handleGoAllComment" wx:if="{{comment.count>3}}">
+      <view class="tiao-box__right" data-id="{{id}}" catchtap="handleGoAllComment" wx:if="{{comment.count>3}}">
         <text>查看全部 </text>
         <image class="jaintou" src="../../images/gd@2x.png"></image>
       </view>
@@ -75,7 +77,7 @@
   </view>
 
   <!-- 店铺 -->
-  <view class="store" catchtap="handleGoStore">
+  <view class="store" catchtap="handleGoStore" wx:if="{{}}">
     <view class="store-top">
       <image class="store-avatar" src="{{wxs.imageUrl(storeInfo.shoplogo)}}"></image>
       <view class="store-name">
@@ -113,7 +115,7 @@
   </view>
 
   <!-- 底部购买按钮 -->
-  <view class="shop-box">
+  <view class="shop-box" wx:if="{{productDetail.goods_number!=0&&productDetail.is_on_sale!=0}}">
     <view class="left">
       <button class="function-icon" open-type="contact" bindcontact="handleContact">
         <image class="function-icon__fu" src="../../images/kf@2x.png"></image>
@@ -173,7 +175,8 @@
   </view>
 
   <!-- 已经下架 -->
-  <!-- <view class="sell-null">已售罄</view> -->
+  <view class="sell-null" wx:if="{{productDetail.goods_number==0}}">已售罄</view>
+  <view class="sell-null" wx:if="{{productDetail.is_on_sale==0}}">已下架</view>
 
   <!-- 售空 -->
   <!-- <view class="tiao-box sell-null__out">

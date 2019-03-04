@@ -8,16 +8,16 @@
       <text class="">{{item.goods_name}}</text>
     </view>
     <view>
-      <text class="product-price">￥68.00</text>
-      <text class="people-count">143人付款</text>
+      <text class="product-price">￥{{item.shop_price}}</text>
+      <text class="people-count">{{item.selcount}}付款</text>
     </view>
   </view>
 
   <view class="like-share" catchtap="handlePrevent">
-    <image class="like-share__icon" src="../../images/sc.png"></image>
-    <!-- <image class="like-share__icon" src="../../images/ssc.png"></image> -->
+    <image class="like-share__icon" src="../../images/sc.png" wx:if="{{item.is_collected==0}}" catchtap="handleCollected"></image>
+    <image class="like-share__icon" src="../../images/ssc.png" wx:if="{{item.is_collected==1}}" catchtap="handleCollected"></image>
     <image class="like-share__icon right" src="../../images/fx.png">
-      <button class="share" open-type="share"></button>
+      <button class="share" open-type="share" data-id="{{item.goods_id}}"></button>
     </image>
   </view>
 </view>

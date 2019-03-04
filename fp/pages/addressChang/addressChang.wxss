@@ -53,6 +53,8 @@
 
 .address-info__box .tiao-box__middle textarea {
   flex: 1;
+  width: 450rpx;
+  min-height: 60rpx;
 }
 
 .placeholder-class__active {
