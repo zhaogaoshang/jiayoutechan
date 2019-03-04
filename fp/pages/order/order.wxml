@@ -2,7 +2,7 @@
 <view class="container order">
 <!-- <construction></construction> -->
   <view class="category-box">
-    <view class="category-item" wx:for="{{category}}" wx:key="{{index}}" catchtap="handleSwichCategory" data-id="{{item.id}}">
+    <view class="category-item" wx:for="{{category}}" wx:key="{{index}}" catchtap="handleSwichCategory" data-id="{{item.id}}" data-status="{{item.status}}">
       <view>{{item.name}}</view>
       <view class="line" wx:if="{{item.id==activeCategory}}"></view>
     </view>

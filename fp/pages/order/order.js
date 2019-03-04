@@ -17,23 +17,32 @@ Page({
       is_shipping: 0,
       sales: 26
     }],
+    // lists
+    lists: [],
 
     activeCategory: 'all',
+    // 当前品类代码
+    activeStatus: '-1',
     category: [{
         name: '全部',
-        id: 'all'
+        id: 'all',
+        status:'-1'
       }, {
         name: '待支付',
-        id: 'daiZhiFu'
+        id: 'daiZhiFu',
+        status: '100'
       }, {
         name: '待发货',
-        id: 'daiFaHuo'
+        id: 'daiFaHuo',
+        status: '101'
       }, {
         name: '待收货',
-        id: 'daiShouHuo'
+        id: 'daiShouHuo',
+        status: '105'
       }, {
         name: '待评价',
-        id: 'daiPingJia'
+        id: 'daiPingJia',
+        status: '102'
       },
       // {
       //   name: '退款/退货',
@@ -42,42 +51,86 @@ Page({
     ],
 
     allOrderParams: { // 全部订单的参数
-      status: '',
+      composite_status: '-1',
       page: 1,
-      page_per: 10
+      pagesize: 10
     },
     allOrder: {}, // 全部订单
 
     daiZhiFuParams: { // 待支付
-      status: 1,
+      composite_status: '100',
       page: 1,
-      page_per: 10
+      pagesize: 10
     },
     daiZhiFu: {}, // 待支付
 
     daiFaHuoParams: { // 待发货
-      status: 2,
+      composite_status: '101',
       page: 1,
-      page_per: 10
+      pagesize: 10
     },
     daiFaHuo: {}, // 待发货
 
     daiShouHuoParams: { // 待收货
-      status: 3,
+      composite_status: '105',
       page: 1,
-      page_per: 10
+      pagesize: 10
     },
     daiShouHuo: {}, // 待收货
 
     daiPingJiaParams: { // 待评价
-      status: 3,
+      composite_status: '102',
       page: 1,
-      page_per: 10
+      pagesize: 10
     },
     daiPingJia: {}, // 待评价
 
-
+    // 所有订单数据
+    allParams:[
+      { // 全部
+        initParam: {
+          page: 1,
+          pagesize: 3,
+          composite_status: '-1',
+        },
+        list: [],
+        categoryType: 'all'
+      },
+      { // 待付款
+        initParam: {
+          page: 1,
+          pagesize: 10,
+          composite_status: '100',
+        },
+        list: []
+      },
+      { // 待发货
+        initParam: {
+          page: 1,
+          pagesize: 10,
+          composite_status: '101',
+        },
+        list: []
+      },
+      { // 待收货
+        initParam: {
+          page: 1,
+          pagesize: 10,
+          composite_status: '105',
+        },
+        list: []
+      },
+      { //已完成
+        initParam: {
+          page: 1,
+          pagesize: 10,
+          composite_status: '102',
+        },
+        list: []
+      }                        
+    ]
   },
+
 
   // 订单详情
   handleOrderInfo(e) {
@@ -98,7 +151,8 @@ Page({
   // 切换分类
   handleSwichCategory(e) {
     this.setData({
-      activeCategory: e.currentTarget.dataset.id
+      activeCategory: e.currentTarget.dataset.id,
+      activeStatus: e.currentTarget.dataset.status
     })
   },
 
@@ -180,16 +234,49 @@ Page({
    * 生命周期函数--监听页面加载 'tuiKuan daiPingJia daiShowhuo daiFaHuo daiZhifu all'
    */
   onLoad: function(options) {
-    console.log(options)
+    // console.log(options)
+    // app.getNetworkStatus() // 检测网络
+    // app.handleTokenCheck().then(() => {
+    //   this.getAllOrder() // 全部的订单
+    //   this.getDaiZhiFu() // 待支付
+    //   this.getDaiFaHuo() // 代发货
+    //   this.getDaiShouHuo() // 待收货
+    //   this.getDaiPingJia() // 待评价
+    // })
     app.getNetworkStatus() // 检测网络
     app.handleTokenCheck().then(() => {
-      this.getAllOrder() // 全部的订单
-      this.getDaiZhiFu() // 待支付
-      this.getDaiFaHuo() // 代发货
-      this.getDaiShouHuo() // 待收货
-      this.getDaiPingJia() // 待评价
+      // this.data.allParams.map(res => {
+        this.getOrderList(this.data.allParams[0].initParam)
+      // })
     })
   },
+
+
+  // 获取当前订单列表
+  getOrderList(param) {
+    http.fxGet(api.mobile_apis_order_list, param, res => {
+      if (res.code == 2000) {
+        this.data.allParams.map(v => {
+          if (this.data.activeStatus === v.initParam.composite_status) {
+            console.log(res.data)
+            // if (v.initParam.page > 1) {
+            //   res.data.order_list = [...v.list, ...res.data.order_list]
+            //   console.log(res.data.order_list)
+            // }
+            // this.setData({
+
+            // })
+          }
+        })
+        // if (this.data.allOrderParams.page > 1) {
+        //   res.data.list = this.data.allOrder.list.concat(res.data.list)
+        // }
+        // this.setData({
+        //   allOrder: res.data
+        // })
+      }
+    })
+  },  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -231,11 +318,7 @@ Page({
    */
   onReachBottom: function() {
     let agent = this.data.activeCategory
-
-
-
-
-
+    // let agent = this.data.activeStatus
     // 'all'
     if (agent == 'all') {
       if (!this.data.allOrder.next) {

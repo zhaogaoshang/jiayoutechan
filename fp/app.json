@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/order/order",
     "pages/index/index",
     "pages/commentWrite/commentWrite",
     "pages/networkError/networkError",
@@ -14,7 +15,7 @@
     "pages/addressChang/addressChang",
     "pages/paymentResult/paymentResult",
     "pages/checkout/checkout",
-    "pages/order/order",
+    
     "pages/orderInfo/orderInfo",
     "pages/liaisonStore/liaisonStore",
     "pages/logistics/logistics",
