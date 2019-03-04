@@ -26,7 +26,7 @@ Page({
         name: '待支付',
         id: 'daiZhiFu'
       }, {
-        name: '代发货',
+        name: '待发货',
         id: 'daiFaHuo'
       }, {
         name: '待收货',

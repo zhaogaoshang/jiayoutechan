@@ -32,12 +32,12 @@ Page({
 
   // 提交订单
   handleSubmitOrder() {
-    console.log(this.data.orderParams)
+    console.log(JSON.stringify(this.data.orderParams))
+    // return false
     if (!this.data.orderParams.address) {
       utils.showToast('请选择地址')
       return
     }
-
     http.fxPost(api.mobile_apis_orderDone, this.data.orderParams, res => {
       console.log(res, '提交订单')
       if (res.code == 2000) {
@@ -150,7 +150,7 @@ Page({
     })
   },
 
-  // 计算从产品详情来的
+  // 计算从产品详情来的 一步下单
   getSumFromProduct(e) {
     app.handleTokenCheck().then(() => {
       http.fxPost(api.mobile_apis_flowCart, {
@@ -163,11 +163,24 @@ Page({
       }, res => {
         console.log(res, '立即购买')
         if (res.code == 2000) {
+          let tempObj = {
+            goods_price: res.data.goods_price,
+            freight_price: res.data.freight_price,
+            goods_number: 1,
+            goods_attr_id: res.data.cart_goods[0].goods_attr_id,
+            goods_id: res.data.cart_goods[0].goods_id,
+            product_id: res.data.cart_goods[0].product_id,
+            goods_attr: res.data.cart_goods[0].goods_attr,
+            one_step_buy: 1
+          }
+          delete this.data.orderParams.sel_goods
+          // delete this.data.orderParams.address
           this.setData({
-            orderDetail: res.data
+            orderDetail: res.data,
+            orderParams: { ...this.data.orderParams, ...tempObj}
           })
           this.handleUpdataOrder()
-          this._handleUpdataId()
+          // this._handleUpdataId()
         } else {
           utils.showToast(res.msg)
         }
@@ -181,7 +194,11 @@ Page({
   onLoad: function(options) {
     console.log(options)
     app.getNetworkStatus() // 检测网络
-    if (options.goods_id) {
+    if (options.goods_id) { // 一步下单
+      // this.setData({
+      //   'orderParams.one_step_buy': 1
+      // }) 
+      // console.log(this.data.orderParams)
       this.getSumFromProduct(options)
     } else {
       this.getSum()
@@ -198,8 +215,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function(e) {
-    console.log(e)
+  onShow: function() {
+    // console.log(e)
     this.getExpress()
   },
 

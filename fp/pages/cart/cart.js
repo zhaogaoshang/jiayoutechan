@@ -44,6 +44,8 @@ Page({
     }
 
     wx.navigateTo({
+      // one_step_buy = 跳转类型 判断依据为后台所提供的接口参数 one_step_buy
+      // url: '../checkout/checkout?one_step_buy=2',
       url: '../checkout/checkout',
     })
   },
