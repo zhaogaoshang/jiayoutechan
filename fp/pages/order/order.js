@@ -53,7 +53,7 @@ Page({
     allOrderParams: { // 全部订单的参数
       composite_status: '-1',
       page: 1,
-      pagesize: 10
+      pagesize: 1
     },
     allOrder: {}, // 全部订单
 
@@ -90,11 +90,10 @@ Page({
       { // 全部
         initParam: {
           page: 1,
-          pagesize: 3,
+          pagesize: 10,
           composite_status: '-1',
         },
-        list: [],
-        categoryType: 'all'
+        lists: {}
       },
       { // 待付款
         initParam: {
@@ -102,7 +101,7 @@ Page({
           pagesize: 10,
           composite_status: '100',
         },
-        list: []
+        lists: {} 
       },
       { // 待发货
         initParam: {
@@ -110,7 +109,7 @@ Page({
           pagesize: 10,
           composite_status: '101',
         },
-        list: []
+        lists: {}
       },
       { // 待收货
         initParam: {
@@ -118,7 +117,7 @@ Page({
           pagesize: 10,
           composite_status: '105',
         },
-        list: []
+        lists: {}
       },
       { //已完成
         initParam: {
@@ -126,7 +125,7 @@ Page({
           pagesize: 10,
           composite_status: '102',
         },
-        list: []
+        lists: {}
       }                        
     ]
   },
@@ -245,9 +244,9 @@ Page({
     // })
     app.getNetworkStatus() // 检测网络
     app.handleTokenCheck().then(() => {
-      // this.data.allParams.map(res => {
-        this.getOrderList(this.data.allParams[0].initParam)
-      // })
+      this.data.allParams.map(res => {
+        this.getOrderList(res.initParam)
+      })
     })
   },
 
@@ -256,9 +255,13 @@ Page({
   getOrderList(param) {
     http.fxGet(api.mobile_apis_order_list, param, res => {
       if (res.code == 2000) {
-        this.data.allParams.map(v => {
+        this.data.allParams.map((v,index )=> {
+          // 当前显示与状态值匹配 那么就加载
           if (this.data.activeStatus === v.initParam.composite_status) {
-            console.log(res.data)
+            this.setData({
+              ['allParams['+index+'].lists']: res.data
+            })
+            console.log(this.data.allParams[index])
             // if (v.initParam.page > 1) {
             //   res.data.order_list = [...v.list, ...res.data.order_list]
             //   console.log(res.data.order_list)
@@ -390,3 +393,5 @@ Page({
     } 
   }
 })
+
+

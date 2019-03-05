@@ -34,3 +34,19 @@
 .order .order-item button {
   min-width: 143rpx;
 }
+
+.bill-box{
+  width:96%;
+  height:80rpx;
+  /* border-bottom:1rpx solid #f8f8f8; */
+  /* background: #f00; */
+  text-align: right;
+  margin-right:4%;
+  font-size: 26rpx;
+  color:#333;
+  line-height: 80rpx;
+}
+
+.bill-box > text{
+  color:#FE8C18;
+}
