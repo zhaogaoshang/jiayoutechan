@@ -93,7 +93,6 @@ Page({
     this.handleIsShowPick()
 
     let currentActive = this.data.activeSpecifications
-
     let agent = this.data.productDetail.spes
     let activeId = ''
     agent.forEach((item, index) => {
@@ -173,7 +172,9 @@ Page({
       categoryActive: id
     })
 
-    this.getElementInfo()
+    this.getElementInfo('.product-discription__box')
+    this.getElementInfo('.product-discription__box')
+    this.getElementInfo('.product-discription__box')
 
     if (id == 0) {
       wx.pageScrollTo({
@@ -226,8 +227,10 @@ Page({
   },
 
   // 获取元素的高度
-  getElementInfo(){
-
+  getElementInfo(e) {
+    wx.createSelectorQuery().selectAll(e).boundingClientRect(function(rect) {
+      console.log(rect[0].height)
+    }).exec()
   },
 
   // 商品x详情
