@@ -1,0 +1,3 @@
+<image src="/images/notfound.png" class="notfound-img"></image>
+
+<navigator class="back-btn" open-type="navigateBack" delta="1">返回上页</navigator>

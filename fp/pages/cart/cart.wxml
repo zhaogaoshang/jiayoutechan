@@ -21,6 +21,7 @@
     </view> -->
     <!-- 底部 每个商品-->
     <view class="product-bottom__item" style="height:{{190*item.goods_list.length}}rpx">
+
       <view class="product-bottom__item--box {{item.status==2?'normal':''}} {{item.status==1?'abnormal':''}}" style="top:{{182*index}}rpx" wx:for="{{item.goods_list}}" wx:key="{{index}}" bindtouchstart="handleTouchstart" data-is-sell="{{item.is_on_sale}}" data-goods-number="{{item.goods_number}}"
         bindtouchend="handleTouchend" data-parent-index="{{list}}" data-sun-index="{{index}}" catchtap="handleCheckoutProduct">
         <!-- 产品展示区域 -->

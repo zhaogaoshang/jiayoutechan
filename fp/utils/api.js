@@ -34,7 +34,8 @@ module.exports = {
   mobile_apis_submitOrder: 'mobile/apis/submitOrder.php', // 计算订单
   mobile_apis_dateCartNum: 'mobile/apis/updateCartNum.php', // 修改购物车
   mobile_apis_orderDone: 'mobile/apis/orderDone.php', //提交订单
-  mobile_apis_order_list: 'mobile/apis/order_list.php', // 订单列表接口
+  mobile_apis_order_list: 'mobile/apis/orderList.php', // 订单列表接口
+  mobile_apis_order_list1: 'mobile/apis/order_list.php', // 订单列表接口 暂未使用
   mobile_apis_order_info:'mobile/apis/order_info.php', // 订单信息
 
   // 人相关

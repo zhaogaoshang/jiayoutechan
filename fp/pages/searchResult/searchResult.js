@@ -102,6 +102,7 @@ Page({
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
     console.log(options)
+
     if (options.text) {
       this.setData({
         'params.keywords': options.text

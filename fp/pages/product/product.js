@@ -159,7 +159,6 @@ Page({
       utils.showToast('下架或售罄')
       return
     }
-
     this.setData({
       isShowPick: !this.data.isShowPick
     })
@@ -191,6 +190,7 @@ Page({
         scrollTop: 450,
       })
     }
+
   },
 
   // 收藏

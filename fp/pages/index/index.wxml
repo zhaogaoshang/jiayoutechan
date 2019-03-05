@@ -73,6 +73,7 @@
       <!-- 更多 -->
       <view class="look-more__text" catchtap="handleGoNewHigh" wx:if="{{newProductHot.next}}">查看更多 ></view>
       <!-- 新品热销每一个 -->
+
       <view class="new-product" wx:for="{{newProductHot.list}}" wx:key="{{index}}" data-id="{{item.goods_id}}">
         <chang-fang-product item="{{item}}" bind:handleGoProduct="handleToProduct"></chang-fang-product>
       </view>

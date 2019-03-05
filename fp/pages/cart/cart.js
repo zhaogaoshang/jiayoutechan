@@ -74,6 +74,7 @@ Page({
   handleCheckoutProduct(e) {
     let parentIndex = e.currentTarget.dataset.parentIndex
     let sunIndex = e.currentTarget.dataset.sunIndex
+
     let productNumber = e.currentTarget.dataset.goodsNumber
     let isSell = e.currentTarget.dataset.isSell
     console.log(e)
@@ -86,7 +87,6 @@ Page({
       utils.showToast('商品已下架')
       return
     }
-
 
     this.setData({
       ['productList[' + parentIndex + '].goods_list[' + sunIndex + '].isCheckout']: !this.data.productList[parentIndex].goods_list[sunIndex].isCheckout
@@ -104,11 +104,13 @@ Page({
   isAllPick() {
     let list = this.data.productList
     let notActive = 0
+
     let item = list[0]
     return new Promise((resolve, reject) => {
       if (this.data.productList[0] && this.data.productList[0].goods_list.length == 0) {
         return resolve(false)
       } else {
+
         // 等到没有选中的数组
         let isAllCheckout = item.goods_list.filter((item, index) => {
           if (item.isCheckout) {
@@ -322,6 +324,6 @@ Page({
   onShareAppMessage: function(e) {
     if (e.from == "menu") {
       return app.handleShareApp()
-    }
+    } 
   }
 })

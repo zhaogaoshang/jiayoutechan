@@ -58,7 +58,6 @@ App({
       code: this.globalData.code,
       ...res
     }
-
     return new Promise((success, error) => {
       http.fxPost(api.mobile_apis_login, parms, buf => {
         wx.setStorageSync('userInfo', buf.data)

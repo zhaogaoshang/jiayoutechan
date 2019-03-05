@@ -41,11 +41,13 @@ Page({
   // 去商品详情
   handleGoProduct(e) {
     let id = e.currentTarget.dataset.id
+
     let isSell = e.currentTarget.dataset.isSell
     if (isSell == 0) {
       utils.showToast('已经下架')
       return
     }
+
     wx.navigateTo({
       url: '../product/product?id=' + id
     })
