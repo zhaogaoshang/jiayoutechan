@@ -2,6 +2,7 @@
   "pages": [
     "pages/order/order",
     "pages/index/index",
+    
     "pages/commentWrite/commentWrite",
     "pages/networkError/networkError",
     "pages/product/product",

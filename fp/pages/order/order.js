@@ -90,7 +90,7 @@ Page({
       { // 全部
         initParam: {
           page: 1,
-          pagesize: 10,
+          pagesize: 3,
           composite_status: '-1',
         },
         lists: {}
@@ -258,17 +258,14 @@ Page({
         this.data.allParams.map((v,index )=> {
           // 当前显示与状态值匹配 那么就加载
           if (this.data.activeStatus === v.initParam.composite_status) {
+            if (v.initParam.page > 1) {
+              res.data.order_list = [...v.lists.order_list, ...res.data.order_list]
+              console.log(res.data.order_list)
+            }
             this.setData({
-              ['allParams['+index+'].lists']: res.data
-            })
+              ['allParams[' + index + '].lists']: res.data
+            })          
             console.log(this.data.allParams[index])
-            // if (v.initParam.page > 1) {
-            //   res.data.order_list = [...v.list, ...res.data.order_list]
-            //   console.log(res.data.order_list)
-            // }
-            // this.setData({
-
-            // })
           }
         })
         // if (this.data.allOrderParams.page > 1) {
@@ -320,68 +317,83 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-    let agent = this.data.activeCategory
-    // let agent = this.data.activeStatus
-    // 'all'
-    if (agent == 'all') {
-      if (!this.data.allOrder.next) {
-        return
+    console.log(this.data.activeStatus)
+
+    this.data.allParams.map((v,index) => {
+      if (this.data.activeStatus === v.initParam.composite_status) {
+        // 如果没有更多数据 直接返回
+        if (!v.lists.next) {
+          return false
+        }
+        this.setData({
+          ['allParams[' + index + '].initParam.page']: ++v.initParam.page
+        })
+        // console.log(v.initParam.page)
+        this.getOrderList(v.initParam)
       }
-      this.setData({
-        allOrderParams: ++this.data.allOrderParams.page
-      })
+    })
+    // let agent = this.data.activeCategory
+    // // let agent = this.data.activeStatus
+    // // 'all'
+    // if (agent == 'all') {
+    //   if (!this.data.allOrder.next) {
+    //     return
+    //   }
+    //   this.setData({
+    //     allOrderParams: ++this.data.allOrderParams.page
+    //   })
 
-      this.getAllOrder() // 获取全部的订单
-    }
+    //   this.getAllOrder() // 获取全部的订单
+    // }
 
-    // 'daiZhiFu'
-    if (agent == 'daiZhiFu') {
-      if (!this.data.daiZhiFu.next) {
-        return
-      }
-      this.setData({
-        'daiZhiFuParams.page': ++this.data.daiZhiFuParams.page
-      })
+    // // 'daiZhiFu'
+    // if (agent == 'daiZhiFu') {
+    //   if (!this.data.daiZhiFu.next) {
+    //     return
+    //   }
+    //   this.setData({
+    //     'daiZhiFuParams.page': ++this.data.daiZhiFuParams.page
+    //   })
 
-      this.getDaiZhiFu()
-    }
+    //   this.getDaiZhiFu()
+    // }
 
-    // 'daiFaHuo'
-    if (agent == 'daiFaHuo') {
-      if (!this.data.daiFaHuo.next) {
-        return
-      }
-      this.setData({
-        'daiFaHuoParams.page': ++this.data.daiFaHuoParams.page
-      })
+    // // 'daiFaHuo'
+    // if (agent == 'daiFaHuo') {
+    //   if (!this.data.daiFaHuo.next) {
+    //     return
+    //   }
+    //   this.setData({
+    //     'daiFaHuoParams.page': ++this.data.daiFaHuoParams.page
+    //   })
 
-      this.getDaiFaHuo()
-    }
+    //   this.getDaiFaHuo()
+    // }
 
-    // 'daiShouHuo'
-    if (agent == 'daiShouHuo') {
-      if (!this.data.daiShouHuo.next) {
-        return
-      }
-      this.setData({
-        'daiShouHuoParams.page': ++this.data.daiShouHuoParams.page
-      })
+    // // 'daiShouHuo'
+    // if (agent == 'daiShouHuo') {
+    //   if (!this.data.daiShouHuo.next) {
+    //     return
+    //   }
+    //   this.setData({
+    //     'daiShouHuoParams.page': ++this.data.daiShouHuoParams.page
+    //   })
 
-      this.getDaiShouHuo()
-    }
+    //   this.getDaiShouHuo()
+    // }
 
 
-    // 'daiPingJia'
-    if (agent == 'daiPingJia') {
-      if (!this.data.daiPingJia.next) {
-        return
-      }
-      this.setData({
-        'daiPingJiaParams.page': ++this.data.daiPingJiaParams.page
-      })
+    // // 'daiPingJia'
+    // if (agent == 'daiPingJia') {
+    //   if (!this.data.daiPingJia.next) {
+    //     return
+    //   }
+    //   this.setData({
+    //     'daiPingJiaParams.page': ++this.data.daiPingJiaParams.page
+    //   })
 
-      this.getDaiPingJia()
-    }
+    //   this.getDaiPingJia()
+    // }
   },
 
   /**
