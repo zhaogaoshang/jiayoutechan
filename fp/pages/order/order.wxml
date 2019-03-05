@@ -26,8 +26,22 @@
       </view>
       <view class="handle-btn">
         <!-- <view>共100件商品 小计：<text>100元</text>(含运费10元)</view> -->
-        <button>取消订单</button>
-        <button class="handle-btn__red">立即支付</button>
+        <!--待支付-->
+        <block wx-if="{{child.extension_code == 10}}">
+          <button class="handle-btn__red">立即支付</button>
+        </block>
+        <block wx-if="{{child.extension_code == 20}}">
+          <button class="handle-btn__red">申请退款</button>
+        </block>       
+        <block wx-if="{{child.extension_code == 30}}">
+          <button>申请退货</button>
+          <button>查看物流</button>
+          <button class="handle-btn__red">确认收货</button>
+        </block>          
+        <block wx-if="{{child.extension_code == 40}}">
+          <button>申请售后</button>
+          <button class="handle-btn__red">立即评价</button>
+        </block>              
       </view>
     </view>
   </view>

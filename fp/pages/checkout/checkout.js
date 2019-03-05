@@ -27,6 +27,7 @@ Page({
       city: '', //是	string	市
       district: '', //是	string	区
       n_surplus: 0, //是	string	使用积分
+      paystatus: 1 // 虚拟支付 需要删除
     }
   },
 

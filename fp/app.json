@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/order/order",
     "pages/index/index",
+    "pages/order/order",
     
     "pages/commentWrite/commentWrite",
     "pages/networkError/networkError",
