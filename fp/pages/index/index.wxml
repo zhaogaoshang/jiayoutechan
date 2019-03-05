@@ -54,7 +54,7 @@
                 <text>{{item.goods_name}}</text>
               </view>
             </view>
-            <view class="people-count">{{item.sales}}人付款</view>
+            <view class="people-count">{{item.selcount}}人付款</view>
             <view class="product-price">￥{{item.shop_price}}</view>
           </view>
           <image class="product-rob__icon" src="../../images/q@2x.png"></image>
@@ -73,52 +73,17 @@
       <!-- 更多 -->
       <view class="look-more__text" catchtap="handleGoNewHigh" wx:if="{{newProductHot.next}}">查看更多 ></view>
       <!-- 新品热销每一个 -->
-      <view class="new-product" wx:for="{{newProductHot.list}}" wx:key="{{index}}" data-id="{{item.goods_id}}" catchtap="handleGoProduct">
-        <image class="new-product__photo" src="{{wxs.imageUrl(item.goods_thumb)}}"></image>
-        <view class="right">
-          <view class="product-discription">
-            <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{item.is_shipping==0}}"></image>
-            <text class="">{{item.goods_name}}</text>
-          </view>
-          <view>
-            <text class="product-price">￥{{item.shop_price}}</text>
-            <text class="people-count">{{item.sales}}人付款</text>
-          </view>
-        </view>
 
-        <view class="like-share" catchtap="handlePrevent">
-          <image class="like-share__icon" src="../../images/sc.png" data-index="{{index}}" catchtap="handleCollect" wx:if="{{!item.is_collect}}"></image>
-          <image class="like-share__icon" src="../../images/ssc.png" data-index="{{index}}" catchtap="handleCollect" wx:if="{{item.is_collect}}"></image>
-          <image class="like-share__icon right" src="../../images/fx.png">
-            <button class="share-btn" open-type="share" data-id="{{item.goods_id}}" data-iamge="{{item.goods_thumb}}" data-title="{{item.goods_name}}" data-product="1"></button>
-          </image>
-        </view>
+      <view class="new-product" wx:for="{{newProductHot.list}}" wx:key="{{index}}" data-id="{{item.goods_id}}">
+        <chang-fang-product item="{{item}}" bind:handleGoProduct="handleToProduct"></chang-fang-product>
       </view>
     </view>
 
     <!-- 新品首发 -->
     <view>
       <image class="new-product__photo--middle" src="{{wxs.imageUrl(newProductSell.topad.image)}}"></image>
-      <view class="new-product" wx:for="{{newProductSell.list}}" wx:key="{{index}}" data-id="{{item.goods_id}}" catchtap="handleGoProduct">
-        <image class="new-product__photo" src="{{wxs.imageUrl(item.goods_thumb)}}"></image>
-        <view class="right">
-          <view class="product-discription">
-            <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{item.is_shipping==0}}"></image>
-            <text class="">{{item.goods_name}}</text>
-          </view>
-          <view>
-            <text class="product-price">￥{{item.shop_price}}</text>
-            <text class="people-count">{{item.sales}}人付款</text>
-          </view>
-        </view>
-
-        <view class="like-share" catchtap="handlePrevent">
-          <image class="like-share__icon" src="../../images/sc.png" data-index="{{index}}" catchtap="handleNewProductCollect" wx:if="{{!item.is_collect}}"></image>
-          <image class="like-share__icon" src="../../images/ssc.png" data-index="{{index}}" catchtap="handleNewProductCollect" wx:if="{{item.is_collect}}"></image>
-          <image class="like-share__icon right" src="../../images/fx.png">
-            <button class="share-btn" open-type="share" data-id="{{item.goods_id}}" data-iamge="{{item.goods_thumb}}" data-title="{{item.goods_name}}" data-product="1"></button>
-          </image>
-        </view>
+      <view class="new-product" wx:for="{{newProductSell.list}}" wx:key="{{index}}" data-id="{{item.goods_id}}">
+        <chang-fang-product item="{{item}}" bind:handleGoProduct="handleToProduct"></chang-fang-product>
       </view>
     </view>
   </view>

@@ -34,11 +34,11 @@ Page({
   // 提交订单
   handleSubmitOrder() {
     console.log(JSON.stringify(this.data.orderParams))
-    // return false
     if (!this.data.orderParams.address) {
       utils.showToast('请选择地址')
       return
     }
+
     http.fxPost(api.mobile_apis_orderDone, this.data.orderParams, res => {
       console.log(res, '提交订单')
       if (res.code == 2000) {
@@ -195,11 +195,8 @@ Page({
   onLoad: function(options) {
     console.log(options)
     app.getNetworkStatus() // 检测网络
-    if (options.goods_id) { // 一步下单
-      // this.setData({
-      //   'orderParams.one_step_buy': 1
-      // }) 
-      // console.log(this.data.orderParams)
+
+    if (options.goods_id) {
       this.getSumFromProduct(options)
     } else {
       this.getSum()
@@ -216,8 +213,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-    // console.log(e)
+  onShow: function(e) {
     this.getExpress()
   },
 

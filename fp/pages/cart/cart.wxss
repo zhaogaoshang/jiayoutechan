@@ -70,7 +70,23 @@
   width: 624rpx;
 }
 
+.store-bottom .product-box .product-out {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 1);
+  z-index: 2;
+}
+
 .store-bottom .product-photo {
+  position: relative;
   display: inline-block;
   height: 120rpx;
   width: 120rpx;

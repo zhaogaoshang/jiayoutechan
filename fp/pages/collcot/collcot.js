@@ -41,6 +41,13 @@ Page({
   // 去商品详情
   handleGoProduct(e) {
     let id = e.currentTarget.dataset.id
+
+    let isSell = e.currentTarget.dataset.isSell
+    if (isSell == 0) {
+      utils.showToast('已经下架')
+      return
+    }
+
     wx.navigateTo({
       url: '../product/product?id=' + id
     })
@@ -49,7 +56,6 @@ Page({
   // 获取收藏列表
   getCollect() {
     http.fxGet(api.mobile_apis_collectgoods, this.data.params, res => {
-      console.log(res, '收藏列表')
       res.data.list.forEach((item, index) => {
         item.is_collect = true
       })
@@ -62,7 +68,9 @@ Page({
         this.setData({
           productList: res.data
         })
-      } else {}
+      } else {
+        utils.showToast(res.msg)
+      }
       wx.stopPullDownRefresh()
     })
   },
@@ -138,6 +146,6 @@ Page({
   onShareAppMessage: function(e) {
     if (e.from == "menu") {
       return app.handleShareApp()
-    } 
+    }
   }
 })

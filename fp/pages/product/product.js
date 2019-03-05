@@ -154,6 +154,12 @@ Page({
 
   // 选择的是否显示
   handleIsShowPick() {
+    let number = this.data.productDetail.goods_number
+    let sell = this.data.productDetail.is_on_sale
+    if (number == 0 || sell == 0) {
+      utils.showToast('下架或售罄')
+      return
+    }
     this.setData({
       isShowPick: !this.data.isShowPick
     })
@@ -161,10 +167,27 @@ Page({
 
   // 切换分类
   handleSwitchModule(e) {
-    console.log(e)
+    let id = e.currentTarget.dataset.id
     this.setData({
-      categoryActive: e.currentTarget.dataset.id
+      categoryActive: id
     })
+
+    if (id == 0) {
+      wx.pageScrollTo({
+        scrollTop: 0,
+      })
+    }
+    if (id == 1) {
+      wx.pageScrollTo({
+        scrollTop: 430,
+      })
+    }
+    if (id == 2) {
+      wx.pageScrollTo({
+        scrollTop: 450,
+      })
+    }
+
   },
 
   // 收藏

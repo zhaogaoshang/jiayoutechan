@@ -3,7 +3,7 @@ const http = require('./utils/http.js')
 const api = require('./utils/api.js')
 const utils = require('./utils/util.js')
 App({
-  onLaunch: function () {
+  onLaunch: function() {
 
     // 用户是否登录
     let isLogin = wx.getStorageSync('isLogin') || false

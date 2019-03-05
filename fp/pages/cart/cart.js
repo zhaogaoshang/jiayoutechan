@@ -44,8 +44,6 @@ Page({
     }
 
     wx.navigateTo({
-      // one_step_buy = 跳转类型 判断依据为后台所提供的接口参数 one_step_buy
-      // url: '../checkout/checkout?one_step_buy=2',
       url: '../checkout/checkout',
     })
   },
@@ -77,6 +75,19 @@ Page({
     let parentIndex = e.currentTarget.dataset.parentIndex
     let sunIndex = e.currentTarget.dataset.sunIndex
 
+    let productNumber = e.currentTarget.dataset.goodsNumber
+    let isSell = e.currentTarget.dataset.isSell
+    console.log(e)
+    if (productNumber == 0) {
+      utils.showToast('库存不足')
+      return
+    }
+
+    if (isSell == 0) {
+      utils.showToast('商品已下架')
+      return
+    }
+
     this.setData({
       ['productList[' + parentIndex + '].goods_list[' + sunIndex + '].isCheckout']: !this.data.productList[parentIndex].goods_list[sunIndex].isCheckout
     })
@@ -93,24 +104,33 @@ Page({
   isAllPick() {
     let list = this.data.productList
     let notActive = 0
+
+    let item = list[0]
     return new Promise((resolve, reject) => {
       if (this.data.productList[0] && this.data.productList[0].goods_list.length == 0) {
         return resolve(false)
       } else {
-        list.forEach(item => {
-          item.goods_list.forEach((only, index) => {
-            if (!only.isCheckout) {
-              notActive += 1
-            }
-            if (item.goods_list.length - 1 == index) {
-              if (notActive > 0) {
-                return resolve(false)
-              } else {
-                return resolve(true)
-              }
-            }
-          })
+
+        // 等到没有选中的数组
+        let isAllCheckout = item.goods_list.filter((item, index) => {
+          if (item.isCheckout) {
+            return item
+          }
         })
+
+        // 得到可选择的数量
+        let activeCount = 0
+        item.goods_list.forEach((item, index) => {
+          if (item.is_on_sale != 0 && item.goods_number != 0) {
+            activeCount += 1
+          }
+        })
+
+        if (isAllCheckout.length == activeCount) {
+          return resolve(true)
+        } else {
+          return resolve(false)
+        }
       }
     })
   },
@@ -121,7 +141,9 @@ Page({
     this.isAllPick().then((res) => { // 是否全选
       list.forEach(item => {
         item.goods_list.forEach((only, index) => {
-          only.isCheckout = !res
+          if (only.is_on_sale != 0 && only.goods_number != 0) {
+            only.isCheckout = !res
+          }
         })
       })
 

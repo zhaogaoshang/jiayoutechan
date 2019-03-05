@@ -211,6 +211,10 @@
   width: 172rpx;
 }
 
+.product-box .product-discription .two-line__text {
+  height: 66rpx;
+}
+
 .product-box .people-count {
   font-size: 20rpx;
   font-weight: 400;

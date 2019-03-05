@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/order/order",
-    
     "pages/commentWrite/commentWrite",
     "pages/networkError/networkError",
     "pages/product/product",
@@ -16,7 +15,6 @@
     "pages/addressChang/addressChang",
     "pages/paymentResult/paymentResult",
     "pages/checkout/checkout",
-    
     "pages/orderInfo/orderInfo",
     "pages/liaisonStore/liaisonStore",
     "pages/logistics/logistics",
@@ -37,7 +35,8 @@
   "usingComponents": {
     "login": "/componment/login/login",
     "load-page": "/componment/loadPage/loadPage",
-    "construction": "/componment/construction/construction"
+    "construction": "/componment/construction/construction",
+    "chang-fang-product": "/componment/changFangProduct/changFangProduct"
   },
   "tabBar": {
     "backgroundColor": "#ffffff",

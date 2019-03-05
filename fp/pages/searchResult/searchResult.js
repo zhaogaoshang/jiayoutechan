@@ -16,7 +16,7 @@ Page({
     params: {
       page: 1, //可选	int	1	当前页码
       per_page: 10, //可选	int	10	每页数量
-      keywords: '请输入您想要查找的商品', //必须	String		搜索关键字
+      keywords: '', //必须	String		搜索关键字
       province: '', //可选	int	0	省地区号
       city: '', //可选	int	0	市地区号
       district: '', //可选	int	0	区/县地区号
@@ -63,6 +63,15 @@ Page({
     })
   },
 
+  // 重新搜索
+  handleResetSearch() {
+    this.setData({
+      'params.page': 1
+    })
+
+    this.getProduct()
+  },
+
   // 获取搜索结果
   getProduct() {
     http.fxGet(api.mobile_apis_search, this.data.params, res => {
@@ -93,9 +102,18 @@ Page({
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
     console.log(options)
-    this.setData({
-      'params.keywords': options.text
-    })
+
+    if (options.text) {
+      this.setData({
+        'params.keywords': options.text
+      })
+    }
+
+    if (options.category) {
+      this.setData({
+        'params.cat_id': options.category
+      })
+    }
 
     this.getProduct()
   },

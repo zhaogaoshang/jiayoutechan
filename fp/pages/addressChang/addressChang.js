@@ -88,7 +88,6 @@ Page({
     http.fxGet(api.mobile_apis_delmyaddress, {
       aid: this.data.form.aid
     }, res => {
-      console.log(res, '删除地址')
       if (res.code != 2000) {
         utils.showToast(res.msg)
       } else {

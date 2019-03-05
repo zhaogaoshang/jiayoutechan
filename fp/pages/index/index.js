@@ -168,7 +168,7 @@ Page({
   },
 
   // 去今日爆款
-  handleGoTadyHigh(){
+  handleGoTadyHigh() {
     wx.navigateTo({
       url: '../productMoreTodayHigh/productMoreTodayHigh',
     })
@@ -204,7 +204,14 @@ Page({
   // 去商品详情
   handleGoProduct(e) {
     let id = e.currentTarget.dataset.id
-    // utils.router()
+    wx.navigateTo({
+      url: '../product/product?id=' + id
+    })
+  },
+
+  // 去商品详情
+  handleToProduct(e) {
+    let id = e.detail.id
     wx.navigateTo({
       url: '../product/product?id=' + id
     })

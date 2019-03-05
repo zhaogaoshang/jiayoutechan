@@ -35,7 +35,7 @@ Page({
     console.log(e.currentTarget.dataset.id)
     let id = e.currentTarget.dataset.id
     wx.redirectTo({
-      url: '../searchResult/searchResult',
+      url: '../searchResult/searchResult?category=' + id,
     })
   },
 
@@ -95,6 +95,6 @@ Page({
   onShareAppMessage: function(e) {
     if (e.from == "menu") {
       return app.handleShareApp()
-    } 
+    }
   }
 })

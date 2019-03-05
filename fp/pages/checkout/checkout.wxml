@@ -56,11 +56,11 @@
       </view>
     </view>
     <!-- 爱心贡献值 -->
-    <view class="tiao-box logisticts-box" catchtap="handleIsShowShoLove">
+    <!-- <view class="tiao-box logisticts-box" catchtap="handleIsShowShoLove">
       <view class="tiao-box__left"> 爱心贡献值</view>
       <view class="tiao-box__middle"></view>
       <view class="tiao-box__right">￥{{orderParams.n_surplus}}</view>
-    </view>
+    </view> -->
   </view>
 
   <!-- 合计 -->

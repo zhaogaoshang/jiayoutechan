@@ -21,20 +21,24 @@
     </view> -->
     <!-- 底部 每个商品-->
     <view class="product-bottom__item" style="height:{{190*item.goods_list.length}}rpx">
-      <view class="product-bottom__item--box {{item.status==2?'normal':''}} {{item.status==1?'abnormal':''}}" style="top:{{182*index}}rpx" wx:for="{{item.goods_list}}" wx:key="{{index}}" bindtouchstart="handleTouchstart" bindtouchend="handleTouchend" data-parent-index="{{list}}"
-        data-sun-index="{{index}}" catchtap="handleCheckoutProduct">
+
+      <view class="product-bottom__item--box {{item.status==2?'normal':''}} {{item.status==1?'abnormal':''}}" style="top:{{182*index}}rpx" wx:for="{{item.goods_list}}" wx:key="{{index}}" bindtouchstart="handleTouchstart" data-is-sell="{{item.is_on_sale}}" data-goods-number="{{item.goods_number}}"
+        bindtouchend="handleTouchend" data-parent-index="{{list}}" data-sun-index="{{index}}" catchtap="handleCheckoutProduct">
         <!-- 产品展示区域 -->
         <view class="store-top store-bottom">
           <!-- 左边 -->
           <view class="left">
             <!-- 选中 -->
-            <image class="active" src="../../images/xzi@2x.png" catchtap="handleActiveProduct" wx:if="{{item.isCheckout}}"></image>
+            <image class="active" src="../../images/xzi@2x.png" wx:if="{{item.isCheckout}}"></image>
             <!-- 未选中 -->
-            <view class="active active-null" wx:if="{{!item.isCheckout}}" catchtap="handleActiveProduct"></view>
+            <view class="active active-null" wx:if="{{!item.isCheckout}}"></view>
           </view>
           <!-- 右边 -->
           <view class="product-box">
-            <image class="product-photo" src="{{wxs.imageUrl(item.goods_thumb)}}"></image>
+            <image class="product-photo" src="{{wxs.imageUrl(item.goods_thumb)}}">
+              <view class="product-out" wx:if="{{item.is_on_sale==0}}">已下架</view>
+              <view class="product-out" wx:if="{{item.goods_number==0}}">已售罄</view>
+            </image>
             <view class="discription">
               <text class="two-line__text"> {{item.goods_name}}</text>
               <view class="product-price">¥{{item.goods_price}}</view>
