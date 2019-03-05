@@ -34,7 +34,6 @@ Page({
 
   // 点击列表项
   handleGoOther(e) {
-    console.log(e.currentTarget.dataset.type)
     let type = e.currentTarget.dataset.type
     switch (type) {
       case 0:
