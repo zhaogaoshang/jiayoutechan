@@ -173,6 +173,8 @@ Page({
       categoryActive: id
     })
 
+    this.getElementInfo()
+
     if (id == 0) {
       wx.pageScrollTo({
         scrollTop: 0,
@@ -221,6 +223,11 @@ Page({
   // 阻止点击穿透
   handlePrevent() {
     return false
+  },
+
+  // 获取元素的高度
+  getElementInfo(){
+
   },
 
   // 商品x详情
