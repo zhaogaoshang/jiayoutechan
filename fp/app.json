@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/orderInfo/orderInfo",
     "pages/order/order",
+    "pages/logistics/logistics",
     "pages/commentWrite/commentWrite",
     "pages/networkError/networkError",
     "pages/product/product",
@@ -15,9 +17,8 @@
     "pages/addressChang/addressChang",
     "pages/paymentResult/paymentResult",
     "pages/checkout/checkout",
-    "pages/orderInfo/orderInfo",
+    
     "pages/liaisonStore/liaisonStore",
-    "pages/logistics/logistics",
     "pages/loveQuantity/loveQuantity",
     "pages/loveQuantityDraw/loveQuantityDraw",
     "pages/invitation/invitation",

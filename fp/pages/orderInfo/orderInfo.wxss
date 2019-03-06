@@ -49,7 +49,7 @@
 .order-info .product-location .current-location {
   font-size: 26rpx;
   color: rgba(85, 85, 85, 1);
-  line-height: 25rpx;
+  line-height: 40rpx;
   margin-bottom: 18rpx;
 }
 

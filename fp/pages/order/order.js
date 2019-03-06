@@ -34,7 +34,7 @@ Page({
       }, {
         name: '待评价',
         id: 'daiPingJia',
-        status: '102'
+        status: '106'
       },
     ],
 
@@ -43,7 +43,7 @@ Page({
       { // 全部
         initParam: {
           page: 1,
-          pagesize: 3,
+          pagesize: 10,
           composite_status: '-1',
         },
         lists: {}
@@ -76,15 +76,43 @@ Page({
         initParam: {
           page: 1,
           pagesize: 10,
-          composite_status: '102',
+          composite_status: '106',
         },
         lists: {}
       }                        
     ]
   },
 
+  payment(e) {
+    http.fxPost(api.mobile_apis_payment, e.currentTarget.dataset, res => {
+      if (res.code == 2000) {
+        console.log(res.data)
+
+        wx.requestPayment({
+          appId: res.data.appId,
+          timeStamp: res.data.timeStamp.toString(),
+          nonceStr: res.data.nonceStr,
+          package: res.data.package,
+          signType: res.data.signType,
+          paySign: res.data.paySign,
+
+          success(res) { 
+            console.log(res)
+          },
+          fail(res) { 
+            console.log(res)
+          }
+        })
+
+      }
+    })
+  },
+
+
+
   // 订单详情
   handleOrderInfo(e) {
+    console.log(e.currentTarget.dataset.orderId);
     wx.navigateTo({
       url: '../orderInfo/orderInfo?id=' + e.currentTarget.dataset.orderId,
     })
@@ -101,10 +129,12 @@ Page({
 
   // 切换分类
   handleSwichCategory(e) {
+    // console.log(e.currentTarget.dataset.status)
     this.setData({
       activeCategory: e.currentTarget.dataset.id,
       activeStatus: e.currentTarget.dataset.status
     })
+    console.log(this.data.activeStatus);
   },
 
   // 获取全部订单
@@ -122,73 +152,16 @@ Page({
     })
   },
 
-  // 待支付
-  getDaiZhiFu() {
-    http.fxGet(api.mobile_apis_order_list, this.data.daiZhiFuParams, res => {
-      console.log(res, '待支付')
-      if (res.code == 2000) {
-        if (this.data.daiZhiFuParams.page > 1) {
-          res.data.list = this.data.daiZhiFu.list.concat(res.data.list)
-        }
-        this.setData({
-          daiZhiFu: res.data
-        })
-      }
-    })
-  },
-
-  // 待发货
-  getDaiFaHuo() {
-    http.fxGet(api.mobile_apis_order_list, this.data.daiFaHuoParams, res => {
-      console.log(res, '待支付')
-      if (res.code == 2000) {
-        if (this.data.daiFaHuoParams.page > 1) {
-          res.data.list = this.data.daiFaHuo.list.concat(res.data.list)
-        }
-        this.setData({
-          daiFaHuo: res.data
-        })
-      }
-    })
-  },
-
-  // 待收货
-  getDaiShouHuo() {
-    http.fxGet(api.mobile_apis_order_list, this.data.daiShouHuoParams, res => {
-      console.log(res, '待支付')
-      if (res.code == 2000) {
-        if (this.data.daiShouHuoParams.page > 1) {
-          res.data.list = this.data.daiShouHuo.list.concat(res.data.list)
-        }
-        this.setData({
-          daiShouHuo: res.data
-        })
-      }
-    })
-  },
-
-  // 待评价
-  getDaiPingJia() {
-    http.fxGet(api.mobile_apis_order_list, this.data.daiPingJiaParams, res => {
-      console.log(res, '待支付')
-      if (res.code == 2000) {
-        if (this.data.daiPingJiaParams.page > 1) {
-          res.data.list = this.data.daiPingJia.list.concat(res.data.list)
-        }
-        this.setData({
-          daiPingJia: res.data
-        })
-      }
-    })
-  },
   /**
    * 生命周期函数--监听页面加载 'tuiKuan daiPingJia daiShowhuo daiFaHuo daiZhifu all'
    */
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
     app.handleTokenCheck().then(() => {
+      // this.getOrderList(this.data.allParams[0].initParam)
       this.data.allParams.map(res => {
         this.getOrderList(res.initParam)
+       
       })
     })
   },
@@ -200,21 +173,36 @@ Page({
       if (res.code == 2000) {
         this.data.allParams.map((v,index )=> {
           // 当前显示与状态值匹配 那么就加载
-          if (this.data.activeStatus === v.initParam.composite_status) {
+          if (param.composite_status === v.initParam.composite_status) {
             if (v.initParam.page > 1) {
               res.data.order_list = [...v.lists.order_list, ...res.data.order_list]
-              console.log(res.data.order_list)
             }
             this.setData({
               ['allParams[' + index + '].lists']: res.data
             })          
-            console.log(this.data.allParams[index])
           }
         })
+        console.log(this.data.allParams)
       }
     })
   },  
 
+  // 按钮事件
+  handleBtn: function (e){
+    let param = e.currentTarget.dataset
+    if (param.pay) {
+      utils.showToast('暂无支付功能')
+      return false
+    }
+
+    if (param.touch) {
+      return false
+    }
+
+    wx.navigateTo({
+      url: param.url
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -261,6 +249,7 @@ Page({
       if (this.data.activeStatus === v.initParam.composite_status) {
         // 如果没有更多数据 直接返回
         if (!v.lists.next) {
+          utils.showToast('没有更多了')
           return false
         }
         this.setData({

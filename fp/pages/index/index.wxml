@@ -50,12 +50,12 @@
             <image class="product-photo" src="{{wxs.imageUrl(item.goods_thumb)}}"></image>
             <view class="product-discription">
               <view class="two-line__text">
-                <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{item.is_shipping==0}}"></image>
+                <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{item.is_shipping==1}}"></image>
                 <text>{{item.goods_name}}</text>
               </view>
             </view>
             <view class="people-count">{{item.selcount}}人付款</view>
-            <view class="product-price">￥{{item.shop_price}}</view>
+            <view class="product-price">￥<text class="mcode">{{item.shop_price}}</text></view>
           </view>
           <image class="product-rob__icon" src="../../images/q@2x.png"></image>
         </view>
@@ -107,7 +107,7 @@
       <view class="bottom">
         <view class="store-product__item {{idx==2?'margin-right--0':''}}" wx:for="{{item.goods}}" wx:key="{{idx}}" catchtap="handleGoProduct" wx:for-item="lite" wx:for-index="idx">
           <image class="store-product__photo" src="{{lite.goods_thumb?wxs.imageUrl(lite.goods_thumb):'../../images/logo.jpg'}}"></image>
-          <view class="product-price">￥{{lite.market_price}}</view>
+          <view class="product-price">￥<text class="mcode">{{lite.market_price}}</text></view>
         </view>
       </view>
     </view>

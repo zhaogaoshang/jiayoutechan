@@ -338,3 +338,9 @@ button::after {
 }
 
 /* 新品热销e */
+
+/**/
+.mcode{
+  font-size: 28rpx !important;
+  color: rgba(255, 166, 81, 1) !important;
+}

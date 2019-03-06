@@ -41,8 +41,97 @@ function changelessImageUrl(url) {
   return changelessImage + url
 }
 
+var clock = function (second_time) {
+  if (isNaN(second_time) || !second_time) {
+    return "00:00:00";
+  }
+  var timeStr = "00:00:" + parseInt(second_time);
+
+  if (parseInt(second_time) < 10) {
+    timeStr = "00:00:0" + parseInt(second_time);
+  }
+  if (parseInt(second_time) >= 60) {
+    var second = parseInt(second_time) % 60;
+    var min = parseInt(second_time / 60);
+
+    if (min < 10 && second < 10) {
+      timeStr = "00:0" + min + ":0" + second;
+    } else if (min >= 10 && second < 10) {
+      timeStr = "00:" + min + ":0" + second;
+    } else if (min < 10 && second >= 10) {
+      timeStr = "00:0" + min + ":" + second;
+    } else {
+      timeStr = "00:" + min + ":" + second;
+    }
+
+    if (min >= 60) {
+      min = parseInt(second_time / 60) % 60;
+      var hour = parseInt(parseInt(second_time / 60) / 60);
+
+      if (hour >= 10 && min >= 10 && second >= 10) {
+        timeStr = hour + ":" + min + ":" + second;
+      } else if (hour >= 10 && min >= 10 && second < 10) {
+        timeStr = hour + ":" + min + ":0" + second;
+      } else if (hour >= 10 && min < 10 && second >= 10) {
+        timeStr = hour + ":0" + min + ":" + second;
+      } else if (hour >= 10 && min < 10 && second < 10) {
+        timeStr = hour + ":0" + min + ":0" + second;
+      } else if (hour < 10 && min >= 10 && second >= 10) {
+        timeStr = '0' + hour + ":" + min + ":" + second;
+      } else if (hour < 10 && min >= 10 && second < 10) {
+        timeStr = '0' + hour + ":" + min + ":0" + second;
+      } else if (hour < 10 && min < 10 && second >= 10) {
+        timeStr = '0' + hour + ":0" + min + ":" + second;
+      } else if (hour < 10 && min < 10 && second < 10) {
+        timeStr = '0' + hour + ":0" + min + ":0" + second;
+      }
+
+
+      //timeStr = hour + ":" + min + ":" + second;
+      if (hour >= 24) {
+        hour = parseInt(parseInt(second_time / 60) / 60) % 24;
+        var day = parseInt(parseInt(parseInt(second_time / 60) / 60) / 24);
+        timeStr = day + "天" + hour + "小时" + min + "分" + second + "秒";
+      }
+    }
+  }
+  return timeStr;
+}  
+
+function countDown (endTime) {
+  console.log(endTime)
+  let currentTime = Math.ceil(getDate().getTime() / 1000);
+  return currentTime;
+  // let obj = null;
+  // // 如果活动未结束，对时间进行处理
+  // if (endTime - newTime > 0) {
+  //   let time = (endTime - newTime) / 1000;
+  //   // 获取天、时、分、秒
+  //   let day = parseInt(time / (60 * 60 * 24));
+  //   let hou = parseInt(time % (60 * 60 * 24) / 3600);
+  //   let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
+  //   let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
+  //   obj = {
+  //     day: this.timeFormat(day),
+  //     hou: this.timeFormat(hou),
+  //     min: this.timeFormat(min),
+  //     sec: this.timeFormat(sec)
+  //   }
+  // } else {//活动已结束，全部设置为'00'
+  //   obj = {
+  //     day: '00',
+  //     hou: '00',
+  //     min: '00',
+  //     sec: '00'
+  //   }
+  // } 
+}
+
+
 module.exports = {
   timestamp2string: timestamp2string, // 时间处理
   imageUrl: imageUrl, // 时间倒计时
-  changelessImageUrl: changelessImageUrl
+  changelessImageUrl: changelessImageUrl,
+  clock: clock,
+  countDown: countDown
 }
