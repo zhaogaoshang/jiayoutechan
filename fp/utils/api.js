@@ -37,11 +37,15 @@ module.exports = {
   mobile_apis_order_list: 'mobile/apis/orderList.php', // 订单列表接口
   mobile_apis_order_list1: 'mobile/apis/order_list.php', // 订单列表接口 暂未使用
   mobile_apis_order_info:'mobile/apis/order_info.php', // 订单信息
+  mobile_apis_order_express: 'mobile/apis/kuaidiapi.php', // 物流信息
 
   // 人相关
   mobile_apis_share: 'mobile/apis/share.php', // 绑定分享人关系
   mobile_apis_share_list: 'mobile/apis/share_list.php', // 查修我的分享
   mobile_apis_login: 'mobile/apis/login.php',
   mobile_apis_getTokenInfo: 'mobile/apis/getTokenInfo.php', // 验证是否过期
-  mobile_apis_share_erweima: 'mobile/apis/share_erweima.php' // 生成二维码
+  mobile_apis_share_erweima: 'mobile/apis/share_erweima.php', // 生成二维码
+
+  // 支付
+  mobile_apis_payment: '/mobile/apis/orderPay.php'
 }

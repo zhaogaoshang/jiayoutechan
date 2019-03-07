@@ -19,7 +19,7 @@ Page({
     orderParams: {
       sel_goods: '', //是	string	购物车主键ID
       postscript: '', //否	string	订单描述
-      consingee: '', // 联系人
+      consignee: '', // 联系人
       address: '', // 联系人id
       mobile: '', //是	string	手机号
       country: '', //是	string	国家
@@ -110,8 +110,8 @@ Page({
         'orderParams.province': this.data.activeLocation.province, //
         'orderParams.city': this.data.activeLocation.city, //
         'orderParams.district': this.data.activeLocation.district, //
-        'orderParams.consingee': this.data.activeLocation.consignee, //
-        'orderParams.address': this.data.activeLocation.address_id, //
+        'orderParams.consignee': this.data.activeLocation.consignee, //
+        'orderParams.address': this.data.activeLocation.address, //
       })
     }
   },

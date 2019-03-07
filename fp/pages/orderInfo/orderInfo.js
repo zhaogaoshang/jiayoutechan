@@ -9,22 +9,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    product: [{
-      goods_id: 51,
-      goods_thumb: '../../images/201901/thumb_img/51_thumb_G_1548285343731.jpg',
-      goods_name: '商品商品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品品商品商品商品商品商品商品商品商品商品商品商品商品商品',
-      shop_price: '100.00',
-      is_shipping: 0,
-      sales: 26
-    }],
-
-    id: '', // 订单id
+    orderDetail: {}
   },
 
   // 去物流页面
   handleGoLogistics() {
     wx.navigateTo({
-      url: '../logistics/logistics'
+      url: '../logistics/logistics?id=' + this.data.id
     })
   },
 
@@ -34,14 +25,53 @@ Page({
       order_id: this.data.id
     }, res => {
       console.log(res, '订单信息')
-      if(res.code==2000){
+      if (res.code == 2000) {
         this.setData({
-          orderDetail:res.data
+          orderDetail: res.data
         })
-      }else{
+        let endDate = this.data.orderDetail.info.end_time
+        let curDate = Math.ceil(new Date().getTime() / 1000)
+        this.countDown(endDate - curDate)
+      } else {
 
       }
     })
+  },
+
+  //带天数的倒计时
+  countDown(times) {  
+    const that = this
+    console.log(times)
+    var timer = null;  
+    timer = setInterval(function() {    
+      var day = 0,
+              hour = 0,
+              minute = 0,
+              second = 0; //时间默认值
+          
+      if (times > 0) {      
+        day = Math.floor(times / (60 * 60 * 24));      
+        hour = Math.floor(times / (60 * 60)) - (day * 24);      
+        minute = Math.floor(times / 60) - (day * 24 * 60) - (hour * 60);      
+        second = Math.floor(times) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);    
+      }    
+      if (day <= 9) day = '0' + day;    
+      if (hour <= 9) hour = '0' + hour;    
+      if (minute <= 9) minute = '0' + minute;    
+      if (second <= 9) second = '0' + second;     //
+          
+      // console.log(day + "天:" + hour + "小时：" + minute + "分钟：" + second + "秒");  
+      that.setData({
+        countDowns: `剩余${minute}分${second}秒自动关闭`
+      })  
+      times--;  
+    }, 1000);  
+    if (times <= 0) {    
+      clearInterval(timer);  
+      that.setData({
+        countDowns: `已超时自动关闭`
+      })        
+    }
   },
 
   /**
@@ -50,13 +80,62 @@ Page({
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
     this.setData({
-      id: options.id
+      id: options.id || 379
     })
-
     app.handleTokenCheck().then(() => {
       this.getOrderInfo() // 订单信息
+      this.getOrderExpress() // 物流信息
     })
 
+  },
+
+  payment(e) {
+    http.fxPost(api.mobile_apis_payment, e.currentTarget.dataset, res => {
+      if (res.code == 2000) {
+        console.log(res.data)
+
+        wx.requestPayment({
+          appId: res.data.appId,
+          timeStamp: res.data.timeStamp.toString(),
+          nonceStr: res.data.nonceStr,
+          package: res.data.package,
+          signType: res.data.signType,
+          paySign: res.data.paySign,
+
+          success(res) {
+            console.log(res)
+          },
+          fail(res) {
+            console.log(res)
+          }
+        })
+
+      }
+    })
+  },  
+
+  getOrderExpress: function() {
+    http.fxGet(api.mobile_apis_order_express, {
+      oid: this.data.id
+    }, res => {
+      console.log(res, '物流信息')
+      if (res.code == 2000) {
+        if (!res.data.list || res.data.list.length == 0) {
+          this.setData({
+            express: {
+              context: '等待卖家发货',
+              time: ''
+            }
+          })
+          return false
+        }
+        this.setData({
+          express: res.data.list[0]
+        })
+      } else {
+
+      }
+    })
   },
 
   /**
@@ -107,6 +186,6 @@ Page({
   onShareAppMessage: function(e) {
     if (e.from == "menu") {
       return app.handleShareApp()
-    } 
+    }
   }
 })

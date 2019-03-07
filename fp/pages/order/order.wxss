@@ -50,3 +50,26 @@
 .bill-box > text{
   color:#FE8C18;
 }
+
+.icon-box{
+  width:100%;
+  height:auto;
+  /* background: #f00; */
+  position: absolute;
+  left:0;
+  top:300rpx;
+  /* margin-left:-93rpx; */
+}
+.icon-box > image{
+  width:186rpx;
+  height:auto;
+  display: block;
+  margin:0 auto 40rpx;
+}
+
+.icon-box > text{
+  color:#666;
+  font-size: 28rpx;
+  text-align: center;
+  display: block;
+}

@@ -2,7 +2,7 @@
 <wxs src="../../utils/util.wxs" module="wxs" />
 <view class="container order-info order">
   <!-- 待收货 -->
-  <view class="top-box">
+  <view class="top-box" wx:if="{{orderDetail.info.extension_code == 30}}">
     <image class="top-photo" src="{{wxs.changelessImageUrl('daishou@2x.png')}}"></image>
     <view class="title-text">
       <view class="big-text">订单待收货</view>
@@ -11,16 +11,16 @@
   </view>
 
   <!-- 未支付 -->
-  <view class="top-box">
+  <view class="top-box" wx:if="{{orderDetail.info.extension_code == 10}}" >
     <image class="top-photo" src="{{wxs.changelessImageUrl('weizhifu@2x.png')}}"></image>
     <view class="title-text">
       <view class="big-text">订单未支付</view>
-      <view class="min-text">剩余1小时25分自动关闭</view>
+      <view class="min-text">{{countDowns}}</view>
     </view>
   </view>
 
   <!-- 代发货 -->
-  <view class="top-box">
+  <view class="top-box" wx:if="{{orderDetail.info.extension_code == 20}}">
     <image class="top-photo" src="{{wxs.changelessImageUrl('daifahuo@2x.png')}}"></image>
     <view class="title-text">
       <view class="big-text">等待卖家发货</view>
@@ -28,21 +28,21 @@
   </view>
 
   <!-- 订单取消 -->
-  <view class="top-box">
+  <view class="top-box" wx:if="{{orderDetail.info.extension_code == 40}}">
     <image class="top-photo" src="{{wxs.changelessImageUrl('off_order@2x.png')}}"></image>
     <view class="title-text">
-      <view class="big-text">订单已取消</view>
+      <view class="big-text">订单已完成</view>
     </view>
   </view>
 
   <!-- 货物状态 -->
-  <view class="tiao-box product-location" catchtap="handleGoLogistics">
+  <view class="tiao-box product-location" catchtap="handleGoLogistics" wx:if="{{orderDetail.info.extension_code == 30}}">
     <view class="tiao-box__left">
       <image class="icon" src="../../images/status-cart-icon@2x.png"></image>
     </view>
     <view class="tiao-box__middle">
-      <view class="current-location">快件已从 北京 发出,下一站将到达 呼伦贝尔</view>
-      <view class="current-location__time">2019-02-15 13:32:12</view>
+      <view class="current-location">{{express.context}}</view>
+      <view class="current-location__time">{{express.time}}</view>
     </view>
     <view class="tiao-box__right">
       <image class="jian-tou" src="../../images/gd@2x.png"></image>
@@ -56,7 +56,7 @@
         <text>{{orderDetail.info.consignee}}</text>
         <text class="right">{{orderDetail.info.mobile}}</text>
       </view>
-      <view class="bottom">{{orderDetail.info.province}}{{orderDetail.info.city}}{{orderDetail.info.district}}</view>
+      <view class="bottom">{{orderDetail.info.province}}{{orderDetail.info.city}}{{orderDetail.info.district}}{{orderDetail.info.address}}</view>
     </view>
   </view>
 
@@ -65,7 +65,7 @@
     <view class="tiao-box">
       <view class="tiao-box__left"></view>
       <view class="tiao-box__middle"></view>
-      <view class="tiao-box__right">待支付</view>
+      <view class="tiao-box__right">{{orderDetail.info.handler}}</view>
     </view>
     <view>
       <block wx:for="{{orderDetail.list}}" wx:key="{{index}}">
@@ -80,26 +80,39 @@
             <text class="left">商品金额：</text>
             <text class="right">¥{{item.goods_price}}</text>
           </view>
-          <view class="price-discreption">
+          <!-- <view class="price-discreption">
             <text class="left">运费：</text>
             <text class="right">¥{{item.n_shiping_fee}}</text>
           </view>
           <view class="price-discreption">
             <text class="left">小计：</text>
-            <text class="right">¥{{item.goods_price}}</text>
-          </view>
+            <text class="right">¥{{item.amount}}</text>
+          </view> -->
         </view>
       </block>
       <!-- 总计 -->
       <view class="tiao-box price-discreption">
-        <view class="tiao-box__left">实付款(含运费)</view>
+        <view class="tiao-box__left">实付款</view>
         <view class="tiao-box__middle"></view>
-        <view class="tiao-box__right">总金额：¥{{orderDetail.info.c_amount}}</view>
+        <view class="tiao-box__right">总金额：¥{{orderDetail.info.c_amount}}<text style="color:#666">(含运费￥{{orderDetail.info.n_fee_amount}})</text></view>
       </view>
       <!-- 操控按钮 -->
       <view class="handle-btn">
-        <button>取消订单</button>
-        <button class="handle-btn__red">立即支付</button>
+        <block wx-if="{{orderDetail.info.extension_code == 10}}">
+          <button class="handle-btn__red" catchtap="payment" data-order_id="{{orderDetail.info.order_id}}" data-body="test" data-order_sn="{{orderDetail.info.order_sn}}" data-total_fee="{{orderDetail.info.total_fee}}">立即支付</button>
+        </block>
+        <block wx-if="{{orderDetail.info.extension_code == 20}}">
+          <button class="handle-btn__red" open-type='contact'>申请退款</button>
+        </block>       
+        <block wx-if="{{orderDetail.info.extension_code == 30}}">
+          <button bindtap="handleBtn">申请退货</button>
+          <button bindtap="handleBtn">查看物流</button>
+          <button bindtap="handleBtn" class="handle-btn__red">确认收货</button>
+        </block>          
+        <block wx-if="{{orderDetail.info.extension_code == 40}}">
+          <button bindtap="handleBtn">申请售后</button>
+          <button bindtap="handleBtn" class="handle-btn__red">立即评价</button>
+        </block>  
       </view>
     </view>
   </view>
@@ -108,7 +121,7 @@
   <view class="order-bottom__info">
     <view class="top">订单信息</view>
     <view class="bottom">
-      <view class="item">订单状态：待发货</view>
+      <view class="item">订单状态：{{orderDetail.info.handler}}</view>
       <view class="item">订单编号：{{orderDetail.info.order_sn}}</view>
       <view class="item">下单时间：{{orderDetail.info.add_time}}</view>
       <view class="item">配送方式：{{orderDetail.info.shipping_name?orderDetail.info.shipping_name:'快递'}}</view>

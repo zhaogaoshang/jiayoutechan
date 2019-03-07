@@ -1,8 +1,8 @@
 <!--pages/logistics/logistics.wxml-->
 <view class="container logistics-page">
   <view class="product-info">
-    <image class="product-photo" src="../../images/active.jpg"></image>
-    <view class="one-line__text">一周内发货，肉多饱满的草莓，园内自摘吃发货，肉多饱满的草莓，园内自摘吃了还想吃...</view>
+    <image class="product-photo" src="{{info.goods_thumb}}"></image>
+    <view class="one-line__text">{{info.goods_name}}</view>
   </view>
 
   <!-- 运单号码 -->
@@ -12,8 +12,8 @@
       <text>物流单号</text>
     </view>
     <view class="bottom">
-      <text class="logistics-name">顺丰快递</text>
-      <text class="number-list">3131316365252</text>
+      <text class="logistics-name">{{info.com}}</text>
+      <text class="number-list">{{info.nu}}</text>
     </view>
   </view>
 
@@ -21,15 +21,27 @@
   <view class="logistics-detail">
     <bolck>
       <!-- 最新的 -->
-      <view class="new-infomation__box">
-        <image class="new-infomation__icon" src="../../images/wz@2x.png"></image>
+      <view class="new-infomation__box" wx:for-index="index"  wx:for="{{info.list}}" :key="{{item.index}}">
+        <view class="left">
+          <view class="line"></view>
+          <block>
+            <image wx:if="{{index == 0}}" class="new-infomation__icon" src="../../images/wz@2x.png"></image>
+            <image wx:else class="old-infomation__icon" src="../../images/wxi@2x.png"></image>
+          </block>
+        </view>
         <view class="right">
-          <view class="time">2017-09-14 12:50:21</view>
-          <view class="loaction">到达： 由 大山的子孙 签收</view>
+          <block wx:if="{{index == 0}}" >
+            <view class="time" style="color:#FE8D18">{{item.time}}</view>
+            <view class="loaction" style="color:#FE8D18">{{item.context}}</view>
+          </block>
+          <block wx:else>
+            <view class="time">{{item.time}}</view>
+            <view class="loaction">{{item.context}}</view>
+          </block>
         </view>
       </view>
       <!-- 过去的物流信息 -->
-      <view class="new-infomation__box">
+      <!-- <view class="new-infomation__box">
         <view class="left">
           <view class="line"></view>
           <image class="old-infomation__icon" src="../../images/wxi@2x.png"></image>
@@ -38,7 +50,7 @@
           <view class="time">2017-09-14 12:50:21</view>
           <view class="loaction">到达： 由 大山的子孙 签收</view>
         </view>
-      </view>
+      </view> -->
       <view>
       </view>
     </bolck>
