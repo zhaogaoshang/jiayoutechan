@@ -41,7 +41,10 @@
             </image>
             <view class="discription">
               <text class="two-line__text"> {{item.goods_name}}</text>
-              <view class="product-price">¥{{item.goods_price}}</view>
+              <view class="product-price">
+                <text>¥</text>
+                <text class="current-price__font--big">{{item.goods_price}}</text>
+              </view>
             </view>
           </view>
         </view>

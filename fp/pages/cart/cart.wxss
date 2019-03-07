@@ -217,6 +217,11 @@
 
 .add-delete__function {
   position: absolute;
-  top: 107rpx;
+  top: 121rpx;
   left: 490rpx;
+}
+
+.current-price__font--big {
+  font-size: 28rpx;
+  margin-left: 6rpx;
 }

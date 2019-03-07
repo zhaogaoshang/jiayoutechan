@@ -1,13 +1,13 @@
 <!--pages/order/order.wxml-->
 <view class="container order">
-<!-- <construction></construction> -->
+  <!-- <construction></construction> -->
   <view class="category-box">
     <view class="category-item" wx:for="{{category}}" wx:key="{{index}}" catchtap="handleSwichCategory" data-id="{{item.id}}" data-status="{{item.status}}">
       <view>{{item.name}}</view>
       <view class="line" wx:if="{{item.id==activeCategory}}"></view>
     </view>
   </view>
-<block wx:for="{{allParams}}" wx:key="{{index}}" wx:if="{{item.initParam.composite_status == activeStatus}}">
+  <block wx:for="{{allParams}}" wx:key="{{index}}" wx:if="{{item.initParam.composite_status == activeStatus}}">
     <view class="order-item" catchtap="handleOrderInfo" wx:for="{{item.lists.order_list}}" wx:key="{{index}}" data-order-id="{{child.order_id}}" wx:for-item="child">
       <view class="tiao-box">
         <view class="tiao-box__left" style="color:#999;font-size:24rpx;">订单号：{{child.order_sn}}</view>
@@ -18,11 +18,15 @@
         <view class="product-item" wx:for="{{child.goods_list}}" wx:key="{{index}}">
           <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
           <view class="product-count">{{item.goods_attr}}</view>
-          <view class="product-price">￥{{item.formated_goods_price}}</view>
+          <view class="product-price">
+            <text>￥</text>
+            <text class="current-price__big">{{item.formated_goods_price}}</text>
+          </view>
           <view class="product-container__text">x{{item.goods_number}}</view>
         </view>
         <view class="bill-box">
-          共{{child.count}}件商品  小计：<text>￥{{child.total_fee}} </text>(含运费￥{{child.fee_amount}})
+          共{{child.count}}件商品 小计：
+          <text>￥{{child.total_fee}} </text>(含运费￥{{child.fee_amount}})
         </view>
         <view class="handle-btn">
           <!--待支付-->
@@ -30,26 +34,26 @@
             <button class="handle-btn__red" catchtap="payment" data-order_id="{{child.order_id}}" data-body="test" data-order_sn="{{child.order_sn}}" data-total_fee="{{child.total_fee}}">立即支付</button>
           </block>
           <block wx-if="{{child.extension_code == 20}}">
-            <button class="handle-btn__red" data-touch="false" catchtap="handleBtn"  open-type='contact'>申请退款</button>
-          </block>       
+            <button class="handle-btn__red" data-touch="false" catchtap="handleBtn" open-type='contact'>申请退款</button>
+          </block>
           <block wx-if="{{child.extension_code == 30}}">
             <button data-touch="false" catchtap="handleBtn" open-type='contact'>申请退货</button>
             <button catchtap="handleBtn" data-url="/pages/logistics/logistics?id={{child.order_id}}">查看物流</button>
             <button catchtap="handleBtn" class="handle-btn__red">确认收货</button>
-          </block>          
+          </block>
           <block wx-if="{{child.extension_code == 40}}">
-            <button data-touch="false" catchtap="handleBtn"  open-type='contact'>申请售后</button>
+            <button data-touch="false" catchtap="handleBtn" open-type='contact'>申请售后</button>
             <button catchtap="handleBtn" class="handle-btn__red" data-pay="/pages/commentWrite/commentWrite?">立即评价</button>
-          </block>              
+          </block>
         </view>
       </view>
     </view>
-  <block wx:if="{{!item.lists.order_list || item.lists.order_list.length === 0}}">
-    <view class="icon-box">
-      <image src="/images/icon-order.png" mode="widthFix"></image>
-      <text>暂无订单</text>
-    </view>
-  </block> 
-</block>
+    <block wx:if="{{!item.lists.order_list || item.lists.order_list.length === 0}}">
+      <view class="icon-box">
+        <image src="/images/icon-order.png" mode="widthFix"></image>
+        <text>暂无订单</text>
+      </view>
+    </block>
+  </block>
 
 </view>

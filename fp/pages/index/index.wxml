@@ -55,7 +55,9 @@
               </view>
             </view>
             <view class="people-count">{{item.selcount}}人付款</view>
-            <view class="product-price">￥<text class="mcode">{{item.shop_price}}</text></view>
+            <view class="product-price">￥
+              <text class="mcode">{{item.shop_price}}</text>
+            </view>
           </view>
           <image class="product-rob__icon" src="../../images/q@2x.png"></image>
         </view>
@@ -107,7 +109,9 @@
       <view class="bottom">
         <view class="store-product__item {{idx==2?'margin-right--0':''}}" wx:for="{{item.goods}}" wx:key="{{idx}}" catchtap="handleGoProduct" wx:for-item="lite" wx:for-index="idx">
           <image class="store-product__photo" src="{{lite.goods_thumb?wxs.imageUrl(lite.goods_thumb):'../../images/logo.jpg'}}"></image>
-          <view class="product-price">￥<text class="mcode">{{lite.market_price}}</text></view>
+          <view class="product-price">￥
+            <text class="mcode">{{lite.market_price}}</text>
+          </view>
         </view>
       </view>
     </view>
@@ -134,7 +138,9 @@
           <image class="store-product__photo" src="{{wxs.imageUrl(only.goods_thumb)}}"></image>
           <view class="go-shop__box">
             <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{only.is_shipping==0}}"></image>
-            <text class="product-cureent__price">¥{{only.shop_price}}</text>
+            <text class="product-cureent__price"> 
+            <text>¥</text>
+            <text class="current-price__font--big">{{only.shop_price}}</text></text>
             <!-- <text class="product-origin__price">¥100.00</text> -->
           </view>
         </view>

@@ -98,9 +98,9 @@
 
 /*新增去掉最后位的边框*/
 
-.module-category .module-category__item:last-child{
+.module-category .module-category__item:last-child {
   border-right: none;
-} 
+}
 
 .module-category .module-category__item.border--null {
   border: none;
@@ -490,4 +490,9 @@
   height: 100%;
   width: 100%;
   opacity: 0;
+}
+
+.current-price__font--big {
+  font-size: 28rpx;
+  margin-left: 6rpx;
 }
