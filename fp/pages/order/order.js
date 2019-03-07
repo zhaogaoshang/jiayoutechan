@@ -12,7 +12,7 @@ Page({
     // lists
     lists: [],
 
-    activeCategory: 'all',
+    // activeCategory: 'all',
     // 当前品类代码
     activeStatus: '-1',
     category: [{
@@ -37,7 +37,7 @@ Page({
         status: '106'
       },
     ],
-
+    loadPageIsShow: true,
     // 所有订单数据
     allParams:[
       { // 全部
@@ -96,11 +96,15 @@ Page({
           signType: res.data.signType,
           paySign: res.data.paySign,
 
-          success(res) { 
-            console.log(res)
+          success(res) {
+            wx.navigateTo({
+              url: '/pages/paymentResult/paymentResult?order_id=' + e.currentTarget.dataset.order_id,
+            })
           },
-          fail(res) { 
-            console.log(res)
+          fail(res) {
+            wx.navigateTo({
+              url: '/pages/paymentResult/paymentResult',
+            })
           }
         })
 
@@ -131,7 +135,7 @@ Page({
   handleSwichCategory(e) {
     // console.log(e.currentTarget.dataset.status)
     this.setData({
-      activeCategory: e.currentTarget.dataset.id,
+      // activeCategory: e.currentTarget.dataset.id,
       activeStatus: e.currentTarget.dataset.status
     })
     console.log(this.data.activeStatus);
@@ -156,19 +160,21 @@ Page({
    * 生命周期函数--监听页面加载 'tuiKuan daiPingJia daiShowhuo daiFaHuo daiZhifu all'
    */
   onLoad: function(options) {
-    app.getNetworkStatus() // 检测网络
-    app.handleTokenCheck().then(() => {
-      // this.getOrderList(this.data.allParams[0].initParam)
-      this.data.allParams.map(res => {
-        this.getOrderList(res.initParam)
-       
-      })
-    })
+    this.setData({
+      activeStatus: options.type || -1
+    })  
+    // this.getOrderList()  
+    // this.data.allParams.map(res => {
+    //   if (res.initParam.composite_status == this.data.activeStatus) {
+    //     this.getOrderList(res.initParam)
+    //   }
+    // })
   },
 
 
   // 获取当前订单列表
   getOrderList(param) {
+    const that = this
     http.fxGet(api.mobile_apis_order_list, param, res => {
       if (res.code == 2000) {
         this.data.allParams.map((v,index )=> {
@@ -177,12 +183,17 @@ Page({
             if (v.initParam.page > 1) {
               res.data.order_list = [...v.lists.order_list, ...res.data.order_list]
             }
-            this.setData({
-              ['allParams[' + index + '].lists']: res.data
+            that.setData({
+              ['allParams[' + index + '].lists']: res.data,
             })          
           }
         })
-        console.log(this.data.allParams)
+        console.log(that.data.allParams)
+        // setTimeout(function () {
+        //   that.setData({
+        //     loadPageIsShow: false
+        //   })
+        // }, 2000)
       }
     })
   },  
@@ -215,7 +226,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    app.getNetworkStatus() // 检测网络
+    app.handleTokenCheck().then(() => {
+      // this.getOrderList(this.data.allParams[0].initParam)
+      this.data.allParams.map(res => {
+        this.getOrderList(res.initParam)
+      })
+    })
   },
 
   /**
@@ -243,11 +260,12 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-    console.log(this.data.activeStatus)
+    // console.log(this.data.activeStatus)
 
     this.data.allParams.map((v,index) => {
-      if (this.data.activeStatus === v.initParam.composite_status) {
+      if (this.data.activeStatus == v.initParam.composite_status) {
         // 如果没有更多数据 直接返回
+        console.log(v.lists.next)
         if (!v.lists.next) {
           utils.showToast('没有更多了')
           return false

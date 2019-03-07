@@ -1,10 +1,11 @@
 <!--pages/order/order.wxml-->
 <view class="container order">
 <!-- <construction></construction> -->
+  <load-page time="{{5000}}" isShow="{{loadPageIsShow}}"></load-page>
   <view class="category-box">
     <view class="category-item" wx:for="{{category}}" wx:key="{{index}}" catchtap="handleSwichCategory" data-id="{{item.id}}" data-status="{{item.status}}">
       <view>{{item.name}}</view>
-      <view class="line" wx:if="{{item.id==activeCategory}}"></view>
+      <view class="line" wx:if="{{item.status==activeStatus}}"></view>
     </view>
   </view>
 <block wx:for="{{allParams}}" wx:key="{{index}}" wx:if="{{item.initParam.composite_status == activeStatus}}">
@@ -27,7 +28,7 @@
         <view class="handle-btn">
           <!--待支付-->
           <block wx-if="{{child.extension_code == 10}}">
-            <button class="handle-btn__red" catchtap="payment" data-order_id="{{child.order_id}}" data-body="test" data-order_sn="{{child.order_sn}}" data-total_fee="{{child.total_fee}}">立即支付</button>
+            <button class="handle-btn__red" catchtap="payment" data-order_id="{{child.order_id}}" data-body="家有特产" data-order_sn="{{child.order_sn}}" data-total_fee="{{child.total_fee}}">立即支付</button>
           </block>
           <block wx-if="{{child.extension_code == 20}}">
             <button class="handle-btn__red" data-touch="false" catchtap="handleBtn"  open-type='contact'>申请退款</button>

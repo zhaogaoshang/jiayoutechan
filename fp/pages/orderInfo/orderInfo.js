@@ -103,10 +103,14 @@ Page({
           paySign: res.data.paySign,
 
           success(res) {
-            console.log(res)
+            wx.navigateTo({
+              url: '/pages/paymentResult/paymentResult?order_id=' + e.currentTarget.dataset.order_id,
+            })
           },
           fail(res) {
-            console.log(res)
+            wx.navigateTo({
+              url: '/pages/paymentResult/paymentResult',
+            })
           }
         })
 

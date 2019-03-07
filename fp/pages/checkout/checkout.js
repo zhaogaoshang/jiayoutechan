@@ -42,14 +42,45 @@ Page({
     http.fxPost(api.mobile_apis_orderDone, this.data.orderParams, res => {
       console.log(res, '提交订单')
       if (res.code == 2000) {
-        wx.navigateTo({
-          url: '../paymentResult/paymentResult'
-        })
+        // wx.navigateTo({
+        //   url: '../paymentResult/paymentResult'
+        // })
+        res.data.body="家有特产"
+        this.payment(res.data)
       } else {
         utils.showToast(res.msg)
       }
     })
   },
+
+  payment(e) {
+    http.fxPost(api.mobile_apis_payment, e, res => {
+      if (res.code == 2000) {
+        console.log(res.data)
+
+        wx.requestPayment({
+          appId: res.data.appId,
+          timeStamp: res.data.timeStamp.toString(),
+          nonceStr: res.data.nonceStr,
+          package: res.data.package,
+          signType: res.data.signType,
+          paySign: res.data.paySign,
+
+          success(res) {
+            wx.navigateTo({
+              url: '/pages/paymentResult/paymentResult?order_id=' + e.order_id,
+            })
+          },
+          fail(res) {
+            wx.navigateTo({
+              url: '/pages/paymentResult/paymentResult',
+            })
+          }
+        })
+
+      }
+    })
+  },  
 
   // 爱心贡献值
   handleIsShowShoLove() {

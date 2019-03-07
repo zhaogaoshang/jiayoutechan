@@ -9,13 +9,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
   },
 
   // 去产品详情
   handleGoProduct(e) {
     console.log(e.detail.id)
-    wx, wx.navigateTo({
+    wx.navigateTo({
       url: '../product/product?id=' + e.detail.id
     })
   },
@@ -25,8 +24,24 @@ Page({
    */
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
+    console.log(options)
+    this.setData({
+      order_id:options.order_id
+    })
   },
 
+  goPath (e) {
+    console.log(e.currentTarget.dataset.url)
+    if (e.currentTarget.dataset.url.indexOf('index') > -1) {
+      wx.switchTab({
+        url: e.currentTarget.dataset.url,
+      })
+    } else{
+      wx.navigateTo({
+        url: e.currentTarget.dataset.url,
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,41 +1,41 @@
 <!--pages/paymentResult/paymentResult.wxml-->
 <view class="container payment-result">
-  <construction></construction>
+  <!-- <construction></construction> -->
   <!-- 支付成功 -->
-  <view class="payment-result__box">
+  <view class="payment-result__box" wx:if="{{order_id}}">
     <image class="success-icon" src="../../images/car@2x.png"></image>
     <view class="payment-title">支付成功</view>
     <view class="handle-btn__box">
       <form>
-        <button>回到首页</button>
+        <button catchtap='goPath' data-url="/pages/index/index">回到首页</button>
       </form>
       <form>
-        <button class="handle-btn back-index__btn">查看订单</button>
+        <button class="handle-btn back-index__btn" catchtap='goPath' data-url="/pages/order/order?order_id={{order_id}}">查看订单</button>
       </form>
     </view>
   </view>
 
   <!-- 支付失败 -->
-  <view class="payment-result__box error-box">
+  <view class="payment-result__box error-box" wx:if="{{!order_id}}">
     <image class="error-icon" src="../../images/payment-error@2x.png"></image>
     <view class="payment-title">支付失败</view>
     <view class="handle-btn__box">
       <form>
-        <button>回到首页</button>
+        <button catchtap='goPath' data-url="/pages/index/index">回到首页</button>
       </form>
       <form>
-        <button class="handle-btn">重新支付</button>
+        <button class="handle-btn" catchtap='goPath' data-url="/pages/order/order?order_id={{order_id}}">查看订单</button>
       </form>
     </view>
   </view>
 
   <!-- 为你推荐 -->
-  <view>
+  <!-- <view>
     <view class="recommend-text">为你推荐</view>
     <view class="recommend-box">
       <view class="recommend-box__item" wx:for="{{[1,2,3]}}" wx:key="{{index}}">
         <product-big bind:handleGoProduct="handleGoProduct"></product-big>
       </view>
     </view>
-  </view>
+  </view> -->
 </view>

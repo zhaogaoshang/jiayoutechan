@@ -22,24 +22,24 @@
 
   <!-- 订单部分 -->
   <view class="order-box">
-    <view class="top" data-type="all" catchtap="handleGoOrder">
+    <view class="top" data-type="-1" catchtap="handleGoOrder">
       <text>我的订单</text>
       <text>查看全部订单 ></text>
     </view>
     <view class="bottom">
-      <view class="order-item" data-type="daiZhifu" catchtap="handleGoOrder">
+      <view class="order-item" data-type="100" catchtap="handleGoOrder">
         <image class="dai-zhi__fu--icon" src="../../images/dzf@2x.png"></image>
         <view class="dai-zhi__fu--text">待支付</view>
       </view>
-      <view class="order-item" data-type="daiFaHuo" catchtap="handleGoOrder">
+      <view class="order-item" data-type="101" catchtap="handleGoOrder">
         <image class="dai-zhi__fu--icon" src="../../images/dfh@2x.png"></image>
         <view class="dai-zhi__fu--text">待发货</view>
       </view>
-      <view class="order-item" data-type="daiShowhuo" catchtap="handleGoOrder">
+      <view class="order-item" data-type="105" catchtap="handleGoOrder">
         <image class="dai-zhi__fu--icon" src="../../images/dsh@2x.png"></image>
         <view class="dai-zhi__fu--text">待收货</view>
       </view>
-      <view class="order-item" data-type="daiPingJia" catchtap="handleGoOrder">
+      <view class="order-item" data-type="106" catchtap="handleGoOrder">
         <image class="dai-zhi__fu--icon" src="../../images/ywc@2x.png"></image>
         <view class="dai-zhi__fu--text">待评价</view>
       </view>
