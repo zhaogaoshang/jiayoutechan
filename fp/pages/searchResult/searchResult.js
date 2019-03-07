@@ -37,7 +37,7 @@ Page({
   // 输入文字 
   handleInputText(e) {
     this.setData({
-      'params.keywords:': e.detail.value
+      'params.keywords': e.detail.value
     })
   },
 

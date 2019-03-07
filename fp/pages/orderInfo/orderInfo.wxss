@@ -129,3 +129,7 @@
   width: 750rpx;
   height: 120rpx;
 }
+.current-price__big {
+  font-size: 28rpx;
+  margin-left: 3rpx;
+}

@@ -11,7 +11,7 @@
   </view>
 
   <!-- 未支付 -->
-  <view class="top-box" wx:if="{{orderDetail.info.extension_code == 10}}" >
+  <view class="top-box" wx:if="{{orderDetail.info.extension_code == 10}}">
     <image class="top-photo" src="{{wxs.changelessImageUrl('weizhifu@2x.png')}}"></image>
     <view class="title-text">
       <view class="big-text">订单未支付</view>
@@ -72,7 +72,10 @@
         <view class="product-item">
           <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
           <view class="product-count">{{item.goods_attr}}</view>
-          <view class="product-price">{{item.goods_price}}</view>
+          <view class="product-price">
+            <text>¥</text>
+            <text class="current-price__big">{{item.goods_price}}</text>
+          </view>
           <view class="product-container__text">x{{item.goods_number}}</view>
         </view>
         <view class="expenses-discription">
@@ -94,7 +97,9 @@
       <view class="tiao-box price-discreption">
         <view class="tiao-box__left">实付款</view>
         <view class="tiao-box__middle"></view>
-        <view class="tiao-box__right">总金额：¥{{orderDetail.info.c_amount}}<text style="color:#666">(含运费￥{{orderDetail.info.n_fee_amount}})</text></view>
+        <view class="tiao-box__right">总金额：¥{{orderDetail.info.c_amount}}
+          <text style="color:#666">(含运费￥{{orderDetail.info.n_fee_amount}})</text>
+        </view>
       </view>
       <!-- 操控按钮 -->
       <view class="handle-btn">
@@ -103,16 +108,16 @@
         </block>
         <block wx-if="{{orderDetail.info.extension_code == 20}}">
           <button class="handle-btn__red" open-type='contact'>申请退款</button>
-        </block>       
+        </block>
         <block wx-if="{{orderDetail.info.extension_code == 30}}">
           <button bindtap="handleBtn">申请退货</button>
           <button bindtap="handleBtn">查看物流</button>
           <button bindtap="handleBtn" class="handle-btn__red">确认收货</button>
-        </block>          
+        </block>
         <block wx-if="{{orderDetail.info.extension_code == 40}}">
           <button bindtap="handleBtn">申请售后</button>
           <button bindtap="handleBtn" class="handle-btn__red">立即评价</button>
-        </block>  
+        </block>
       </view>
     </view>
   </view>
