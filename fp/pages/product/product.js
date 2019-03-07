@@ -58,14 +58,20 @@ Page({
       this.setData({
         'activeSpecifications.qty': --this.data.activeSpecifications.qty
       })
+    } else {
+      utils.showToast('数量不能少于1')
     }
   },
 
   // 加入购物车的数量加
   handleAdd() {
-    this.setData({
-      'activeSpecifications.qty': ++this.data.activeSpecifications.qty
-    })
+    if (this.data.activeSpecifications.qty < this.data.activeSpecifications.goods_attr_number) {
+      this.setData({
+        'activeSpecifications.qty': ++this.data.activeSpecifications.qty
+      })
+    } else {
+      utils.showToast('库存不足')
+    }
   },
 
   // 规格选择
