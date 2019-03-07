@@ -220,7 +220,7 @@ App({
   handleShareApp() {
     return {
       title: '家有特产',
-      imageUrl:'../../images/jytc-mark@2.jpg',
+      imageUrl: '../../images/jytc-mark@2.jpg',
       path: '/pages/index/index?sharePrent=' + this.globalData.userInfo.uid
     }
   },
@@ -245,6 +245,14 @@ App({
     // 要结算的产品sku
     checkoutSku: '',
     // 购物车
-    shopCart: {}
+    shopCart: {},
+    // 组件内摸个状态联动
+    agent: {
+      indexNewCollect: { // 首页新品热销
+        isChang: false,
+        id: '',
+        value: false
+      }
+    }
   }
 })
