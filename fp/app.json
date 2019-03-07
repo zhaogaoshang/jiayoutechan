@@ -1,11 +1,12 @@
 {
   "pages": [
+    
     "pages/order/order",
     "pages/index/index",
     "pages/user/user",
-    
-    
     "pages/orderInfo/orderInfo",
+    
+    
     "pages/logistics/logistics",
     "pages/commentWrite/commentWrite",
     "pages/networkError/networkError",

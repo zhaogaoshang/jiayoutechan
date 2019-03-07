@@ -112,6 +112,37 @@ Page({
     })
   },
 
+  handleConfirm(e) {
+    const that = this
+    wx.showModal({
+      title: '温馨提示',
+      content: '确认收货后，钱会直接付给卖家',
+      confirmColor: '#FE8D18',
+      success(res) {
+        if (res.confirm) {
+
+          http.fxPost(api.mobile_apis_order_confirm,
+            e.currentTarget.dataset,
+            res => {
+              if (res.code == 2000) {
+                utils.showToast('确认收货成功')
+                that.getOrderList({ page: 1, pagesize: 10, composite_status: 106 })
+                setTimeout(function(){
+                  that.setData({
+                    activeStatus: '106',
+                  })
+                },1500)
+              }
+            })
+          // wx.navigateTo({
+          //   url: '/pages/commentWrite/commentWrite'
+          // })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
 
 
   // 订单详情
@@ -209,6 +240,8 @@ Page({
     if (param.touch) {
       return false
     }
+
+
 
     wx.navigateTo({
       url: param.url

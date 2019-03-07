@@ -40,11 +40,11 @@
           <block wx-if="{{child.extension_code == 30}}">
             <button data-touch="false" catchtap="handleBtn" open-type='contact'>申请退货</button>
             <button catchtap="handleBtn" data-url="/pages/logistics/logistics?id={{child.order_id}}">查看物流</button>
-            <button catchtap="handleBtn" class="handle-btn__red">确认收货</button>
+            <button catchtap="handleConfirm" data-order_id="{{child.order_id}}" class="handle-btn__red">确认收货</button>
           </block>
           <block wx-if="{{child.extension_code == 40}}">
             <button data-touch="false" catchtap="handleBtn" open-type='contact'>申请售后</button>
-            <button catchtap="handleBtn" class="handle-btn__red" data-pay="/pages/commentWrite/commentWrite?">立即评价</button>
+            <button catchtap="handleBtn" class="handle-btn__red" data-pay="/pages/commentWrite/commentWrite?oid={{child.order_id}}">立即评价</button>
           </block>
         </view>
       </view>

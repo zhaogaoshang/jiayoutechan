@@ -110,12 +110,12 @@
           <button class="handle-btn__red" open-type='contact'>申请退款</button>
         </block>
         <block wx-if="{{orderDetail.info.extension_code == 30}}">
-          <button bindtap="handleBtn">申请退货</button>
+          <button bindtap="handleBtn" open-type='contact'>申请退货</button>
           <button bindtap="handleBtn">查看物流</button>
-          <button bindtap="handleBtn" class="handle-btn__red">确认收货</button>
+          <button bindtap="handleBtn" class="handle-btn__red" bindtap="handleConfirm">确认收货</button>
         </block>
         <block wx-if="{{orderDetail.info.extension_code == 40}}">
-          <button bindtap="handleBtn">申请售后</button>
+          <button bindtap="handleBtn" open-type='contact'>申请售后</button>
           <button bindtap="handleBtn" class="handle-btn__red">立即评价</button>
         </block>
       </view>

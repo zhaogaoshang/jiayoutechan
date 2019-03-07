@@ -38,6 +38,7 @@ module.exports = {
   mobile_apis_order_list1: 'mobile/apis/order_list.php', // 订单列表接口 暂未使用
   mobile_apis_order_info:'mobile/apis/order_info.php', // 订单信息
   mobile_apis_order_express: 'mobile/apis/kuaidiapi.php', // 物流信息
+  mobile_apis_order_confirm: 'mobile/apis/update_order_affirm.php', // 确认收货
 
   // 人相关
   mobile_apis_share: 'mobile/apis/share.php', // 绑定分享人关系

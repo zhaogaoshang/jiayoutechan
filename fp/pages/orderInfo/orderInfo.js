@@ -80,7 +80,7 @@ Page({
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
     this.setData({
-      id: options.id || 379
+      id: options.id || 373
     })
     app.handleTokenCheck().then(() => {
       this.getOrderInfo() // 订单信息
@@ -138,6 +138,32 @@ Page({
         })
       } else {
 
+      }
+    })
+  },
+
+  handleConfirm () {
+    const that = this
+    wx.showModal({
+      title: '温馨提示',
+      content: '确认收货后，钱会直接付给卖家',
+      confirmColor: '#FE8D18',
+      success(res) {
+        if (res.confirm) {
+
+          http.fxPost(api.mobile_apis_order_confirm, 
+          { order_id: that.data.orderDetail.info.order_id},
+          res=>{
+            if(res.code == 2000) {
+              that.getOrderInfo()
+            }
+          })
+          // wx.navigateTo({
+          //   url: '/pages/commentWrite/commentWrite'
+          // })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
     })
   },
