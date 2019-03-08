@@ -10,7 +10,8 @@
 
   <!-- 每一个评论 -->
   <view class="comment-item" wx:for="{{comment.list}}" wx:key="{{index}}">
-    <image class="comment-user__avatar" src="{{wxs.imageUrl(item.headimg)}}"></image>
+    <image wx:if="{{item.headimg}}" class="comment-user__avatar" src="{{wxs.imageUrl(item.headimg)}}"></image>
+    <image src="../../images/jytc-mark@2.jpg" class="comment-user__avatar" wx:else></image>
     <view class="right">
       <view class="user-info">
         <text class="user-name">{{item.user_name}} </text>

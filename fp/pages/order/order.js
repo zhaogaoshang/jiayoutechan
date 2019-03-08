@@ -36,6 +36,11 @@ Page({
         id: 'daiPingJia',
         status: '106'
       },
+      {
+        name: '已退款/退货',
+        id: '',
+        status: '107'
+      },      
     ],
     loadPageIsShow: true,
     // 所有订单数据
@@ -79,7 +84,15 @@ Page({
           composite_status: '106',
         },
         lists: {}
-      }                        
+      },
+      { //退款退货
+        initParam: {
+          page: 1,
+          pagesize: 10,
+          composite_status: '107',
+        },
+        lists: {}
+      }                                 
     ]
   },
 
@@ -126,12 +139,19 @@ Page({
             res => {
               if (res.code == 2000) {
                 utils.showToast('确认收货成功')
-                that.getOrderList({ page: 1, pagesize: 10, composite_status: 106 })
+
+                app.handleTokenCheck().then(() => {
+                  // this.getOrderList(this.data.allParams[0].initParam)
+                  that.data.allParams.map(res => {
+                    res.initParam.page = 1
+                    that.getOrderList(res.initParam)
+                  })
+                })
                 setTimeout(function(){
                   that.setData({
                     activeStatus: '106',
                   })
-                },1500)
+                },2000)
               }
             })
           // wx.navigateTo({
@@ -204,11 +224,12 @@ Page({
 
 
   // 获取当前订单列表
-  getOrderList(param,type) {
+  getOrderList(param) {
     const that = this
     http.fxGet(api.mobile_apis_order_list, param, res => {
       if (res.code == 2000) {
         wx.hideLoading()
+        wx.stopPullDownRefresh()
         this.data.allParams.map((v,index )=> {
           // 当前显示与状态值匹配 那么就加载
           if (param.composite_status === v.initParam.composite_status) {
@@ -218,20 +239,16 @@ Page({
             that.setData({
               ['allParams[' + index + '].lists']: res.data,
             })          
+            
           }
         })
         // 下拉刷新
-        if (type) {
-          wx.stopPullDownRefresh
-          // utils.showToast('已刷新')
-        }
-
         console.log(that.data.allParams)
-        // setTimeout(function () {
-        //   that.setData({
-        //     loadPageIsShow: false
-        //   })
-        // }, 2000)
+        setTimeout(function () {
+          that.setData({
+            loadPageIsShow: false
+          })
+        }, 2500)
       }
     })
   },  
@@ -295,11 +312,12 @@ Page({
   onPullDownRefresh: function() {
     this.data.allParams.map((v, index) => {
       if (this.data.activeStatus == v.initParam.composite_status) {
+        utils.showToast(v.initParam.composite_status)
         this.setData({
           ['allParams[' + index + '].initParam.page']: 1
         })
         // console.log(v.initParam.page)
-        this.getOrderList(v.initParam,'down')
+        this.getOrderList(v.initParam)
       }
     })
   },

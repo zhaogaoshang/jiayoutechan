@@ -3,6 +3,9 @@ const app = getApp() //获取应用实例
 const http = require('../../utils/http.js')
 const api = require('../../utils/api.js')
 const utils = require('../../utils/util.js')
+const uploadImage = require('../../updata-oss/uploadFile.js')
+const fileHost = "https://shandai-mall.oss-cn-beijing.aliyuncs.com"
+const util = require('../../utils/util.js');
 Page({
 
   data: {
@@ -21,35 +24,96 @@ Page({
   },
 
   addPic (e) {
-    this.data.uploadData.list.map((v, index) => {
+    const that = this
+    wx.chooseImage({
+      count: 3, // 默认最多一次选择9张图
+      sizeType: ['original'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var tempFilePaths = res.tempFilePaths;
+        var nowTime = util.formatTime(new Date());
+        //支持多图上传
+        for (var i = 0; i < res.tempFilePaths.length; i++) {
+          //显示消息提示框
+          wx.showLoading({
+            title: '上传中' + (i + 1) + '/' + res.tempFilePaths.length,
+            mask: true
+          })
+
+          //上传图片
+          //你的域名下的/cbb文件下的/当前年月日文件下的/图片.png
+          //图片路径可自行修改
+          uploadImage(res.tempFilePaths[i], 'cbb/' + nowTime + '/',
+            function (result) {
+              console.log(result.split(fileHost)[1])
+              that.data.uploadData.list.map((v,index) => {
+                if (e.currentTarget.dataset.id == v.goods_id) {
+                  let tempArr = v.imgs
+                  tempArr.push(result.split(fileHost)[1])
+                  that.setData({
+                    ['uploadData.list.[' + index + '].imgs']: tempArr
+                  })
+                }
+              })
+              wx.hideLoading();
+            },
+            function (result) {
+              console.log("======上传失败======", result);
+              wx.hideLoading()
+            }
+          )
+        }
+      }
+    })
+  },
+  // 查看大图
+  handleImg (e) {
+    
+    for (let i = 0; i < e.currentTarget.dataset.arr.length; i++) {
+      e.currentTarget.dataset.arr[i] = fileHost + e.currentTarget.dataset.arr[i]
+    }
+    console.log(e.currentTarget.dataset)
+    // return false
+    wx.previewImage({
+      current: fileHost + e.currentTarget.dataset.url, // 当前显示图片的http链接
+      urls: e.currentTarget.dataset.arr // 需要预览的图片http链接列表
+    })
+  },
+
+  // 删除
+
+  handleDelimg (e) {
+    // console.log(e.currentTarget.dataset)
+    // return
+    this.data.uploadData.list.map((v,index) => {
       if (v.goods_id == e.currentTarget.dataset.id) {
-        wx.chooseImage({
-          count: 3,
-          sizeType: ['original', 'compressed'],
-          sourceType: ['album', 'camera'],
-          success(res) {
-            // tempFilePath可以作为img标签的src属性显示图片
-            const tempFilePaths = res.tempFilePaths
-            console.log(tempFilePaths)
-          }
-        })        
-        // this.setData({
-        //   ['uploadData.list.[' + index + '].content']: e.detail.value
-        // })
+        v.imgs.splice(e.currentTarget.dataset.index,1)
+        // console.log(v.imgs)
+        this.setData({
+          ['uploadData.list[' + index + '].imgs']: v.imgs
+          
+        })
       }
     })
   },
 
   // 保存
   handleSubmit() {
-
+    console.log(this.data.uploadData)
+    // return false;
     app.handleTokenCheck().then(() => {
       http.fxPost(api.mobile_apis_order_addcomment, this.data.uploadData, res => {
         if (res.code == 2000) {
           utils.showToast( '评价成功')
-          wx.switchTab({
-            url: '/pages/user/user',
-          })
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/order/order?type=-1',
+            })
+          },2000)
+          // wx.switchTab({
+          //   url: '/pages/user/user',
+          // })
         } else {
           utils.showToast(res.msg)
         }
@@ -67,9 +131,12 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      order_id: options.oid || 373
+      order_id: options.oid || 121195,
+      fileHost: fileHost
     })
-    this.getList()
+    app.handleTokenCheck().then(() => {
+      this.getList()
+    })
   },
 
   getList () {

@@ -536,3 +536,10 @@
   line-height: 24rpx;
   margin-left: 10rpx;
 }
+
+.free-freight__icon {
+  width: 50rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
