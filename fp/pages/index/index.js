@@ -526,6 +526,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let scene = decodeURIComponent(options.scene)
+    console.log(scene, '这是分享的prentId')
     app.getNetworkStatus() // 检测网络
 
     this.getHandAdv() // 获取头部广告
