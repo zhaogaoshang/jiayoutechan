@@ -25,9 +25,10 @@ Page({
 
   // 获取二维码
   getCard() {
+    console.log(app.globalData.userInfo)
     let parmas = {
       act: 1,
-      scene: 'parentId=888',
+      scene: app.globalData.userInfo.uid + '&4',
       page: 'pages/index/index',
       appid: config.openId(),
       secret: config.appSecret(),

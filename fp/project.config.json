@@ -10,7 +10,7 @@
 		"minified": true,
 		"newFeature": true,
 		"nodeModules": false,
-		"autoAudits": true
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.5.1",
