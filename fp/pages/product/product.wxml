@@ -21,7 +21,7 @@
         </swiper-item>
       </block>
     </swiper>
-    <image class="like-share__icon" catchtap="handleCollect" src="{{isCollect?'../../images/ssc.png':'../../images/shoucang@2x.png'}}"></image>
+    <image class="like-share__icon" catchtap="handleCollect" src="{{is_collected==0?'../../images/ssc.png':'../../images/shoucang@2x.png'}}"></image>
   </view>
   <!-- 简述 -->
   <view class="product-discription__box">

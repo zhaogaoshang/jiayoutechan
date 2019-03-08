@@ -1,12 +1,10 @@
 {
   "pages": [
-    
-    "pages/order/order",
     "pages/index/index",
+    "pages/dom/dom",
+    "pages/order/order",
     "pages/user/user",
     "pages/orderInfo/orderInfo",
-    
-    
     "pages/logistics/logistics",
     "pages/commentWrite/commentWrite",
     "pages/networkError/networkError",
@@ -14,14 +12,12 @@
     "pages/store/store",
     "pages/cart/cart",
     "pages/commentAll/commentAll",
-    
     "pages/searchResult/searchResult",
     "pages/productCategory/productCategory",
     "pages/address/address",
     "pages/addressChang/addressChang",
     "pages/paymentResult/paymentResult",
     "pages/checkout/checkout",
-    
     "pages/liaisonStore/liaisonStore",
     "pages/loveQuantity/loveQuantity",
     "pages/loveQuantityDraw/loveQuantityDraw",
