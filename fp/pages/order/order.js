@@ -102,9 +102,9 @@ Page({
             })
           },
           fail(res) {
-            wx.navigateTo({
-              url: '/pages/paymentResult/paymentResult',
-            })
+            // wx.navigateTo({
+            //   url: '/pages/paymentResult/paymentResult',
+            // })
           }
         })
 
@@ -204,10 +204,11 @@ Page({
 
 
   // 获取当前订单列表
-  getOrderList(param) {
+  getOrderList(param,type) {
     const that = this
     http.fxGet(api.mobile_apis_order_list, param, res => {
       if (res.code == 2000) {
+        wx.hideLoading()
         this.data.allParams.map((v,index )=> {
           // 当前显示与状态值匹配 那么就加载
           if (param.composite_status === v.initParam.composite_status) {
@@ -219,6 +220,12 @@ Page({
             })          
           }
         })
+        // 下拉刷新
+        if (type) {
+          wx.stopPullDownRefresh
+          // utils.showToast('已刷新')
+        }
+
         console.log(that.data.allParams)
         // setTimeout(function () {
         //   that.setData({
@@ -286,7 +293,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.data.allParams.map((v, index) => {
+      if (this.data.activeStatus == v.initParam.composite_status) {
+        this.setData({
+          ['allParams[' + index + '].initParam.page']: 1
+        })
+        // console.log(v.initParam.page)
+        this.getOrderList(v.initParam,'down')
+      }
+    })
   },
 
   /**
@@ -294,7 +309,9 @@ Page({
    */
   onReachBottom: function() {
     // console.log(this.data.activeStatus)
-
+    wx.showLoading({
+      title: '加载中',
+    })
     this.data.allParams.map((v,index) => {
       if (this.data.activeStatus == v.initParam.composite_status) {
         // 如果没有更多数据 直接返回

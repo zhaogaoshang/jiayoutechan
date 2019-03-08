@@ -1,20 +1,19 @@
 {
   "pages": [
     
-    "pages/order/order",
     "pages/index/index",
     "pages/user/user",
-    "pages/orderInfo/orderInfo",
-    
-    
-    "pages/logistics/logistics",
+    "pages/order/order",
     "pages/commentWrite/commentWrite",
+    
+    "pages/orderInfo/orderInfo",
+    "pages/logistics/logistics", 
     "pages/networkError/networkError",
     "pages/product/product",
     "pages/store/store",
     "pages/cart/cart",
     "pages/commentAll/commentAll",
-    
+    "pages/liaisonStore/liaisonStore",
     "pages/searchResult/searchResult",
     "pages/productCategory/productCategory",
     "pages/address/address",
@@ -22,7 +21,7 @@
     "pages/paymentResult/paymentResult",
     "pages/checkout/checkout",
     
-    "pages/liaisonStore/liaisonStore",
+    
     "pages/loveQuantity/loveQuantity",
     "pages/loveQuantityDraw/loveQuantityDraw",
     "pages/invitation/invitation",

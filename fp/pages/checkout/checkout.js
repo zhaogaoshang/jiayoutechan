@@ -28,11 +28,16 @@ Page({
       district: '', //是	string	区
       n_surplus: 0, //是	string	使用积分
       paystatus: 1 // 虚拟支付 需要删除
-    }
+    },
+    disable: false
   },
 
   // 提交订单
   handleSubmitOrder() {
+    const that = this
+    that.setData({
+      disable:true
+    })
     console.log(JSON.stringify(this.data.orderParams))
     if (!this.data.orderParams.address) {
       utils.showToast('请选择地址')
@@ -40,14 +45,18 @@ Page({
     }
 
     http.fxPost(api.mobile_apis_orderDone, this.data.orderParams, res => {
-      console.log(res, '提交订单')
       if (res.code == 2000) {
         // wx.navigateTo({
         //   url: '../paymentResult/paymentResult'
         // })
+        setTimeout(function (){
+          that.setData({
+            disable: false
+          })
+        },2000)
         res.data.body="家有特产"
         this.payment(res.data)
-      } else {
+      } else {       
         utils.showToast(res.msg)
       }
     })
@@ -72,9 +81,9 @@ Page({
             })
           },
           fail(res) {
-            wx.navigateTo({
-              url: '/pages/paymentResult/paymentResult',
-            })
+            // wx.navigateTo({
+            //   url: '/pages/paymentResult/paymentResult',
+            // })
           }
         })
 

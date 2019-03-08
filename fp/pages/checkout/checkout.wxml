@@ -69,7 +69,7 @@
     <view class="right">
       <text>合计：¥{{orderDetail.statements_price}}</text>
       <form bindsubmit="handleSubmitOrder">
-        <button form-type="submit" class="submit-order">提交订单</button>
+        <button form-type="submit" class="submit-order" disabled="{{disable}}">提交订单</button>
       </form>
     </view>
   </view>

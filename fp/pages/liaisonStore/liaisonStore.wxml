@@ -3,9 +3,9 @@
 <view class="container liaison-store">
   <view class="box">
     <image class="photo" src="{{wxs.changelessImageUrl('liaison-store@2x.png')}}"></image>
-    <view class="mobile-number">商家电话：13466460433</view>
+    <view class="mobile-number">商家电话：13466460433 <text class="copy" bindtap="copy">复制</text></view>
     <form>
-      <button class="btn" catchtap="handleLiaison">联系客服</button>
+      <button class="btn" open-type='contact'>联系客服</button>
     </form>
   </view>
 </view>

@@ -108,15 +108,33 @@ Page({
             })
           },
           fail(res) {
-            wx.navigateTo({
-              url: '/pages/paymentResult/paymentResult',
-            })
+            // wx.navigateTo({
+            //   url: '/pages/paymentResult/paymentResult',
+            // })
           }
         })
 
       }
     })
   },  
+
+  handleBtn: function (e) {
+    let param = e.currentTarget.dataset
+    if (param.pay) {
+      utils.showToast('暂无支付功能')
+      return false
+    }
+
+    if (param.touch) {
+      return false
+    }
+
+
+
+    wx.navigateTo({
+      url: param.url
+    })
+  },
 
   getOrderExpress: function() {
     http.fxGet(api.mobile_apis_order_express, {

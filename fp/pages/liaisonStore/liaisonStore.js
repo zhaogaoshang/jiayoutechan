@@ -15,6 +15,19 @@ Page({
     })
   },
 
+  copy (){
+    wx.setClipboardData({
+      data: '13466460433',
+      success(res) {
+        wx.getClipboardData({
+          success(res) {
+            console.log(res.data) // data
+          }
+        })
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
