@@ -39,6 +39,8 @@ module.exports = {
   mobile_apis_order_info:'mobile/apis/order_info.php', // 订单信息
   mobile_apis_order_express: 'mobile/apis/kuaidiapi.php', // 物流信息
   mobile_apis_order_confirm: 'mobile/apis/update_order_affirm.php', // 确认收货
+  mobile_apis_order_commentlist: '/mobile/apis/comment_list.php', // 待评价列表
+  mobile_apis_order_addcomment: '/mobile/apis/addcomment.php', // 添加评价
 
   // 人相关
   mobile_apis_share: 'mobile/apis/share.php', // 绑定分享人关系

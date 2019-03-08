@@ -107,16 +107,16 @@
           <button class="handle-btn__red" catchtap="payment" data-order_id="{{orderDetail.info.order_id}}" data-body="test" data-order_sn="{{orderDetail.info.order_sn}}" data-total_fee="{{orderDetail.info.total_fee}}">立即支付</button>
         </block>
         <block wx-if="{{orderDetail.info.extension_code == 20}}">
-          <button class="handle-btn__red" open-type='contact'>申请退款</button>
+          <button catchtap='handleBtn' class="handle-btn__red" data-url="/pages/liaisonStore/liaisonStore">申请退款</button>
         </block>
         <block wx-if="{{orderDetail.info.extension_code == 30}}">
-          <button bindtap="handleBtn" open-type='contact'>申请退货</button>
-          <button bindtap="handleBtn">查看物流</button>
+          <button catchtap='handleBtn' data-url="/pages/liaisonStore/liaisonStore">申请退货</button>
+          <button bindtap="handleBtn" data-url="/pages/logistics/logistics?oid={{orderDetail.info.order_id}}">查看物流</button>
           <button bindtap="handleBtn" class="handle-btn__red" bindtap="handleConfirm">确认收货</button>
         </block>
         <block wx-if="{{orderDetail.info.extension_code == 40}}">
-          <button bindtap="handleBtn" open-type='contact'>申请售后</button>
-          <button bindtap="handleBtn" class="handle-btn__red">立即评价</button>
+          <button catchtap='handleBtn' data-url="/pages/liaisonStore/liaisonStore">申请售后</button>
+          <button bindtap="handleBtn" data-url="/pages/commentWrite/commentWrite?oid={{orderDetail.info.order_id}}" class="handle-btn__red">立即评价</button>
         </block>
       </view>
     </view>

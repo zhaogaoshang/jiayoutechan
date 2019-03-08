@@ -28,6 +28,10 @@
   border-bottom: 1rpx solid #f8f8f8;
 }
 
+.comment-text{
+  margin-bottom:30rpx;
+}
+
 .comment-page .comment-text .comment-text__info {
   font-size: 26rpx;
   width: 100%;
@@ -37,6 +41,9 @@
 .comment-page .comment-photo {
   display: flex;
   flex-direction: row;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+
 }
 
 .comment-page .comment-photo .photo {
@@ -47,6 +54,7 @@
 .comment-page .comment-photo .item {
   position: relative;
   margin-left: 20rpx;
+  /* flex-direction: column; */
 }
 
 .comment-page .comment-photo .delete-btn {
