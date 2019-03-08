@@ -1,7 +1,7 @@
 <!--pages/order/order.wxml-->
 <view class="container order">
 <!-- <construction></construction> -->
-  <load-page time="{{700}}" isShow="{{loadPageIsShow}}"></load-page>
+  <load-page time="{{100000000}}" isShow="{{loadPageIsShow}}"></load-page>
   <view class="category-box">
     <view class="category-item" wx:for="{{category}}" wx:key="{{index}}" catchtap="handleSwichCategory" data-id="{{item.id}}" data-status="{{item.status}}">
       <view>{{item.name}}</view>

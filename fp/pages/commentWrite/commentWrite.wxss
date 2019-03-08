@@ -53,7 +53,7 @@
 
 .comment-page .comment-photo .item {
   position: relative;
-  margin-left: 20rpx;
+  margin-left: 15rpx;
   /* flex-direction: column; */
 }
 

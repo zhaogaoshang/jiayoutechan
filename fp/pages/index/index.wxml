@@ -137,7 +137,7 @@
         <view class="store-product__item" wx:for="{{item.goods}}" wx:key="{{index}}" catchtap="handleGoProduct" wx:for-item="only" data-id="{{only.goods_id}}">
           <image class="store-product__photo" src="{{wxs.imageUrl(only.goods_thumb)}}"></image>
           <view class="go-shop__box">
-            <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{only.is_shipping==0}}"></image>
+            <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{only.is_shipping==1}}"></image>
             <text class="product-cureent__price"> 
             <text>¥</text>
             <text class="current-price__font--big">{{only.shop_price}}</text></text>

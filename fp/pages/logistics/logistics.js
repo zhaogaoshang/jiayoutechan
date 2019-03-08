@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    showTip:true
   },
 
   /**
@@ -18,7 +18,7 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({
-      oid: options.id 
+      oid: options.id || 121205
     })
     this.getOrderExpress()
   },
@@ -30,10 +30,13 @@ Page({
       console.log(res, '物流信息')
       if (res.code == 2000) {
         this.setData({
-          info: res.data
+          info: res.data,
+          showTip: false
         })
       } else {
-
+        // this.setData({
+        //   showTip: true
+        // })
       }
     })
   },

@@ -111,7 +111,7 @@
         </block>
         <block wx-if="{{orderDetail.info.extension_code == 30}}">
           <button catchtap='handleBtn' data-url="/pages/liaisonStore/liaisonStore">申请退货</button>
-          <button bindtap="handleBtn" data-url="/pages/logistics/logistics?oid={{orderDetail.info.order_id}}">查看物流</button>
+          <button bindtap="handleBtn" data-url="/pages/logistics/logistics?id={{orderDetail.info.order_id}}">查看物流</button>
           <button bindtap="handleBtn" class="handle-btn__red" bindtap="handleConfirm">确认收货</button>
         </block>
         <block wx-if="{{orderDetail.info.extension_code == 40}}">

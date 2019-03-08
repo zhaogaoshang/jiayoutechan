@@ -1,7 +1,15 @@
 <!--pages/logistics/logistics.wxml-->
-<view class="container logistics-page">
+<wxs src="../../utils/util.wxs" module="wxs" />
+<block wx:if="{{showTip}}">
+  <view class="icon-box">
+    <image src="/images/icon-order.png" mode="widthFix"></image>
+    <text>暂无物流信息</text>
+  </view>
+</block>
+
+<view class="container logistics-page" wx:else>
   <view class="product-info">
-    <image class="product-photo" src="{{info.goods_thumb}}"></image>
+    <image class="product-photo" src="{{wxs.imageUrl(info.goods_thumb)}}"></image>
     <view class="one-line__text">{{info.goods_name}}</view>
   </view>
 
@@ -21,7 +29,7 @@
   <view class="logistics-detail">
     <bolck>
       <!-- 最新的 -->
-      <view class="new-infomation__box" wx:for-index="index"  wx:for="{{info.list}}" :key="{{item.index}}">
+      <view class="new-infomation__box" wx:for="{{info.list}}" wx:key="{{index}}" >
         <view class="left">
           <view class="line"></view>
           <block>

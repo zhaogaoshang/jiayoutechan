@@ -5,6 +5,15 @@
   <load-page time="{{5000}}" isShow="{{loadPageIsShow}}"></load-page>
 
   <!-- 每一个店铺 -->
+
+<!-- <block wx:if="{{!productList || productList.length == 0}}">
+  <view class="icon-box">
+    <image src="/images/icon-order.png" mode="widthFix"></image>
+    <text>购物车暂无商品~</text>
+  </view>
+</block> -->
+
+<block>
   <view class="product-item" wx:for="{{productList}}" wx:key="{{index}}" wx:for-index="list">
     <!-- 头部 -->
     <!-- <view class="store-top active-box">
@@ -70,7 +79,7 @@
       <view class="checkout"> 结算</view>
     </view>
   </view>
-
+</block>
   <!-- 垫片 -->
   <view class="shim"></view>
 

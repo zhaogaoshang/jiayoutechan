@@ -32,7 +32,10 @@
     </view>
     <!-- 描述 -->
     <view class="product-discription__text">
-      <view class="lite-discription__text">{{productDetail.goods_name}}
+      <!-- <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{item.is_shipping==1}}"></image> -->
+      <view class="lite-discription__text">
+      <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{productDetail.is_shipping==1}}"></image>
+      {{productDetail.goods_name}}
       </view>
       <!-- <view class="dai-yan__icon">
         <image class="dai-yan__icon" src="../../images/dy@2x.png"></image>
@@ -68,7 +71,8 @@
     <view>
       <view class="comment-item" wx:for="{{comment.list}}" wx:key="{{index}}">
         <view class="comment-item__top">
-          <image class="comment-avatar" src="{{wxs.imageUrl(item.headimg)}}"></image>
+          <image wx:if="{{item.headimg}}" class="comment-avatar" src="{{wxs.imageUrl(item.headimg)}}"></image>
+          <image src="../../images/jytc-mark@2.jpg" class="comment-avatar" wx:else></image>
           <text class="comment-name">{{item.user_name}}</text>
         </view>
         <text class="comment-item__bottom">{{item.content}}</text>

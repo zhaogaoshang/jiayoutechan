@@ -15,10 +15,10 @@
     <view class="comment-text">
       <textarea class="comment-text__info" auto-height placeholder="宝贝满足你的期待吗？说说他的优点和美中不足的地方吧" data-id="{{item.goods_id}}" bindinput="handleInputComment"></textarea>
       <view class="comment-photo">
-        <image class="photo" src="../../images/tjzp@2x.png" data-id="{{item.goods_id}}" bindtap="addPic"></image>
-        <view class="item" wx:for="{{item.imgs}}" wx:key="index">
-          <image class="photo" src="../../images/active.jpg"></image>
-          <image class="delete-btn" src="../../images/close@2x.png"></image>
+        <image class="photo" style="margin-left:7px;" src="../../images/tjzp@2x.png" data-id="{{item.goods_id}}" bindtap="addPic"></image>
+        <view class="item" wx:for="{{item.imgs}}" wx:for-item="img" wx:for-index="index" wx:key="index">
+          <image class="photo" src="{{fileHost + img}}" catchtap='handleImg' data-url="{{img}}" data-arr="{{item.imgs}}"></image>
+          <image class="delete-btn" src="../../images/close@2x.png" catchtap='handleDelimg' data-id="{{item.goods_id}}" data-index="{{index}}"></image>
         </view>
       </view>
     </view>
