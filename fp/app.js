@@ -24,7 +24,7 @@ App({
   },
 
   // 登录
-  handleUserLogin() {
+  handleUserLogin(firstJoin = false) {
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -36,9 +36,9 @@ App({
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
+                this.userInfoReadyCallback(res, firstJoin)
               } else {
-                this.handleUserInfo(res)
+                this.handleUserInfo(res, firstJoin)
               }
             }
           })
@@ -52,7 +52,7 @@ App({
   },
 
   // 解析获取用户信息
-  handleUserInfo(res) {
+  handleUserInfo(res, firstJoin) {
     console.log(res, '解析uid')
     let parms = {
       code: this.globalData.code,
@@ -64,7 +64,7 @@ App({
         wx.setStorageSync('isLogin', true)
         this.handleUpGlobalData() // 更新globalData数据
         // this.getCartList() // 购物车列表
-        return success()
+        return success(firstJoin)
       })
     })
   },
@@ -226,7 +226,7 @@ App({
   // 全局变量
   globalData: {
     // 是否是通过扫描名片进入
-    isMarkJoin:false,
+    isMarkJoin: false,
     // 是否授权过平台
     isAuthorizationPlatform: true,
     // code

@@ -562,17 +562,18 @@ Page({
     } else {
       // 没有解析
       console.log('解析数据')
-      app.userInfoReadyCallback = res => {
+      app.userInfoReadyCallback = (res, firstJoin) => {
         this.setData({
           isShowLogin: false
         })
-        app.handleUserInfo(res).then(() => {
+
+        app.handleUserInfo(res, firstJoin).then((firstJoin) => {
           app.handleTokenCheck().then(() => {
             this.getNewProductHot() // 新品热销
             this.getNewProductSell() // 新品上市
             this.getTodayHigh() // 今日爆款
-            
-            if (scene != 'undefined') {
+
+            if (scene != 'undefined' && firstJoin) {
               this.handleBindMark(scene)
             }
           })
