@@ -9,7 +9,7 @@ const util = require('../../utils/util.js');
 Page({
 
   data: {
-    uploadData: null
+    uploadData: null,
   },
 
   //输入评论内容
@@ -17,7 +17,8 @@ Page({
     this.data.uploadData.list.map((v,index) => {
       if (v.goods_id == e.currentTarget.dataset.id) {
         this.setData({
-          ['uploadData.list.[' + index + '].content']: e.detail.value
+          ['uploadData.list.[' + index + '].content']: e.detail.value,
+          isSubmit:true
         })
       }
     })
@@ -25,8 +26,14 @@ Page({
 
   addPic (e) {
     const that = this
+    console.log(e.currentTarget.dataset.imgs.length)
+    // console.log(e.currentTarget.dataset.imgs.length)
+    if (e.currentTarget.dataset.imgs.length == 6) {
+      utils.showToast('最多上传6张图片哦')
+      return false
+    }
     wx.chooseImage({
-      count: 3, // 默认最多一次选择9张图
+      count: 6 - e.currentTarget.dataset.imgs.length, // 默认最多一次选择3张图
       sizeType: ['original'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
@@ -100,8 +107,21 @@ Page({
 
   // 保存
   handleSubmit() {
-    console.log(this.data.uploadData)
-    // return false;
+    // console.log(this.data.uploadData)
+    let listLen = this.data.uploadData.list.length
+    let emptyLen = 0
+    this.data.uploadData.list.map((v) => {
+      if (v.content == '') {
+        emptyLen++
+      }
+    })
+    // 空评论个数等于数组个数 说明不符合要求
+    if (emptyLen == listLen) {
+      utils.showToast('请输入您的评价哦')
+      return false
+    }
+
+    return false;
     app.handleTokenCheck().then(() => {
       http.fxPost(api.mobile_apis_order_addcomment, this.data.uploadData, res => {
         if (res.code == 2000) {

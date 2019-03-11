@@ -259,6 +259,7 @@ Page({
           isCollect: res.data.is_collect,
           loadPageIsShow: false
         })
+        console.log(res.data.is_collect)
 
         wxparse.wxParse('htmlPhotoText', 'html', res.data.goods.goods_desc, this, 5);
 
@@ -275,6 +276,9 @@ Page({
     http.fxGet(api.mobile_apis_comment, this.data.commentParams, res => {
       console.log(res, '评论列表')
       if (res.code == 2000) {
+        if (res.data.list.length && res.data.list.length > 3) {
+          res.data.list = res.data.list.slice(0,3)
+        }
         this.setData({
           comment: res.data
         })

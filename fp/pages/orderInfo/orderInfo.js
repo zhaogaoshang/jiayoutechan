@@ -31,15 +31,27 @@ Page({
         })
         let endDate = this.data.orderDetail.info.end_time
         let curDate = Math.ceil(new Date().getTime() / 1000)
-        this.countDown(endDate - curDate)
+        if (res.data.info.extension_code == '30') {
+          endDate = this.data.orderDetail.info.shipped_time
+          this.countDown(endDate - curDate, '105')
+        } else{
+          this.countDown(endDate - curDate, '100')
+        }
       } else {
 
       }
     })
   },
 
+  handleDetail (e) {
+    // console.log(e.currentTarget.dataset)
+    wx.navigateTo({
+      url: '/pages/product/product?id=' + e.currentTarget.dataset.id,
+    })
+  },
+
   //带天数的倒计时
-  countDown(times) {  
+  countDown(times,type) {  
     const that = this
     console.log(times)
     var timer = null;  
@@ -59,11 +71,16 @@ Page({
       if (hour <= 9) hour = '0' + hour;    
       if (minute <= 9) minute = '0' + minute;    
       if (second <= 9) second = '0' + second;     //
-          
+      if (type == '105') {
+        that.setData({
+          countDowns: `剩余${day}天${hour}小时自动确认`
+        })  
+      } else{
+        that.setData({
+          countDowns: `剩余${minute}分${second}秒自动关闭`
+        })  
+      }
       // console.log(day + "天:" + hour + "小时：" + minute + "分钟：" + second + "秒");  
-      that.setData({
-        countDowns: `剩余${minute}分${second}秒自动关闭`
-      })  
       times--;  
     }, 1000);  
     if (times <= 0) {    
@@ -80,7 +97,7 @@ Page({
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
     this.setData({
-      id: options.id || 373
+      id: options.id || 121249
     })
     app.handleTokenCheck().then(() => {
       this.getOrderInfo() // 订单信息

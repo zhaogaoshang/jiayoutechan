@@ -1,12 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/orderInfo/orderInfo",
+    "pages/commentWrite/commentWrite",
     "pages/commentAll/commentAll",
     "pages/order/order",
     "pages/logistics/logistics",
-    "pages/commentWrite/commentWrite",
     "pages/user/user",
-    "pages/orderInfo/orderInfo",
+    
     "pages/networkError/networkError",
     "pages/product/product",
     "pages/store/store",
