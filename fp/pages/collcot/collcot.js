@@ -3,6 +3,7 @@ const app = getApp() //获取应用实例
 const http = require('../../utils/http.js')
 const api = require('../../utils/api.js')
 const utils = require('../../utils/util.js')
+const config = require('../../utils/config.js')
 Page({
 
   /**
@@ -26,7 +27,7 @@ Page({
     let idx = e.currentTarget.dataset.index
     let gid = this.data.productList.list[idx].goods_id
     let isCollect = this.data.productList.list[idx].is_collect
-    console.log(idx)
+
     if (isCollect) {
       app.handleDeleteCollect(gid)
     } else {
@@ -35,6 +36,13 @@ Page({
 
     this.setData({
       ['productList.list[' + idx + '].is_collect']: !isCollect
+    })
+
+    // 设置收藏
+    app.globalData.agent.collectWatch.isChang = true
+    app.globalData.agent.collectWatch.list.push({
+      id: gid,
+      value: isCollect ? 0 : 1
     })
   },
 
@@ -51,6 +59,11 @@ Page({
     wx.navigateTo({
       url: '../product/product?id=' + id
     })
+  },
+
+  // 阻止穿透
+  handleprevent() {
+    return false
   },
 
   // 获取收藏列表
@@ -144,8 +157,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function(e) {
+    let idx = e.target.dataset.index
+
     if (e.from == "menu") {
       return app.handleShareApp()
+    } else {
+      let titlt = this.data.productList.list[idx].goods_name
+      let url = config.fxUrl(this.data.productList.list[idx].goods_thumb)
+      let id = this.data.productList.list[idx].goods_id
+      return app.handleShareProduct(titlt, url, id)
     }
   }
+
 })

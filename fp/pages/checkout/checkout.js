@@ -36,7 +36,7 @@ Page({
   handleSubmitOrder() {
     const that = this
     that.setData({
-      disable:true
+      disable: true
     })
     console.log(JSON.stringify(this.data.orderParams))
     if (!this.data.orderParams.address) {
@@ -49,17 +49,19 @@ Page({
         // wx.navigateTo({
         //   url: '../paymentResult/paymentResult'
         // })
-        setTimeout(function (){
+        setTimeout(function() {
           that.setData({
             disable: false
           })
-        },2000)
-        res.data.body="家有特产"
+        }, 2000)
+        res.data.body = "家有特产"
         this.payment(res.data)
-      } else {       
+      } else {
         utils.showToast(res.msg)
       }
     })
+
+    return false
   },
 
   payment(e) {
@@ -89,7 +91,7 @@ Page({
 
       }
     })
-  },  
+  },
 
   // 爱心贡献值
   handleIsShowShoLove() {
@@ -156,6 +158,11 @@ Page({
     }
   },
 
+  // z阻止点击穿透
+  handlePrevent() {
+    return false
+  },
+
   // 计算
   getSum() {
     http.fxGet(api.mobile_apis_submitOrder, {
@@ -218,7 +225,9 @@ Page({
           // delete this.data.orderParams.address
           this.setData({
             orderDetail: res.data,
-            orderParams: { ...this.data.orderParams, ...tempObj}
+            orderParams: { ...this.data.orderParams,
+              ...tempObj
+            }
           })
           this.handleUpdataOrder()
           // this._handleUpdataId()

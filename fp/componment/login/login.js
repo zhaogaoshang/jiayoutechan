@@ -41,7 +41,7 @@ Component({
 
       app.getCode().then(code => {
         app.globalData.code = code
-        app.handleUserLogin()
+        app.handleUserLogin(true)
       })
 
       this.setData({

@@ -319,6 +319,21 @@ Page({
     this.handlePickLocation()
   },
 
+  // 检测收藏知否发生了变化
+  handleWatchCollect(list, result) {
+    let changArr = app.globalData.agent.collectWatch.list
+    list.forEach((item, index) => {
+      changArr.forEach(only => {
+        if (item.goods_id == only.id) {
+          item.is_collected = only.value
+        }
+      })
+      if (list.length - 1 == index) {
+        result(list)
+      }
+    })
+  },
+
   // 阻止点击穿透
   handlePrevent() {
     return false
@@ -562,17 +577,18 @@ Page({
     } else {
       // 没有解析
       console.log('解析数据')
-      app.userInfoReadyCallback = res => {
+      app.userInfoReadyCallback = (res, firstJoin) => {
         this.setData({
           isShowLogin: false
         })
-        app.handleUserInfo(res).then(() => {
+
+        app.handleUserInfo(res, firstJoin).then((firstJoin) => {
           app.handleTokenCheck().then(() => {
             this.getNewProductHot() // 新品热销
             this.getNewProductSell() // 新品上市
             this.getTodayHigh() // 今日爆款
-            
-            if (scene != 'undefined') {
+
+            if (scene != 'undefined' && firstJoin) {
               this.handleBindMark(scene)
             }
           })
@@ -592,7 +608,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    if (app.globalData.agent.collectWatch.isChang) {
+      // 检测新品热销
+      this.handleWatchCollect(this.data.newProductHot.list, res => {
+        this.setData({
+          'newProductHot.list': res
+        })
+      })
+      // 检测新品首发
+      this.handleWatchCollect(this.data.newProductSell.list, res => {
+        this.setData({
+          'newProductSell.list': res
+        })
+      })
+      app.globalData.agent.collectWatch.isChang = false
+    }
   },
 
   /**
@@ -661,10 +691,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function(e) {
-
+    console.log(e)
     if (e.from == "menu") {
       return app.handleShareApp()
-    } else {
+    }
+
+    if (e.from == "button") {
       let titlt = e.target.dataset.title
       let url = utils.imageUrl + e.target.dataset.iamge
       let id = e.target.dataset.id

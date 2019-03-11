@@ -69,7 +69,7 @@
     </view>
     <view>
       <block wx:for="{{orderDetail.list}}" wx:key="{{index}}">
-        <view class="product-item" catchtap="handleDetail" data-id="{{item.goods_id}}">
+        <view class="product-item" catchtap="handleGoproduct" data-id="{{item.goods_id}}">
           <product-item imgH="{{144}}" imgW="{{144}}" item="{{item}}"></product-item>
           <view class="product-count">{{item.goods_attr}}</view>
           <view class="product-price">

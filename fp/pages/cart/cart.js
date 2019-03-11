@@ -241,6 +241,14 @@ Page({
     }
   },
 
+  // 去商品详情
+  handleGoProduct(e) {
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '../product/product?id=' + id
+    })
+  },
+
   // 购物车
   getCart() {
     app.getCartList().then(res => {
@@ -324,6 +332,6 @@ Page({
   onShareAppMessage: function(e) {
     if (e.from == "menu") {
       return app.handleShareApp()
-    } 
+    }
   }
 })
