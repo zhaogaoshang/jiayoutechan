@@ -186,9 +186,7 @@ App({
     // parent_id	是	int	父用户ID
     // chlid_uid_id	是	int	子用户ID
     // type 是	int	分享类型：3：分享商品，4：名片分享（邀请）
-    if (this.globalData.isAuthorizationPlatform) {
-      return
-    }
+
     http.fxPost(api.mobile_apis_share, e, res => {
       console.log(res, '绑定分享人关系')
       if (res.code != 2000) {
@@ -227,6 +225,8 @@ App({
 
   // 全局变量
   globalData: {
+    // 是否是通过扫描名片进入
+    isMarkJoin:false,
     // 是否授权过平台
     isAuthorizationPlatform: true,
     // code

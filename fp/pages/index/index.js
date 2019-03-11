@@ -522,13 +522,26 @@ Page({
     })
   },
 
+  // 名片分享的绑定
+  handleBindMark(scene) {
+    app.globalData.isMarkJoin = scene.split('&')
+    //判断是否通过扫面名片进入
+    if (app.globalData.isMarkJoin) {
+      app.handleBindShare({
+        parent_id: app.globalData.isMarkJoin[0],
+        chlid_uid_id: app.globalData.userInfo.uid,
+        type: app.globalData.isMarkJoin[1]
+      })
+      app.globalData.isMarkJoin = false
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let scene = decodeURIComponent(options.scene)
-    console.log(scene, '这是分享的prentId')
     app.getNetworkStatus() // 检测网络
+    let scene = decodeURIComponent(options.scene) // 绑定名片
 
     this.getHandAdv() // 获取头部广告
     this.gatherShop() // 去赶集
@@ -558,6 +571,10 @@ Page({
             this.getNewProductHot() // 新品热销
             this.getNewProductSell() // 新品上市
             this.getTodayHigh() // 今日爆款
+            
+            if (scene != 'undefined') {
+              this.handleBindMark(scene)
+            }
           })
         })
       }

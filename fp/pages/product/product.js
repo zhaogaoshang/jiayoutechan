@@ -327,6 +327,10 @@ Page({
     this.getComment() // 获取评论
     // 检测绑定分享人
     if (options.sharePrent) {
+      if (this.globalData.isAuthorizationPlatform) {
+        return
+      }
+
       let params = {
         parent_id: options.sharePrent,
         chlid_uid_id: app.globalData.userInfo.uid,
