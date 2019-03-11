@@ -64,9 +64,9 @@
   </view>
 
   <!-- 合计 -->
-  <view class="order-total__price">
+  <view class="order-total__price" catchtap='handlePrevent'>
     <view class="left"></view>
-    <view class="right">
+    <view class="right" catchtap='handlePrevent'>
       <text>合计：¥{{orderDetail.statements_price}}</text>
       <form bindsubmit="handleSubmitOrder">
         <button form-type="submit" class="submit-order" disabled="{{disable}}">提交订单</button>

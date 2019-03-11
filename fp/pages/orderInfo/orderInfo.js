@@ -19,6 +19,13 @@ Page({
     })
   },
 
+  // 去详情
+  handleGoproduct(e){
+    wx.navigateTo({
+      url: '../product/product?id=' + e.currentTarget.dataset.id,
+    })
+  },
+
   // 获取订单信息
   getOrderInfo() {
     http.fxPost(api.mobile_apis_order_info, {

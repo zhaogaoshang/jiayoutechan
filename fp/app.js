@@ -248,11 +248,12 @@ App({
     shopCart: {},
     // 组件内摸个状态联动
     agent: {
-      indexNewCollect: { // 首页新品热销
+      collectWatch: { // 首页新品热销
         isChang: false,
-        id: '',
-        value: false
-      }
+        list:[
+          // {id:'',value:false},
+        ]
+      },
     }
   }
 })

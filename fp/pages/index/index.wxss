@@ -212,7 +212,7 @@
 }
 
 .product-box .product-discription .two-line__text {
-  height: 66rpx;
+  height: 64rpx;
 }
 
 .product-box .people-count {

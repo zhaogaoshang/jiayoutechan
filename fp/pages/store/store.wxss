@@ -75,6 +75,13 @@
   margin: 20rpx;
 }
 
+.store-product .store-product__item .product-discription image {
+  width: 50rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+
 .store-product .store-product__item .product-photo {
   height: 330rpx;
   width: 330rpx;

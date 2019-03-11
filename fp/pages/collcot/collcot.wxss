@@ -20,3 +20,16 @@
   font-size: 28rpx;
   color: rgba(255, 255, 255, 1);
 }
+
+.like-share__icon {
+  position: relative;
+}
+
+.like-share__icon button{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}

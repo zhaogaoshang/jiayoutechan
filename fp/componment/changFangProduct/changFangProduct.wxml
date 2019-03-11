@@ -18,7 +18,7 @@
     <image class="like-share__icon" src="../../images/sc.png" wx:if="{{item.is_collected==0}}" catchtap="handleCollected"></image>
     <image class="like-share__icon" src="../../images/ssc.png" wx:if="{{item.is_collected==1}}" catchtap="handleCollected"></image>
     <image class="like-share__icon right" src="../../images/fx.png">
-      <button class="share" open-type="share" data-id="{{item.goods_id}}"></button>
+      <button class="share" open-type="share" data-title="{{item.goods_name}}" data-iamge="{{item.goods_thumb}}" data-product="{{true}}"  data-id="{{item.goods_id}}"></button>
     </image>
   </view>
 </view>
