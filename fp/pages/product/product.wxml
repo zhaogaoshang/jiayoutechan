@@ -63,7 +63,7 @@
     <view class="tiao-box comment-box__top">
       <view class="tiao-box__left">评价</view>
       <view class="tiao-box__middle"> （{{comment.count}}）</view>
-      <view class="tiao-box__right" data-id="{{id}}" catchtap="handleGoAllComment" wx:if="{{comment.count>3}}">
+      <view class="tiao-box__right" data-id="{{id}}" catchtap="handleGoAllComment">
         <text>查看全部 </text>
         <image class="jaintou" src="../../images/gd@2x.png"></image>
       </view>
@@ -71,7 +71,7 @@
     <view>
       <view class="comment-item" wx:for="{{comment.list}}" wx:key="{{index}}">
         <view class="comment-item__top">
-          <image wx:if="{{item.headimg}}" class="comment-avatar" src="{{wxs.imageUrl(item.headimg)}}"></image>
+          <image wx:if="{{item.headimg}}" class="comment-avatar" src="{{item.headimg}}"></image>
           <image src="../../images/jytc-mark@2.jpg" class="comment-avatar" wx:else></image>
           <text class="comment-name">{{item.user_name}}</text>
         </view>

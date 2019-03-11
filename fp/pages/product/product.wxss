@@ -203,9 +203,13 @@
   font-size: 24rpx;
   font-weight: 400;
   color: rgba(51, 51, 51, 1);
-  line-height: 24rpx;
+  line-height: 32rpx;
   margin-top: 16rpx;
 }
+
+/* .comment-item__bottom{
+  line-height: 32rpx;
+} */
 
 /* 评论e */
 

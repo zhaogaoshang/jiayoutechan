@@ -47,10 +47,22 @@ Page({
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
     this.setData({
-      'commentParams.gid': options.id
+      'commentParams.gid': options.id || 72
     })
 
     this.getComment()
+  },
+
+  preview (e) {
+    console.log(e.currentTarget.dataset)
+    let tempArr =[]
+    e.currentTarget.dataset.arr.map((v) => {
+      tempArr.push(v.image)
+    })
+    wx.previewImage({
+      current:e.currentTarget.dataset,
+      urls: tempArr,
+    })
   },
 
   /**

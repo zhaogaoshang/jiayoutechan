@@ -10,7 +10,7 @@
 
   <!-- 每一个评论 -->
   <view class="comment-item" wx:for="{{comment.list}}" wx:key="{{index}}">
-    <image wx:if="{{item.headimg}}" class="comment-user__avatar" src="{{wxs.imageUrl(item.headimg)}}"></image>
+    <image wx:if="{{item.headimg}}" class="comment-user__avatar" src="{{item.headimg}}"></image>
     <image src="../../images/jytc-mark@2.jpg" class="comment-user__avatar" wx:else></image>
     <view class="right">
       <view class="user-info">
@@ -19,7 +19,7 @@
       </view>
       <view class="comment-detail">{{item.content}}</view>
       <view class="product-photo">
-        <image class="product-photo__item" src="{{wxs.imageUrl(only)}}" wx:for-item="only" wx:for="{{item.img_list}}" wx:key="{{index}}"></image>
+        <image class="product-photo__item" src="{{only.image}}" wx:for-item="only" wx:for="{{item.img_list}}" wx:key="{{index}}" bindtap="preview" data-url="{{only.image}}" data-arr="{{item.img_list}}"></image>
       </view>
     </view>
   </view>

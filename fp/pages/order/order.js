@@ -312,7 +312,7 @@ Page({
   onPullDownRefresh: function() {
     this.data.allParams.map((v, index) => {
       if (this.data.activeStatus == v.initParam.composite_status) {
-        utils.showToast(v.initParam.composite_status)
+        // utils.showToast(v.initParam.composite_status)
         this.setData({
           ['allParams[' + index + '].initParam.page']: 1
         })
