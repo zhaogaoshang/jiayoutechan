@@ -121,7 +121,7 @@ Page({
       return false
     }
 
-    return false;
+    // return false;
     app.handleTokenCheck().then(() => {
       http.fxPost(api.mobile_apis_order_addcomment, this.data.uploadData, res => {
         if (res.code == 2000) {
