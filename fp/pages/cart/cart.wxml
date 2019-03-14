@@ -46,7 +46,7 @@
             <view class="product-box" catchtap="handleGoProduct" data-id="{{item.goods_id}}">
               <image class="product-photo" src="{{wxs.imageUrl(item.goods_thumb)}}">
                 <view class="product-out" wx:if="{{item.is_on_sale==0}}">已下架</view>
-                <view class="product-out" wx:if="{{item.goods_number==0}}">已售罄</view>
+                <view class="product-out" wx:if="{{item.goods_attr_num==0}}">已售罄</view>
               </image>
               <view class="discription">
                 <text class="two-line__text"> {{item.goods_name}}</text>

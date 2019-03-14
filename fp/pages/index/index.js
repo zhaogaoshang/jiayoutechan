@@ -193,7 +193,7 @@ Page({
     this.setData({
       isShowLocationTemplate: !this.data.isShowLocationTemplate
     })
-
+    
     if (this.data.isShowLocationTemplate) {
       wx.hideTabBar()
     } else {
@@ -227,7 +227,8 @@ Page({
 
   // 选择省份
   handlePickprovince(e) {
-    console.log(e.currentTarget.dataset)
+    console.log(`省：${e.currentTarget.dataset.locationId}`)
+    // return false
     let agnet = this.data.provinceList
     let locationId = e.currentTarget.dataset.locationId
     let locationName = e.currentTarget.dataset.locationName
@@ -247,6 +248,11 @@ Page({
         locationIndex: 1
       })
     } else {
+      this.setData({
+        'showLocationPick.locationName': locationName,
+        'showLocationPick.locationId': 1,
+        locationIndex: 1
+      })      
       this.handlePickLocation()
     }
 
@@ -344,7 +350,18 @@ Page({
   // 更新全局储存的地址
   _upGlobalData() {
     app.globalData.locationPick = this.data.showLocationPick
-    console.log(this.data.showLocationPick, app.globalData.locationPick)
+
+    this.setData({
+      'todayHighParams.area': this.data.showLocationPick.locationId,
+      'newProductHotParams.area': this.data.showLocationPick.locationId,
+      'newProductSellParams.area': this.data.showLocationPick.locationId,
+    })
+    app.handleTokenCheck().then(() => {
+      this.getNewProductHot() // 新品热销
+      this.getNewProductSell() // 新品上市
+      this.getTodayHigh() // 今日爆款
+    })
+    // console.log(this.data.showLocationPick, app.globalData.locationPick)
   },
 
   // 获取特色好店

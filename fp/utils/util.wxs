@@ -1,4 +1,4 @@
-var locationUrl = 'https://shandai-mall.oss-cn-beijing.aliyuncs.com/' // 商品图片地址
+var locationUrl = '' // 商品图片地址
 var changelessImage = 'https://shandai.zcsoft.net/mobile/images/apis/' //固定图片地址
 // 时间格式化
 function timestamp2string(ts, format = 'time') {
