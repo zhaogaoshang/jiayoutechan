@@ -252,7 +252,9 @@ Page({
 
     this.setData({
       showProvince: locationName,
-      provinceList: agnet
+      provinceList: agnet,
+      showCity: '请选择',
+      showCounty: '请选择'
     })
     this._upGlobalData() // 更新全局储存的地址
     this.getCity()
@@ -570,8 +572,8 @@ Page({
         isShowLogin: false
       })
       app.handleTokenCheck().then(() => {
-        this.getNewProductHot() // 新品热销
-        this.getNewProductSell() // 新品上市
+        // this.getNewProductHot() // 新品热销
+        // this.getNewProductSell() // 新品上市
         this.getTodayHigh() // 今日爆款
       })
     } else {
@@ -608,21 +610,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    if (app.globalData.agent.collectWatch.isChang) {
-      // 检测新品热销
-      this.handleWatchCollect(this.data.newProductHot.list, res => {
-        this.setData({
-          'newProductHot.list': res
-        })
-      })
-      // 检测新品首发
-      this.handleWatchCollect(this.data.newProductSell.list, res => {
-        this.setData({
-          'newProductSell.list': res
-        })
-      })
-      app.globalData.agent.collectWatch.isChang = false
-    }
+
+    app.handleTokenCheck().then(() => {
+      this.getNewProductHot() // 新品热销
+      this.getNewProductSell() // 新品上市
+      // this.getTodayHigh() // 今日爆款
+    })
+
+    // if (app.globalData.agent.collectWatch.isChang) {
+    //   // 检测新品热销
+    //   this.handleWatchCollect(this.data.newProductHot.list, res => {
+    //     this.setData({
+    //       'newProductHot.list': res
+    //     })
+    //   })
+    //   // 检测新品首发
+    //   this.handleWatchCollect(this.data.newProductSell.list, res => {
+    //     this.setData({
+    //       'newProductSell.list': res
+    //     })
+    //   })
+    //   app.globalData.agent.collectWatch.isChang = false
+    // }
   },
 
   /**
@@ -691,22 +700,23 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function(e) {
-    console.log(e)
+    console.log(e.target.dataset)
     if (e.from == "menu") {
       return app.handleShareApp()
     }
 
     if (e.from == "button") {
-      let titlt = e.target.dataset.title
-      let url = utils.imageUrl + e.target.dataset.iamge
+      let title = e.target.dataset.title
+      let url = utils.imageUrl + e.target.dataset.image.replace('../../','')
       let id = e.target.dataset.id
 
       if (e.target.dataset.product) {
-        return app.handleShareProduct(titlt, url, id)
+        return app.handleShareProduct(title, url, id)
       }
 
       if (e.target.dataset.gather) {
-        return app.handleShareGather(titlt, url, id)
+        console.log('市集')
+        return app.handleShareGather(title, url, id)
       }
 
     }

@@ -212,7 +212,7 @@
 }
 
 .product-box .product-discription .two-line__text {
-  height: 62rpx;
+  height:59rpx;
 }
 
 .product-box .people-count {
@@ -293,6 +293,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  margin-top:9rpx;
 }
 
 .characteristic-store__item .store__name .store-name__top {

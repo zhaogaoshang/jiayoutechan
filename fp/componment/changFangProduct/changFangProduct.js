@@ -46,5 +46,33 @@ Component({
     handlePrevent() {
       return
     }
-  }
+  },
+
+  // /**
+  //  * 用户点击右上角分享
+  //  */
+  // onShareAppMessage: function (e) {
+  //   console.log(3333)
+  //   return false
+  //   if (e.from == "menu") {
+  //     return app.handleShareApp()
+  //   }
+
+  //   if (e.from == "button") {
+  //     let titlt = e.target.dataset.title
+  //     let url = utils.imageUrl + e.target.dataset.image
+  //     let id = e.target.dataset.id
+
+  //     if (e.target.dataset.product) {
+  //       return app.handleShareProduct(titlt, url, id)
+  //     }
+
+  //     if (e.target.dataset.gather) {
+  //       return app.handleShareGather(titlt, url, id)
+  //     }
+
+  //   }
+  // }
+
+
 })

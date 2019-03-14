@@ -198,6 +198,9 @@ App({
 
   // 商品的分享配置
   handleShareProduct(title, imageUrl, id) {
+    // console.log(title)
+    // console.log(imageUrl)
+    // console.log(id)
     return {
       title,
       imageUrl,

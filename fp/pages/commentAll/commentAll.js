@@ -60,7 +60,7 @@ Page({
       tempArr.push(v.image)
     })
     wx.previewImage({
-      current:e.currentTarget.dataset,
+      current:e.currentTarget.dataset.url,
       urls: tempArr,
     })
   },

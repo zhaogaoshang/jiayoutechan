@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "新品热销",
+  "navigationBarTitleText": "今日爆款",
   "usingComponents": {
     "chang-fang-product": "/componment/changFangProduct/changFangProduct"
   }

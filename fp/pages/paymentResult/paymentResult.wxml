@@ -7,7 +7,7 @@
     <view class="payment-title">支付成功</view>
     <view class="handle-btn__box">
       <form>
-        <button catchtap='goPath' data-url="/pages/index/index">回到首页</button>
+        <view catchtap='goPath' data-url="/pages/index/index" style="width:160rpx;height:68rpx;line-height:68rpx;text-align:center;font-size:26rpx;color:#fff;border:1rpx solid #fff;border-radius:40rpx;">回到首页</view>
       </form>
       <form>
         <button class="handle-btn back-index__btn" catchtap='goPath' data-url="/pages/order/order?order_id={{order_id}}">查看订单</button>

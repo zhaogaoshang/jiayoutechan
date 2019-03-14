@@ -83,9 +83,9 @@ Page({
             })
           },
           fail(res) {
-            // wx.navigateTo({
-            //   url: '/pages/paymentResult/paymentResult',
-            // })
+            wx.navigateTo({
+              url: '/pages/orderInfo/orderInfo?id=' + e.order_id,
+            })
           }
         })
 

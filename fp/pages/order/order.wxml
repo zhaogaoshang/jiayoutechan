@@ -46,6 +46,10 @@
             <button catchtap="handleBtn" data-url="/pages/liaisonStore/liaisonStore">申请售后</button>
             <button catchtap="handleBtn" class="handle-btn__red" data-url="/pages/commentWrite/commentWrite?oid={{child.order_id}}">立即评价</button>
           </block>
+          <!--已取消-->
+          <!-- <block wx-if="{{child.extension_code == 60}}">
+            <button class="handle-btn__red" catchtap="handleBtn" data-url="/pages/checkout/checkout">重新下单</button>
+          </block>           -->
         </view>
       </view>
     </view>

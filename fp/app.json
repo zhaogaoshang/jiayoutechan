@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/orderInfo/orderInfo",
     "pages/commentWrite/commentWrite",
@@ -7,7 +8,7 @@
     "pages/order/order",
     "pages/logistics/logistics",
     "pages/user/user",
-    
+    "pages/collcot/collcot",
     "pages/networkError/networkError",
     "pages/product/product",
     "pages/store/store",
@@ -22,7 +23,7 @@
     "pages/loveQuantity/loveQuantity",
     "pages/loveQuantityDraw/loveQuantityDraw",
     "pages/invitation/invitation",
-    "pages/collcot/collcot",
+    
     "pages/productMoreTodayHigh/productMoreTodayHigh",
     "pages/productMoreNewHigh/productMoreNewHigh"
   ],

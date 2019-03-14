@@ -27,8 +27,9 @@
   <view class="product-discription__box">
     <!-- 价格 -->
     <view class="cureent-price">
-      <text>￥{{productDetail.shop_price}}</text>
-      <text class="old-price__text" wx:if="{{productDetail.morning_market_price!='0.0'}}"> ￥{{productDetail.morning_market_price}} </text>
+      <text>￥</text>
+      <text style="font-size:28rpx;">{{productDetail.shop_price}}</text>
+      <text class="old-price__text" wx:if="{{productDetail.market_price}}"> ￥{{productDetail.market_price}} </text>
     </view>
     <!-- 描述 -->
     <view class="product-discription__text">
@@ -59,8 +60,10 @@
   </view>
 
   <!-- 评价 -->
-  <view class="comment-box" wx:if="{{comment.count!=0}}">
-    <view class="tiao-box comment-box__top">
+
+  <view class="comment-box" bindtap="test">
+    <block>
+    <view class="tiao-box comment-box__top" wx:if="{{comment.count!=0}}">
       <view class="tiao-box__left">评价</view>
       <view class="tiao-box__middle"> （{{comment.count}}）</view>
       <view class="tiao-box__right" data-id="{{id}}" catchtap="handleGoAllComment">
@@ -68,6 +71,14 @@
         <image class="jaintou" src="../../images/gd@2x.png"></image>
       </view>
     </view>
+    <view class="tiao-box comment-box__top" wx:if="{{comment.count==0}}" wx:if="{{comment.count==0}}">
+      <view class="tiao-box__left">评价</view>
+      <view class="tiao-box__middle"> （{{comment.count}}）</view>
+      <view class="tiao-box__right" data-id="{{id}}">
+        <text>暂无评价 </text>
+      </view>
+    </view>
+    </block>
     <view>
       <view class="comment-item" wx:for="{{comment.list}}" wx:key="{{index}}">
         <view class="comment-item__top">
@@ -147,7 +158,7 @@
       <view class="top">
         <image class="product-photo" src="{{wxs.imageUrl(activeSpecifications.goods_attr_thumb)}}"></image>
         <view>
-          <view class="product-info__price">￥{{activeSpecifications.result}}</view>
+          <view class="product-info__price">￥<text style="font-size:28rpx;">{{activeSpecifications.result}}</text></view>
           <view class="product-info__quantity">库存{{activeSpecifications.goods_attr_number}}</view>
         </view>
       </view>

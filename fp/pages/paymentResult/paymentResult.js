@@ -26,7 +26,7 @@ Page({
     app.getNetworkStatus() // 检测网络
     console.log(options)
     this.setData({
-      order_id:options.order_id
+      order_id:options.order_id || 1
     })
   },
 

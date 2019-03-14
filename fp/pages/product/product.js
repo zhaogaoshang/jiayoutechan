@@ -188,12 +188,12 @@ Page({
     }
     if (id == 1) {
       wx.pageScrollTo({
-        scrollTop: 430,
+        scrollTop: 480,
       })
     }
     if (id == 2) {
       wx.pageScrollTo({
-        scrollTop: 450,
+        scrollTop: 600,
       })
     }
 

@@ -31,6 +31,7 @@
   width: 60rpx;
   background-color: rgba(254, 146, 25, 1);
   display: none;
+  border-radius: 6rpx;
 }
 
 .product-page__category .category-item.active {

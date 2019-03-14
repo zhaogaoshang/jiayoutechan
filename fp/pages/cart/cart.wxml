@@ -76,7 +76,7 @@
       </view>
       <view class="handle-order__box--right" catchtap="handleGoCheckout">
         <view class="order-price">合计：￥{{countPrice}}</view>
-        <view class="checkout"> 结算</view>
+        <view class="checkout" style="margin-left:20rpx;"> 结算</view>
       </view>
     </view>
   </block>

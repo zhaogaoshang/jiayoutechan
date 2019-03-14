@@ -24,6 +24,7 @@
 .address-chang .handle-input__btn {
   width: 600rpx;
   height: 88rpx;
+  line-height:88rpx;
   background: linear-gradient(89deg, rgba(253, 179, 32, 1) 0%, rgba(254, 141, 22, 1) 100%);
   border-radius: 44rpx;
   font-size: 30rpx;
@@ -33,7 +34,7 @@
 
 .address-chang .delete-btn {
   color: rgba(254, 142, 22, 1);
-  background: white;
+  background: none;
   border: 1rpx solid rgba(254, 142, 22, 1);
   margin-top: 60rpx;
   /* margin-bottom: 30rpx; */
@@ -59,6 +60,7 @@
 
 .placeholder-class__active {
   color: #333;
+  /* line-height:40rpx; */
 }
 
 .placeholder-class {

@@ -6,15 +6,16 @@
     <view class="new-product" wx:for="{{productList.list}}" wx:key="{{index}}" data-id="{{item.goods_id}}" data-is-sell="{{item.is_on_sale}}" catchtap="handleGoProduct">
       <image class="new-product__photo" src="{{wxs.imageUrl(item.goods_thumb)}}">
         <view class="out-status" wx:if="{{item.is_on_sale==0}}">已下架</view>
-        <view class="out-status" wx:if="{{item.isempty==1}}">已售尽</view>
+        <view class="out-status" wx:if="{{item.isempty==1}}">已售罄</view>
       </image>
       <view class="right">
         <view class="product-discription">
           <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{item.is_shipping==1}}"></image>
-          <text class="">{{item.goods_name}}</text>
+          <text class="omit2">{{item.goods_name}}</text>
         </view>
-        <view>
-          <text class="product-price">￥{{item.shop_price}}</text>
+        <view >
+          <text class="product-price" >￥</text>
+          <text style="font-size:28rpx;margin-right:10rpx;" class="product-price">{{item.shop_price}}</text>
           <text class="people-count" wx:if="{{item.sales!=0}}">{{item.selcount}}人付款</text>
         </view>
       </view>

@@ -344,3 +344,14 @@ button::after {
   font-size: 28rpx !important;
   color: rgba(255, 166, 81, 1) !important;
 }
+
+
+/*溢出隐藏2*/
+
+.omit2{
+    width: auto;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;  
+}

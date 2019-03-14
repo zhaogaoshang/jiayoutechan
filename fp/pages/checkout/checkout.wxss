@@ -50,9 +50,12 @@
 }
 
 .order .store-item .user-message .user-message__input {
-  flex: 1;
+  /* flex: 1; */
   margin-left: 20rpx;
   min-height: 26rpx;
+  /* background: #0f0; */
+  margin-top:5rpx;
+  /* padding:-8rpx; */
 }
 
 .order .store-item .user-message .placeholder-message__input {
@@ -196,7 +199,7 @@
   height: 90rpx;
   background: linear-gradient(270deg, rgba(254, 141, 24, 1) 0%, rgba(255, 177, 32, 1) 100%);
   border-radius: 0;
-  margin-left: 10rpx;
+  margin-left: 30rpx;
   color: white;
   font-size: 30rpx;
   line-height: 90rpx;

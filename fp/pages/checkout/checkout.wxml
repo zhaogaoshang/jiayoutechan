@@ -29,13 +29,17 @@
       <view class="tiao-box__middle"></view>
       <view class="tiao-box__right"> 快递 ￥{{orderDetail.freight_price}}</view>
     </view>
-    <!-- 给卖家留言 -->
-    <view class="user-message">
-      <text>给卖家留言</text>
-      <textarea class="user-message__input" placeholder-class="placeholder-message__input" auto-height placeholder="选填" value="{{orderParams.postscript}}" bindinput="handleInputDescription"></textarea>
+    <view style="width:92%;height:auto;margin:20rpx auto;">
+      <text style="padding:12rpx 0;color:rgba(51, 51, 51, 1);font-size:26rpx;display:block;float:left;margin-right:20rpx;">给卖家留言</text>
+      <textarea auto-height placeholder="选填" value="{{orderParams.postscript}}" style="font-size:26rpx;float:left;width:480rpx;padding:16rpx 0;" bindinput="handleInputDescription"></textarea>      
     </view>
+    <!-- 给卖家留言 -->
+    <!-- <view class="user-message">
+      <text style="padding-top:14rpx;">给卖家留言</text>
+      <textarea class="user-message__input" placeholder-class="placeholder-message__input" auto-height placeholder="选填" value="{{orderParams.postscript}}" style="width:530rpx;" bindinput="handleInputDescription"></textarea>
+    </view> -->
     <!-- 商品的金额 -->
-    <view class="tiao-box total-price">
+    <view class="tiao-box total-price" style="clear:both;">
       <view class="tiao-box__left"></view>
       <view class="tiao-box__middle"></view>
       <view class="tiao-box__right">

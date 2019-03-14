@@ -129,7 +129,7 @@
         </view>
         <view class="join-store" data-id="{{item.id}}" catchtap="handleGoStore">进入市集</view>
         <image class="like-share__icon margin-right--30rpx" src="../../images/fx.png">
-          <button class="share-btn" open-type="share" data-id="{{item.id}}" data-image="{{item.goods_thumb}}" data-title="{{item.name}}" data-gather="1"></button>
+          <button class="share-btn" open-type="share" data-id="{{item.id}}" data-image="{{item.goods[0].goods_thumb}}" data-title="{{item.name}}" data-gather="1"></button>
         </image>
       </view>
       <!-- 底部 -->
@@ -153,6 +153,7 @@
 
   <!-- 选择地址 -->
   <view class="address-pick__about">
+   
     <view class="location-modle__box" wx:if="{{isShowLocationTemplate}}" catchtap="handlePickLocation">
       <view class="location-modle" catchtap="handlePrevent">
         <!-- 头部 -->

@@ -13,7 +13,7 @@
   <view class="tiao-box">
     <view class="tiao-box__left">手机号码</view>
     <view class="tiao-box__middle">
-      <input placeholder="请输入手机号码" value="{{form.mobile}}" bindinput="handleEditMobile" placeholder-class="placeholder-class" class="placeholder-class__active"></input>
+      <input placeholder="请输入手机号码" type="number" maxlength='11' value="{{form.mobile}}" bindinput="handleEditMobile" placeholder-class="placeholder-class" class="placeholder-class__active"></input>
     </view>
     <view class="tiao-box__right"></view>
   </view>
@@ -38,7 +38,7 @@
       <text> 详细地址</text>
     </view>
     <view class="tiao-box__middle">
-      <textarea fixed="{{true}}" class="text-input" auto-height placeholder="请输入详细地址信息，如道路、门牌号、小区、楼栋号、单元室等" value="{{form.address}}" bindinput="handleLocationDetail" placeholder-class="placeholder-class" class="placeholder-class__active"></textarea>
+      <textarea class="text-input" auto-height placeholder="请输入详细地址信息，如道路、门牌号、小区等" value="{{form.address}}" bindinput="handleLocationDetail" placeholder-class="placeholder-class" class="placeholder-class__active"></textarea>
     </view>
     <view class="tiao-box__right"></view>
   </view>

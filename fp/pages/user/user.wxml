@@ -24,7 +24,10 @@
   <view class="order-box">
     <view class="top" data-type="-1" catchtap="handleGoOrder">
       <text>我的订单</text>
-      <text>查看全部订单 ></text>
+      <view>
+        查看全部订单
+        <image class="jian-tou" src="../../images/gd@2x.png" style="width:12rpx;height:22rpx;"></image>
+      </view>
     </view>
     <view class="bottom">
       <view class="order-item" data-type="100" catchtap="handleGoOrder">
