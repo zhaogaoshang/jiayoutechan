@@ -1,7 +1,7 @@
 <!--pages/invitation/invitation.wxml-->
 <wxs src="../../utils/util.wxs" module="wxs" />
 <view class="container invitation">
-  <view class="title">
+  <view class="title" style="background:#fff;">
     <view wx:for="{{['头像','昵称','来源','日期']}}" wx:key="{{index}}">{{item}}</view>
   </view>
   <view class="title list-box" wx:for="{{list.list}}" wx:key="{{index}}">

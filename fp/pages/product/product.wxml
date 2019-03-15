@@ -67,7 +67,7 @@
       <view class="tiao-box__left">评价</view>
       <view class="tiao-box__middle"> （{{comment.count}}）</view>
       <view class="tiao-box__right" data-id="{{id}}" catchtap="handleGoAllComment">
-        <text>查看全部 </text>
+        <text style="margin-right:20rpx">查看全部</text>
         <image class="jaintou" src="../../images/gd@2x.png"></image>
       </view>
     </view>

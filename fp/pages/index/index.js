@@ -724,7 +724,7 @@ Page({
 
     if (e.from == "button") {
       let title = e.target.dataset.title
-      let url = utils.imageUrl + e.target.dataset.image.replace('../../','')
+      let url = e.target.dataset.image
       let id = e.target.dataset.id
 
       if (e.target.dataset.product) {

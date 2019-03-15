@@ -5,7 +5,7 @@
     <view class="search-input">
       <image class="left-icon" src="../../images/ss@2x.png" catchtap="handleStartSearch"></image>
 
-      <input placeholder-class="input-hoder" placeholder="请输入" value="{{params.keywords}}" class="input-text" bindinput="handleInputText" bindconfirm="handleResetSearch"></input>
+      <input placeholder-class="input-hoder" placeholder="请输入您要搜索的商品" value="{{params.keywords}}" class="input-text" bindinput="handleInputText" bindconfirm="handleResetSearch"></input>
     </view>
     <text class="delete-input__text" catchtap="handleDeleteText">取消</text>
   </view>

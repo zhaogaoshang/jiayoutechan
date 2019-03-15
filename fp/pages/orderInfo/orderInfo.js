@@ -132,9 +132,9 @@ Page({
             })
           },
           fail(res) {
-            wx.navigateTo({
-              url: '/pages/orderInfo/orderInfo?id=' + e.order_id,
-            })
+            // wx.navigateTo({
+            //   url: '/pages/orderInfo/orderInfo?id=' + e.order_id,
+            // })
           }
         })
 

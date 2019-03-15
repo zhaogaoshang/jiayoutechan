@@ -25,13 +25,13 @@
     </view>
     <!-- 配送费用 -->
     <view class="tiao-box logisticts-box">
-      <view class="tiao-box__left"> 配送</view>
+      <view class="tiao-box__left" style="margin-left:7rpx;"> 配送</view>
       <view class="tiao-box__middle"></view>
       <view class="tiao-box__right"> 快递 ￥{{orderDetail.freight_price}}</view>
     </view>
     <view style="width:92%;height:auto;margin:20rpx auto;">
-      <text style="padding:12rpx 0;color:rgba(51, 51, 51, 1);font-size:26rpx;display:block;float:left;margin-right:20rpx;">给卖家留言</text>
-      <textarea auto-height placeholder="选填" value="{{orderParams.postscript}}" style="font-size:26rpx;float:left;width:480rpx;padding:16rpx 0;" bindinput="handleInputDescription"></textarea>      
+      <textarea style="color:rgba(51, 51, 51, 1);font-size:26rpx;float:left;margin-right:10rpx;padding:0;width:150rpx;" placeholder='给卖家留言' placeholder-class='textitle' disabled="{{true}}"></textarea>
+      <textarea auto-height placeholder="选填" value="{{orderParams.postscript}}" style="font-size:26rpx;float:left;width:400rpx;" bindinput="handleInputDescription"></textarea>      
     </view>
     <!-- 给卖家留言 -->
     <!-- <view class="user-message">

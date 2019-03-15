@@ -28,7 +28,7 @@ Page({
     console.log(app.globalData.userInfo)
     let parmas = {
       act: 1,
-      scene: app.globalData.userInfo.uid + '&4',
+      scene: app.globalData.userInfo.uid + '&4', // 4 代表 邀请 3 分享产品
       page: 'pages/index/index',
       appid: config.openId(),
       secret: config.appSecret(),

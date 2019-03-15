@@ -417,9 +417,11 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
+    // console.log(this.data.productDetail.goods_thumb)
     let titlt = this.data.productDetail.goods_name
-    let url = config.fxUrl(this.data.productDetail.goods_thumb)
+    // let url = config.fxUrl(this.data.productDetail.goods_thumb)
+    let url = this.data.productDetail.goods_thumb
     let id = this.data.id
     return app.handleShareProduct(titlt, url, id)
   }

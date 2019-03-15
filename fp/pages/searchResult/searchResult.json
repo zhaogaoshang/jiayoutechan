@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "商品的搜索",
+  "navigationBarTitleText": "搜索商品",
   "usingComponents": {
     "chang-fang-product": "/componment/changFangProduct/changFangProduct"
   }

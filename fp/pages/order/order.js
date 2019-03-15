@@ -116,7 +116,7 @@ Page({
           },
           fail(res) {
             wx.navigateTo({
-              url: '/pages/orderInfo/orderInfo?id=' + e.order_id,
+              url: '/pages/orderInfo/orderInfo?id=' + e.currentTarget.dataset.order_id,
             })
           }
         })

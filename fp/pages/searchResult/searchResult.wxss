@@ -29,6 +29,7 @@
   background: rgba(249, 249, 249, 1);
   border-radius: 30rpx;
   padding-left: 160rpx;
+  height:64rpx;
 }
 
 .search-box .search-input .input-hoder {
