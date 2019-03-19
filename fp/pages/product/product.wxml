@@ -17,7 +17,7 @@
     <swiper class="swoper-photo__box" autoplay interval="3000" circular>
       <block wx:for="{{productDetail.goods_gallery}}" wx:key="{{index}}">
         <swiper-item>
-          <image class="hand-swoper___photo--item" src="{{wxs.imageUrl(item.img_url)}}" />
+          <image class="hand-swoper___photo--item" src="{{wxs.imageUrl(item.img_url)}}" mode='aspectFit'/>
         </swiper-item>
       </block>
     </swiper>

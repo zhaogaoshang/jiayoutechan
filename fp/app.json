@@ -1,9 +1,11 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/invitation/invitation",
-    
     "pages/searchResult/searchResult",
+    
+    "pages/invitation/invitation",
+    "pages/productCategory/productCategory",
+    
     "pages/checkout/checkout",
     "pages/orderInfo/orderInfo",
     "pages/commentWrite/commentWrite",
@@ -18,7 +20,7 @@
     "pages/cart/cart",
     "pages/liaisonStore/liaisonStore",
     
-    "pages/productCategory/productCategory",
+    
     "pages/address/address",
     "pages/addressChang/addressChang",
     "pages/paymentResult/paymentResult",

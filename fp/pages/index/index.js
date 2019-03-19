@@ -576,7 +576,8 @@ Page({
   onLoad: function(options) {
     app.getNetworkStatus() // 检测网络
     let scene = decodeURIComponent(options.scene) // 绑定名片
-
+    console.log(scene)
+    console.log(111111111111)
     this.getHandAdv() // 获取头部广告
     this.gatherShop() // 去赶集
 

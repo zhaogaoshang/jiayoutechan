@@ -47,7 +47,7 @@
         <view class="today-high__sell--item {{index==0?'right--30rpx':''}} " wx:for="{{todayHigh.list}}" wx:key="{{index}}" data-id="{{item.goods_id}}" catchtap="handleGoProduct">
           <image class="hot-icon" src="../../images/hot@2x.png"></image>
           <view class="product-box">
-            <image class="product-photo" src="{{wxs.imageUrl(item.goods_thumb)}}"></image>
+            <image class="product-photo" src="{{wxs.imageUrl(item.goods_thumb)}}" mode="aspectFit"></image>
             <view class="product-discription">
               <view class="two-line__text">
                 <image class="free-freight__icon" src="../../images/baoyou@2.png" wx:if="{{item.is_shipping==1}}"></image>

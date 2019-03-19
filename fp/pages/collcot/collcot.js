@@ -163,7 +163,8 @@ Page({
       return app.handleShareApp()
     } else {
       let titlt = this.data.productList.list[idx].goods_name
-      let url = config.fxUrl(this.data.productList.list[idx].goods_thumb)
+      // let url = config.fxUrl(this.data.productList.list[idx].goods_thumb)
+      let url = this.data.productList.list[idx].goods_thumb
       let id = this.data.productList.list[idx].goods_id
       return app.handleShareProduct(titlt, url, id)
     }

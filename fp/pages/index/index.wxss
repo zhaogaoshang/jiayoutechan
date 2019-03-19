@@ -191,7 +191,7 @@
 
 .today-high__sell .product-photo {
   width: 240rpx;
-  height: 208rpx;
+  height: 240rpx;
 }
 
 .product-box .free-freight__icon {
@@ -212,7 +212,7 @@
 }
 
 .product-box .product-discription .two-line__text {
-  height:59rpx;
+  height:65rpx;
 }
 
 .product-box .people-count {

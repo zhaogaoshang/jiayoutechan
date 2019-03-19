@@ -118,7 +118,8 @@ Page({
       this.data.todayHigh.list.forEach((item, index) => {
         if (item.goods_id == e.target.dataset.id) {
           name = item.goods_name
-          url = config.fxUrl(item.goods_thumb)
+          // url = config.fxUrl(item.goods_thumb)
+          url = item.goods_thumb
           id = item.goods_id
         }
       })

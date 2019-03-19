@@ -34,7 +34,7 @@ Page({
   handleGoSearchResult(e) {
     console.log(e.currentTarget.dataset.id)
     let id = e.currentTarget.dataset.id
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../searchResult/searchResult?category=' + id,
     })
   },
